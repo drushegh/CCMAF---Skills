@@ -1,0 +1,401 @@
+# CCMAF Skills
+
+A library of 29 production-grade agent skills for Claude Code and
+compatible agent runtimes. Each skill packages senior-level engineering
+standards for one technology domain — the conventions, decision
+frameworks, pitfalls and verification rules an experienced practitioner
+would enforce — so that an AI agent working in that domain behaves like
+a disciplined specialist rather than a generalist with training-data
+habits.
+
+The library is the skills companion to the Claude Code Multi-Agent
+Framework (CCMAF), but every skill is self-contained and usable
+independently.
+
+## How a skill works
+
+Every skill follows the same anatomy:
+
+```
+<skill-name>/
+  SKILL.md          # always loaded when the skill triggers
+  references/       # topic files loaded on demand
+    <topic-1>.md
+    <topic-2>.md
+    ...
+```
+
+**Triggering.** The YAML frontmatter in `SKILL.md` carries a
+deliberately assertive `description` listing the file types, keywords
+and situations that should activate the skill — agents match on it
+even when the user never names the technology ("fix my flow" triggers
+`power-platform-development`; a `.uproject` file triggers
+`unreal-engine-development`).
+
+**Progressive disclosure.** `SKILL.md` itself stays lean (roughly
+85–180 lines): the non-negotiable standards, the key decision tables,
+the high-frequency pitfalls, a working workflow, and an index telling
+the agent which reference file to load for which task. The
+`references/` files (typically five to seven per skill, 60–110 lines
+each) hold the depth — API patterns, worked code examples,
+configuration detail — and are read only when the task needs them.
+This keeps context cost proportional to the work.
+
+**Boundaries.** Skills cross-reference rather than duplicate. Each
+`SKILL.md` ends with an explicit boundary section routing adjacent
+concerns to sibling skills (the React skill owns component behaviour,
+the frontend skill owns styling, the TypeScript skill owns typing).
+An agent with several skills installed gets one coherent opinion, not
+three overlapping ones.
+
+**Accuracy discipline.** Skills were built from curated official and
+community sources (source repositories and commits are pinned in the
+maintainer's records) and verified mechanically where the tooling
+allows: code blocks are parsed with real toolchains (node, esbuild,
+Python compile, tree-sitter for C#/C++, yaml/toml parsers, `bash -n`).
+Languages with no available parser (DAX, M, PowerShell, GDScript, KQL,
+Swift, GLSL) received structural checks, and the affected skills say
+so. Fast-moving platform facts — current product versions, regulatory
+deadlines, deprecation dates — are date-stamped in the text with an
+instruction to re-verify, rather than presented as timeless truth.
+
+## Using the skills
+
+Copy the skill directories you want into your project's
+`.claude/skills/` (or your user-level skills location), or load the
+repository as a plugin directory. No build step; skills are plain
+Markdown. Each skill assumes an autonomous agent audience: "ask the
+user" guidance from upstream sources has been adapted into
+decide-and-flag behaviour.
+
+## Framework integration (CCMAF)
+
+This repo is the **skills upstream** for the
+[Claude Code Multi-Agent Framework](https://github.com/drushegh/claude-code-multi-agent-framework).
+The framework consumes it mechanically; the following is the contract
+that consumption relies on (`contract:skills-sync` in the framework's
+ECOSYSTEM). **An agent session reading this repo to author or modify
+skills must preserve these invariants:**
+
+1. **One directory per skill at the repo root.** The directory name IS
+   the skill's identity: it's the token consumers put in
+   `SKILLS_SELECTED`, the ownership boundary the sync overwrites, and
+   the name other skills use in cross-references. Renaming a directory
+   is a breaking change for every consumer that selected it.
+2. **Naming: `<domain>-development`**, lowercase, hyphenated. The
+   framework's stack-detection (`skills-sync.sh --suggest`) emits these
+   exact names; new skills should follow the convention so suggestions
+   stay paste-able.
+3. **`SKILL.md` is mandatory** with YAML frontmatter: `name:` equal to
+   the directory name, and a `description:` under 1,024 characters
+   listing concrete triggers. Everything else in the directory
+   (`references/` etc.) ships verbatim on sync.
+4. **Cross-references are advisory names, not hard links.** Skills route
+   adjacent concerns to siblings by directory name (see *Boundaries*
+   above) — a consumer who synced only one of the pair just gets less
+   depth there, never breakage. The framework surfaces these as a
+   "companion skills" advisory after each sync, so keep boundary
+   sections naming real sibling directories (a typo'd name silently
+   advertises nothing).
+5. **Every commit to `main` is a release.** Consumers pin a SHA in
+   `.claude/.skills-version`; the framework's `skills-check.sh` compares
+   that pin to this repo's `main` HEAD at cold start and notifies them
+   to re-sync. There is no tagging or branching ceremony — keep `main`
+   always-shippable.
+6. **Plain Markdown, LF line endings, no executable content.** Consumer
+   framework audits (`config-security.sh`) scan synced skills for
+   hidden-character and instruction-injection patterns — keep skills
+   free of zero-width/bidi characters and "ignore your instructions"
+   phrasing, even in examples.
+
+How a framework project consumes this repo, end to end: the project
+declares upstream + selection in `.claude/.skills-version` →
+`skills-sync.sh` clones this repo and copies ONLY the selected
+directories into `.claude/skills/` (dirty-checked, pin rewritten) →
+`skills-check.sh` runs at every cold start and raises a flag when the
+pin lags `main` (and, for projects that never opted in, suggests
+matching skills from stack detection, throttled).
+
+### Adding a new skill (checklist)
+
+- Directory named `<domain>-development`; `SKILL.md` frontmatter `name`
+  matches it exactly; description < 1,024 chars with assertive triggers.
+- Lean `SKILL.md` (~85–180 lines) + `references/` topic files; every
+  reference listed in SKILL.md's index exists on disk (and vice versa).
+- Boundary section routes adjacent concerns to real sibling directory
+  names only.
+- UK English; date-stamp fast-moving claims with a re-verify
+  instruction; verify code blocks with a real parser where one exists
+  and say so where it doesn't.
+- Add the skill to this README's catalogue section.
+- If the new stack is detectable from project files, note it — the
+  framework's `--suggest` detection map
+  (`.claude/framework/update/skills-sync.sh`) should gain the mapping.
+
+---
+
+## Skill catalogue
+
+### Languages and runtimes
+
+**python-development** — Modern Python (3.11+) engineering standards:
+idioms, the type system, asyncio and concurrency, error handling and
+logging, architecture, project setup with pyproject.toml, pytest, and
+performance/debugging practice. The largest of the language skills;
+its workflow rules govern how an agent writes, tests and refactors any
+`.py` file.
+*References: architecture, async-concurrency, debugging,
+errors-and-logging, idioms, performance, project-setup, testing,
+type-system.*
+
+**typescript-development** — TypeScript 5.x type-safety patterns and
+engineering standards: the type system and generics, eliminating
+`any`, runtime validation with Zod, Node backends, React typing,
+functional patterns, tsconfig/tooling/monorepo setup, and systematic
+tsc error fixing.
+*References: error-fixing, functional-patterns, node-backend, react,
+testing, tooling, type-system, validation-and-apis.*
+
+**dotnet-development** — Modern .NET (8/9/10) and C#: ASP.NET Core
+Web/minimal APIs, EF Core patterns, nullable reference types,
+testing across the four frameworks, observability, performance, and
+solution/project setup including central package management.
+*References: csharp-scripts, ef-core, nullable-reference-types,
+observability, performance, project-setup, testing, webapi.*
+
+**rust-development** — Rust 2024 edition (1.85+): type-driven API
+design, ownership and lifetimes, error handling and lint discipline,
+async/tokio, serde, and testing. Includes the reasoning for when
+strictness profiles should and shouldn't be tightened per repository.
+*References: api-design, async, errors-and-lints, ownership-projects,
+serde, testing, type-design.*
+
+**bash-development** — Production shell scripting: strict-mode and
+quoting discipline, ShellCheck-aligned patterns, injection and
+temp-file safety, cross-platform portability (Linux/macOS/WSL/Git
+Bash/containers — including Windows-host quirks), and BATS testing.
+*References: modern-bash, patterns, portability, security,
+testing-debugging.*
+
+**powershell-development** — PowerShell 7+ language and modules:
+advanced functions and the pipeline, error handling, Pester 5 and
+PSScriptAnalyzer, 5.1 compatibility, the JEA/signing/SecretManagement
+security stack, and automation against Azure, Microsoft 365 and
+Dataverse.
+*References: automation-cloud, cross-platform, language-syntax,
+modules-gallery, security, testing-quality.*
+
+### Web and frontend
+
+**frontend-development** — Visual craft for HTML, CSS and Tailwind v4:
+design tokens and theming, semantic markup, distinctive (non-generic)
+visual design, component styling architecture, and the accessibility
+baseline for styling work.
+*References: components, design-craft, html-css-foundations,
+tailwind.*
+
+**react-development** — React and Next.js engineering, distilled from
+Vercel's official agent skills: render and data-fetching performance
+(waterfalls, bundles, re-renders), composition patterns, React Server
+Components and the App Router, and view transitions.
+*References: composition, performance-data, performance-rendering,
+rsc-and-nextjs, view-transitions.*
+
+**threejs-development** — Browser 3D with three.js and React Three
+Fiber: scene/camera/lighting fundamentals with correct colour
+management, the glTF asset pipeline (Draco/KTX2/meshopt), performance
+engineering (draw calls, instancing, LOD, dispose discipline), GLSL
+and TSL shaders with the WebGL/WebGPU decision, and the pmndrs
+ecosystem (drei, rapier, zustand).
+*References: assets-loaders, interaction-animation, performance,
+r3f-patterns, scene-fundamentals, shaders-webgpu.*
+
+### Desktop and mobile
+
+**electron-development** — Electron's main/preload/renderer model,
+secure IPC via contextBridge, packaged-app path resolution (the
+"works in dev, fails packaged" class of bugs), native modules,
+electron-builder packaging/signing and auto-update.
+*References: build-and-distribution, ipc-and-security, native-modules,
+processes-and-paths.*
+
+**tauri-development** — Tauri v2 desktop and mobile: Rust↔frontend
+IPC, the capability/permission security model, configuration,
+plugins, builds, signing and testing.
+*References: config-and-builds, ipc, plugins-and-runtime, security,
+testing-and-debugging.*
+
+**android-development** — Kotlin and Jetpack Compose following
+Google's NowInAndroid architecture: MVVM with unidirectional data
+flow, offline-first data with Room, Hilt DI, modularisation and
+Gradle, and testing.
+*References: architecture, compose, data-room, modularization-gradle,
+testing.*
+
+**ios-development** — Swift and SwiftUI (UIKit interop where needed):
+Swift concurrency and language standards, MVVM, Human Interface
+Guidelines compliance and accessibility, persistence
+(SwiftData/Core Data/Keychain), and App Store distribution.
+*References: data-persistence, hig-accessibility, swift-standards,
+swiftui-patterns, tooling-distribution.*
+
+### Microsoft business platform
+
+**dynamics-365-development** — D365 Customer Engagement / Dataverse
+pro-code: plug-ins and the execution pipeline, client API scripting,
+PCF code components, Web API/SDK operations, and solutions/ALM.
+*References: client-scripting, dataverse-operations, pcf, plugins,
+solutions-alm.*
+
+**power-platform-development** — The low-code layer: canvas apps and
+Power Apps YAML, Power Fx and delegation, Power Automate cloud flows,
+maker-side Dataverse design, environment strategy, solutions and
+platform ALM, and code apps.
+*References: alm-environments, canvas-apps, code-apps,
+dataverse-design, power-automate, power-fx-delegation.*
+
+**power-pages-development** — Power Pages portals: Liquid templating,
+the portal Web API, table permissions and web roles, basic/multistep
+forms and lists, SPA code sites, site settings and caching, and
+pac pages ALM.
+*References: alm-deployment, code-sites, forms-lists, liquid,
+security, web-api.*
+
+**power-bi-development** — Semantic model design (star schema,
+relationships, RLS), DAX authoring and performance tuning, Power
+Query/M and query folding, TMDL/PBIP source formats, and
+deployment/ALM.
+*References: dax-authoring, dax-performance, deployment-reports,
+power-query-m, semantic-modeling, tmdl-pbip.*
+
+**fabric-development** — Microsoft Fabric: OneLake topology and
+shortcuts, lakehouse/medallion architecture, Spark notebooks and
+Delta optimisation (V-Order, OPTIMIZE/VACUUM), ingestion and
+orchestration, Direct Lake, and capacity/CU administration.
+*References: capacity-administration, delta-optimization,
+ingestion-orchestration, lakehouse-medallion, spark-notebooks,
+topology-onelake.*
+
+**copilot-studio-development** — Copilot Studio agents, YAML-first:
+topic/trigger/action schema authoring, generative orchestration
+patterns (orchestrator variables, tool-call leak prevention,
+deterministic MCP workarounds), knowledge sources and connector
+actions, Teams/M365 Copilot channels and production hardening, agent
+ALM/governance/DLP, testing and evals — plus the pro-code adjacency
+(declarative agents, ATK/TypeSpec, M365 Agents SDK) and the
+agent-type decision framework.
+*References: alm-governance, knowledge-actions,
+orchestration-patterns, pro-code-agents, teams-production,
+testing-evals, yaml-authoring.*
+
+**m365-development** — The Microsoft 365 platform for developers:
+Microsoft Graph fundamentals (auth flow selection, OData, paging,
+batching, delta queries, change notifications, throttling) and SDK
+patterns in .NET/TS/Python, SPFx web parts and extensions (including
+the v1.22 Heft toolchain boundary), Teams apps (manifest,
+capabilities, SSO), SharePoint Online data access (PnPjs/REST/Graph),
+and Office add-ins.
+*References: graph-fundamentals, graph-sdks, office-addins,
+sharepoint-data, spfx-development, teams-apps.*
+
+### Cloud and operations
+
+**azure-development** — Azure service selection and engineering:
+Bicep/Terraform IaC and azd workflows, Functions/App Service/Container
+Apps, Entra ID and managed identities, Key Vault, storage and
+messaging, AI Foundry, and operations/reliability/cost discipline.
+*References: ai-foundry, compute-services, data-messaging,
+identity-security, infrastructure-iac, operations-reliability.*
+
+**devops-development** — CI/CD on Azure DevOps and GitHub Actions:
+pipeline/workflow YAML, templates and reusable workflows, OIDC
+federated credentials, environments and approvals, pipeline security
+(SHA pinning, permission scoping), deployment patterns, and Power
+Platform/Azure deployment automation.
+*References: azure-pipelines, deployment-patterns, github-actions,
+pipeline-security, power-platform-cicd.*
+
+**sentinel-development** — Microsoft Sentinel SIEM/SOAR engineering
+plus a general KQL language reference (Log Analytics, App Insights,
+ADX, Fabric eventhouse): detection engineering (scheduled/NRT rules,
+entity mapping, tuning, ingestion-delay handling), connectors and
+ingestion cost control, hunting/watchlists/workbooks, automation
+rules and Logic Apps playbooks, and Defender XDR/unified portal
+integration with MITRE ATT&CK coverage mapping.
+*References: automation-soar, data-ingestion-cost, defender-xdr-mitre,
+detection-engineering, hunting-watchlists-workbooks, kql-language.*
+
+### Cross-cutting: security and accessibility
+
+**secure-development** — Application security as a review framework:
+OWASP Top 10 (2025) and ASVS 5.0, STRIDE/data-flow threat modelling,
+input/output handling and the known-dangerous-sinks list, secrets and
+cryptography hygiene, and dependency/supply-chain security. Includes
+engineering-obligation references (explicitly not legal advice,
+date-stamped) for NIS2, GDPR privacy-by-design, and the EU AI Act.
+*References: eu-ai-act, gdpr, input-output-crypto, nis2,
+owasp-frameworks, supply-chain, threat-modelling.*
+
+**accessibility-development** — WCAG 2.2 AA as the working standard
+with the EU/Irish statutory frame (EN 301 549, Web Accessibility
+Directive, European Accessibility Act): ARIA and keyboard/focus
+patterns, accessible forms/tables/charts, testing tooling (axe-core,
+Playwright, screen readers), a structured audit checklist with a
+severity rubric for reviewing existing UIs, and short
+Microsoft-stack-specific notes (Power Apps/Pages, Power BI, SPFx).
+*References: aria-keyboard, audit-checklist, eu-legal-framework,
+forms-tables-charts, microsoft-stack-a11y, testing-tooling,
+wcag-2-2.*
+
+### 3D and game engines
+
+**blender-development** — The Blender knowledge layer: bpy scripting
+(data-block model, `bpy.data` over `bpy.ops`, dependency graph,
+performance), add-on/extension development on the
+`blender_manifest.toml` platform, Geometry Nodes concepts, the asset
+export pipeline to engines (glTF/FBX conventions per target), and
+headless/CI automation.
+*References: addons-extensions, automation-headless, bpy-scripting,
+export-pipeline, geometry-nodes.*
+
+**godot-development** — Godot 4.x: statically-typed GDScript and
+Godot C#, scene/node composition architecture ("signals up, calls
+down"), custom Resources for data-driven design, physics (Jolt
+default since 4.6) with collision layer/mask discipline, and
+export presets with headless CI.
+*References: csharp-interop, gdscript, physics-2d-3d,
+resources-export, scenes-nodes.*
+
+**unity-development** — Unity 6.x: MonoBehaviour lifecycle and
+serialization rules (including the destroyed-object null trap),
+ScriptableObject data architecture, prefabs/variants and additive
+scene management, Addressables, the Input System and UI Toolkit/uGUI
+decision, ECS/DOTS basics (core since 6.4) with an honest adoption
+frame, and the build pipeline (Build Profiles, IL2CPP stripping,
+batchmode CI).
+*References: build-pipeline, csharp-scripting, ecs-dots, input-ui,
+prefabs-scenes, scriptableobjects-data.*
+
+**unreal-engine-development** — Unreal Engine 5: the Blueprints vs
+C++ decision and the standard hybrid pattern, the gameplay framework
+class roles, UCLASS/UPROPERTY reflection and garbage collection
+rules, modules and plugins, decision-level rendering features
+(Nanite, Lumen, Niagara), asset references and cooking/packaging with
+UAT/BuildGraph CI, and networking/replication with GAS awareness.
+*References: assets-build-packaging, blueprints-boundary,
+cpp-patterns, gameplay-framework, networking-gas, rendering-features.*
+
+---
+
+## Conventions across the library
+
+UK English throughout. Lean `SKILL.md` plus on-demand references.
+Explicit cross-skill boundaries instead of duplication. Date-stamped
+platform and regulatory claims with re-verify instructions. Pushy
+trigger descriptions so skills activate from context, not just
+keywords. Code blocks verified with real parsers wherever the
+toolchain exists, and honestly labelled where it doesn't.
+
+## Licence
+
+See [LICENSE](LICENSE).
