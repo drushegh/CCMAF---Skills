@@ -10,6 +10,7 @@
 | Full Kubernetes control, large estates | **AKS** | Only with the team to run it; Automatic SKU lowers the bar |
 | Static front end + API | **Static Web Apps** | Built-in Functions API, auth, CDN |
 | Long-running stateful orchestration | **Durable Functions** (+ Durable Task Scheduler) | Fan-out/fan-in, sagas, human-interaction timeouts |
+| Connector-based integration / workflow / SOAR playbooks | **Logic Apps** | Visual + JSON workflows, hundreds of connectors; Standard (single-tenant, VNet) vs Consumption — see `logic-apps.md` |
 
 Default ladder: App Service / Container Apps / Functions first; AKS is
 the answer to organisational, not technical, scale. The portal's newest
