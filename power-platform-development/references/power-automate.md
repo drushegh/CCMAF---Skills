@@ -53,6 +53,40 @@ with the same failure-mindedness as any service.
 - Use connectors over UI automation wherever an API exists; custom
   connector beats screen-scraping for unsupported systems.
 
+## Desktop flows (RPA)
+
+When a system has **no API or connector**, automate its UI with a desktop flow
+(Power Automate for desktop). RPA is the last resort, not the first — it's
+brittle (a UI change breaks it), so wrap every step in error handling and
+prefer a connector/custom connector whenever one exists.
+
+- **Attended** runs alongside a signed-in user (interactive, user-triggered);
+  **unattended** runs with no user on a dedicated/locked session. Unattended
+  can't run elevated, and a locked session is required.
+- **Machines and machine groups**: register your own Windows machines, or use
+  **hosted machines / hosted machine groups** — Microsoft-provisioned Azure
+  VMs (Windows 365) that autoscale unattended **bots** up to a max and
+  load-balance across groups in the environment. No infrastructure to
+  maintain; bring a custom VM image (Azure Compute Gallery) and your own VNet
+  if needed.
+- **Licensing**: hosted/unattended RPA needs the **Power Automate Hosted
+  Process** capacity (one unit per concurrent bot) assigned to the environment
+  — size it to peak parallel runs.
+- **Orchestrate from a cloud flow**: a parent cloud flow triggers the desktop
+  flow via a desktop-flow connection. Hosted machine groups support
+  **unattended + direct-connectivity** connections only.
+- Treat desktop-flow projects as code: source-control, parameterise inputs,
+  and keep credentials in the connection/Key Vault, never in steps.
+
+## AI in flows
+
+- **AI Builder** actions (prebuilt + custom prompts, document/text/image
+  models) bring AI into a flow — use prebuilt models before training custom
+  ones; mind per-action AI Builder credit consumption.
+- Conversational/agent experiences belong in **Copilot Studio**, not a flow
+  with bolted-on prompts → `copilot-studio-development`. A flow can be a
+  Copilot Studio *action*; keep the orchestration boundary clean.
+
 ## Operations
 
 - Connections vs **connection references**: flows in solutions must use
@@ -73,4 +107,5 @@ with the same failure-mindedness as any service.
 Docs: https://learn.microsoft.com/power-automate/guidance/coding-guidelines/error-handling ·
 https://learn.microsoft.com/power-automate/guidance/coding-guidelines/optimize-power-automate-triggers ·
 https://learn.microsoft.com/power-automate/error-reference ·
-https://learn.microsoft.com/power-automate/scopes
+https://learn.microsoft.com/power-automate/scopes ·
+https://learn.microsoft.com/power-automate/desktop-flows/hosted-rpa-overview

@@ -1,6 +1,6 @@
 # CCMAF Skills
 
-A library of 29 production-grade agent skills for Claude Code and
+A library of 38 production-grade agent skills for Claude Code and
 compatible agent runtimes. Each skill packages senior-level engineering
 standards for one technology domain — the conventions, decision
 frameworks, pitfalls and verification rules an experienced practitioner
@@ -158,10 +158,13 @@ testing, tooling, type-system, validation-and-apis.*
 
 **dotnet-development** — Modern .NET (8/9/10) and C#: ASP.NET Core
 Web/minimal APIs, EF Core patterns, nullable reference types,
-testing across the four frameworks, observability, performance, and
-solution/project setup including central package management.
-*References: csharp-scripts, ef-core, nullable-reference-types,
-observability, performance, project-setup, testing, webapi.*
+testing across the four frameworks, observability, performance,
+solution/project setup including central package management, and
+DevExpress component engineering (licensing/feed setup, XPO vs EF Core,
+XtraReports, XAF).
+*References: csharp-scripts, devexpress, ef-core,
+nullable-reference-types, observability, performance, project-setup,
+testing, webapi.*
 
 **rust-development** — Rust 2024 edition (1.85+): type-driven API
 design, ownership and lifetimes, error handling and lint discipline,
@@ -298,14 +301,103 @@ and Office add-ins.
 *References: graph-fundamentals, graph-sdks, office-addins,
 sharepoint-data, spfx-development, teams-apps.*
 
+### AI and agents
+
+**llm-development** — Engineering software on LLMs, primarily the
+Claude API: messages/streaming/error handling, tool use and agentic
+loops, prompt engineering as a versioned-and-evaluated discipline,
+prompt caching and cost/latency engineering, MCP server development
+(spec 2025-11-25), agent harness patterns (context management,
+sub-agents, safety gates), authoring agent skills themselves, and
+evals for nondeterministic systems. Python/JSON examples parsed
+mechanically; model and spec facts date-stamped June 2026.
+*References: agent-harness, caching-cost-latency, claude-api, evals,
+mcp-development, prompt-engineering, skills-authoring, tool-use.*
+
+### Data and databases
+
+**sql-development** — Relational database engineering for SQL Server /
+Azure SQL (T-SQL) and PostgreSQL: schema design and data types,
+workload-aware indexing, evidence-first query tuning (execution plans,
+statistics, parameter sensitivity), window functions/CTEs/upserts,
+transactions and concurrency, injection-safe dynamic SQL and RLS,
+Azure SQL tiers and PG Flexible Server operations, and safe
+expand–contract migrations. All SQL examples parsed with sqlglot
+(T-SQL/Postgres dialects).
+*References: advanced-queries, indexing, migrations, platform-azure,
+query-tuning, schema-design, security, transactions-concurrency.*
+
+**web-scraping-development** — Building web scrapers and crawlers
+responsibly: the legal/ethical gate (robots.txt, ToS, rate limiting,
+GDPR/PII) and API-first checking, HTTP scraping and HTML parsing (httpx,
+BeautifulSoup, parsel/lxml), dynamic JS-rendered sites with Playwright
+(and intercepting the underlying API), the Scrapy framework (spiders,
+items, pipelines, middlewares, AutoThrottle, scrapy-playwright), and
+resilience/anti-bot/operations (retries, caching, storage, scheduling,
+knowing when to stop).
+*References: dynamic-playwright, http-parsing, legality-ethics,
+resilience-operations, scrapy-framework.*
+
 ### Cloud and operations
 
 **azure-development** — Azure service selection and engineering:
 Bicep/Terraform IaC and azd workflows, Functions/App Service/Container
-Apps, Entra ID and managed identities, Key Vault, storage and
-messaging, AI Foundry, and operations/reliability/cost discipline.
-*References: ai-foundry, compute-services, data-messaging,
-identity-security, infrastructure-iac, operations-reliability.*
+Apps, Logic Apps (Standard vs Consumption, Sentinel playbooks), Entra ID
+and managed identities, Key Vault, storage and messaging, AI Foundry,
+Azure Machine Learning (workspace, MLflow, online/batch endpoints,
+MLOps), and operations/reliability/cost discipline.
+*References: ai-foundry, azure-ml, compute-services, data-messaging,
+identity-security, infrastructure-iac, logic-apps,
+operations-reliability.*
+
+**containers-development** — Container engineering across the
+lifecycle: multi-stage Dockerfiles (layer caching, non-root,
+distroless/chiselled bases, BuildKit build secrets), .NET image
+specifics (`$APP_UID`, chiselled/distroless, the .NET 10 Debian
+removal), docker compose for local development, image and runtime
+security (scanning, SBOM/provenance, signing, capability/read-only
+hardening), registries and Azure Container Registry, the Azure
+container-host decision (Container Apps vs AKS vs App Service vs ACI vs
+Functions), and working-level Kubernetes manifests.
+*References: azure-runtime, compose, dockerfiles, dotnet-images,
+image-security, kubernetes, registries-acr.*
+
+**kubernetes-development** — Platform-level Kubernetes: workload
+controllers and scheduling, autoscaling (HPA/VPA/KEDA/cluster
+autoscaler), Services/Ingress/Gateway API and default-deny
+NetworkPolicy, ConfigMaps/Secrets with external secret stores,
+RBAC/Pod Security Admission/admission control, storage (PV/PVC/CSI,
+StatefulSet volumes), Helm and Kustomize packaging, GitOps (Argo CD/
+Flux), operations/troubleshooting, and AKS specifics (workload
+identity, node pools, CNI, add-ons, upgrades). Takes over from
+containers-development once you're operating a cluster.
+*References: aks, config-secrets, gitops-operations, networking,
+packaging, security-rbac, storage, workloads-scheduling.*
+
+**linux-development** — Linux as a development/workstation environment
+plus the shared Linux foundations every other Linux task builds on: the
+filesystem hierarchy and everything-is-a-file model, processes and
+signals, the permission/ownership model, the shell environment and
+dotfiles (login vs interactive, `$PATH`), package management
+(apt/dnf/pacman, Flatpak/Snap), desktop basics, and WSL2 on Windows in
+depth (wsl.conf/.wslconfig, systemd, networking, filesystem
+performance). Owns the foundations; server operations route to
+linux-administration.
+*References: foundations, local-troubleshooting, packages-software,
+shell-environment, workstation-desktop, wsl2.*
+
+**linux-administration** — Operating Linux servers: systemd service
+and timer management with unit hardening, networking and firewalls
+(ip/ss, DNS, nftables/firewalld/ufw, SSH server hardening), users/sudo/
+ACLs/capabilities and PAM at admin scale, performance troubleshooting by
+the USE/saturation method (perf/strace), security hardening (SSH,
+SELinux/AppArmor, CIS benchmarks, fail2ban, patching), logging and
+observability (journald, log shipping, rotation, metrics/alerting), and
+automation (cron vs timers, restore-tested backups, config as code).
+Builds on the foundations in linux-development.
+*References: automation, networking, observability-logging,
+performance-troubleshooting, security-hardening, systemd-services,
+users-permissions-pam.*
 
 **devops-development** — CI/CD on Azure DevOps and GitHub Actions:
 pipeline/workflow YAML, templates and reusable workflows, OIDC
@@ -325,7 +417,29 @@ integration with MITRE ATT&CK coverage mapping.
 *References: automation-soar, data-ingestion-cost, defender-xdr-mitre,
 detection-engineering, hunting-watchlists-workbooks, kql-language.*
 
-### Cross-cutting: security and accessibility
+### Cross-cutting
+
+**api-development** — HTTP API design and engineering,
+framework-agnostic: resource/REST design and HTTP semantics,
+OpenAPI-first contracts (3.1/3.2), versioning and additive evolution
+with deprecation/sunset, pagination (cursor/offset/Link) and filtering,
+RFC 9457 `problem+json` errors, idempotency and caching/ETags,
+authentication (OAuth2/OIDC, API keys) and rate limiting, and webhooks
+(HMAC signing, retries, dedupe). Owns API design; framework
+implementation routes to the language skill.
+*References: auth-rate-limiting, errors-problem-details, openapi-contract,
+pagination-filtering, rest-design, versioning-evolution, webhooks.*
+
+**testing-development** — Cross-cutting test engineering above the
+unit level: test strategy and the pyramid/trophy, end-to-end browser
+testing with Playwright (role-based locators, web-first assertions,
+fixtures, traces), load and performance testing (k6, Apache JMeter,
+Azure Load Testing) with workload models and SLO gating, consumer-driven
+contract testing (Pact) and regression discipline, and test-data
+management (factories, testcontainers, synthetic data). Per-language
+unit/integration mechanics stay in the language skills.
+*References: contract-regression, e2e-playwright, load-performance,
+test-data, test-strategy.*
 
 **secure-development** — Application security as a review framework:
 OWASP Top 10 (2025) and ASVS 5.0, STRIDE/data-flow threat modelling,

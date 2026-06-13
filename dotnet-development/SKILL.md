@@ -164,3 +164,4 @@ Custom domain exceptions map to status codes in one place. Details:
 | Repo structure, Directory.Build.props/targets, central package management | [references/project-setup.md](references/project-setup.md) |
 | Quick C# scripts / file-based apps / prototyping | [references/csharp-scripts.md](references/csharp-scripts.md) |
 | Logging, tracing, metrics, OpenTelemetry setup | [references/observability.md](references/observability.md) |
+| DevExpress components: product choice, NuGet/license setup, XPO vs EF Core, XtraReports, XAF | [references/devexpress.md](references/devexpress.md) |

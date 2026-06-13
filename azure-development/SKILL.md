@@ -88,7 +88,9 @@ public IPs, and forgotten previews are the classic waste — sweep them.
 | --- | --- |
 | references/infrastructure-iac.md | Bicep/Terraform, azd, deployment workflow |
 | references/compute-services.md | Service selection, App Service, Container Apps, Functions, AKS |
+| references/logic-apps.md | Logic Apps Standard vs Consumption, stateful/stateless, connectors, Sentinel playbooks |
 | references/identity-security.md | Entra ID, managed identity, RBAC, Key Vault, networking |
+| references/azure-ml.md | Azure Machine Learning: workspace, compute, MLflow, online/batch endpoints, MLOps |
 | references/data-messaging.md | Storage, SQL/Cosmos, Service Bus/Event Grid/Event Hubs |
 | references/ai-foundry.md | Azure AI Foundry: projects, models, agents, evals |
 | references/operations-reliability.md | App Insights, diagnostics, reliability, cost, quotas |
