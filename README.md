@@ -1,6 +1,6 @@
 # CCMAF Skills
 
-A library of 38 production-grade agent skills for Claude Code and
+A library of 40 production-grade agent skills for Claude Code and
 compatible agent runtimes. Each skill packages senior-level engineering
 standards for one technology domain — the conventions, decision
 frameworks, pitfalls and verification rules an experienced practitioner
@@ -479,6 +479,33 @@ default since 4.6) with collision layer/mask discipline, and
 export presets with headless CI.
 *References: csharp-interop, gdscript, physics-2d-3d,
 resources-export, scenes-nodes.*
+
+**godot-shaders-development** — Godot 4.x shader programming in the
+Godot Shading Language and compute GLSL: the language (data types,
+render modes, uniforms/hints, varyings) with the 3.x→4.x migration
+table that breaks most pasted snippets, spatial (PBR) shaders, 2D
+canvas_item effects and screen reading, particle/sky/fog processor
+shaders, GLSL compute via RenderingDevice (buffers, dispatch, readback),
+and visual shaders with a performance/debugging playbook. No shader
+parser exists in the sandbox, so shader code gets structural checks —
+the skill says so. Owns shaders; engine/scene plumbing routes to
+godot-development.
+*References: canvas-item-shaders, compute-shaders, particles-sky-fog,
+shading-language, spatial-shaders, visual-shaders.*
+
+**godot-mcp-workflow** — Driving Godot and Blender from an agent over
+MCP: the practical loop for `@coding-solo/godot-mcp` (npx) and
+`ahujasid/blender-mcp` (uvx). What each server's tools can and cannot do
+(godot-mcp is deliberately minimal — launch/run/debug-output/coarse
+scaffolding, no viewport screenshot; blender-mcp can screenshot and runs
+arbitrary Python), the scaffold→edit-files→run→read-debug-output loop,
+working "blind" in Godot via observability and headless tests, the
+Blender→glTF→Godot asset pipeline (axis/scale conventions), and the
+safety rules for arbitrary code execution and version drift. Owns the
+MCP workflow; engine and Blender knowledge route to godot-development,
+godot-shaders-development and blender-development.
+*References: asset-pipeline, blender-mcp-tools, godot-mcp-tools,
+pitfalls-and-safety, the-development-loop.*
 
 **unity-development** — Unity 6.x: MonoBehaviour lifecycle and
 serialization rules (including the destroyed-object null trap),
