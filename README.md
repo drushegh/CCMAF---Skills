@@ -1,6 +1,6 @@
 # CCMAF Skills
 
-A library of 40 production-grade agent skills for Claude Code and
+A library of 43 production-grade agent skills for Claude Code and
 compatible agent runtimes. Each skill packages senior-level engineering
 standards for one technology domain — the conventions, decision
 frameworks, pitfalls and verification rules an experienced practitioner
@@ -441,6 +441,29 @@ unit/integration mechanics stay in the language skills.
 *References: contract-regression, e2e-playwright, load-performance,
 test-data, test-strategy.*
 
+**ux-design** — Interaction and perception reasoning for any UI,
+independent of language or framework: the Laws of UX (Fitts, Hick,
+Miller, Jakob, the Doherty threshold), Gestalt grouping and visual
+hierarchy (the "awareness of space" engine), scan patterns,
+affordances/signifiers/feedback (Norman), form and error-state UX,
+navigation/findability, and touch/pointer ergonomics (target sizes,
+thumb zones) — plus Nielsen's heuristics as a review method. The
+predictive model for how a layout will actually behave; pairs with
+ui-verification.
+*References: affordances-feedback, forms-and-input, gestalt-and-layout,
+heuristics-review, interaction-laws, mobile-touch-ergonomics.*
+
+**ui-verification** — The render → view → critique → iterate loop:
+actually rendering a UI, capturing it (Playwright) at real viewports,
+looking at the image, and critiquing it against the ux-design and
+accessibility rubrics instead of shipping a guess from the code. Covers
+the state × viewport × theme capture matrix, the structured visual
+review, automated visual regression (`toHaveScreenshot`, Percy/
+Chromatic), and frame capture for canvas/3D — with honest limits on what
+a still can show.
+*References: 3d-and-non-web, render-and-capture, state-and-viewport-coverage,
+the-critique-loop, visual-regression.*
+
 **secure-development** — Application security as a review framework:
 OWASP Top 10 (2025) and ASVS 5.0, STRIDE/data-flow threat modelling,
 input/output handling and the known-dangerous-sinks list, secrets and
@@ -462,6 +485,17 @@ forms-tables-charts, microsoft-stack-a11y, testing-tooling,
 wcag-2-2.*
 
 ### 3D and game engines
+
+**game-feel** — The craft of making interactive motion feel good,
+engine-agnostic: Steve Swink's three building blocks (real-time control,
+simulated space, polish), input responsiveness and forgiveness mechanics
+(coyote time, jump buffering, variable jump height, corner correction),
+physics tuning (realistic vs good-feeling — accel/friction/gravity
+curves, asymmetric gravity), and juice (screenshake, hitstop, easing,
+squash-and-stretch, camera). The engine skills own the API; this owns
+why it feels right. Real-time feel needs a human in the loop.
+*References: input-and-responsiveness, juice-and-feedback, physics-tuning,
+the-three-blocks, tuning-and-verification.*
 
 **blender-development** — The Blender knowledge layer: bpy scripting
 (data-block model, `bpy.data` over `bpy.ops`, dependency graph,
