@@ -40,7 +40,7 @@ paths to C++ rather than fighting the VM.
    A raw pointer to a UObject without UPROPERTY is a dangling-pointer
    factory — the GC cannot see it.
 2. **Garbage collection rules**: UObjects are GC-managed —
-   `UPROPERTY` (use `TObjectPtr<T>` for members in UE5) keeps them
+   `UPROPERTY` (use `TObjectPtr` for members in UE5) keeps them
    alive; `TWeakObjectPtr` for non-owning; never `new`/`delete`
    UObjects (`NewObject`, `CreateDefaultSubobject` in constructors,
    `SpawnActor` for actors). Non-UObject types use
@@ -91,7 +91,7 @@ paths to C++ rather than fighting the VM.
 
 - Editing engine-visible state off the game thread (UObjects are not
   thread-safe; use tasks → game-thread marshalling).
-- `Cast<T>` chains hiding design problems — prefer interfaces
+- `Cast` chains hiding design problems — prefer interfaces
   (`UINTERFACE`) or components for cross-cutting behaviour.
 - Constructors doing gameplay work: constructors run for CDOs at
   startup — gameplay init belongs in `BeginPlay`/`PostInitializeComponents`.

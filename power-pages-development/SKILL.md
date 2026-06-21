@@ -77,7 +77,7 @@ require sub-15-minute reflection of out-of-band Dataverse writes.
 - URL uses the **EntitySetName** (`/_api/accounts`); site settings use the
   **logical name** (`Webapi/account/enabled`). Mixing these up is the #1
   config failure.
-- `Webapi/<table>/fields` is **mandatory** — missing it throws "No fields
+- `Webapi/{table}/fields` is **mandatory** — missing it throws "No fields
   defined for this entity". Value: `*` or a comma-separated column list.
 - No Bearer token. Session cookies authenticate; every mutating request
   needs a `__RequestVerificationToken` header fetched from

@@ -26,16 +26,7 @@ Modern .NET (8 LTS / 9 / 10 LTS) with C# 12+. In existing repos, match the
 established target framework, style, and conventions — never silently
 upgrade or mix styles. Repo-wide settings belong in `Directory.Build.props`:
 
-```xml
-<Project>
-  <PropertyGroup>
-    <Nullable>enable</Nullable>
-    <ImplicitUsings>enable</ImplicitUsings>
-    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
-    <EnforceCodeStyleInBuild>true</EnforceCodeStyleInBuild>
-  </PropertyGroup>
-</Project>
-```
+set `Nullable` and `ImplicitUsings` to enable, and `TreatWarningsAsErrors` and `EnforceCodeStyleInBuild` to true, inside a `PropertyGroup`.
 
 ## Code Standards
 
@@ -57,7 +48,7 @@ upgrade or mix styles. Repo-wide settings belong in `Directory.Build.props`:
   `.GetAwaiter().GetResult()` on async code — deadlock and thread-pool
   starvation risk. Never `async void` except event handlers.
 - **DI-first**: constructor injection, interfaces for services
-  (`AddScoped<IProductService, ProductService>()`), `IHttpClientFactory`
+  (`AddScoped` (interface to implementation)), `IHttpClientFactory`
   for HTTP clients (never `new HttpClient()` per call). Lifetimes:
   singleton for stateless services, scoped for anything touching
   `DbContext`; a singleton must never capture a scoped service (captive

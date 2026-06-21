@@ -103,7 +103,7 @@ the default safe target — choose deliberately
 - Z-fighting from coplanar surfaces — offset geometry or
   `polygonOffset`, not depth hacks.
 - R3F: creating geometries/materials inline per render instead of
-  memo/args; forgetting `<Suspense>` around async loaders; drei
+  memo/args; forgetting `Suspense` around async loaders; drei
   `useGLTF.preload` skipped.
 
 ## References

@@ -32,7 +32,7 @@ side effect.
 ## Architecture — non-negotiable shape
 
 ```
-UI (Compose Screens + ViewModels, StateFlow<UiState>)
+UI (Compose Screens + ViewModels, StateFlow of UiState)
  ↓ events            ↑ data
 Domain (optional use cases — only when logic is shared/complex)
  ↓                   ↑
@@ -43,7 +43,7 @@ Data (Repositories → Room DAO local + Retrofit remote)
    syncs into it (WorkManager), UI reads only from local.
 2. **Unidirectional data flow**: events down, data up. UI never mutates
    state directly.
-3. **Reactive streams everywhere**: repositories expose `Flow<T>` — never
+3. **Reactive streams everywhere**: repositories expose `Flow of T` — never
    one-shot snapshot getters for observable data.
 4. **Repository pattern**: one public interface per data domain;
    implementations `internal`.
@@ -54,7 +54,7 @@ Details: [references/architecture.md](references/architecture.md).
 
 - **UiState as sealed interface** (`Loading / Success(data) / Error`) —
   one per screen; impossible states unrepresentable.
-- **ViewModel exposes a single `StateFlow<UiState>`** via
+- **ViewModel exposes a single `StateFlow of UiState`** via
   `.stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000), Loading)`
   — never expose `MutableStateFlow`, never collect into mutable fields.
 - **Route/Screen split**: `*Route` composable owns the ViewModel +
@@ -65,7 +65,7 @@ Details: [references/architecture.md](references/architecture.md).
 - **Stateless components**: state and callbacks as parameters; hoist
   state; `Modifier` as the last defaulted parameter.
 - **Type-safe navigation** (`@Serializable` route classes,
-  `composable<Route>`, `savedStateHandle.toRoute<Route>()`).
+  `type-safe composable`, `savedStateHandle.toRoute()`).
 
 Details: [references/compose.md](references/compose.md).
 
