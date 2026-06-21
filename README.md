@@ -1,6 +1,6 @@
 # CCMAF Skills
 
-A library of 44 production-grade agent skills for Claude Code and
+A library of 45 production-grade agent skills for Claude Code and
 compatible agent runtimes. Each skill packages senior-level engineering
 standards for one technology domain — the conventions, decision
 frameworks, pitfalls and verification rules an experienced practitioner
@@ -497,6 +497,24 @@ Microsoft-stack-specific notes (Power Apps/Pages, Power BI, SPFx).
 *References: aria-keyboard, audit-checklist, eu-legal-framework,
 forms-tables-charts, microsoft-stack-a11y, testing-tooling,
 wcag-2-2.*
+
+### Research
+
+**academic-research** — Full-lifecycle scholarly research, built
+**citation-safe** (never fabricate a reference, dataset, quote or result):
+scholarly discovery via the connected Consensus MCP and the free APIs
+(OpenAlex, Crossref, Semantic Scholar, arXiv, Europe PMC), source appraisal
+(quality dimensions, source tiers, retraction/predatory checks, the
+fact-vs-inference discipline, triangulation), evidence synthesis (PICO/PRISMA,
+thematic synthesis, evidence tables, gap analysis), research ideation with a
+novelty gate, reproducible methods, academic writing, reviewer simulation, and
+dissemination. Verify-before-cite is enforced by a bundled script. Owns the
+scholarly/peer-reviewed and citation-integrity layer; general web research
+routes to deep-research, and formatting the output to your docx/pptx tooling.
+*References: discovery-and-search, source-appraisal-and-integrity,
+synthesis-and-review, citations-and-referencing, ideation-and-novelty,
+methods-and-reproducibility, writing-review-and-dissemination; scripts:
+verify_citation.*
 
 ### 3D and game engines
 
