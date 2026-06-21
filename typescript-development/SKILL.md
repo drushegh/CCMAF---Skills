@@ -77,7 +77,7 @@ In an existing repo, never weaken compiler options to make an error go away.
   nullish coalescing** (`user?.profile?.name ?? "Unknown"`) over manual
   null checks; **`import type`** for type-only imports.
 - **Schema-first validation**: define the Zod schema, derive the type with
-  `z.infer<typeof Schema>` — never write the type twice.
+  `z.infer` of the schema — never write the type twice.
 
 ## Tooling
 
@@ -96,7 +96,7 @@ Bun/tsgo/Biome/Turborepo fast stack: [references/tooling.md](references/tooling.
 
 ## Decision Rules
 
-**Error handling** — `Result<T, E>` discriminated unions for expected,
+**Error handling** — `Result of T, E` discriminated unions for expected,
 recoverable failures (parsing, validation, not-found); exceptions only for
 programmer errors and truly unrecoverable states. Errors in the signature
 force callers to handle them. Details:

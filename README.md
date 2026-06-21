@@ -1,6 +1,6 @@
 # CCMAF Skills
 
-A library of 45 production-grade agent skills for Claude Code and
+A library of 48 production-grade agent skills for Claude Code and
 compatible agent runtimes. Each skill packages senior-level engineering
 standards for one technology domain — the conventions, decision
 frameworks, pitfalls and verification rules an experienced practitioner
@@ -213,6 +213,22 @@ ecosystem (drei, rapier, zustand).
 *References: assets-loaders, interaction-animation, performance,
 r3f-patterns, scene-fundamentals, shaders-webgpu.*
 
+**remotion-development** — Making videos programmatically with Remotion,
+the React framework for video: compositions and the Studio, frame-driven
+animation (`useCurrentFrame`/`interpolate`/`spring`) and why CSS
+transitions flicker on render, sequencing and `@remotion/transitions`,
+assets/audio/video (`staticFile`, `OffthreadVideo`, `delayRender`),
+data-driven and personalised video via input props and
+`calculateMetadata` with zod-typed schemas, and every rendering path
+(CLI, server-side `@remotion/renderer`, Remotion Lambda) plus embedding
+with `@remotion/player`. Treats Remotion's **paid Company Licence**
+(required for for-profit companies of 4+ employees) as an in-scope flag,
+not a footnote. Owns the Remotion model; general React/Next routes to
+react-development.
+*References: animation, assets-and-media, data-and-props, licensing,
+project-and-compositions, rendering-and-player,
+sequencing-and-transitions.*
+
 ### Desktop and mobile
 
 **electron-development** — Electron's main/preload/renderer model,
@@ -313,6 +329,21 @@ evals for nondeterministic systems. Python/JSON examples parsed
 mechanically; model and spec facts date-stamped June 2026.
 *References: agent-harness, caching-cost-latency, claude-api, evals,
 mcp-development, prompt-engineering, skills-authoring, tool-use.*
+
+**comfyui-development** — Building, automating and extending ComfyUI,
+the node-graph engine for diffusion image/video/audio generation: the
+graph/execution model and the UI-vs-API JSON formats, the
+txt2img/img2img/inpaint/LoRA/ControlNet/upscale pipelines with
+samplers/schedulers and reproducibility, custom node development (the V3
+`io.ComfyNode` schema and the still-supported V1
+`INPUT_TYPES`/`NODE_CLASS_MAPPINGS` legacy), programmatic runs over the
+HTTP+WebSocket API, model/asset management (comfy-cli, ComfyUI-Manager,
+the Registry, `extra_model_paths`), and running ComfyUI for agents/MCP.
+Treats the no-auth API and arbitrary-code custom nodes as a
+remote-code-execution surface, and model/output licensing as a
+commercial obligation to verify.
+*References: api-automation, custom-nodes, generation-pipelines,
+mcp-and-deployment, models-and-management, workflow-model.*
 
 ### Data and databases
 
@@ -440,6 +471,23 @@ management (factories, testcontainers, synthetic data). Per-language
 unit/integration mechanics stay in the language skills.
 *References: contract-regression, e2e-playwright, load-performance,
 test-data, test-strategy.*
+
+**code-review-development** — Senior-level review of a code change,
+diff or PR against one bar — the change must improve the codebase's
+health (Google's standard of "approve once it's definitely better, even
+if imperfect"). Covers the full reviewer discipline (design, correctness
+and edge cases, security, performance, tests, readability,
+contract/compatibility), a concrete defect-hunting checklist for the bug
+classes linters miss, a severity rubric with explicit blocking vs
+non-blocking decisions, comment craft using Conventional Comments, the
+author side (small focused changes, descriptions, self-review,
+responding to feedback), and how to use CI gating and AI/agent reviewers
+without rubber-stamping. Owns code review; security depth, test strategy
+and API-contract review route to sibling skills, and architecture and
+document review are deliberately separate.
+*References: ai-generated-code, author-side, automation-tooling-and-ai,
+defect-hunting, giving-feedback, review-workflow,
+severity-and-prioritisation, the-standard, what-to-look-for.*
 
 **ux-design** — Interaction and perception reasoning for any UI,
 independent of language or framework: the Laws of UX (Fitts, Hick,

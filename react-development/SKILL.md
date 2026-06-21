@@ -38,7 +38,7 @@ pass only the fields the client uses, never whole entities. Details:
 // 1. NEVER define components inside components — new type every render,
 //    full remount: state lost, focus lost, effects re-run
 function Parent({ theme }) {
-  const Child = () => <div className={theme} />;   // ❌ extract and pass props
+  const Child = () => renderThemed(theme);   // ❌ extract and pass props
 }
 
 // 2. Derive state during render — no state+effect mirroring
@@ -49,7 +49,7 @@ const fullName = firstName + " " + lastName;        // ✅ not setState in useEf
 setItems(curr => [...curr, item]);                   // ✅ deps-free useCallback
 
 // 4. Ternary, not &&, when the condition can be 0/NaN
-{count > 0 ? <Badge count={count} /> : null}         // ✅ {count && ...} renders "0"
+count > 0 ? badgeNode : null         // ✅ {count && ...} renders "0"
 
 // 5. Lazy-init expensive state
 useState(() => buildIndex(items));                   // ✅ not useState(buildIndex(items))
@@ -142,7 +142,7 @@ authenticate inside every action, never rely on page-level guards.
    typescript-development); for Next.js verify the build
    (`next build`) passes — RSC boundary violations surface at build time.
 4. **Animations between UI states**: use the native View Transition API
-   via React's `<ViewTransition>` (experimental) rather than animation
+   via React's `ViewTransition` (experimental) rather than animation
    libraries — see [references/view-transitions.md](references/view-transitions.md).
 
 ## Reference Index

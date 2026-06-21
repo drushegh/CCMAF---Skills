@@ -112,9 +112,9 @@ migration checklist: [references/tailwind.md](references/tailwind.md).
   defect.
 - **Motion without `prefers-reduced-motion`** — animations must respect
   the user's setting.
-- **Div soup** — `<div onclick>` instead of `<button>`, divs where
-  `<nav>`/`<main>`/`<section>` belong, missing `alt`, inputs without
-  `<label>`.
+- **Div soup** — `div` with onclick instead of `button`, divs where
+  `nav`/`main`/`section` belong, missing `alt`, inputs without
+  `label`.
 - **Unreadable contrast** — body text ≥ 4.5:1 against its background
   (3:1 for large text); muted-on-muted fails silently in dark mode.
 - **Fixed heights causing overflow** — content varies; prefer min-height
