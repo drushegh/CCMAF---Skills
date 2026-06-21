@@ -21,7 +21,7 @@ description: >-
 
 Generate draw.io diagrams as **native `.drawio` files** — plain `mxGraphModel`
 XML you author directly. A `.drawio` is a text artifact: committable, diffable,
-versionable, and the input to PNG/SVG/PDF export. That suits an OpenSky
+versionable, and the input to PNG/SVG/PDF export. That suits a
 dev/tender workflow far better than throwaway browser tabs.
 
 **The core reframe:** authoring the diagram *is* generating XML. That is pure
@@ -121,8 +121,8 @@ Load on demand:
   `ui-verification`; this skill applies it specifically to diagrams.
 - **Colour contrast and non-colour encoding** (don't rely on colour alone) →
   `accessibility-development`.
-- **Embedding diagrams into Word/PowerPoint deliverables** → `opensky-docx` /
-  `opensky-pptx` (export SVG/PNG here, place it there).
+- **Embedding diagrams into Word/PowerPoint deliverables** → your docx/pptx
+  tooling (export SVG/PNG here, place it there).
 - **Heavy tooling — Graphviz auto-layout, codebase→diagram importers
   (Py/JS/Go/Rust), the 10k-shape search index, and AI/LLM brand logos** — is
   solved by the MIT-licensed **`Agents365-ai/drawio-skill`**. Prefer installing
