@@ -51,7 +51,7 @@ Recommended: **TypeScript SDK** (or Python FastMCP), and:
 ```python
 # FastMCP sketch (Python)
 from fastmcp import FastMCP
-mcp = FastMCP("kb_mcp")
+mcp = FastMCP("tenders_mcp")
 
 @mcp.tool()
 async def tenders_search(query: str, limit: int = 20) -> dict:
