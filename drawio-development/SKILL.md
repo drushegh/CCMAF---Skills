@@ -32,13 +32,13 @@ delivery per environment.
 
 ## Non-negotiables (these prevent broken diagrams)
 
-1. **Root scaffold always.** Every model has `<mxCell id="0"/>` and
-   `<mxCell id="1" parent="0"/>`; all content uses `parent="1"` unless it sits
+1. **Root scaffold always.** Every model has `mxCell id="0"` and
+   `mxCell id="1" parent="0"`; all content uses `parent="1"` unless it sits
    in another container/layer. Missing roots → a blank diagram.
 2. **Every edge carries its geometry child.** An edge `mxCell` MUST contain
-   `<mxGeometry relative="1" as="geometry"/>` even with no waypoints. A
+   `mxGeometry relative="1" as="geometry"` even with no waypoints. A
    self-closing edge cell does **not** render.
-3. **Never emit XML comments (`<!-- -->`).** They waste tokens, risk parse
+3. **Never emit XML comments.** They waste tokens, risk parse
    errors, and `--` is illegal inside XML comments per the spec.
 4. **Well-formedness.** Escape `&amp; &lt; &gt; &quot;` in attribute values;
    unique `id` on every cell; `html=1` on labelled shapes; use `&#xa;` for line
@@ -58,7 +58,7 @@ delivery per environment.
 2. **Author the XML.** Pick the matching preset in `references/diagram-recipes.md`
    (ERD, UML class, sequence, architecture, ML/DL, flowchart) for the right
    shapes, edge styles and layout direction. Hand-place coordinates for small,
-   styled diagrams; for large graphs (>~15 nodes, dependency/call graphs,
+   styled diagrams; for large graphs (over ~15 nodes, dependency/call graphs,
    codebase structure) auto-layout is the better tool — see **Boundaries**.
 3. **Shapes.** Skip shape search for standard geometric types (flowchart, UML,
    ERD, org chart, mind map, Venn, timeline, wireframe — rectangles, diamonds,
@@ -66,7 +66,7 @@ delivery per environment.
    Cisco/network, Kubernetes, BPMN, P&ID, electrical) get the **exact**
    `shape=mxgraph.*` style string — a wrong name renders as a blank box. See
    **Boundaries** for the shape-index tool.
-4. **Validate.** Run `scripts/validate.py <file>.drawio` — a fast, dependency-
+4. **Validate.** Run `scripts/validate.py yourfile.drawio` — a fast, dependency-
    free structural lint (root cells, duplicate/missing ids, dangling edge
    source/target, self-closing edges, gross overlaps) before you deliver.
 5. **Deliver** per environment — see `references/delivery-and-export.md`.

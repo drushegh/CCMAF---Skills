@@ -65,9 +65,9 @@ Details: [references/plugins.md](references/plugins.md).
 ## Tooling
 
 ```bash
-pac auth create --environment <url>     # authenticate (never hand-rolled tokens)
+pac auth create --environment ORGURL     # authenticate (never hand-rolled tokens)
 pac org who                             # verify target before anything
-pac solution list --environment <url>
+pac solution list --environment ORGURL
 pac plugin init                         # scaffold plug-in project
 pac pcf init                            # scaffold PCF component
 ```
@@ -87,7 +87,7 @@ genuinely lacks coverage. Tool hierarchy and casing traps:
 - **`MSCRM.SolutionName` header misspelled** → components silently land
   in the Default solution. Always verify components after creation.
 - **Early-bound `Target` writes** — read via
-  `context.InputParameters["Target"].ToEntity<T>()` is fine; assigning an
+  `context.InputParameters["Target"].ToEntity()` is fine; assigning an
   early-bound entity back into InputParameters throws
   `SerializationException`.
 - **Unsupported client scripting** — direct DOM manipulation, undocumented

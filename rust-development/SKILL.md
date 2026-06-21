@@ -51,7 +51,7 @@ before writing code.
 - **Never `.unwrap()` or `.expect()` in production runtime code.**
   Acceptable only in: tests; compile-time-proven cases
   (`Regex::new(literal)`) with `.expect("reason")`; startup init
-  (fail-fast). `Result<T, Infallible>` → irrefutable `let Ok(x) = ...;`,
+  (fail-fast). `Result of T, Infallible` → irrefutable `let Ok(x) = ...;`,
   not unwrap.
 - **Hidden panic sources**: `vec[i]` → `.get(i)`; `&s[..n]` splits UTF-8 →
   `s.get(..n)`/`char_indices()`; integer overflow → `checked_*`/
@@ -109,7 +109,7 @@ match state { State::A => a(), State::B => b() }   // no `_ =>`
 
 Also: unbounded channels (no backpressure — bound them and handle full);
 `Rc`/`RefCell` in spawned tasks (`Arc`/`Mutex` or `spawn_local`); serde
-`Option<T>` without `#[serde(default)]` when the key may be absent (null
+`Option of T` without `#[serde(default)]` when the key may be absent (null
 and missing are different code paths); `_`-prefixing serde fields (changes
 the wire key — silently breaks deserialisation); no timeout on network
 operations (`tokio::time::timeout`).

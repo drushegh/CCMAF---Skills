@@ -40,7 +40,7 @@ layout, ask and answer concretely:
   most prominent thing, and is it easy to acquire (big, near)?
 - **What reads as grouped?** (Gestalt) — does the spacing match the meaning?
 - **How many choices / fields am I imposing?** (Hick / Tesler) — what can go?
-- **Does every interaction give feedback fast enough?** (Doherty < 400 ms)
+- **Does every interaction give feedback fast enough?** (Doherty under 400 ms)
 - **What are the unhappy paths?** empty, loading, error, zero-results, overflow,
   long strings, slow network.
 
@@ -83,7 +83,7 @@ layout, ask and answer concretely:
 | "It feels cluttered / cramped" | Gestalt + whitespace — increase spacing between groups, align to a grid, cut elements |
 | Users miss a key element | Von Restorff (make it distinct) + hierarchy + position (above the fold / first fixation) |
 | Form abandoned | reduce fields, group logically, inline validation, clear errors, smart defaults |
-| Action feels unresponsive | feedback < 400 ms, optimistic UI, skeletons/spinners, disable+label on submit |
+| Action feels unresponsive | feedback under 400 ms, optimistic UI, skeletons/spinners, disable+label on submit |
 | Custom control confuses users | Jakob's Law — revert to the conventional pattern |
 
 ## High-frequency pitfalls

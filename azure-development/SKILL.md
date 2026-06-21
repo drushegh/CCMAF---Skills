@@ -56,8 +56,7 @@ session+target, don't re-ask per operation.
 ## Destructive-Action Rules
 
 Never delete resource groups, projects, or workspace directories on a
-user's behalf without explicit per-action confirmation. `azd init -t
-<template>` is for NEW projects only — running it in an existing
+user's behalf without explicit per-action confirmation. `azd init` with a template is for NEW projects only — running it in an existing
 workspace overwrites; plain `azd init` is the existing-workspace form.
 
 ## Cost Is a Design Input

@@ -60,7 +60,7 @@ long-lived advice. Pin the editor version per project
 8. **Profile before optimising** (Profiler + Profile Analyzer +
    Memory Profiler on TARGET hardware) and mind GC: no per-frame
    allocations (string concat, LINQ, boxed closures in Update),
-   pool spawned objects (`ObjectPool<T>` is built in).
+   pool spawned objects (`ObjectPool` is built in).
 9. **New Input System** for new projects (action maps, rebinding,
    multi-device); legacy Input Manager only for maintenance
    (`references/input-ui.md`).
