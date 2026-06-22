@@ -68,6 +68,25 @@ Markdown. Each skill assumes an autonomous agent audience: "ask the
 user" guidance from upstream sources has been adapted into
 decide-and-flag behaviour.
 
+### Install as a Claude Code plugin marketplace
+
+This repo is also a Claude Code **plugin marketplace**: the whole library
+installs as one bundled plugin. In Claude Code (and via claude.ai's marketplace
+sync, which is why every name here is kebab-case):
+
+```sh
+/plugin marketplace add drushegh/CCMAF---Skills
+/plugin install ccmaf-skills@ccmaf-skills
+```
+
+All skills load at once, each invoked automatically from its trigger
+description. The manifests live in [.claude-plugin/](.claude-plugin/)
+(`marketplace.json` + `plugin.json`); the plugin's `skills` array points at the
+root-level skill directories, so the marketplace layout and the per-directory
+sync contract below coexist without moving anything. No `version` is pinned, so
+`/plugin marketplace update` tracks `main` — consistent with "every commit is a
+release" (below).
+
 ## Framework integration (CCMAF)
 
 This repo is the **skills upstream** for the
@@ -131,6 +150,8 @@ matching skills from stack detection, throttled).
 - If the new stack is detectable from project files, note it — the
   framework's `--suggest` detection map
   (`.claude/framework/update/skills-sync.sh`) should gain the mapping.
+- Add the directory to the plugin manifest: append `"./<name>"` to the `skills`
+  array in `.claude-plugin/plugin.json` (the array must equal `ls -d */SKILL.md`).
 
 ---
 
