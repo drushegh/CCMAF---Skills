@@ -1,6 +1,6 @@
 # CCMAF Skills
 
-A library of 48 production-grade agent skills for Claude Code and
+A library of 52 production-grade agent skills for Claude Code and
 compatible agent runtimes. Each skill packages senior-level engineering
 standards for one technology domain — the conventions, decision
 frameworks, pitfalls and verification rules an experienced practitioner
@@ -545,6 +545,65 @@ Microsoft-stack-specific notes (Power Apps/Pages, Power BI, SPFx).
 *References: aria-keyboard, audit-checklist, eu-legal-framework,
 forms-tables-charts, microsoft-stack-a11y, testing-tooling,
 wcag-2-2.*
+
+### Agent workflow
+
+How an agent works, not what it builds — vendor-neutral process skills built on
+open primitives (Markdown, Mermaid, git, ccusage, llms.txt), re-engineered here
+from upstream ideas to be self-contained and composable with the rest of the
+library.
+
+**visual-plan** — Turning an implementation idea into a reviewable, **grounded**
+implementation plan in plain Markdown — Mermaid diagrams, file maps, annotated
+code/diffs and an explicit `[NEEDS CLARIFICATION]` open-questions gate — *before*
+any code is written. The plan is the approval gate and the source of truth,
+judgeable by a fresh reader without the chat history: research the real repo and
+name real symbols (no invention), decide the one-way-door bets up front
+(reversible vs irreversible), reuse before new, gate trivial work out, and run a
+sceptical self-review pass. Heavy exportable diagrams route to drawio-development,
+rendering/critiquing UI to ui-verification, layout reasoning to ux-design, and
+reviewing the finished change to code-review-development.
+*References: diagrams-and-wireframes, grounding-and-reuse,
+open-questions-and-approval, plan-anatomy, self-review.*
+
+**visual-recap** — Turning a completed change (PR, branch, commit or git diff)
+into a high-altitude, **before/after** recap a reviewer reads to grasp the shape
+of the work before the line-by-line diff: a file-tree of what moved, before/after
+data-model and API-contract summaries, annotated diffs of the key files, a Mermaid
+diagram for architecture/data-flow shifts, and a short outcome narrative. The
+discipline is *true by construction* — every structured block is built
+mechanically from the real diff via plain git/gh, never invented (a
+confidently-wrong recap is worse than none) — with secrets scanned and redacted
+and visibility gated for private repos. The line-by-line review routes to
+code-review-development, secret-handling depth to secure-development, contract
+semantics to api-development, migration safety to sql-development.
+*References: before-after, diff-to-blocks, grounding-and-security, recap-anatomy.*
+
+**stay-within-limits** — Keeping long-running or parallel multi-agent work inside
+the platform's usage limits: budget against the 5-hour and weekly windows as a
+first-class resource, read usage between waves, stop on a soft threshold before
+the cap, checkpoint resumable state to disk, and schedule a self-contained,
+idempotent wake only once the binding window has cleared. Built on open primitives
+(ccusage, the first-party `/usage` and `/cost`, an OS scheduler) with no
+hard-coded limit numbers and aware of prompt-cache TTL economics; the limit model
+and tooling facts are date-stamped June 2026. Multi-agent harness design routes to
+llm-development, the wake/checkpoint scripting to bash-development and
+powershell-development.
+*References: orchestration, pause-and-resume, usage-signals.*
+
+**read-the-damn-docs** — Grounding claims in official, version-matched
+documentation and the installed source — not training memory — whenever working
+with a third-party API, library, framework, CLI, SDK or cloud service, or with
+high-stakes auth/security/billing/migration work. Defines a documentation-source
+hierarchy, pin-the-version-first discipline, a read-then-verify loop, and the open
+doc-fetching landscape (llms.txt/llms-full.txt, Markdown endpoints,
+Context7/DeepWiki MCPs — date-stamped June 2026). Treats unverified package recall
+as a **security** hole, not just a quality one: package hallucination /
+slopsquatting, the registry existence/version checks that defeat it, and reading
+semver/changelogs for deprecation drift. Supply-chain depth routes to
+secure-development, scholarly citation discipline to academic-research, and
+per-ecosystem registries to the language skills.
+*References: anti-hallucination, source-hierarchy-and-tools, verify-and-drift.*
 
 ### Research
 
