@@ -58,7 +58,7 @@ chain. NIS2 also makes supply-chain security an explicit obligation
 1. Inventory (SBOM per release) → 2. Monitor (advisories matched to
    inventory) → 3. Assess (reachable? exploited in the wild? KEV
    list?) → 4. Patch/mitigate within SLA by severity → 5. Record
-   (evidence for audits and the tender question "describe your
+   (evidence for audits and the assurance question "describe your
    vulnerability management process").
 
 ## Review checklist for a new dependency/integration

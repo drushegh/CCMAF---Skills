@@ -61,5 +61,4 @@ Link: <https://api.example.com/docs/migrate-v2>; rel="deprecation"
 
 State, per API: the versioning scheme, how long old major versions are
 supported, what counts as breaking, and the deprecation process. Putting this
-in the API's documentation (and tender responses) is often a scored
-requirement in public-sector integrations.
+in the API's documentation is often a scored requirement in enterprise integrations.

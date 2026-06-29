@@ -10,7 +10,7 @@ description: >-
   involves creating, editing, exporting or reviewing a diagram, or mentions
   draw.io, drawio, .drawio, diagrams.net or mxGraphModel. Triggers include
   .drawio files, "draw a diagram/flowchart/architecture diagram", "diagram
-  our solution/data model", and editable-diagram artifacts for a tender or
+  our solution/data model", and editable-diagram artifacts for a proposal or
   design doc. PROACTIVELY activate before hand-writing mxGraphModel XML. Owns
   draw.io XML authoring, delivery and verification; the render→critique loop
   is ui-verification and Mermaid/CSV input needs draw.io server-side
@@ -22,7 +22,7 @@ description: >-
 Generate draw.io diagrams as **native `.drawio` files** — plain `mxGraphModel`
 XML you author directly. A `.drawio` is a text artifact: committable, diffable,
 versionable, and the input to PNG/SVG/PDF export. That suits a
-dev/tender workflow far better than throwaway browser tabs.
+dev/docs workflow far better than throwaway browser tabs.
 
 **The core reframe:** authoring the diagram *is* generating XML. That is pure
 text generation and needs **no MCP server and no CLI**. Tooling (desktop CLI,

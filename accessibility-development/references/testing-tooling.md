@@ -54,7 +54,7 @@ test('dashboard has no detectable a11y violations', async ({ page }) => {
 
 | SR | Pair with | Notes |
 |----|-----------|-------|
-| **NVDA** (free) | Chrome/Firefox, Windows | Primary test target in most EU public-sector work |
+| **NVDA** (free) | Chrome/Firefox, Windows | Primary test target in most enterprise accessibility work |
 | **JAWS** | Chrome/Edge, Windows | Where the client base uses it |
 | **VoiceOver** | Safari, macOS/iOS | The mobile Safari pass matters for public services |
 | **TalkBack** | Chrome, Android | Mobile apps/web |

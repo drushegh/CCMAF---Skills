@@ -57,7 +57,7 @@ visibly separate.
   speaker carries the detail.
 - **Plain-language / policy summary** — no jargon, lead with the "so what",
   and state confidence and limitations honestly. Most relevant for
-  decision-maker, tender and advisory audiences (→ your docx/pptx tooling
+  decision-maker and advisory audiences (→ your docx/pptx tooling
   for the formatted artifact).
 
 ## Pitfalls

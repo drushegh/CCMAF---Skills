@@ -50,9 +50,9 @@ oversight designed in (not bolted on); accuracy/robustness/
 cybersecurity (adversarial inputs, model poisoning — STRIDE the ML
 pipeline via `threat-modelling.md`); conformity assessment + CE
 marking + EU database registration; post-market monitoring and
-serious-incident reporting. Public-sector deployers of high-risk
-systems also face fundamental-rights impact assessments — relevant to
-Irish public ICT work.
+serious-incident reporting. Deployers of high-risk systems also face
+fundamental-rights impact assessments — relevant to regulated ICT
+work.
 
 ## Transparency duties (apply broadly from Aug 2026)
 

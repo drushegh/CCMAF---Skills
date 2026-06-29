@@ -90,8 +90,8 @@ linting/SAST + secret scanning + SCA in CI (tooling choices →
 `devops-development`). Test: security test cases from the threat
 model; DAST where exposed. Release: dependency + artefact provenance.
 Operate: logging/alerting hooks (→ `sentinel-development`), incident
-path, patch cadence. Evidence at each stage is what tenders and NIS2
-audits ask for.
+path, patch cadence. Evidence at each stage is what audits and NIS2
+assessments ask for.
 
 ## References
 

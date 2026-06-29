@@ -28,7 +28,7 @@ next revision (4.1.1, expected 2026) incorporates it, and building to
 v3.2.1 (= WCAG 2.1 AA + extra clauses), 2.2 AA is a superset on the
 web side — meet it anyway.
 
-## Statutory context (Irish public sector — evaluators score this)
+## Statutory context (public sector bodies)
 
 Date-stamped June 2026; engineering framing, not legal advice — full
 detail in `references/eu-legal-framework.md`:
@@ -39,7 +39,7 @@ detail in `references/eu-legal-framework.md`:
   Monitored in Ireland by the National Disability Authority.
 - **EN 301 549 v3.2.1** (2021): the harmonised standard — WCAG 2.1 AA
   for web PLUS clauses beyond WCAG (non-web software, documents,
-  hardware, support services). Tender responses citing only WCAG miss
+  hardware, support services). Compliance claims citing only WCAG miss
   the non-web clauses.
 - **European Accessibility Act**: in force for in-scope products and
   services since **28 June 2025**, transposed into Irish law — extends
@@ -77,7 +77,7 @@ detail in `references/eu-legal-framework.md`:
 8. **Never claim compliance without evidence.** Audit findings map to
    specific success criteria with severity; conformance claims state
    standard + version + scope. No vague "fully accessible" language —
-   in tenders this is checkable and falsifiable.
+   in a formal compliance statement this is checkable and falsifiable.
 
 ## Workflow
 
@@ -90,7 +90,7 @@ detail in `references/eu-legal-framework.md`:
   (not 30 copies of one bug), prioritise by impact × likelihood →
   remediation plan. Full procedure:
   `references/audit-checklist.md`.
-- **Tender/compliance work**: map findings to EN 301 549 clauses and
+- **Compliance work**: map findings to EN 301 549 clauses and
   WAD obligations; draft/review accessibility statements
   (`references/eu-legal-framework.md`).
 

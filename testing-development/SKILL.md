@@ -50,7 +50,7 @@ driven contracts.
 6. **Regression: test what broke.** Every fixed bug gets a test that fails on
    the old code and passes on the fix, so it can't silently return.
 7. **NFRs are requirements.** Performance, scalability and resilience targets
-   (SLIs/SLOs) are tested and gated, not hoped for — especially where a tender
+   (SLIs/SLOs) are tested and gated, not hoped for — especially where a contract
    specifies them.
 8. **Tests run in CI and gate merges.** A test suite that isn't enforced is
    documentation. Pipeline wiring → `devops-development`.
