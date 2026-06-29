@@ -57,7 +57,7 @@ graders before trusting them.
   more than the model choice.
 - Content safety / RAI policies apply per deployment; log prompts and
   completions (App Insights) within data-handling rules — relevant for
-  public-sector clients.
+  regulated clients.
 - Cost: tokens are the unit; cache aggressively, cap max tokens, use
   small models where evals say they suffice — model right-sizing is the
   AI cost lever.

@@ -79,7 +79,7 @@ public IPs, and forgotten previews are the classic waste — sweep them.
   quota/capacity check **before** model deployment, evals before
   production.
 - Region availability and quotas vary — check both before promising a
-  service/SKU in a design or tender response.
+  service/SKU in a design or proposal.
 
 ## References
 

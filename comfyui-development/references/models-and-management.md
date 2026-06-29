@@ -60,7 +60,7 @@ the *images you generate* may inherit or be restricted by:
 
 Before delivering generated assets commercially, confirm the licence of
 **every** weight in the graph (base model, each LoRA, ControlNet) and
-record it. When unsure, flag it rather than assuming — for client/tender
+record it. When unsure, flag it rather than assuming — for client
 work this is the difference between a usable asset and a liability.
 
 ## Practical environment notes

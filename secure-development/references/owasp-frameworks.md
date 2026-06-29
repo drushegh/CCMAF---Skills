@@ -26,10 +26,10 @@ map explicitly when comparing.
 
 Application Security Verification Standard — ~350 requirements in 17
 chapters; THE checklist for "is this verifiably secure", and the right
-framework to cite in tenders (Top 10 is awareness, ASVS is testable).
+framework to cite in security assessments (Top 10 is awareness, ASVS is testable).
 
 - **Levels**: L1 (baseline, all apps), L2 (default for apps handling
-  sensitive data — the sensible public-sector target), L3 (high
+  sensitive data — the sensible default target), L3 (high
   assurance: financial/health/critical).
 - Use chapter-wise during reviews (authentication, session management,
   access control, validation/sanitisation, crypto, error/logging,

@@ -38,7 +38,7 @@ confirm before investing engineering time.
 Indicative pricing seen June 2026 (treat as volatile, confirm at
 remotion.pro): roughly **$25 per developer/month**, with a **minimum
 company charge around $100/month or $1,000/year**; Enterprise tiers add
-private support and compliance/procurement support. Do **not** present
+private support and compliance/licensing support. Do **not** present
 these numbers as fixed — pull live figures from remotion.pro when a
 decision depends on them.
 

@@ -51,12 +51,12 @@ Recommended: **TypeScript SDK** (or Python FastMCP), and:
 ```python
 # FastMCP sketch (Python)
 from fastmcp import FastMCP
-mcp = FastMCP("tenders_mcp")
+mcp = FastMCP("kb_mcp")
 
 @mcp.tool()
-async def tenders_search(query: str, limit: int = 20) -> dict:
-    """Search published tender notices by keyword. Call when the user
-    asks about live or historical public-sector tenders."""
+async def kb_search(query: str, limit: int = 20) -> dict:
+    """Search the knowledge base by keyword. Call when the user
+    asks about articles or documentation."""
     rows, more = await search(query, limit)
     return {"items": rows, "count": len(rows), "has_more": more}
 

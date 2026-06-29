@@ -26,7 +26,7 @@ Layout: `MyModule/MyModule.psd1` (manifest) + `MyModule.psm1` +
   internals), `PrivateData.PSData` tags for Gallery search.
 - One module = one coherent area; verbs from `Get-Verb` (analyzer
   flags non-approved verbs); nouns singular and prefixed
-  (`Get-OskTenderStatus`) to avoid collisions.
+  (`Get-AcmeServerStatus`) to avoid collisions.
 - Pester tests alongside (`tests/`), analyzer-clean, README with
   examples — then `Publish-PSResource` (API key, never committed).
 
