@@ -62,10 +62,12 @@ delivery per environment.
    codebase structure) auto-layout is the better tool — see **Boundaries**.
 3. **Shapes.** Skip shape search for standard geometric types (flowchart, UML,
    ERD, org chart, mind map, Venn, timeline, wireframe — rectangles, diamonds,
-   ellipses, cylinders, arrows). For **branded/domain icons** (AWS/Azure/GCP,
-   Cisco/network, Kubernetes, BPMN, P&ID, electrical) get the **exact**
-   `shape=mxgraph.*` style string — a wrong name renders as a blank box. See
-   **Boundaries** for the shape-index tool.
+   ellipses, cylinders, arrows). For **Azure** diagrams, use the bundled
+   617-icon library — find a token, author `image=azure:<Icon>`, then resolve
+   before delivery (`references/azure-icons.md`). For other **branded/domain
+   icons** (AWS/GCP, Cisco/network, Kubernetes, BPMN, P&ID, electrical) get the
+   **exact** `shape=mxgraph.*` style string — a wrong name renders as a blank
+   box. See **Boundaries** for the shape-index tool.
 4. **Validate.** Run `scripts/validate.py yourfile.drawio` — a fast, dependency-
    free structural lint (root cells, duplicate/missing ids, dangling edge
    source/target, self-closing edges, gross overlaps) before you deliver.
@@ -110,6 +112,10 @@ Load on demand:
   add-on.
 - `references/verify-and-iterate.md` — the render → self-check → fix → user-
   review loop, the self-check fault table, and targeted-edit rules.
+- `references/azure-icons.md` — the bundled 617-icon Azure product library
+  (`assets/azure-icons/`): the `image=azure:*` placeholder → resolve workflow,
+  the `scripts/embed_azure_icons.py` helper, and the Microsoft Terms-of-Use
+  authoring rules (always label, never distort).
 
 ## Boundaries
 
@@ -128,3 +134,7 @@ Load on demand:
   solved by the MIT-licensed **`Agents365-ai/drawio-skill`**. Prefer installing
   or vendoring that skill over reimplementing those scripts here; this skill
   deliberately stays a portable knowledge + delivery layer.
+  - *Exception:* **Azure product icons are bundled locally** (`assets/azure-icons/`,
+    617 SVGs under Microsoft's Terms of Use) — see `references/azure-icons.md`.
+    AWS/GCP/Cisco and other brand logos still use `shape=mxgraph.*` or the
+    Agents365 index.

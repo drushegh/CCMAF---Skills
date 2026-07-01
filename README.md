@@ -539,13 +539,15 @@ non-negotiables (root cells, the edge geometry child, no XML comments)
 and layout discipline that stop diagrams breaking, per-type recipes
 (ERD/UML/sequence/architecture/ML/flowchart), environment-aware delivery
 (write the file, desktop-CLI export to PNG/SVG/PDF with embedded XML, or
-an `app.diagrams.net` `#create=` URL), and a render → self-check →
-iterate loop. Authors native XML; Mermaid/CSV input and the general
-render-critique loop route to siblings; heavy tooling (auto-layout,
-codebase→diagram, shape index, brand icons) routes to the MIT
-`Agents365-ai/drawio-skill`.
+an `app.diagrams.net` `#create=` URL), a render → self-check →
+iterate loop, and a bundled 617-icon **Azure product library**
+(`assets/azure-icons/`, `image=azure:*` placeholder → resolve). Authors
+native XML; Mermaid/CSV input and the general render-critique loop route to
+siblings; heavy tooling (auto-layout, codebase→diagram, shape index,
+non-Azure brand icons) routes to the MIT `Agents365-ai/drawio-skill`.
 *References: delivery-and-export, diagram-recipes, verify-and-iterate,
-xml-reference; scripts: validate, encode_drawio_url.*
+xml-reference, azure-icons; scripts: validate, encode_drawio_url,
+embed_azure_icons.*
 
 **secure-development** — Application security as a review framework:
 OWASP Top 10 (2025) and ASVS 5.0, STRIDE/data-flow threat modelling,

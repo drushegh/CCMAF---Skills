@@ -123,6 +123,10 @@ produce interchangeable output.
   filename).
 - **macOS sandbox isolation** (e.g. codex.app) can crash the CLI even on
   `--version` — treat as unavailable, don't retry; use the URL fallback.
+- **`ELECTRON_RUN_AS_NODE=1` in the environment** makes the draw.io binary run
+  as plain Node — `--version` prints a Node version, `-h` prints Node's help,
+  and `-x`/`-f` fail with `bad option`. Unset it before exporting
+  (`unset ELECTRON_RUN_AS_NODE` / PowerShell `Remove-Item Env:\ELECTRON_RUN_AS_NODE`).
 
 ## Fallback chain
 
