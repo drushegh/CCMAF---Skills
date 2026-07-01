@@ -103,8 +103,10 @@ Lifelines ~200px apart (LR); time flows top→bottom.
 | Queue/bus | `rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;` (centre it — hub pattern) |
 | External | `rounded=1;dashed=1;fillColor=#f5f5f5;strokeColor=#666666;` |
 
-Layout by tier count; ≥4 tiers → TB. For branded cloud icons get the exact
-`shape=mxgraph.aws4.*` / Azure / GCP style (see SKILL.md → Boundaries).
+Layout by tier count; ≥4 tiers → TB. For **Azure** icons use the bundled
+library — `image=azure:<Icon>` then resolve (`references/azure-icons.md`). For
+AWS/GCP get the exact `shape=mxgraph.aws4.*` / GCP style (see SKILL.md →
+Boundaries).
 
 ## ML / deep-learning model
 
