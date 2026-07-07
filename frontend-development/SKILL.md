@@ -19,7 +19,9 @@ Consolidated HTML/CSS/Tailwind craft for agents building web UI. The rules
 in this file always apply. Load files from `references/` only when the task
 touches that topic. React *engineering* (hooks, state, TS typing) lives in
 the typescript-development skill — this skill owns markup, styling, and
-visual design regardless of framework.
+visual design regardless of framework. Web performance — Core Web Vitals
+(LCP/INP/CLS), loading strategy, image/font optimisation, HTTP caching, and
+service workers/PWA — routes to web-performance-development.
 
 ## Core Principles
 

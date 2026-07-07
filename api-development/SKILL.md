@@ -116,10 +116,19 @@ Load on demand:
   `python-development`, `typescript-development`). This skill owns the design.
 - **Identity provider / OAuth server config, Entra ID app registrations** →
   `azure-development`; **auth threat model, token handling, injection** →
-  `secure-development`. This skill owns the API-surface auth *patterns*.
+  `secure-development`; **auth engineering internals** — OAuth/OIDC flow
+  selection, token validation and rotation, sessions vs tokens, SSO,
+  MFA/passkeys, authorisation models → `identity-development`. This skill
+  owns the API-surface auth *patterns* (401 vs 403, scopes, API keys, CORS).
 - **API Management / gateway provisioning** (APIM, ingress) →
   `azure-development`.
 - **Database/query design behind the API** → `sql-development`.
 - **Pipelines that publish specs or run contract tests** → `devops-development`.
-- **GraphQL/gRPC in depth** is noted at decision level here; flag a dedicated
-  skill if a task needs that depth.
+- **GraphQL in depth** — schema design, resolvers/DataLoader and N+1,
+  mutations/errors-as-data, federation, GraphQL-specific hardening →
+  `graphql-development` (this skill holds the REST-vs-GraphQL decision, then
+  routes the depth there); **gRPC in depth** — flag a dedicated skill if a
+  task needs it.
+- **Async/event-driven integration behind the API** — message brokers,
+  delivery semantics, idempotent consumers, outbox, sagas, schema registries
+  → `event-driven-development` (this skill owns the HTTP webhook edge).

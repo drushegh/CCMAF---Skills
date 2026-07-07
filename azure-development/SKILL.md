@@ -19,7 +19,11 @@ description: >-
 Consolidated Azure engineering for agents, grounded in Microsoft's
 official skills repo (microsoft/skills azure-skills plugin) and MS
 Learn. Azure DevOps/GitHub pipeline construction belongs to
-devops-development; Fabric capacity/data topics to fabric-development.
+devops-development; Fabric capacity/data topics to fabric-development;
+provider-independent Terraform/OpenTofu discipline (module design, remote
+state, the plan-as-gate loop, drift) to terraform-development — this skill
+owns the Azure specifics (azurerm/azapi, the Bicep-vs-Terraform decision,
+landing zones).
 
 ## Plan → Validate → Deploy (never skip the middle)
 

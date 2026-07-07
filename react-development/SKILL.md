@@ -20,8 +20,10 @@ Consolidated React/Next.js engineering for agents. The rules in this file
 always apply; load `references/` files only when the task touches that
 topic. Boundaries: TypeScript language/typing standards live in
 typescript-development; visual design and Tailwind live in
-frontend-development. This skill owns React behaviour, data flow, and
-performance.
+frontend-development; platform-level web performance — Core Web Vitals,
+loading/caching strategy, service workers/PWA — routes to
+web-performance-development. This skill owns React behaviour, data flow, and
+React-specific render performance.
 
 ## Component Model
 

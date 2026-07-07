@@ -18,7 +18,11 @@ description: >-
 Consolidated .NET engineering standards for agents writing production C#.
 Distilled from Microsoft's official dotnet/skills repo. The rules in this
 file always apply. Load files from `references/` only when the task touches
-that topic — do not load them speculatively.
+that topic — do not load them speculatively. Native Windows desktop UI —
+WPF, WinUI 3, WinForms and .NET MAUI on Windows (XAML, data binding, MVVM,
+dispatcher threading, styling/templates, MSIX packaging, UI Automation) —
+routes to windows-desktop-development; this skill owns the C# language,
+runtime, EF Core and testing beneath it.
 
 ## Baseline
 

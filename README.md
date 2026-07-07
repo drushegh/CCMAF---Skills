@@ -1,6 +1,6 @@
 # CCMAF Skills
 
-A library of 53 production-grade agent skills for Claude Code and
+A library of 70 production-grade agent skills for Claude Code and
 compatible agent runtimes. Each skill packages senior-level engineering
 standards for one technology domain — the conventions, decision
 frameworks, pitfalls and verification rules an experienced practitioner
@@ -209,6 +209,16 @@ Dataverse.
 *References: automation-cloud, cross-platform, language-syntax,
 modules-gallery, security, testing-quality.*
 
+**go-development** — Modern Go (1.22+) engineering standards: idioms and
+the errors-are-values model (wrapping, `errors.Is`/`As`),
+goroutine/channel/context discipline and the race detector,
+interfaces/composition/generics, project layout and modules, table-driven
+testing with fuzzing and benchmarks, and building net/http services and
+CLIs from the standard library. Reads go.mod's `go` directive as the
+semantics floor and matches repo conventions rather than importing its own.
+*References: concurrency-and-context, idioms-and-errors,
+interfaces-and-generics, project-and-modules, services-and-clis, testing.*
+
 ### Web and frontend
 
 **frontend-development** — Visual craft for HTML, CSS and Tailwind v4:
@@ -250,6 +260,19 @@ react-development.
 project-and-compositions, rendering-and-player,
 sequencing-and-transitions.*
 
+**web-performance-development** — Framework-independent web performance and
+PWA engineering: Core Web Vitals (LCP/INP/CLS) with the lab-vs-field
+measurement discipline (Lighthouse, CrUX, RUM), the critical rendering
+path, loading strategy (code-splitting, resource hints, `fetchpriority`),
+image/font/media optimisation, HTTP caching and CDN strategy, service
+workers and installability, runtime responsiveness (long tasks, bfcache)
+and performance budgets in CI. A Vue, Blazor or vanilla site gets the same
+discipline a Next.js app does; React render mechanics stay with
+react-development, visual craft with frontend-development.
+*References: caching-and-cdn, core-web-vitals-and-measurement,
+critical-rendering-path, images-fonts-media, loading-and-code-splitting,
+runtime-performance-and-budgets, service-workers-and-pwa.*
+
 ### Desktop and mobile
 
 **electron-development** — Electron's main/preload/renderer model,
@@ -278,6 +301,18 @@ Guidelines compliance and accessibility, persistence
 (SwiftData/Core Data/Keychain), and App Store distribution.
 *References: data-persistence, hig-accessibility, swift-standards,
 swiftui-patterns, tooling-distribution.*
+
+**windows-desktop-development** — Native Windows desktop UI engineering
+across WPF, WinUI 3, WinForms and .NET MAUI on Windows: the framework
+decision, XAML and data binding, MVVM with CommunityToolkit.Mvvm source
+generators, dependency properties, async UI and dispatcher threading,
+styling/theming/templates, packaging (MSIX, ClickOnce) and UI Automation
+accessibility. C# language, runtime, EF Core and testing stay with
+dotnet-development; web-tech desktop shells with electron-development and
+tauri-development.
+*References: async-ui-and-threading, dependency-properties-and-commands,
+framework-selection, mvvm-and-toolkit, packaging-and-deployment,
+styling-theming-templates, xaml-and-binding.*
 
 ### Microsoft business platform
 
@@ -366,6 +401,32 @@ commercial obligation to verify.
 *References: api-automation, custom-nodes, generation-pipelines,
 mcp-and-deployment, models-and-management, workflow-model.*
 
+**rag-development** — Retrieval-augmented generation as an engineering
+discipline, engineered and measured as its own component before any prompt
+is touched: chunking strategies, embedding selection and index versioning,
+vector stores (pgvector, dedicated engines) and ANN indexes, hybrid
+retrieval (BM25 + vector, RRF) and re-ranking, context assembly and token
+budgeting, enforced grounding/citation and abstention, freshness and
+re-indexing, and retrieval evaluation (recall@k, nDCG, faithfulness). The
+retrieval layer llm-development deliberately leaves to it.
+*References: chunking-and-preprocessing, context-assembly-and-citation,
+embeddings-and-vector-stores, freshness-and-reindexing,
+hybrid-retrieval-and-reranking, retrieval-evals.*
+
+**machine-learning-development** — Classic and deep machine learning you
+train, evaluate and operate yourself (not LLM applications): problem
+framing and baseline-first discipline, data audits and leakage-safe split
+design, feature engineering in fitted pipelines, training and tuning
+(scikit-learn, gradient-boosted trees, PyTorch), rigorous evaluation
+(metric choice, cross-validation, calibration, slice and error analysis),
+experiment tracking and reproducibility (MLflow/W&B), and production ML
+(serving, registries, drift monitoring, retraining loops). What separates
+it from notebook theatre is evaluation integrity. Python examples
+mechanically parsed with the `ast` module.
+*References: data-and-splits, evaluation-and-error-analysis,
+features-and-pipelines, framing-and-baselines, pytorch-fundamentals,
+tracking-and-production, training-and-tuning.*
+
 ### Data and databases
 
 **sql-development** — Relational database engineering for SQL Server /
@@ -389,6 +450,19 @@ resilience/anti-bot/operations (retries, caching, storage, scheduling,
 knowing when to stop).
 *References: dynamic-playwright, http-parsing, legality-ethics,
 resilience-operations, scrapy-framework.*
+
+**data-engineering-development** — Vendor-neutral data-pipeline and
+analytics engineering, built on the fact that pipelines re-run (retries,
+backfills, replays, late data): batch vs streaming design, ELT/ETL and
+dbt-style transformation with tests, orchestration (Airflow/Dagster/
+Prefect), Spark and distributed processing, warehouse/lakehouse modelling
+(dimensional/star schema, SCDs, medallion layering), data quality and
+contracts, file/table formats (Parquet, Delta, Iceberg) and partitioning,
+and idempotent, backfillable jobs. The discipline fabric-development
+applies inside Microsoft Fabric, owned here for every stack.
+*References: data-quality-and-contracts, elt-and-dbt, formats-and-lakehouse,
+orchestration, pipeline-design-and-backfill, spark-and-distributed,
+warehouse-modelling.*
 
 ### Cloud and operations
 
@@ -468,6 +542,44 @@ rules and Logic Apps playbooks, and Defender XDR/unified portal
 integration with MITRE ATT&CK coverage mapping.
 *References: automation-soar, data-ingestion-cost, defender-xdr-mitre,
 detection-engineering, hunting-watchlists-workbooks, kql-language.*
+
+**terraform-development** — Provider-independent Infrastructure-as-Code
+with Terraform and OpenTofu: HCL module design and composition, remote
+state with locking and encryption, the write→plan→apply loop with plan
+review as a hard merge gate, drift detection and reconciliation,
+multi-environment patterns (directory-per-env, workspaces, tfvars), secrets
+handling and OIDC provider identity, testing (fmt/validate/tflint,
+`terraform test`, Terratest, policy-as-code), and importing/refactoring
+existing estates (import/moved/removed). Azure specifics and the
+Bicep-vs-Terraform call route to azure-development.
+*References: drift-and-import, environments-and-workspaces,
+modules-and-composition, plan-review-and-workflow, secrets-and-identity,
+state-and-backends, testing-and-validation.*
+
+**observability-development** — Vendor-neutral observability engineering:
+structured logging, metrics and distributed tracing correlated into one
+story, OpenTelemetry instrumentation (API vs SDK, zero-code agents,
+semantic conventions, OTLP), the Collector pipeline (agent/gateway
+topologies, redaction, tail sampling), W3C trace-context propagation,
+cardinality and telemetry-cost control, SLIs/SLOs/error budgets with
+burn-rate alerting, page-vs-ticket alert design, and debugging production
+from telemetry. Owns what to instrument and why; per-language wiring stays
+with the language skills.
+*References: alerting-and-dashboards, collector-and-pipelines,
+metrics-and-cardinality, opentelemetry-instrumentation,
+slos-and-error-budgets, structured-logging, tracing-and-propagation.*
+
+**incident-response** — Running production incidents as a discipline,
+mitigate-first: detection and severity classification (SEV levels,
+declare-early rules), the incident-command model (IC/ops/comms/scribe roles
+and handovers), triage with mitigation before diagnosis, stakeholder and
+status-page communication on a kept cadence, on-call/paging and escalation
+design, and blameless postmortems with owned, dated, tracked action items.
+The telemetry that detects incidents is observability-development; the
+diagnosis method once mitigated is systematic-debugging.
+*References: communication-and-status-pages, detection-and-severity,
+oncall-and-escalation, postmortems-and-learning, roles-and-command,
+triage-and-mitigation.*
 
 ### Cross-cutting
 
@@ -569,6 +681,68 @@ Microsoft-stack-specific notes (Power Apps/Pages, Power BI, SPFx).
 forms-tables-charts, microsoft-stack-a11y, testing-tooling,
 wcag-2-2.*
 
+**graphql-development** — GraphQL engineering end to end: schema design in
+SDL (nullability discipline, cursor connections, deprecation-driven
+evolution), resolver architecture and the N+1 problem with DataLoader
+batching, mutation and error design (errors-as-data, partial results),
+subscriptions, federation vs a single schema, security (depth/complexity
+limits, trusted documents, introspection control) and caching. A schema is
+a typed, executable contract; the REST-vs-GraphQL decision stays with
+api-development.
+*References: caching-and-performance, federation-and-composition,
+mutations-and-errors, resolvers-and-dataloader, schema-design,
+security-and-complexity, subscriptions-and-realtime.*
+
+**event-driven-development** — Vendor-neutral event-driven and asynchronous
+architecture: delivery semantics (at-least-once and the exactly-once myth),
+idempotent consumers, the transactional outbox, sagas and compensation,
+event sourcing and CQRS as deliberate decisions, ordering and partitioning,
+dead-letter and poison-message handling, and event schema evolution with
+registries, with Kafka as the reference broker. The discipline is designing
+for async physics — duplicates, reordering, eventual consistency — not
+pretending the broker hides them.
+*References: delivery-semantics-and-idempotency, event-sourcing-and-cqrs,
+kafka-fundamentals, outbox-and-transactional-messaging,
+sagas-and-process-managers, schema-evolution-and-registries.*
+
+**identity-development** — Authentication and authorisation engineering,
+standards-first and vendor-neutral: OAuth 2.0/2.1 and OIDC flow selection
+(auth-code + PKCE, client credentials, device grant, token exchange), token
+engineering (JWT vs opaque, validation, rotation, revocation, DPoP),
+sessions vs tokens and browser-auth security (cookie flags, CSRF, the BFF
+pattern), MFA and passkeys/WebAuthn, SSO (SAML/OIDC federation, SCIM), and
+authorisation models (RBAC/ABAC/ReBAC, multi-tenant isolation) with the
+auth-vulnerability catalogue. The auth engineering inside
+secure-development's broader OWASP frame.
+*References: auth-vulnerabilities, authorisation-models, mfa-and-passkeys,
+oauth-oidc-flows, sessions-and-browser-auth, sso-saml-scim,
+tokens-and-validation.*
+
+**architecture-review** — Reviewing system and software architecture as a
+discipline distinct from code review: quality-attribute and trade-off
+analysis, one-way-door hunting, coupling/cohesion and boundary judgement,
+failure-mode walking (blast radius, degraded modes, cascading failure), the
+simplest-thing gate, fitness functions, and judging ADR/design-doc decision
+quality. Distilled from ATAM, the C4 model and evolutionary-architecture
+practice; applies at the design gate, the single decision, and the periodic
+health check. Reviewing the code diff stays with code-review-development.
+*References: adrs-and-design-docs, c4-and-views,
+coupling-cohesion-and-boundaries, failure-modes-and-resilience,
+fitness-functions, quality-attributes-and-tradeoffs, review-method.*
+
+**legacy-modernisation** — Safely changing code you don't fully understand
+— legacy systems, inherited codebases, framework/major-version upgrades,
+platform migrations: characterisation/approval tests that pin current
+behaviour first, seams and dependency-breaking to get untested code into a
+harness, strangler-fig and branch-by-abstraction for incremental
+replacement, codemods for mechanical change at scale, upgrade playbooks (one
+major at a time, changelog first), deprecation and dead-code management, and
+rollback as a design input. The prime directive: preserve behaviour you
+cannot yet specify.
+*References: characterisation-tests, codemods-and-mechanical-refactors,
+deprecation-management, seams-and-dependency-breaking,
+strangler-fig-and-incremental, upgrade-playbooks.*
+
 ### Agent workflow
 
 How an agent works, not what it builds — vendor-neutral process skills built on
@@ -628,6 +802,30 @@ secure-development, scholarly citation discipline to academic-research, and
 per-ecosystem registries to the language skills.
 *References: anti-hallucination, source-hierarchy-and-tools, verify-and-drift.*
 
+**git-workflow** — Version-control discipline beneath any CI/CD: branching
+models and commit hygiene, rebase-vs-merge decisions, interactive history
+surgery (squash, fixup, split, reorder), conflict resolution, bisect and
+history archaeology, worktrees for parallel work, large-repo/monorepo
+tooling (sparse-checkout, partial clone, submodules, LFS), hooks and git
+automation, and disaster recovery (reflog, detached HEAD, botched rebases,
+force-push repair, committed secrets). The CI/CD above the push belongs to
+devops-development. Shell blocks parse under `bash -n`.
+*References: bisect-and-archaeology, branching-and-commits,
+conflicts-and-merges, hooks-and-automation, rebase-and-history,
+recovery-and-disasters, worktrees-monorepos-submodules.*
+
+**systematic-debugging** — The language-independent debugging method:
+reproduce deterministically, minimise the failing case, isolate by binary
+search (code and `git bisect`, differential debugging), form one falsifiable
+hypothesis at a time, instrument to observe instead of guessing, fix the
+root cause, and exit through a regression test — plus the anti-patterns
+(shotgun edits, symptom patching) named on sight. Debugger and profiler
+mechanics stay in the language skills; this owns the method that decides
+which tool to reach for and when. Shell blocks parse under `bash -n`.
+*References: heisenbugs-and-concurrency, hypothesis-discipline,
+instrumentation-and-observation, isolate-and-bisect, reproduce-and-minimise,
+verify-and-regression.*
+
 ### Writing
 
 **uncanny** — Removing AI tells from prose so it reads as human-written,
@@ -643,6 +841,19 @@ errors. For any prose a human reads (documents, reports, tenders, emails,
 READMEs, posts), never code or structured data. Extends stop-slop (MIT)
 and Wikipedia's WikiProject AI Cleanup.
 *References: examples, lexicon, registers, structures.*
+
+**technical-writing** — Authoring the documents software work produces —
+READMEs, ADRs (architecture decision records), runbooks, changelogs and
+release notes, API reference prose, design docs, CONTRIBUTING and onboarding
+guides — structured on the Diátaxis framework (tutorial / how-to /
+reference / explanation). Owns document structure and information design:
+choosing the right document type, its anatomy, what it must contain,
+verifying every sample and command, and the docs-as-code toolchain and
+review around it. Sentence-level style and AI-tell removal route to uncanny;
+scholarly citation to academic-research.
+*References: adrs-and-decision-records, changelogs-and-release-notes,
+diataxis-and-doc-types, docs-as-code-and-review, readmes-and-onboarding,
+runbooks-and-operational-docs.*
 
 ### Research
 
