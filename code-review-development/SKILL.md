@@ -168,5 +168,8 @@ hunt are in `references/defect-hunting.md`.
   `devops-development`; accessibility review → `accessibility-development`.
 - Language idioms and per-language correctness stay with the language
   skill being reviewed.
-- Reviewing architecture/design documents, and reviewing written
-  documents (proposals, specs), are out of scope here — separate skills.
+- Reviewing architecture and design documents (system structure, ADR/RFC
+  decision quality, trade-offs, failure modes) → `architecture-review`;
+  reviewing written/prose documents (READMEs, ADRs, proposals, specs, docs)
+  → `technical-writing`. Deliberately separate skills — keep this one about
+  the code.

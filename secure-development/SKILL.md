@@ -111,6 +111,12 @@ assessments ask for.
   (`pipeline-security.md`).
 - Azure platform security (Entra, network, Defender for Cloud) →
   `azure-development`.
+- Authentication and authorisation engineering depth — OAuth 2.0/2.1 and
+  OIDC flow selection, token validation and rotation, sessions vs tokens and
+  browser-auth (cookies/CSRF/BFF), MFA/passkeys, SSO (SAML/OIDC/SCIM), and
+  RBAC/ABAC/ReBAC models → `identity-development`; this skill owns the broader
+  OWASP/ASVS frame, threat modelling, crypto and password-*hashing* hygiene,
+  and supply chain.
 - SIEM detections and SOC automation → `sentinel-development`.
 - Per-language secure-coding refs already exist in each language
   skill — this skill is the cross-cutting framework layer.

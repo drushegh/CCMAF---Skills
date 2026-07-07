@@ -120,6 +120,11 @@ release candidate (stateless core, Tasks, MCP Apps) is not yet final.
 
 - **Azure OpenAI / AI Foundry platform engineering** → `azure-development`
   (ai-foundry); this skill owns the application/agent layer.
+- **Retrieval-augmented generation** — chunking, embeddings, vector stores,
+  hybrid retrieval and retrieval evals → `rag-development`; this skill owns
+  the model/agent layer above the retriever.
+- **Classic and deep ML you train yourself** — tabular/GBDT, PyTorch,
+  evaluation integrity, drift monitoring → `machine-learning-development`.
 - **Copilot Studio agents** → `copilot-studio-development`.
 - **Prompt-injection threat modelling, secrets, supply chain** →
   `secure-development` (this skill owns the in-harness mitigations).
