@@ -1,6 +1,6 @@
 # CCMAF Skills
 
-A library of 70 production-grade agent skills for Claude Code and
+A library of 71 production-grade agent skills for Claude Code and
 compatible agent runtimes. Each skill packages senior-level engineering
 standards for one technology domain — the conventions, decision
 frameworks, pitfalls and verification rules an experienced practitioner
@@ -151,7 +151,9 @@ matching skills from stack detection, throttled).
   framework's `--suggest` detection map
   (`.claude/framework/update/skills-sync.sh`) should gain the mapping.
 - Add the directory to the plugin manifest: append `"./<name>"` to the `skills`
-  array in `.claude-plugin/plugin.json` (the array must equal `ls -d */SKILL.md`).
+  array in `.claude-plugin/plugin.json` — **bare directory refs** (`"./<name>"`,
+  forward slashes, one per skill dir; the *set* equals the skill directories from
+  `ls -d */`, NOT the `SKILL.md` file paths and never backslashes).
 
 ---
 
@@ -644,6 +646,20 @@ Chromatic), and frame capture for canvas/3D — with honest limits on what
 a still can show.
 *References: 3d-and-non-web, render-and-capture, state-and-viewport-coverage,
 the-critique-loop, visual-regression.*
+
+**design-taste** — Removing AI tells from visual design so a UI reads as
+chosen rather than generated — the aesthetic sibling of uncanny: a
+hard-tell catalogue (Inter-by-reflex, purple-to-blue gradients, cards
+nested in cards, grey text on coloured backgrounds, the icon-tile ritual,
+pure black and untinted grey, bounce easing) fixed on sight, soft tells
+judged by density, the vocabulary of distinctive type/colour/space/depth/
+motion, bolder/quieter tone calibration, register-aware polish budgets
+(marketing, product app, docs, dashboard), and an anti-overcorrection rule
+so the fix is not itself the next cliché. The taste rubric ui-verification's
+loop critiques against; frontend-development implements it. Adapted from
+Paul Bakaus's impeccable (Apache-2.0).
+*References: colour, motion, self-audit, space-and-depth, tells,
+tone-and-register, typography.*
 
 **drawio-development** — Authoring draw.io / diagrams.net diagrams as
 native, committable `.drawio` (mxGraphModel XML): the well-formedness

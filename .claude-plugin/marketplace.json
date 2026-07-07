@@ -9,7 +9,7 @@
     {
       "name": "ccmaf-skills",
       "source": "./",
-      "description": "All 70 CCMAF skills as one plugin — senior-level engineering standards across languages, frameworks, cloud and operations, data, AI/agents, security and identity, plus agent-workflow and prose-quality disciplines (planning, recap, docs-grounding, debugging, incident response, usage limits, de-slopping).",
+      "description": "All 71 CCMAF skills as one plugin — senior-level engineering standards across languages, frameworks, cloud and operations, data, AI/agents, security and identity, plus agent-workflow and prose-quality disciplines (planning, recap, docs-grounding, debugging, incident response, usage limits, de-slopping).",
       "category": "development",
       "keywords": ["skills", "engineering-standards", "agent-skills", "best-practices"]
     }
