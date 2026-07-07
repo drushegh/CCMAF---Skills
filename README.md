@@ -1,6 +1,6 @@
 # CCMAF Skills
 
-A library of 52 production-grade agent skills for Claude Code and
+A library of 53 production-grade agent skills for Claude Code and
 compatible agent runtimes. Each skill packages senior-level engineering
 standards for one technology domain — the conventions, decision
 frameworks, pitfalls and verification rules an experienced practitioner
@@ -627,6 +627,22 @@ semver/changelogs for deprecation drift. Supply-chain depth routes to
 secure-development, scholarly citation discipline to academic-research, and
 per-ecosystem registries to the language skills.
 *References: anti-hallucination, source-hierarchy-and-tools, verify-and-drift.*
+
+### Writing
+
+**uncanny** — Removing AI tells from prose so it reads as human-written,
+across registers (conversational, professional/formal UK, technical,
+marketing): a hard-tell catalogue (em dashes, throat-clearing,
+significance inflation, tailing participle clauses, the contrast-reframe,
+vague attribution, summary-bow endings) fixed on sight, soft tells judged
+by density rather than presence, and an explicit anti-overcorrection rule
+so the fix is not itself a detectable machine voice (staccato parody,
+six-word sentences). Write, edit and audit modes, a pre-delivery
+self-check, and register-aware inversions where blog-voice fixes become
+errors. For any prose a human reads (documents, reports, tenders, emails,
+READMEs, posts), never code or structured data. Extends stop-slop (MIT)
+and Wikipedia's WikiProject AI Cleanup.
+*References: examples, lexicon, registers, structures.*
 
 ### Research
 
