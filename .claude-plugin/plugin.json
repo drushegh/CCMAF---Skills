@@ -1,6 +1,6 @@
 {
   "name": "ccmaf-skills",
-  "description": "A library of 70 production-grade, vendor-neutral engineering skills — the conventions, decision frameworks, pitfalls and verification rules a senior practitioner enforces, packaged so an agent behaves like a disciplined specialist. Each skill is self-contained: a lean SKILL.md plus on-demand references.",
+  "description": "A library of 71 production-grade, vendor-neutral engineering skills — the conventions, decision frameworks, pitfalls and verification rules a senior practitioner enforces, packaged so an agent behaves like a disciplined specialist. Each skill is self-contained: a lean SKILL.md plus on-demand references.",
   "author": {
     "name": "drushegh"
   },
