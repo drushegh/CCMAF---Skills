@@ -22,7 +22,7 @@ Why the third fails: three sentences, identical shape, descending length, mic-dr
 ## 2. Significance inflation + tailing participle (professional register)
 
 **Before (slop):**
-> OpenSky's solution leverages cutting-edge AI capabilities to deliver a truly transformative citizen experience, underscoring our commitment to innovation and ensuring seamless integration with the Department's existing ecosystem.
+> Northwind's solution leverages cutting-edge AI capabilities to deliver a truly transformative citizen experience, underscoring our commitment to innovation and ensuring seamless integration with the Department's existing ecosystem.
 
 **After (fixed):**
 > The solution uses Azure AI Foundry to triage inbound cases against the Department's existing categories, reducing manual routing from four days to same-day. It integrates with the current Dynamics 365 environment through the standard Dataverse API, with no changes to existing case schemas.
@@ -40,7 +40,7 @@ Why the third fails: register violation. Fragments, "no drama", and second-perso
 > Studies show that organisations might potentially see significant improvements in some cases when adopting agentic workflows, and industry experts widely agree this represents a pivotal shift in the landscape.
 
 **After (fixed):**
-> In the three engagements where we deployed agentic triage (HRB, CCS, and one commercial client), first-response time fell by 40–70%. Published benchmarks are thinner: METR's 2025 task-completion data is the closest independent evidence, and it measures developer tasks, not case handling.
+> In the three engagements where we deployed agentic triage (Kestrel Health, Larkfield Council, and one commercial client), first-response time fell by 40–70%. Published benchmarks are thinner: METR's 2025 task-completion data is the closest independent evidence, and it measures developer tasks, not case handling.
 
 **Overcorrected (new tell):**
 > Agentic workflows work. Everyone serious already knows this.
