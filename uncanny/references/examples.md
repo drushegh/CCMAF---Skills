@@ -40,7 +40,7 @@ Why the third fails: register violation. Fragments, "no drama", and second-perso
 > Studies show that organisations might potentially see significant improvements in some cases when adopting agentic workflows, and industry experts widely agree this represents a pivotal shift in the landscape.
 
 **After (fixed):**
-> In the three engagements where we deployed agentic triage (HRB, CCS, and one commercial client), first-response time fell by 40–70%. Published benchmarks are thinner: METR's 2025 task-completion data is the closest independent evidence, and it measures developer tasks, not case handling.
+> In the three engagements where we deployed agentic triage (Kestrel Health, Larkfield Council, and one commercial client), first-response time fell by 40–70%. Published benchmarks are thinner: METR's 2025 task-completion data is the closest independent evidence, and it measures developer tasks, not case handling.
 
 **Overcorrected (new tell):**
 > Agentic workflows work. Everyone serious already knows this.
