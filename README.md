@@ -178,8 +178,8 @@ This grouping exists for navigation in this README. It is not repository metadat
 <summary><strong>Design &amp; UX</strong> · 4 skills</summary>
 
 - **`ux-design`** — Interaction and perception reasoning for any UI: the Laws of UX, Gestalt grouping and visual hierarchy, scan patterns, affordances and feedback, form UX, navigation, touch ergonomics, Nielsen's heuristics.
-- **`design-taste`** — Removing AI tells from visual design so a UI reads as chosen, not generated: a hard-tell catalogue fixed on sight, the vocabulary of distinctive type/colour/space/depth/motion, register-aware polish budgets, an anti-overcorrection rule.
-- **`ui-verification`** — The render → view → critique → iterate loop: actually rendering a UI, capturing it at real viewports, and critiquing the image against the ux-design and accessibility rubrics instead of shipping a guess from the code.
+- **`design-taste`** — Removing AI tells from visual design so a UI reads as chosen, not generated: a hard-tell catalogue fixed on sight, amplitude over count (a few channels taken to their poles, not eight nudged off centre), uniform distribution as the deepest tell, register-aware polish budgets, an anti-overcorrection rule.
+- **`ui-verification`** — The render → view → critique → iterate loop: actually rendering a UI, capturing it at real viewports, and critiquing the image instead of shipping a guess from the code — with the rubric treated as a floor rather than the acceptance gate, and the render taken from the real build path rather than a harness.
 - **`drawio-development`** — Authoring native, committable `.drawio` XML: the well-formedness non-negotiables and layout discipline, per-type recipes, environment-aware export, a render→self-check→iterate loop, a bundled 617-icon Azure library.
 
 </details>
