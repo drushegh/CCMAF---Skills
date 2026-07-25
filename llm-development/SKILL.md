@@ -118,6 +118,10 @@ release candidate (stateless core, Tasks, MCP Apps) is not yet final.
 
 ## Boundaries
 
+- **Model-version-specific calibration for Claude Opus 5** — the dials it
+  does not self-regulate, the legacy instructions that now backfire, effort
+  selection and the delegation gate → `opus-5-calibration`; this skill owns
+  the model-independent discipline beneath it.
 - **Azure OpenAI / AI Foundry platform engineering** → `azure-development`
   (ai-foundry); this skill owns the application/agent layer.
 - **Retrieval-augmented generation** — chunking, embeddings, vector stores,
