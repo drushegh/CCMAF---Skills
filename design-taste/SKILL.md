@@ -17,7 +17,7 @@ description: >-
   implements what this skill decides.
 metadata:
   author: Damien (adapts ideas from pbakaus/impeccable, Apache-2.0)
-  version: 1.0.0
+  version: 1.1.0
 ---
 
 # Design Taste
@@ -52,10 +52,71 @@ pretending to follow them:
    sets the boldness budget; it never re-admits banned patterns.
 3. **More decoration is not more personality.** Personality is commitment
    in type, colour, space and motion — not accessories.
-4. **"Deliberate" use of a tell is still a tell.** The viewer cannot see
+4. **More variation is not more identity.** Nudging eight channels 10% off
+   centre is eight non-decisions; see "Amplitude, not count".
+5. **"Deliberate" use of a tell is still a tell.** The viewer cannot see
    intent, only the pattern they have seen a thousand times.
-5. **Fixing one instance while its twins remain is not a pass.** Tells are
+6. **Fixing one instance while its twins remain is not a pass.** Tells are
    systemic: one nested card means auditing every container.
+
+## Amplitude, not count
+
+The most common failed escape from "generic" is to add *more* variation —
+another accent, another radius, another spacing step. It does not work, and
+understanding why separates design that reads as chosen from design that reads
+as busy and still generated.
+
+**Every style channel is a scale, and the middle of every scale is the same
+place.** Border weight runs hairline → heavy. Radius runs square → pill.
+Contrast runs whisper → shout. Density runs airy → packed. A design sitting
+mid-scale on eight channels has made eight non-decisions, and it lands where
+every other unguided design lands — because the centre is one address and
+everyone arrives at it.
+
+**Identity comes from taking a FEW channels to their POLES** and letting the
+rest stay quiet. Two or three committed extremes read as a point of view; eight
+mild deviations read as noise with no author.
+
+1. **Pick 2–3 channels to commit** — type, colour, space, shape, depth, motion,
+   texture, motif. Choose the ones the brief actually cares about.
+2. **Take them to a pole and hold it.** Not "slightly heavier borders" —
+   *heavy*. Not "a bit more space" — *lavish*. Halfway is the centre wearing a
+   different label.
+3. **Let the others sit at neutral, deliberately.** Restraint elsewhere is what
+   makes the committed channels legible. If everything shouts, nothing does.
+4. **Test by pairing.** Put two designs side by side. If a viewer cannot say
+   *which channel differs and in which direction*, they are the same design.
+   "They look a bit different" is a fail.
+
+**Diagnostic when a set of designs feels samey:** do not count the differences —
+measure their **amplitude**. Ten designs each varying six channels by 10% are
+ten copies. Three designs each committing two channels to a pole are three
+designs.
+
+A corollary that bites in practice: **a channel nothing on screen exercises
+cannot be judged, however boldly it is set.** Committing to depth in a layout
+where nothing overlaps, or to motion in a page with no transitions, produces a
+decision the viewer never sees. Before blaming the palette, check the surface
+actually witnesses the channel.
+
+## Uniformity itself is the tell
+
+Beyond any single pattern, the deepest AI signature is **answering every
+distribution question the same way.** Each design property carries three
+decisions, and generated work reliably fumbles the second:
+
+1. **Value** — what setting? (which radius, which weight)
+2. **Distribution** — *how many elements get it?* none / one / some / all
+3. **Correlation** — does it track meaning, or is it applied blindly?
+
+Unguided generation answers distribution **"all"** or **"none"** almost every
+time: every card has a shadow, every section has an icon, every heading is the
+same weight, every gap equal. Designed work answers **"some"**, and the *some*
+is chosen — the one card that matters is raised, the rest are flat.
+
+When auditing, ask of each property: *applied to all, or to the ones that earned
+it?* Uniform application is a tell even when the value itself is tasteful, and
+the fix is rarely a new value — it is making the distribution mean something.
 
 ## Operating modes
 
