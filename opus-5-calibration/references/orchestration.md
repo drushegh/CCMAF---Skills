@@ -15,13 +15,39 @@ Delegate only when **all four** hold:
 2. **Genuinely independent** — no ordering dependency on another track, and
    no shared file the tracks would both write.
 3. **Parallelisable** — running the tracks concurrently is the actual win.
-4. **Not verification** — never spawn an agent to check, verify or
-   double-check your own work. Opus 5 verifies unprompted; a verifier agent
-   is the over-verification failure with a cost multiplier attached.
+4. **Not self-re-reading** — do not spawn an agent to re-read and confirm
+   what you just produced. Same context, same priors, cost multiplier
+   attached. Read the distinction below before applying this to *all*
+   review.
 
 Canonical yes: a wide multi-file investigation across unrelated subsystems.
 Canonical no: "read these three files and summarise", "confirm the fix
 works", "review what I just wrote".
+
+## Self-re-reading is not independent review
+
+Rule 4 is routinely over-read into "never have anything reviewed". Two
+different patterns hide behind the word *verify*:
+
+| Pattern | What it adds | Verdict |
+|---|---|---|
+| A subagent re-reads your output against the same context to confirm it | Little — it shares your priors and your blind spots | Skip |
+| A party with a **different prior** reviews the work, or two parties cross-review each other's conclusions | Findings one perspective structurally cannot reach | Keep where stakes justify it |
+
+The second is not self-verification and rule 4 does not forbid it. Observed:
+in a two-seat cross-review, one seat **withdrew a position it had argued at
+length** after reading the other's answer — an outcome no amount of
+self-checking produces, because the disagreement was the mechanism.
+
+It is still delegation, so it still owes the other three gate conditions:
+size, independence, parallelisability. Use it on consequential forks, not on
+routine output.
+
+**Governance rules are a separate axis.** Where a process requires that the
+author of a claim is not its acceptance gate, that is a rule about
+*authority* — who is allowed to sign off — not a claim that the model cannot
+check itself. This skill does not override it, and satisfying it is not
+over-verification.
 
 **If one agent can complete the task, use one.** Keep spawn counts low, and
 prefer a deterministic cap in the harness over an instruction where cost
