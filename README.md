@@ -1,24 +1,24 @@
 <div align="center">
 
 <!-- IMG-1: Hero poster — a dark isometric field of green skill-directory tiles feeding a restrained blue context plane; title and tagline legible in the art; no tiny directory names baked into the image. Asset: .github/assets/hero.webp -->
-<img src=".github/assets/hero.webp" width="100%" alt="CCMAF Skills — 71 vendor-neutral engineering skills for Claude Code and compatible runtimes.">
+<img src=".github/assets/hero.webp" width="100%" alt="CCMAF Skills — 72 vendor-neutral engineering skills for Claude Code and compatible runtimes.">
 
 *Skill directories on disk; the one a task matches crosses into context.*
 
-**71 ENGINEERING SKILLS FOR CLAUDE CODE — A STANDALONE PLUGIN, OR SYNCED SELECTIVELY BY CCMAF**
+**72 ENGINEERING SKILLS FOR CLAUDE CODE — A STANDALONE PLUGIN, OR SYNCED SELECTIVELY BY CCMAF**
 
 # CCMAF Skills
 
 **Senior practice, loaded when the task matches.**
 
 ![License: MIT](https://img.shields.io/badge/license-MIT-1f6feb)
-![Skills: 71](https://img.shields.io/badge/skills-71-2ea043)
+![Skills: 72](https://img.shields.io/badge/skills-72-2ea043)
 ![Claude Code: plugin](https://img.shields.io/badge/Claude_Code-plugin-58a6ff)
 [![CCMAF: companion framework](https://img.shields.io/badge/CCMAF-companion_framework-d29922)](https://github.com/drushegh/CCMAF)
 
 </div>
 
-CCMAF Skills is a catalogue of 71 vendor-neutral, MIT-licensed engineering skills for Claude Code and compatible agent runtimes: install all 71 as a standalone plugin, or sync a selected subset into a [CCMAF](https://github.com/drushegh/CCMAF) project.
+CCMAF Skills is a catalogue of 72 vendor-neutral, MIT-licensed engineering skills for Claude Code and compatible agent runtimes: install all 72 as a standalone plugin, or sync a selected subset into a [CCMAF](https://github.com/drushegh/CCMAF) project.
 
 ## What this is (and is not)
 
@@ -26,10 +26,10 @@ A skill packages the conventions, decision frameworks, pitfalls, and verificatio
 
 | CCMAF Skills is | CCMAF Skills is not |
 |---|---|
-| 71 vendor-neutral engineering skills | A collection limited to programming languages |
+| 72 vendor-neutral engineering skills | A collection limited to programming languages |
 | Senior-practitioner conventions, decisions, pitfalls, and verification rules | Runtime enforcement or a hard quality gate |
 | Guidance loaded only when the task matches | Reference material loaded on every task |
-| A standalone Claude Code plugin that installs all 71 | Dependent on the CCMAF framework |
+| A standalone Claude Code plugin that installs all 72 | Dependent on the CCMAF framework |
 | Selectively syncable into CCMAF projects | A per-skill plugin install — the plugin is all-or-nothing |
 | Domain-neutral for public v1.0 | A repository of client- or project-specific policy |
 
@@ -40,14 +40,14 @@ A skill packages the conventions, decision frameworks, pitfalls, and verificatio
 ## Part 1 — A catalogue, not a language shelf
 
 <!-- IMG-2: Catalogue orientation map — three labeled horizontal lanes (Technology stacks · Cross-cutting disciplines · Agent-workflow methods), ten labeled group clusters with per-group counts; group-level labels only, no individual directory names baked in; legend in the margin. Asset: .github/assets/catalogue.webp -->
-![Map of the 71 skills grouped into ten groups across technology stacks, cross-cutting engineering disciplines, and agent-workflow methods.](.github/assets/catalogue.webp)
+![Map of the 72 skills grouped into ten groups across technology stacks, cross-cutting engineering disciplines, and agent-workflow methods.](.github/assets/catalogue.webp)
 
 *Ten groups across three bands. The map orients; the folds below are the authoritative index. No enforcement state is shown, because skills are advisory.*
 
 > **Legend — used unchanged in every diagram in this README.**
 > **Green** — skill content on disk: skill directories, `SKILL.md` cores, reference files, installed copies. **Amber** — the human's task or selection intent. **Blue** — the Claude Code runtime and its context boundary. **Grey** — mechanism and containers: the catalogue boundary, the plugin bundle, manifests, sync machinery. Loading is always drawn as an artifact crossing into the blue context frame; a file keeps its color when it loads. No enforcement color exists in this legend, because no skill enforces anything.
 
-**The breadth is three-dimensional: technology stacks, cross-cutting disciplines, and agent-workflow methods.** The bands hold 49, 14, and 8 skills; 49 + 14 + 8 = 71.
+**The breadth is three-dimensional: technology stacks, cross-cutting disciplines, and agent-workflow methods.** The bands hold 49, 14, and 9 skills; 49 + 14 + 9 = 72.
 
 | Band | Group | Skills |
 |---|---|---|
@@ -60,10 +60,10 @@ A skill packages the conventions, decision frameworks, pitfalls, and verificatio
 | | Games, 3D & media | 9 |
 | Cross-cutting disciplines | Engineering assurance | 10 |
 | | Design & UX | 4 |
-| Agent-workflow methods | Working methods | 8 |
-| **Total** | **10 groups** | **71** |
+| Agent-workflow methods | Working methods | 9 |
+| **Total** | **10 groups** | **72** |
 
-Five of the working-method skills govern how an agent works rather than what it works on: `read-the-damn-docs`, `stay-within-limits`, `visual-plan`, `visual-recap`, and `uncanny`. The last of these removes AI tells from prose; its visual sibling, `design-taste`, sits in the Design & UX group and does the same for interfaces.
+Six of the working-method skills govern how an agent works rather than what it works on: `opus-5-calibration`, `read-the-damn-docs`, `stay-within-limits`, `visual-plan`, `visual-recap`, and `uncanny`. The last of these removes AI tells from prose; its visual sibling, `design-taste`, sits in the Design & UX group and does the same for interfaces.
 
 This grouping exists for navigation in this README. It is not repository metadata; each skill is one directory in the catalogue, and every directory below appears exactly once. Each `SKILL.md` also carries an on-demand `references/` folder — open a group to see what its skills cover.
 
@@ -185,12 +185,13 @@ This grouping exists for navigation in this README. It is not repository metadat
 </details>
 
 <details>
-<summary><strong>Working methods</strong> · 8 skills</summary>
+<summary><strong>Working methods</strong> · 9 skills</summary>
 
 - **`technical-writing`** — Authoring the documents software work produces (READMEs, ADRs, runbooks, changelogs, API prose, design docs) on the Diátaxis framework: choosing the type, its anatomy, verifying every sample, docs-as-code.
 - **`academic-research`** — Full-lifecycle scholarly research, built citation-safe: scholarly discovery via free APIs, source appraisal, evidence synthesis (PICO/PRISMA), ideation with a novelty gate, reproducible methods, reviewer simulation.
 - **`git-workflow`** — Version-control discipline beneath any CI/CD: branching and commit hygiene, rebase-vs-merge, interactive history surgery, conflict resolution, bisect archaeology, worktrees, monorepo tooling, disaster recovery.
 - **`read-the-damn-docs`** — Grounding claims in official, version-matched docs and the installed source, not training memory: a source hierarchy, pin-the-version-first, a read-then-verify loop, treating unverified package recall as a security hole.
+- **`opus-5-calibration`** — Operating Claude Opus 5, whose failure mode is excess rather than deficiency: subtracting the verification and double-check instructions that now backfire, setting the five dials it does not self-regulate, effort as the cost lever, and the delegation gate when it orchestrates.
 - **`stay-within-limits`** — Keeping long-running or parallel agent work inside platform usage limits: budgeting against the rolling windows, reading usage between waves, stopping on a soft threshold, checkpointing resumable state, scheduling idempotent wakes.
 - **`visual-plan`** — Turning an implementation idea into a reviewable, grounded Markdown plan before any code: Mermaid diagrams, file maps, annotated diffs, an open-questions gate, one-way-door decisions up front, reuse before new, a sceptical self-review.
 - **`visual-recap`** — Turning a completed change into a high-altitude before/after recap: a file-tree of what moved, before/after data-model and API summaries, annotated diffs, a Mermaid diagram — true by construction from the real diff, secrets redacted.
@@ -254,23 +255,23 @@ Outranking is advisory precedence, not enforcement. A loaded skill supplies expe
 
 ## Part 4 — Two consumption paths
 
-<!-- IMG-5: Two consumption paths — left: grey marketplace manifests and a plugin bundle carrying all 71 green tiles into a blue Claude Code runtime, labeled "no CCMAF required"; right: an amber .claude/.skills-version selection, the grey catalogue pinned at a SHA, a dirty-check, then the selected green directories copied into .claude/skills/, labeled "refuses to clobber uncommitted edits". Asset: .github/assets/install-paths.webp -->
-![The Claude Code plugin installs all 71 skills without CCMAF; CCMAF skills-sync copies selected directories at a pinned SHA and protects uncommitted edits.](.github/assets/install-paths.webp)
+<!-- IMG-5: Two consumption paths — left: grey marketplace manifests and a plugin bundle carrying all 72 green tiles into a blue Claude Code runtime, labeled "no CCMAF required"; right: an amber .claude/.skills-version selection, the grey catalogue pinned at a SHA, a dirty-check, then the selected green directories copied into .claude/skills/, labeled "refuses to clobber uncommitted edits". Asset: .github/assets/install-paths.webp -->
+![The Claude Code plugin installs all 72 skills without CCMAF; CCMAF skills-sync copies selected directories at a pinned SHA and protects uncommitted edits.](.github/assets/install-paths.webp)
 
-*Left: the plugin carries all 71 into Claude Code, no CCMAF required. Right: `skills-sync` copies only the selected directories at a pinned SHA and refuses to clobber uncommitted edits.*
+*Left: the plugin carries all 72 into Claude Code, no CCMAF required. Right: `skills-sync` copies only the selected directories at a pinned SHA and refuses to clobber uncommitted edits.*
 
-**Standalone means all 71; CCMAF means selected directories.**
+**Standalone means all 72; CCMAF means selected directories.**
 
 ### Path 1 — the standalone Claude Code plugin
 
-The repository ships `.claude-plugin/marketplace.json` and `.claude-plugin/plugin.json`. The marketplace is named `ccmaf-skills`; the plugin, also named `ccmaf-skills`, bundles all 71 skills. No CCMAF framework is required. Add this repository as a Claude Code plugin marketplace, then install the plugin:
+The repository ships `.claude-plugin/marketplace.json` and `.claude-plugin/plugin.json`. The marketplace is named `ccmaf-skills`; the plugin, also named `ccmaf-skills`, bundles all 72 skills. No CCMAF framework is required. Add this repository as a Claude Code plugin marketplace, then install the plugin:
 
 ```
 /plugin marketplace add drushegh/CCMAF---Skills
 /plugin install ccmaf-skills@ccmaf-skills
 ```
 
-No version is pinned, so `/plugin marketplace update` tracks `main` — every commit is a release. All 71 skills load at once, each auto-invoked from its trigger description.
+No version is pinned, so `/plugin marketplace update` tracks `main` — every commit is a release. All 72 skills load at once, each auto-invoked from its trigger description.
 
 ### Path 2 — CCMAF `skills-sync`, selective
 
@@ -290,7 +291,7 @@ Running `skills-sync.sh` clones the catalogue and copies only those directories 
 | Property | Standalone plugin | CCMAF `skills-sync` |
 |---|---|---|
 | Requires CCMAF | No | Yes |
-| Installed scope | All 71 skills | Only the selected directories |
+| Installed scope | All 72 skills | Only the selected directories |
 | Entry point | `.claude-plugin/` marketplace + plugin | `.claude/.skills-version` (`SKILLS_SELECTED="…"`) |
 | Version tracking | `/plugin marketplace update` tracks `main` | Pinned catalogue SHA |
 | Local-edit protection | (plugin install) | Dirty-check refuses to clobber uncommitted edits |
@@ -305,7 +306,7 @@ Running `skills-sync.sh` clones the catalogue and copies only those directories 
 
 ## Relationship to CCMAF
 
-The plugin path needs no CCMAF; the selective path is a CCMAF mechanism. [CCMAF](https://github.com/drushegh/CCMAF) is the multi-agent framework this catalogue serves as a standards pack. What the standalone plugin gives everyone — all 71 skills, natively loaded by Claude Code — CCMAF extends with selection: `SKILLS_SELECTED` in `.claude/.skills-version`, the pinned catalogue SHA, the dirty-check, per-directory ownership, and `--suggest` stack detection. The link runs both ways: the CCMAF README points at this catalogue as its skills upstream, and this badge row points back at CCMAF.
+The plugin path needs no CCMAF; the selective path is a CCMAF mechanism. [CCMAF](https://github.com/drushegh/CCMAF) is the multi-agent framework this catalogue serves as a standards pack. What the standalone plugin gives everyone — all 72 skills, natively loaded by Claude Code — CCMAF extends with selection: `SKILLS_SELECTED` in `.claude/.skills-version`, the pinned catalogue SHA, the dirty-check, per-directory ownership, and `--suggest` stack detection. The link runs both ways: the CCMAF README points at this catalogue as its skills upstream, and this badge row points back at CCMAF.
 
 ## Limits & scope
 
@@ -317,7 +318,7 @@ The plugin path needs no CCMAF; the selective path is a CCMAF mechanism. [CCMAF]
 
 ## Contributing & license
 
-MIT, for all 71 skills. Contributions go through issues and pull requests on [this repository](https://github.com/drushegh/CCMAF---Skills). A skill contribution keeps the catalogue's shape: one self-contained directory, a lean `SKILL.md` whose frontmatter description carries the trigger phrases, and depth split into `references/` files by topic.
+MIT, for all 72 skills. Contributions go through issues and pull requests on [this repository](https://github.com/drushegh/CCMAF---Skills). A skill contribution keeps the catalogue's shape: one self-contained directory, a lean `SKILL.md` whose frontmatter description carries the trigger phrases, and depth split into `references/` files by topic.
 
 <details>
 <summary><strong>How the skills are built and verified</strong></summary>
