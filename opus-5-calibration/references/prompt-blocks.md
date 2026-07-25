@@ -38,6 +38,25 @@ The block works because it specifies **cadence** (when to speak), **volume**
 (one sentence, brief) and **shape** (outcome first). A bare "be less chatty"
 specifies none of the three.
 
+### Carve-out: near-misses and limits
+
+"Only when you find something important or change direction" is a narrow
+filter. A check that came back clean is neither — so near-misses,
+self-corrections and known limits fall outside it and go unreported. In
+operator-facing agentic work that is usually the wrong trade: *"the audit
+flagged 27 files as dead, I verified before deleting, and they were live"*
+changes what the operator trusts next time, while satisfying neither clause.
+
+"Lead with the outcome, supporting detail after" has a second edge: it
+pushes caveats into trailing material readers skim. Where a green headline
+must not be mistaken for acceptance, pin material caveats up front.
+
+Append where either matters:
+
+```text
+Report near-misses, self-corrections, and known limits even when they are not findings and did not change direction. Lead with the outcome, but keep material caveats in the first paragraph rather than in trailing detail.
+```
+
 ## Progress narration (tuning up, or restyling)
 
 The same lever runs in reverse: describe explicitly what updates should look
@@ -110,9 +129,23 @@ the model not to think or not to reason actively increases leakage.
 
 | Tempting block | Why it backfires |
 |---|---|
-| "Include a final verification step for any non-trivial task" | Over-verification; the model already verifies |
+| "Include a final verification step for any non-trivial task" | Over-verification **when the step is a re-read**; see the caveat below before deleting an empirical one |
 | "Use a subagent to verify your work" | Same, at multiplied cost |
 | "Double-check your answer before responding" | Compounds with built-in self-correction |
 | "Only report high-severity issues" / "be conservative" | Taken literally; real findings suppressed |
 | "Do not think" / "do not reason before answering" | Raises internal-tag leakage |
 | "Do not emit `<thinking>` tags" | Weaker than the general no-internal-tags rule |
+
+### Caveat on the first two rows
+
+Those rows target **redundant re-reading**. They do not license deleting
+**empirical** verification — render it, execute it, measure it, diff it.
+That kind produces observations the model does not otherwise have, and
+self-correction cannot substitute for it: the model can only re-examine what
+is already in its context. Deleting a render-and-look step because a guide
+said to remove "verification steps" is the common misread (SKILL.md,
+§"Verification: subtract re-reading, keep evidence").
+
+A useful test before deleting a step: *does it re-examine what the model
+already knows, or does it produce a new observation?* Delete the first, keep
+the second.
