@@ -52,8 +52,8 @@ the task touches that topic — do not load them speculatively.
 
 ```bash
 uv sync                  # dependency management (preferred over pip)
-ruff check . --fix       # lint (covers import sorting)
-ruff format .            # format (replaces black + isort)
+ruff check . --fix       # lint + import sorting (needs "I" selected)
+ruff format .            # format (replaces black; does NOT sort imports)
 pyright .                # type check (mypy also acceptable)
 pytest                   # tests
 ```
@@ -165,4 +165,8 @@ workflow: [references/performance.md](references/performance.md).
 | Type annotations beyond basics: Protocol, TypedDict, TypeVar, ParamSpec, variance | [references/type-system.md](references/type-system.md) |
 | Exception design, logging setup | [references/errors-and-logging.md](references/errors-and-logging.md) |
 | Writing or fixing tests | [references/testing.md](references/testing.md) |
-| asyncio, threads, multiprocessing | [refere
+| asyncio, threads, multiprocessing | [references/async-concurrency.md](references/async-concurrency.md) |
+| Framework choice, project structure, FastAPI/Django, background tasks | [references/architecture.md](references/architecture.md) |
+| Profiling, data-structure choice, optimisation | [references/performance.md](references/performance.md) |
+| Diagnosing a failure, reading tracebacks | [references/debugging.md](references/debugging.md) |
+| New project layout, pyproject.toml, toolchain, imports | [references/project-setup.md](references/project-setup.md) |

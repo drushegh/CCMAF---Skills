@@ -1,8 +1,11 @@
 # Accessibility Testing and Tooling
 
-Automated tooling finds roughly 30–50% of WCAG issues (axe's own
-positioning). A credible conformance claim = automated sweep + manual
-keyboard pass + screen reader pass + judgment on content quality.
+Automated tooling finds only part of real WCAG issues. The commonly
+quoted industry figure is 20–30%; Deque's own 2021 study of its audit
+data reports axe covering about 57% of issues *by volume* (a vendor
+figure, measured by issue count rather than by success criteria). Either
+way, most success criteria still need a human. A credible conformance
+claim = automated sweep + manual keyboard pass + screen reader pass + judgment on content quality.
 
 ## Automated layer
 
@@ -35,7 +38,8 @@ test('dashboard has no detectable a11y violations', async ({ page }) => {
 - **Lighthouse** a11y category for quick triage (it embeds axe);
   **pa11y/pa11y-ci** for URL-list sweeps; **eslint-plugin-jsx-a11y**
   for React static lint.
-- Audit-at-scale discipline (from the AccessLint reference skills):
+- Audit-at-scale discipline (from AccessLint's public agent skills,
+  <https://github.com/AccessLint/skills>):
   scope explicitly; group findings by rule + component family rather
   than listing every instance; prefer live-DOM audits over source
   reading; >50 violations in one sweep → stop and re-scope.

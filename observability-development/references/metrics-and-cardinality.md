@@ -45,12 +45,16 @@ and a log line for the same event unless you need both.
 ## Cardinality budgeting
 
 Active series ≈ metric count × the **product** of each attribute's distinct
-values. Worked example for one histogram:
+values — and for a **histogram**, × (bucket count + 2), because each
+attribute combination exports one series per bucket plus `_sum` and
+`_count` (Prometheus exposition; native/exponential histograms differ).
+Worked example for one histogram with 10 buckets (12 series per combination):
 
 ```text
 http.server.request.duration
-  route (30 templates) × method (5) × status_class (5) = 750 series
-+ user_id as an attribute (50,000 users)               = 37,500,000 series
+  route (30 templates) × method (5) × status_class (5) = 750 combinations
+                                            × 12       = 9,000 series
++ user_id as an attribute (50,000 users)               = 450,000,000 series
 ```
 
 One unbounded attribute multiplies everything. Discipline:

@@ -91,8 +91,9 @@ export default defineConfig({
 
 ## In CI and adjacent concerns
 
-Install only the needed browsers (`npx playwright install --with-deps
-chromium`); publish the HTML report and traces as artefacts. Pipeline wiring →
-`devops-development`. For **accessibility** assertions beyond the ARIA
-snapshot (axe-core, screen-reader checks) → `accessibility-development`. Test
+Install only the browsers your `projects` use (`npx playwright install
+--with-deps chromium webkit` for the config above — a project whose browser
+isn't installed fails at launch); publish the HTML report and traces as
+artefacts. Pipeline wiring → `devops-development`. For **accessibility**
+assertions beyond the ARIA snapshot (axe-core, screen-reader checks) → `accessibility-development`. Test
 *data* setup → `test-data.md`.

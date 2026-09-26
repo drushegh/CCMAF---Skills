@@ -131,7 +131,8 @@ some_tool "${args[@]}"                     # then expand — no eval, no quoting
 ```bash
 TMP_DIR=$(mktemp -d); readonly TMP_DIR   # split: `readonly X=$(...)` hides
                                          # mktemp's exit status (SC2155)
-trap 'rm -rf -- "$TMP_DIR"' EXIT INT TERM
+trap 'rm -rf -- "$TMP_DIR"' EXIT          # cleanup on EXIT only
+trap 'exit 130' INT; trap 'exit 143' TERM  # signals -> exit -> EXIT trap
 chmod 700 "$TMP_DIR"
 ```
 

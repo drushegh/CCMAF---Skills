@@ -79,8 +79,9 @@ void fragment() { NORMAL = ...; }  // use world_normal here
 ## Common built-ins (all types)
 
 `TIME` (seconds since engine start — wraps; not a frame counter),
-`PI`/`TAU`/`E`, `OUTPUT_IS_SRGB` is **gone** in 4.x (output is linear,
-the engine tonemaps). Coordinate matrices in 3D: `MODEL_MATRIX`,
+`PI`/`TAU`/`E`, `OUTPUT_IS_SRGB` (still present in 4.x: `true` on the
+Compatibility renderer, `false` on Forward+/Mobile, which output linear
+and let the engine tonemap — branch on it rather than assuming). Coordinate matrices in 3D: `MODEL_MATRIX`,
 `MODELVIEW_MATRIX`, `VIEW_MATRIX`, `INV_VIEW_MATRIX`,
 `PROJECTION_MATRIX`, `INV_PROJECTION_MATRIX`.
 

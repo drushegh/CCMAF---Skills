@@ -71,7 +71,8 @@ useState(() => buildIndex(items));                   // ✅ not useState(buildIn
    to stream non-critical sections; in RSC, sibling async components
    parallelise — sequential awaits in one component don't.
 2. **Bundle size — CRITICAL.** Dynamic-import heavy components
-   (`next/dynamic`, `ssr: false` for browser-only); avoid barrel-file
+   (`next/dynamic`, `ssr: false` for browser-only — only from a Client
+   Component; Next.js 15+ rejects it in a Server Component); avoid barrel-file
    imports (icon/component libraries cost 200–800ms); defer
    analytics/tracking until after hydration; preload on hover/intent.
 3. **Server work — HIGH.** `React.cache()` for per-request dedup;
@@ -122,8 +123,10 @@ authenticate inside every action, never rely on page-level guards.
   (`.toISOString()`, plain objects).
 - **`redirect()`/`notFound()` inside try/catch** — they throw internally;
   call outside the try, or `unstable_rethrow(error)` first.
-- **`useSearchParams` without a Suspense boundary** — silently makes the
-  whole page client-rendered.
+- **`useSearchParams` without a Suspense boundary** — on a statically
+  rendered route the client bails out to client-side rendering up to the
+  nearest boundary; `next build` fails with "Missing Suspense boundary
+  with useSearchParams". Wrap the reading component in `<Suspense>`.
 - **Hydration mismatches** — browser-only APIs, `new Date()`, random
   values, invalid HTML nesting. Fix with mounted-check, `useId`, or the
   inline-script pattern (no flicker); `suppressHydrationWarning` only for
@@ -134,8 +137,9 @@ authenticate inside every action, never rely on page-level guards.
 
 ## Agent Workflow Rules
 
-1. **Match the repo**: React version (19 drops `forwardRef`; `use()` over
-   `useContext`), router (App vs Pages), data library, React Compiler
+1. **Match the repo**: React version (19 passes `ref` as a plain prop, so
+   new code needs no `forwardRef` — still supported, slated for
+   deprecation; `use()` over `useContext`), router (App vs Pages), data library, React Compiler
    on/off — these change what correct code looks like.
 2. **Priority order for review**: waterfalls → bundle → server → re-renders
    → micro-optimisations. Never lead with micro-optimisations; never

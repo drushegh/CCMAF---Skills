@@ -14,14 +14,18 @@ how to derive the narrative and breaking-change flag mechanically.
 |---|---|
 | Data-model / schema shift | paired before-after table (two columns, one row per field) |
 | API-contract shift | paired before-after table (method, path, params, status, body) |
-| Architecture / data-flow shift | two Mermaid diagrams side by side (before, after) |
-| Code hunk under review | **split diff** (before left, after right) — the recap default |
-| Genuinely narrow standalone hunk | unified diff — only when split would waste width |
+| Architecture / data-flow shift | two Mermaid diagrams, before then after |
+| Code hunk under review | unified ` ```diff ` fence — the plain-Markdown default |
+| Short hunk where alignment matters | paired before/after fences (or a two-column table) |
 
-**Split is the recap default for code**: review legibility comes from seeing both
-sides aligned, the eye comparing rows rather than tracking `-`/`+` prefixes down
-one column. Reserve unified mode for a hunk so narrow that two columns would be
-mostly whitespace (a one-line change, a single added guard).
+**Unified `diff` is the plain-Markdown default for code**: Markdown has no
+side-by-side diff primitive — a ` ```diff ` fence renders one column with `-`/`+`
+highlighting everywhere (GitHub, GitLab, most viewers). A split view exists only
+where the *surface* provides one (a PR's "Split" toggle, a diff tool, an HTML
+recap); don't promise it in a Markdown recap. When seeing both sides aligned
+genuinely helps — a short hunk whose lines were reordered or reworded — show a
+`Before` fence followed by an `After` fence (or a two-column table for a handful
+of one-line changes) instead of hand-faking columns.
 
 A paired contract table makes the delta legible at a glance — one row per field,
 a `Before` and `After` column, and a per-row marker on the cells that changed

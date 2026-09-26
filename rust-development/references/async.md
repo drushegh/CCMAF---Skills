@@ -14,7 +14,7 @@ Rules of the runtime: never block >100µs without `.await` (use
 | `Rc<T>` / `RefCell<T>` | ❌ / ✅ | ❌ | use `Arc` / `Mutex`, or `spawn_local` |
 | `Arc<T>` | ✅* | ✅* | *only if `T: Send + Sync` — Arc doesn't add safety |
 | `Mutex<T>` | ✅* | ✅* | *needs only `T: Send` |
-| `RwLock<T>` | ✅* | ✅* | *needs `T: Send + Sync` — stricter than Mutex |
+| `RwLock<T>` | ✅* | ✅* | *Send needs only `T: Send`; Sync needs `T: Send + Sync` (stricter than Mutex) |
 | `MutexGuard` | ❌ | ✅ | the root of "future is not Send" errors |
 
 "Future cannot be sent between threads safely" → find what's held across
@@ -31,7 +31,7 @@ the await (guard, `Rc`) — scope it or replace it.
 ```rust
 // ✅ scope the guard before awaiting
 let value = {
-    let guard = mutex.lock().unwrap();
+    let guard = mutex.lock().unwrap_or_else(std::sync::PoisonError::into_inner);
     guard.clone()
 };
 do_async(value).await;
@@ -118,7 +118,8 @@ match tokio::time::timeout(Duration::from_secs(5), fetch()).await {
 // Standard shutdown: CancellationToken (tokio-util), not hand-rolled AtomicBool
 let token = CancellationToken::new();
 let child = token.child_token();          // hierarchical cancellation
-tokio::spawn(async move {
+let mut tasks = tokio::task::JoinSet::new();         // tracked, not a bare tokio::spawn
+tasks.spawn(async move {
     loop {
         tokio::select! {
             _ = child.cancelled() => break,
@@ -127,6 +128,7 @@ tokio::spawn(async move {
     }
 });
 token.cancel();
+while let Some(res) = tasks.join_next().await { res?; }   // wait + surface panics
 ```
 
 ## Async Traits
@@ -134,4 +136,8 @@ token.cancel();
 Native `async fn` in traits (1.75+) — but not dyn-compatible. For
 `dyn Trait`: `async-trait` crate. For Send bounds on native form:
 `fn process(&self) -> impl Future<Output = ()> + Send;`. Async closures
-(1.85+): `async |x| { ... }` — pass directly, don't name `AsyncFn` bounds.
+(1.85+): `async |x| { ... }`; accept them with `F: AsyncFn(X) -> Y` (also
+`AsyncFnMut`/`AsyncFnOnce`, stable in 1.85) instead of the old
+`F: Fn(X) -> Fut, Fut: Future` pair. Caveat: an `AsyncFn` bound can't yet
+require the returned future to be `Send`; keep the two-parameter form
+where the caller must `tokio::spawn` the result.

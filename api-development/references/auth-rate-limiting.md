@@ -1,14 +1,15 @@
 # Authentication, authorisation and rate limiting
 
-API-surface patterns. The identity-provider configuration, token validation
-internals and threat model live in `azure-development` / `secure-development`;
+API-surface patterns. Identity-provider configuration and token validation
+internals live in `identity-development` (Entra ID specifics in
+`azure-development`); the threat model lives in `secure-development`;
 this covers how the API *presents* auth and protects itself.
 
 ## Authentication schemes
 
 | Scheme | Use when |
 |---|---|
-| **OAuth2 / OIDC bearer (JWT)** | Default for user- and app-delegated access. `Authorization: Bearer <token>`; validate issuer, audience, expiry, signature. Scopes/roles carry permissions. Entra ID on the house stack |
+| **OAuth2 / OIDC bearer (JWT)** | Default for user- and app-delegated access. `Authorization: Bearer <token>`; validate issuer, audience, expiry, signature. Scopes/roles carry permissions. On Microsoft/Azure stacks the IdP is typically Entra ID |
 | **API keys** | Server-to-server or simple partner access. `X-API-Key: <key>` (a header, never the URL). Lower assurance — scope tightly, rotate, rate-limit per key |
 | **mTLS** | High-assurance service-to-service / regulated integrations |
 
@@ -40,13 +41,18 @@ Protect availability and signal limits to clients.
 ```http
 HTTP/1.1 429 Too Many Requests
 Retry-After: 60
-RateLimit: limit=1000, remaining=0, reset=60
+RateLimit-Policy: "default";q=1000;w=60
+RateLimit: "default";r=0;t=60
 ```
 
 - Return `429` with `Retry-After` when limiting.
 - Surface budget on normal responses. The IETF `RateLimit`/`RateLimit-Policy`
-  header fields are standardising; `X-RateLimit-Limit` / `-Remaining` /
-  `-Reset` remain the widely-deployed de-facto form — pick one and document it.
+  header fields (draft-ietf-httpapi-ratelimit-headers, still an Internet-Draft)
+  use Structured Fields: a named policy with `q` (quota) and `w` (window, s) in
+  `RateLimit-Policy`, and `r` (remaining) and `t` (seconds until reset) in
+  `RateLimit`. Older drafts' `limit=, remaining=, reset=` syntax is obsolete.
+  `X-RateLimit-Limit` / `-Remaining` / `-Reset` remain the widely-deployed
+  de-facto form — pick one and document it.
 - Limit per principal/API key (and optionally per IP); choose an algorithm
   (token bucket / sliding window) suited to burst tolerance.
 - Distinguish throttling (`429`, retryable) from quota exhaustion (often `403`

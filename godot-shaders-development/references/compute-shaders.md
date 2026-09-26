@@ -25,6 +25,9 @@ layout(set = 0, binding = 0, std430) restrict buffer Data {
 
 void main() {
     uint i = gl_GlobalInvocationID.x;
+    if (i >= uint(buf.values.length())) {
+        return;                     // last workgroup may overhang the data
+    }
     buf.values[i] = buf.values[i] * 2.0;
 }
 ```
@@ -58,7 +61,8 @@ var pipeline := rd.compute_pipeline_create(shader)
 var cl := rd.compute_list_begin()
 rd.compute_list_bind_compute_pipeline(cl, pipeline)
 rd.compute_list_bind_uniform_set(cl, uniform_set, 0)
-rd.compute_list_dispatch(cl, input.size() / 64 + 1, 1, 1)  # workgroups
+var groups := ceili(input.size() / 64.0)   # ceil(n / local_size_x)
+rd.compute_list_dispatch(cl, groups, 1, 1)  # workgroups, not threads
 rd.compute_list_end()
 
 rd.submit()

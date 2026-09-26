@@ -8,14 +8,22 @@ not resolve here is treated as fabricated until proven otherwise.
 
 Usage:
   python3 verify_citation.py --doi 10.1145/3442188.3445922
+  python3 verify_citation.py --doi https://dx.doi.org/10.1145/3442188.3445922
+  python3 verify_citation.py --doi 10.1145/3442188.3445922 --title "On the dangers of stochastic parrots"
   python3 verify_citation.py --title "Attention is all you need"
   python3 verify_citation.py --title "..." --email you@org.example   # polite pool
 
-Exit codes: 0 verified · 1 not found / weak match (suspect) · 2 usage ·
-3 network/unavailable (do NOT treat as verified). Stdlib only; needs network.
+DOIs are accepted bare or with a doi:/https://doi.org/ /https://dx.doi.org/
+prefix. Pass --doi AND --title together to also catch a mis-attributed DOI: the
+DOI must resolve AND its record's title must match the claimed title.
+
+Exit codes: 0 verified · 1 not found / weak match / DOI-title mismatch (suspect)
+· 2 usage · 3 network/unavailable (do NOT treat as verified). Stdlib only;
+needs network.
 """
 import argparse
 import json
+import re
 import sys
 import urllib.error
 import urllib.parse
@@ -23,6 +31,14 @@ import urllib.request
 from difflib import SequenceMatcher
 
 TIMEOUT = 20
+
+# doi:10.x/..., https://doi.org/10.x/..., http://dx.doi.org/10.x/..., DOI: 10.x/...
+_DOI_PREFIX = re.compile(r"^\s*(?:doi\s*:\s*|https?://(?:dx\.)?doi\.org/)", re.IGNORECASE)
+
+
+def _norm_doi(doi):
+    """Strip resolver/`doi:` prefixes and trailing citation punctuation from a DOI."""
+    return _DOI_PREFIX.sub("", doi or "").strip().rstrip(".,;")
 
 
 def _get(url, email):
@@ -87,7 +103,7 @@ def _oa_item(w):
         "authors": authors,
         "year": str(w.get("publication_year") or ""),
         "venue": src.get("display_name", "") or "",
-        "doi": (w.get("doi") or "").replace("https://doi.org/", ""),
+        "doi": _norm_doi(w.get("doi")),
         "source": "OpenAlex",
     }
 
@@ -119,22 +135,50 @@ def _print(rec, confidence=None):
         print(f"  match  : {confidence:.2f}")
 
 
+def _utf8_stdout():
+    # Records carry non-Latin-1 text (author names, en dashes). On Windows a
+    # piped stdout defaults to the ANSI code page (cp1252), where printing them
+    # raises UnicodeEncodeError -> exit 1, indistinguishable from "suspect".
+    for stream in (sys.stdout, sys.stderr):
+        try:
+            stream.reconfigure(encoding="utf-8", errors="replace")
+        except (AttributeError, ValueError):
+            pass
+
+
 def main():
+    _utf8_stdout()
     ap = argparse.ArgumentParser(description="Verify a citation exists in Crossref/OpenAlex.")
-    g = ap.add_mutually_exclusive_group(required=True)
-    g.add_argument("--doi")
-    g.add_argument("--title")
+    ap.add_argument("--doi")
+    ap.add_argument("--title", help="claimed title; with --doi, also checked against the DOI's record")
     ap.add_argument("--email", help="contact email (polite API pool)")
     ap.add_argument("--threshold", type=float, default=0.80, help="title-match threshold (default 0.80)")
     a = ap.parse_args()
+    if not (a.doi or a.title):
+        ap.error("one of --doi or --title is required")
     net_err = False
 
     if a.doi:
-        doi = a.doi.strip().replace("https://doi.org/", "")
+        doi = _norm_doi(a.doi)
+        if not doi:
+            ap.error("--doi is empty after normalisation")
         for fn in (crossref_by_doi, openalex_by_doi):
             try:
                 rec = fn(doi, a.email)
                 if rec:
+                    if a.title and a.title.strip():
+                        claimed = a.title.strip()
+                        # Indexes often store the main title without its subtitle.
+                        score = max(_ratio(claimed, rec["title"]),
+                                    _ratio(claimed.split(":")[0], rec["title"]))
+                        if score < a.threshold:
+                            print(f"MISMATCH — DOI {doi} resolves, but to a different title "
+                                  f"(match {score:.2f} < {a.threshold:.2f}). Treat the citation as mis-attributed:")
+                            _print(rec, score)
+                            return 1
+                        print(f"VERIFIED — DOI resolves and its title matches (match {score:.2f}):")
+                        _print(rec, score)
+                        return 0
                     print("VERIFIED — DOI resolves to a real record:")
                     _print(rec)
                     return 0

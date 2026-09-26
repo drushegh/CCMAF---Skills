@@ -45,7 +45,7 @@ the default safe target — choose deliberately
 4. **Asset pipeline is glTF/GLB**: Draco or meshopt compression for
    geometry, **KTX2/Basis** for textures, power-of-two sizes where
    mipmapped. FBX/OBJ are interchange at best — convert. (Authoring
-   side → `blender-development` when built.)
+   side → `blender-development`.)
 5. **Cap `setPixelRatio(Math.min(devicePixelRatio, 2))`** — beyond 2
    is invisible cost, mobile-lethal.
 6. **Colour management**: leave `outputColorSpace` at its sRGB
@@ -122,6 +122,6 @@ the default safe target — choose deliberately
 - React component architecture, Suspense semantics →
   `react-development`; TypeScript typing → `typescript-development`.
 - Page integration, CSS, bundling → `frontend-development`.
-- Asset authoring/export (Blender) → `blender-development` (Batch C);
+- Asset authoring/export (Blender) → `blender-development`;
   game-engine alternatives → `unity-development` /
   `godot-development` when 3D-in-browser isn't the right call.

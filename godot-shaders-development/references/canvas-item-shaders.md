@@ -43,10 +43,13 @@ clamped UVs.
 
 ## Screen-space effects (2D)
 
-Reading `hint_screen_texture` in 2D requires a `BackBufferCopy` node
-*above* the shaded node in the tree (set its rect/Full), or the back
-buffer is empty/stale. This is the classic "my 2D distortion is black"
-bug — it's draw order, not the shader.
+The first node in tree order that reads `hint_screen_texture` gets an
+automatic full-screen back-buffer copy — no extra node needed. Later
+screen-reading nodes do **not** get a fresh copy, so overlapping effects
+don't see each other's output; place a `BackBufferCopy` node (rect or
+Full) before each one that must read the updated screen. This is the
+classic "my second 2D distortion ignores the first" bug — it's draw
+order, not the shader.
 
 ```glsl
 uniform sampler2D screen_tex : hint_screen_texture;
@@ -59,14 +62,15 @@ void fragment() {
 ## 2D lighting
 
 With `Light2D` nodes, `light()` lets you customise the response.
-Built-ins: `LIGHT` (rgba light at fragment), `LIGHT_COLOR`,
-`LIGHT_ENERGY`, `NORMAL` (from a normal map texture on the node), `UV`,
-`SHADOW_MODULATE`. Write `LIGHT`:
+Built-ins: `LIGHT` (inout rgba result), `LIGHT_COLOR`, `LIGHT_ENERGY`,
+`LIGHT_DIRECTION` (vec3; replaces 3.x `LIGHT_VEC`), `LIGHT_POSITION`,
+`LIGHT_IS_DIRECTIONAL`, `NORMAL` (vec3, from a normal map texture on the
+node), `COLOR`, `UV`, `SHADOW_MODULATE` (out). Write `LIGHT`:
 
 ```glsl
 void light() {
-    float ndl = dot(normalize(NORMAL.xy), normalize(LIGHT_VEC));
-    LIGHT = texture(TEXTURE, UV) * LIGHT_COLOR * LIGHT_ENERGY * max(ndl, 0.0);
+    float ndl = max(dot(NORMAL, LIGHT_DIRECTION), 0.0);
+    LIGHT = vec4(LIGHT_COLOR.rgb * COLOR.rgb * LIGHT_ENERGY * ndl, LIGHT_COLOR.a);
 }
 ```
 

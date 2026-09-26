@@ -47,7 +47,9 @@ failed debugging sessions are jumps straight from symptom to Fix.
    verify a fix — you can only stop seeing the symptom. "Cannot
    reproduce" is a finding to investigate, not a reason to guess
    ([references/reproduce-and-minimise.md](references/reproduce-and-minimise.md)).
-2. **Read the whole error.** Bottom frame of the stack, the *first*
+2. **Read the whole error.** The innermost frame where it was raised
+   (the *last* line of a Python traceback, the *first* frame of a
+   Java/JS/.NET trace), the first frame in *your* code, the *first*
    error of a cascade, the actual values in the message. Half of all
    bugs are solved by reading what the system already said.
 3. **One hypothesis, one change at a time.** Write the hypothesis down

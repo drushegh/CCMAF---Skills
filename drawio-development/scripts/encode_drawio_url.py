@@ -10,8 +10,32 @@ carried in the URL fragment (after ``#``), so nothing is uploaded to a server.
 
 Usage:  python3 encode_drawio_url.py [--edit] <path/to/input.drawio>
 
-Stdlib only. Adapted from Agents365-ai/drawio-skill (MIT) — see
-references/delivery-and-export.md and the repo's _source-commits.txt.
+Stdlib only. Adapted from Agents365-ai/drawio-skill
+(https://github.com/Agents365-ai/drawio-skill), used under the MIT License,
+whose notice is reproduced below as that license requires. See also
+references/delivery-and-export.md.
+
+    MIT License
+
+    Copyright (c) 2026 Agents365-ai
+
+    Permission is hereby granted, free of charge, to any person obtaining a copy
+    of this software and associated documentation files (the "Software"), to deal
+    in the Software without restriction, including without limitation the rights
+    to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+    copies of the Software, and to permit persons to whom the Software is
+    furnished to do so, subject to the following conditions:
+
+    The above copyright notice and this permission notice shall be included in all
+    copies or substantial portions of the Software.
+
+    THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+    IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+    FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+    AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+    LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+    OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+    SOFTWARE.
 """
 import base64
 import json

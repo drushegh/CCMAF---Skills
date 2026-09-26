@@ -11,7 +11,7 @@ style strings (a wrong name renders as a blank box).
 
 The pack ships under `assets/azure-icons/Microsoft_Terms_of_Use.pdf`. Permitted
 use is **architecture diagrams, training materials, and documentation** — which
-is exactly what this skill produces. Two rules are **mandatory** and are baked
+is exactly what this skill produces. Three rules are **mandatory** and are baked
 into the recipe below:
 
 - **Always label** the icon with the **full service name**, placed near but not

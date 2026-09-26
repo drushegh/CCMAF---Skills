@@ -21,9 +21,13 @@ Never sniff `$env:OS`.
 
 - PS7 defaults to UTF-8 (no BOM); **Windows PowerShell 5.1 defaults to
   UTF-16LE** for `Out-File`/redirect and ANSI for some cmdlets. Files
-  exchanged with other tools get explicit `-Encoding utf8`.
-- BOM matters to bash/python tooling — `utf8NoBOM` (PS7 default) for
-  anything a non-PowerShell consumer reads.
+  exchanged with other tools get an explicit encoding.
+- BOM matters to bash/python tooling. On PS7 use `-Encoding utf8NoBOM`
+  (or `utf8`, which is BOM-less there). On **5.1, `-Encoding utf8`
+  writes a BOM** and `utf8NoBOM` does not exist — write BOM-less text via
+  `[IO.File]::WriteAllText($path, $text, [Text.UTF8Encoding]::new($false))`
+  (use an absolute path: .NET resolves relative paths against the
+  process CWD, not `$PWD`).
 - Console output mangling on Windows usually means
   `[Console]::OutputEncoding` vs the terminal — set both to UTF-8 in
   profile for mixed toolchains.

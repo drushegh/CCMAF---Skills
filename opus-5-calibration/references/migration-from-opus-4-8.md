@@ -36,21 +36,26 @@ disabled-thinking artifacts in `effort-and-thinking.md`.
 ## Step 3 — the subtraction sweep
 
 Search prompts, `CLAUDE.md` files, skill files and harness scaffolding for
-these and delete them. This is where most of the migration value is.
+these and act on each. This is where most of the migration value is — but
+the sweep removes *redundant re-reading*, not *empirical* checks (see
+SKILL.md §"Verification: subtract re-reading, keep evidence").
 
 | Search for | Action |
 |---|---|
-| `verif` — "final verification step", "verify before finishing" | Delete; also delete harness steps that add a separate verification pass |
-| "subagent to verify", "verifier agent" over own work | Delete |
+| `verif` — "final verification step", "verify before finishing" | Triage each hit: delete it if it means re-reading / re-reasoning; **keep** it if it runs, renders, measures or diffs something (tests, screenshots, benchmarks) |
+| "subagent to verify", "verifier agent" over own work | Delete when the agent only re-reads the author's output; **keep** independent review with a different prior, and any rule that the author is not its own acceptance gate |
 | "double-check", "re-check", "re-verify" | Delete |
 | "only report high", "be conservative", "high-severity only" | Replace with report-everything plus a separate filtering pass |
 | "do not think", "do not reason", "no reasoning" | Delete — increases internal-tag leakage |
 | `<thinking>` named explicitly in a prohibition | Replace with the general no-internal-tags rule |
 | Vision workarounds tuned for older models | Re-validate; most are now unnecessary |
 
-Rationale: Opus 5 verifies its own work and self-corrects without being
-told. These instructions compound with behaviour the model already has,
-spending tokens with no quality gain.
+Rationale: Opus 5 re-checks its own reasoning and self-corrects without
+being told, so instructions to re-read compound with behaviour the model
+already has, spending tokens with no quality gain. Self-correction cannot
+surface facts absent from context, though — a green static gate over
+visibly broken output is the observed failure (SKILL.md §"Field
+corrections") — so harness steps that produce new evidence stay.
 
 ## Step 4 — re-sweep effort
 

@@ -50,7 +50,7 @@ Where an XSS payload can reach determines everything:
 | Storage | Verdict |
 |---|---|
 | `localStorage` / `sessionStorage` | Readable by any injected script — tokens exfiltrate silently. Avoid for refresh tokens outright; avoid for access tokens unless short-lived and the threat model accepts it |
-| In-memory (module variable) | Best pure-SPA option: gone on reload, not enumerable from storage. Pair with a rotating refresh token in an `HttpOnly` cookie scoped to the token endpoint |
+| In-memory (module variable) | Best pure-SPA option: gone on reload, not enumerable from storage. A pure SPA's refresh token is also JS-held (memory, or `sessionStorage` to survive reload) — so require rotation with reuse detection and short lifetimes. An `HttpOnly` refresh cookie is only possible with a server component (token-mediating backend or BFF, below) — JS can't set one, and the AS token endpoint returns tokens in the JSON body |
 | `HttpOnly` cookie via a BFF | Strongest: no token ever reaches JS |
 
 **The BFF (backend-for-frontend) pattern** — current IETF browser-based-apps

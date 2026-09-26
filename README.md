@@ -208,7 +208,7 @@ This grouping exists for navigation in this README. It is not repository metadat
 
 *On a trigger, the `SKILL.md` core enters context; of the reference files behind it, only the one the task touches follows.*
 
-**Load the core; open the depth only when the task needs it.** Every skill has the same two-layer shape. The real `python-development/` directory:
+**Load the core; open the depth only when the task needs it.** Every skill has the same two-layer shape (a few also carry a `scripts/` helper or static `assets/` beside it). The real `python-development/` directory:
 
 ```
 python-development/
@@ -318,7 +318,7 @@ The plugin path needs no CCMAF; the selective path is a CCMAF mechanism. [CCMAF]
 
 ## Contributing & license
 
-MIT, for all 72 skills. Contributions go through issues and pull requests on [this repository](https://github.com/drushegh/CCMAF---Skills). A skill contribution keeps the catalogue's shape: one self-contained directory, a lean `SKILL.md` whose frontmatter description carries the trigger phrases, and depth split into `references/` files by topic.
+MIT, for all 72 skills, with one third-party exception: the Azure architecture icons bundled under `drawio-development/assets/azure-icons/` are Microsoft's, redistributed under Microsoft's own terms (the copy ships alongside them as `Microsoft_Terms_of_Use.pdf`), not under MIT. Contributions go through issues and pull requests on [this repository](https://github.com/drushegh/CCMAF---Skills). A skill contribution keeps the catalogue's shape: one self-contained directory, a lean `SKILL.md` whose frontmatter description carries the trigger phrases, and depth split into `references/` files by topic.
 
 <details>
 <summary><strong>How the skills are built and verified</strong></summary>
@@ -333,13 +333,13 @@ Skills were built from curated official and community sources (repositories and 
 This repo is the skills upstream the CCMAF framework consumes mechanically (`contract:skills-sync`). An agent session authoring or modifying skills must preserve these invariants:
 
 1. **One directory per skill at the repo root.** The directory name *is* the skill's identity — the token in `SKILLS_SELECTED`, the ownership boundary the sync overwrites, and the name other skills cross-reference. Renaming is a breaking change for every consumer that selected it.
-2. **Naming `<domain>-development`**, lowercase, hyphenated, so `skills-sync.sh --suggest` output stays paste-able.
+2. **Naming: lowercase and hyphenated**, so `skills-sync.sh --suggest` output stays paste-able. Technology-stack skills use `<domain>-development` (`python-development`, `azure-development`); discipline and agent-workflow skills use a short descriptive name instead (`academic-research`, `systematic-debugging`, `visual-plan`, `uncanny`).
 3. **`SKILL.md` is mandatory**, with YAML frontmatter: `name` equal to the directory name, and a `description` under 1,024 characters listing concrete triggers. Everything else in the directory ships verbatim on sync.
 4. **Cross-references are advisory names, not hard links.** Skills route adjacent concerns to siblings by directory name; a consumer who synced only one of a pair just gets less depth there, never breakage.
 5. **Every commit to `main` is a release.** Consumers pin a SHA in `.claude/.skills-version`; `skills-check.sh` compares that pin to `main` at cold start and prompts a re-sync. Keep `main` always-shippable.
-6. **Plain Markdown, LF line endings, no executable content.** Consumer audits scan synced skills for hidden-character and instruction-injection patterns — keep skills free of zero-width/bidi characters and "ignore your instructions" phrasing, even in examples.
+6. **Markdown-first, LF line endings, nothing that runs on its own.** A skill is Markdown plus, where a task genuinely needs it, small stdlib-only helper scripts under `scripts/` (for example `academic-research/scripts/verify_citation.py`, `drawio-development/scripts/validate.py`) and static `assets/`. Scripts ship verbatim on sync but never execute on install or sync; the agent runs one only when the skill tells it to, and they must stay dependency-free and readable. Consumer audits scan synced skills for hidden-character and instruction-injection patterns — keep skills free of zero-width/bidi characters and "ignore your instructions" phrasing, even in examples.
 
-**Adding a skill:** a `<domain>-development` directory whose `SKILL.md` frontmatter `name` matches it exactly; a lean `SKILL.md` plus `references/` topic files, with every reference in the index present on disk and vice versa; a boundary section routing adjacent concerns to real sibling directory names; UK English and date-stamped fast-moving claims; add the skill to this README's catalogue; append `"./<name>"` to the `skills` array in `.claude-plugin/plugin.json` (bare directory refs, forward slashes); and, if the stack is detectable from project files, add the mapping to the framework's `--suggest` detection.
+**Adding a skill:** a directory named per invariant 2 whose `SKILL.md` frontmatter `name` matches it exactly; a lean `SKILL.md` plus `references/` topic files, with every reference in the index present on disk and vice versa; a boundary section routing adjacent concerns to real sibling directory names; UK English and date-stamped fast-moving claims; add the skill to this README's catalogue; append `"./<name>"` to the `skills` array in `.claude-plugin/plugin.json` (bare directory refs, forward slashes); and, if the stack is detectable from project files, add the mapping to the framework's `--suggest` detection.
 
 </details>
 

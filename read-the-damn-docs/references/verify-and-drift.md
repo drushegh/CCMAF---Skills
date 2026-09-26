@@ -68,9 +68,11 @@ mechanically:
 | **MINOR** | Backward-compatible additions **OR** any public API marked **deprecated** | Read it now — a deprecation lands here, ahead of removal |
 | **PATCH** | Backward-compatible bug fixes only | Safe to take; still skim |
 
-The load-bearing rule: **a deprecation MUST land in a MINOR release before the
-API can be removed in the next MAJOR.** That is the early-warning signal you read
-in changelogs — the deprecation note in `2.x` is your map to what `3.0` deletes.
+The load-bearing rule: marking public API **deprecated MUST bump MINOR** (spec
+item 7), and the spec's FAQ says there **should** be at least one minor release
+carrying the deprecation before a MAJOR removes it — a SHOULD, not a guarantee,
+so a MAJOR can still delete something with no prior warning. That is the
+early-warning signal you read in changelogs — the deprecation note in `2.x` is your map to what `3.0` deletes.
 
 Before upgrading, or before trusting a recalled API shape, scan the changelog
 for **deprecated / removed / breaking / migration** and capture the **from→to
@@ -109,8 +111,9 @@ For any non-obvious API decision, leave a trace a future reader — or an eval �
 can re-verify: the **source URL** and the **doc's version/date**.
 
 ```python
-# urllib3 2.x moved Retry.backoff_max out of the constructor's **kwargs;
-# verified against urllib3 2.2 docs, June 2026: <docs-url>#retry
+# urllib3 2.0 added Retry(backoff_max=...) as a constructor parameter and
+# renamed the Retry.BACKOFF_MAX class attribute to DEFAULT_BACKOFF_MAX;
+# verified against the urllib3 2.x changelog/docs on <date>: <docs-url>#retry
 ```
 
 This is the engineering analogue of a reproducible literature search

@@ -29,9 +29,11 @@ terraform {
 }
 ```
 
-Backend blocks take no variables — per-environment values arrive via
-`terraform init -backend-config=…` (partial configuration) or per-env
-directories with their own backend files.
+In Terraform, backend blocks take no variables — per-environment values
+arrive via `terraform init -backend-config=…` (partial configuration) or
+per-env directories with their own backend files. OpenTofu 1.8+ relaxes
+this (early evaluation: variables and locals are allowed in `backend`
+blocks), but partial configuration stays the portable pattern.
 
 ## State security
 

@@ -25,8 +25,10 @@ public class CreateAccountNickname : IPlugin
 
         tracing.Trace("Stage {0}, Message {1}, Depth {2}", context.Stage, context.MessageName, context.Depth);
 
+        // C# 7.3 syntax on purpose: a net462 project defaults to C# 7.3, so
+        // the C# 9 `is not Entity entity` form doesn't compile here.
         if (!context.InputParameters.Contains(Target) ||
-            context.InputParameters[Target] is not Entity entity)
+            !(context.InputParameters[Target] is Entity entity))
         {
             return;
         }
@@ -102,9 +104,13 @@ whole transaction**. The try/catch-and-continue pattern that works in
 client apps produces "ISV code reduced the open transaction count" /
 "no active transaction" errors here. If an `IOrganizationService` call
 fails, the only correct move is to surface
-`InvalidPluginExecutionException`. Related: **no
-`ExecuteMultipleRequest`/`ExecuteTransactionRequest`** and **no
-parallel threading** inside plug-ins — unsupported.
+`InvalidPluginExecutionException`. Related: **no batch request types**
+in synchronous plug-in steps — `ExecuteMultipleRequest`,
+`ExecuteTransactionRequest` and the bulk messages
+`CreateMultipleRequest`/`UpdateMultipleRequest`/`UpsertMultipleRequest`
+(Microsoft Learn: "Don't use batch request types in plug-ins and
+workflow activities"; issue individual requests instead) — and **no
+parallel threading** inside plug-ins (unsupported).
 
 ## External Calls
 

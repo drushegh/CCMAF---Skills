@@ -36,25 +36,41 @@ private async Task LoadAsync(CancellationToken ct)
 ## Explicit marshalling (when you're handed a foreign thread)
 
 Callbacks from timers, sockets, file watchers or library events may arrive
-on worker threads:
+on worker threads. Marshal them in the **service** that owns the foreign
+thread, so view models stay dispatcher-free and unit-testable (the MVVM
+rule in mvvm-and-toolkit.md):
 
 ```csharp
-public sealed partial class ConnectionViewModel : ObservableObject
+public sealed class ConnectionService : IConnectionService
 {
-    // Captured on the UI thread at construction — null if fetched off-thread
+    // Captured on the UI thread at construction — null if fetched off-thread.
+    // Register as a singleton and resolve it once at startup on the UI thread.
     private readonly DispatcherQueue _queue = DispatcherQueue.GetForCurrentThread();
+
+    public event EventHandler<string>? MessageReceived;   // raised on the UI thread
 
     private void OnSocketMessage(string text)      // arrives on a worker thread
     {
-        _queue.TryEnqueue(() => Status = text);              // WinUI 3
-        // WPF equivalent: _dispatcher.InvokeAsync(() => Status = text);
+        _queue.TryEnqueue(() => MessageReceived?.Invoke(this, text));   // WinUI 3
+        // WPF equivalent: _dispatcher.InvokeAsync(() => MessageReceived?.Invoke(this, text));
     }
+}
+
+public sealed partial class ConnectionViewModel : ObservableObject
+{
+    [ObservableProperty] private string _status = "";
+
+    public ConnectionViewModel(IConnectionService connection)
+        => connection.MessageReceived += (_, text) => Status = text;   // already on UI thread
 }
 ```
 
 - `DispatcherQueue.GetForCurrentThread()` returns **null on a non-UI
   thread** — capture it during construction on the UI thread, don't fetch
   it at the point of use.
+- If a view model genuinely must marshal, inject a small `IUiDispatcher`
+  abstraction (fake it synchronously in tests) — never a raw
+  `Dispatcher`/`DispatcherQueue`.
 - Prefer designing services to expose `Task`s or `IProgress<T>` instead of
   raw cross-thread events, so view models never see a foreign thread.
 - `IProgress<T>` via `new Progress<T>(handler)` created on the UI thread

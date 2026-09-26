@@ -96,7 +96,7 @@ Bun/tsgo/Biome/Turborepo fast stack: [references/tooling.md](references/tooling.
 
 ## Decision Rules
 
-**Error handling** — `Result of T, E` discriminated unions for expected,
+**Error handling** — `Result<T, E>` discriminated unions for expected,
 recoverable failures (parsing, validation, not-found); exceptions only for
 programmer errors and truly unrecoverable states. Errors in the signature
 force callers to handle them. Details:

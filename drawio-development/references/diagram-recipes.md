@@ -65,7 +65,7 @@ over one dense diagram.
 | Table | `shape=table;startSize=30;container=1;collapsible=1;childLayout=tableLayout;fixedRows=1;rowLines=0;fontStyle=1;strokeColor=#6c8ebf;fillColor=#dae8fc;` |
 | Row (column) | `shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;fillColor=none;collapsible=0;dropTarget=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=12;` (child of the table) |
 | PK column | `fontStyle=1` on the row; prefix `PK` |
-| FK relationship | `dashed=1;endArrow=ERmandOne;startArrow=ERmandOne;` |
+| FK relationship (one-to-many) | `edgeStyle=entityRelationEdgeStyle;startArrow=ERmandOne;endArrow=ERmany;startFill=0;endFill=0;` — source = parent (PK) table, target = child (FK) table. Optional child side: `endArrow=ERzeroToMany`. A true one-to-one uses `ERmandOne`/`ERzeroToOne` on both ends |
 
 Layout TB, tables ~300px apart; group related tables.
 
@@ -88,7 +88,7 @@ Layout TB, classes ~250px apart; interfaces above implementations.
 |---|---|
 | Lifeline | `shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;` |
 | Sync message | `html=1;verticalAlign=bottom;endArrow=block;` |
-| Async message | `html=1;verticalAlign=bottom;endArrow=open;dashed=1;` |
+| Async message | `html=1;verticalAlign=bottom;endArrow=open;` (solid line, open arrowhead — dashed is reserved for returns) |
 | Return | `html=1;verticalAlign=bottom;endArrow=open;dashed=1;strokeColor=#999999;` |
 
 Lifelines ~200px apart (LR); time flows top→bottom.

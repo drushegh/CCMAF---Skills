@@ -105,7 +105,9 @@ otherwise); close modals with `router.back()`, never `router.push()`.
   needs — limited APIs (no `fs`, partial `crypto`), many packages break.
 - Native-binding packages (`sharp`, `bcrypt`, `canvas`) →
   `serverExternalPackages`; window-dependent packages (`recharts`,
-  `monaco`, `mapbox-gl`) → `dynamic(..., { ssr: false })`.
+  `monaco`, `mapbox-gl`) → `dynamic(..., { ssr: false })`, called from a
+  `'use client'` module — Next.js 15+ errors on `ssr: false` inside a
+  Server Component (wrap it in a small client component instead).
 - Self-hosting: `output: 'standalone'` for Docker; multi-instance ISR
   needs a shared cache handler (Redis/S3) — filesystem cache breaks
   across instances.

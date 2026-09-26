@@ -10,7 +10,7 @@ description: >-
   mechanical change at scale, upgrade playbooks (one major at a time,
   changelog first), deprecation and dead-code management, and rollback as
   a design input. Use whenever a task involves modifying untested or
-  unfamiliar code, "upgrade to <framework/runtime> vN", "migrate off X",
+  unfamiliar code, "upgrade framework X to vN", "migrate off X",
   "modernise this module", an inherited codebase, EOL/deprecation
   warnings, a large mechanical rename/refactor, or a rewrite proposal.
   PROACTIVELY activate before editing code that has no tests covering the

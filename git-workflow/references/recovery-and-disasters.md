@@ -66,7 +66,10 @@ Order matters:
 git clone --mirror "$REPO_URL" repo-rewrite && cd repo-rewrite
 git filter-repo --invert-paths --path config/secrets.env
 git filter-repo --replace-text expressions.txt   # or redact strings in place
-git push --force --mirror "$REPO_URL"
+# push branches + tags only: `--mirror` would also try to push the
+# host's read-only refs (GitHub refs/pull/*) and fail on each one
+git push --force "$REPO_URL" 'refs/heads/*:refs/heads/*'
+git push --force "$REPO_URL" 'refs/tags/*:refs/tags/*'
 ```
 
 3. Coordinate: every collaborator re-clones (or rebases per

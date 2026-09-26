@@ -5,8 +5,10 @@
 ComfyUI is a server; you don't need the browser UI to use it. Launch
 flags that matter:
 
-- `--listen [host]` — bind address. **Default is loopback; only widen it
-  deliberately.** `--listen 0.0.0.0` exposes the server on the network.
+- `--listen [host]` — bind address. **Without the flag it binds loopback
+  (127.0.0.1); only widen it deliberately.** A bare `--listen` (no
+  value) binds ALL interfaces (`0.0.0.0,::`, IPv4 + IPv6), as does
+  `--listen 0.0.0.0` — both expose the server on the network.
 - `--port` — default 8188.
 - `--cpu`, `--lowvram`/`--novram`/`--highvram` — execution/VRAM mode.
 - `--output-directory`, `--input-directory`, `--extra-model-paths-config`.

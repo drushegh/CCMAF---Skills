@@ -25,22 +25,40 @@ particle restarts), `ACTIVE`, `EMISSION_TRANSFORM`, `NUMBER`,
 ```glsl
 shader_type particles;
 uniform float gravity = -9.8;
+
+// No built-in RNG in particle shaders: hash the uint seeds yourself
+// (same hash the converted ParticleProcessMaterial code uses).
+uint hash(uint x) {
+    x = ((x >> 16u) ^ x) * 73244475u;
+    x = ((x >> 16u) ^ x) * 73244475u;
+    return (x >> 16u) ^ x;
+}
+float rand01(uint seed) { return float(hash(seed) % 65536u) / 65535.0; }
+
 void start() {
     TRANSFORM[3].xyz = EMISSION_TRANSFORM[3].xyz;
-    VELOCITY = vec3(rand_from_seed(RANDOM_SEED).x - 0.5, 4.0, 0.0);
+    VELOCITY = vec3(rand01(NUMBER + RANDOM_SEED) - 0.5, 4.0, 0.0);
     COLOR = vec4(1.0);
+    CUSTOM.y = 0.0;                          // normalised age
 }
 void process() {
     VELOCITY.y += gravity * DELTA;
     TRANSFORM[3].xyz += VELOCITY * DELTA;
-    COLOR.a = 1.0 - (TIME - INDEX) / LIFETIME;   // crude fade example
+    CUSTOM.y += DELTA / LIFETIME;            // 0 -> 1 over the lifetime
+    COLOR.a = clamp(1.0 - CUSTOM.y, 0.0, 1.0);   // fade out
 }
 ```
 
+`RANDOM_SEED`, `NUMBER` and `INDEX` are `uint` — never mix them into
+float maths without an explicit `float()` cast (no implicit conversion).
+
 Use `CUSTOM.y` to drive sprite-sheet animation or pass a value to the
-draw shader. Collision needs the particle's *Collision* mode plus
-`SDFGI`/`HeightMapShape` setup on the node — that's node config
-(`godot-development`), not shader code.
+draw shader. Collision needs the particles node's *Collision* mode plus
+collider nodes in the scene — `GPUParticlesCollisionSphere3D`/`Box3D`/
+`SDF3D`/`HeightField3D` in 3D, `LightOccluder2D` for `GPUParticles2D` —
+that's node config (`godot-development`), not shader code. In
+`process()` you can react via `COLLIDED`, `COLLISION_NORMAL`,
+`COLLISION_DEPTH`.
 
 ## Sky shaders — `shader_type sky;`
 

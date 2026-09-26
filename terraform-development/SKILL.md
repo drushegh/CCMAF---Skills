@@ -28,9 +28,9 @@ decision → `azure-development`); the pipelines that run it →
 `devops-development`.
 
 Context (July 2026 — re-verify): Terraform has been BUSL-1.1 licensed since
-1.5.x (August 2023) — fine for internal/production use, restricted for
-products competing with HashiCorp. **OpenTofu** (Linux Foundation, MPL-2.0)
-is the open-source fork and stays close to feature parity while adding its
+1.6 (announced August 2023; 1.5.x was the last MPL-2.0 line) — fine for
+internal/production use, restricted for products competing with
+HashiCorp. **OpenTofu** (Linux Foundation, MPL-2.0) is the open-source fork and stays close to feature parity while adding its
 own (notably state encryption, 1.7+). Everything here applies to both;
 `terraform` is used generically. Feature version floors are noted where they
 matter — verify the pinned version in front of you supports them.

@@ -17,9 +17,13 @@ struct ApiResponse {
 }
 ```
 
-**Always `#[serde(default)]` on `Option<T>` where the key may be absent**
-("the tests pass without it" means your test data includes the key — real
-APIs omit keys). **Always pair with `skip_serializing_if`** — otherwise
+**Missing key on a plain `Option<T>` field already deserialises to `None`**
+— serde's derive special-cases `Option`, so `#[serde(default)]` is not
+required there. It becomes required when the field also has
+`deserialize_with`/`with` (the special case is lost and an absent key
+errors) — and "the tests pass without it" then only means your test data
+includes the key. Writing it anyway is harmless documentation for
+concrete `T`. **Pair with `skip_serializing_if`** on output — otherwise
 `None` serialises as `"field": null`, inflating payloads and breaking
 PATCH semantics.
 

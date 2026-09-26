@@ -31,7 +31,7 @@ re-execute *the same interval*. Everything downstream follows:
 | Concern | Airflow 3.x | Dagster | Prefect 3.x |
 |---|---|---|---|
 | Core abstraction | Task DAG | Software-defined assets | Flows/tasks (Python-first) |
-| Data-aware scheduling | Assets/`Dataset` triggers | Native — assets are the model | Event/asset triggers |
+| Data-aware scheduling | `Asset` triggers (`airflow.sdk.Asset`; was `Dataset` in 2.x) | Native — assets are the model | Event/asset triggers |
 | Backfills | Per-DAG catchup/backfill runs | First-class per-asset partitions | Programmatic re-runs |
 | Strength | Ubiquity, operator ecosystem | Lineage + partition awareness | Low-ceremony dynamic Python |
 
@@ -57,13 +57,22 @@ have, schedule on data *sensors*, not on hope.
 ```python
 from datetime import datetime
 from airflow.sdk import dag, task
+from airflow.timetables.interval import CronDataIntervalTimetable
 
 
-@dag(schedule="@daily", start_date=datetime(2026, 1, 1), catchup=False)
+# Explicit interval timetable: Airflow 3 maps bare cron/presets to
+# CronTriggerTimetable (no real interval) by default.
+@dag(
+    schedule=CronDataIntervalTimetable("0 0 * * *", timezone="UTC"),
+    start_date=datetime(2026, 1, 1),
+    catchup=False,
+)
 def orders_daily():
     @task
-    def load_orders(logical_date=None):
-        interval = logical_date.strftime("%Y-%m-%d")
+    def load_orders(data_interval_start=None):
+        # Not logical_date: it is not the interval start in Airflow 3 and is
+        # None for manually triggered runs.
+        interval = data_interval_start.strftime("%Y-%m-%d")
         # invoke the engine with the interval; no business logic here
         run_ingestion(source="orders", target_partition=interval)
 

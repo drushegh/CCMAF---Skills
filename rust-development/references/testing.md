@@ -25,7 +25,9 @@ async fn fetches_data() {
     assert!(result.is_ok());
 }
 
-// Time-dependent tests: pause the clock — instant and deterministic
+// Time-dependent tests: pause the clock — instant and deterministic.
+// Needs tokio's `test-util` feature (dev-dependency) and the default
+// current_thread flavour; paused time is not available multi-threaded.
 #[tokio::test(start_paused = true)]
 async fn test_timeout_path() {
     tokio::time::advance(Duration::from_secs(60)).await;   // no real waiting

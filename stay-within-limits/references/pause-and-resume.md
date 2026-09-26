@@ -94,9 +94,9 @@ compact: it is what you re-read after the cache is forfeited.
 
 ```json
 {
-  "binding_limit": "seven_day_opus",
+  "binding_limit": "seven_day",
   "observed_reset_at": "2026-06-22T19:00:00Z",
-  "usage_command": "npx ccusage blocks --active --json",
+  "usage_command": "./scripts/usage-probe.sh seven_day",
   "headroom_pct": 95,
   "wave_throttle": 4,
   "next_wave_size": 4,
@@ -110,6 +110,16 @@ compact: it is what you re-read after the cache is forfeited.
   ]
 }
 ```
+
+The `usage_command` must be able to read **the limit `binding_limit` names** —
+otherwise the wake's re-check (section 4) is blind. `npx ccusage blocks --active
+--json` only sees the active **5-hour** block (no weekly utilisation, no
+`resets_at`), so it is valid only when `binding_limit` is `five_hour`. For a
+weekly binding limit, point it at a probe that reads that window's utilisation and
+reset (e.g. a small script over the OAuth usage endpoint's `seven_day` fields, or
+the model-class weekly entry `/usage` reports — `usage-signals.md`); if no
+scriptable probe exists, the wake must stop and ask a human to check `/usage`
+rather than proceed on elapsed time.
 
 Every key above is load-bearing: task queue and done-markers, binding-limit name
 and observed reset, the next wave's size and throttle, the headroom threshold, the

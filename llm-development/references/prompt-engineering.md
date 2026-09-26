@@ -42,7 +42,7 @@ into the *instruction* sections.
 | Chain of thought | Multi-step reasoning, maths, analysis | "Think step by step in <thinking> tags, then answer in <answer> tags" — parse only <answer>. Redundant when API-level thinking is on |
 | Output skeleton | Strict formats | Show the exact output shape, or better, enforce via structured outputs/tool schema |
 | Explicit uncertainty path | Extraction/Q&A | Tell it what to do when the answer isn't present — the single best hallucination reducer |
-| Prefill (assistant turn start) | Steering older models' format | Not supported on newest tier (Fable 5) — prefer structured outputs |
+| Prefill (assistant turn start) | Steering older models' format | Returns 400 on every current model except Haiku 4.5 (Fable 5/5.1, Opus 5/5.5, Sonnet 5, and the Opus 4.6–4.8 / Sonnet 4.6 family) — prefer structured outputs or system-prompt format instructions |
 
 Anti-patterns: politeness padding and repeated emphasis (burns tokens, no
 lift); "do not hallucinate" (give the uncertainty path instead); ALL CAPS

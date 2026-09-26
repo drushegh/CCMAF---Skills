@@ -13,7 +13,7 @@ Declare your targets, then verify on each. The portability matrix:
 ```bash
 detect_platform() {
     case "$OSTYPE" in
-        linux-gnu*)    echo "linux" ;;
+        linux*)        echo "linux" ;;   # linux-gnu, linux-musl (Alpine), ...
         darwin*)       echo "macos" ;;
         msys*|cygwin*) echo "windows" ;;
         *)             echo "unknown" ;;
@@ -28,7 +28,7 @@ detect_platform() {
 | Command | GNU (Linux) | BSD (macOS) |
 |---|---|---|
 | in-place sed | `sed -i 's/a/b/' f` | `sed -i '' 's/a/b/' f` |
-| canonical path | `readlink -f path` | not available — `greadlink -f` (coreutils) or pure-bash fallback |
+| canonical path | `readlink -f path` | macOS 12.3+ ships `readlink -f`; older: `greadlink -f` (coreutils) or pure-bash fallback |
 | date maths | `date -d '1 day ago'` | `date -v-1d` |
 | stat format | `stat -c '%s'` | `stat -f '%z'` |
 
@@ -45,7 +45,8 @@ degrade.
 ## Git Bash / MSYS2 (Windows)
 
 MSYS **auto-converts Unix-looking arguments to Windows paths** —
-`/foo` becomes `C:/Program Files/Git/usr/foo`. The biggest single source
+`/foo` becomes `C:/Program Files/Git/foo` (the MSYS root is the Git
+install dir; only `/usr/...` lands under `.../Git/usr/`). The biggest single source
 of Windows shell bugs:
 
 ```bash

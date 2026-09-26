@@ -91,8 +91,9 @@ target's actual version/compat level.
   lookups they save; duplicate/overlapping indexes never consolidated.
 - **GUID/UUIDv4 clustering keys** fragmenting T-SQL clustered indexes — use
   sequential surrogates (PG 18+: `uuidv7()` mitigates).
-- **`WHERE` predicates on the outer table of a `LEFT JOIN`** silently
-  converting it to an inner join.
+- **`WHERE` predicates on the inner (optional, right-hand) table of a
+  `LEFT JOIN`** silently converting it to an inner join — put those
+  conditions in the `ON` clause (or test `IS NULL` deliberately).
 - **Untested restores and unbounded autogrowth** — backups exist when a
   restore has been proven, not before.
 

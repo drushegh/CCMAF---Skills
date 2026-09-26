@@ -8,8 +8,10 @@ PackageManagement: `Find-PSResource`, `Install-PSResource`,
 one to standardise on for PS7 estates (legacy `Install-Module` still
 works via compatibility).
 
-- Pin versions in automation: `Install-PSResource Az -Version 14.x` —
-  unpinned module drift breaks pipelines.
+- Pin versions in automation: an exact version
+  (`Install-PSResource Az -Version 14.0.0`) or a NuGet range
+  (`-Version '[14.0.0,15.0.0)'`) — `14.x` is not valid version syntax.
+  Unpinned module drift breaks pipelines.
 - `#Requires -Modules @{ ModuleName='X'; ModuleVersion='Y' }` makes the
   dependency explicit and fail-fast.
 - Private feeds (Azure Artifacts) for internal modules:
