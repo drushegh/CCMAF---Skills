@@ -3,7 +3,7 @@
 
 Catches the failure modes that produce blank or broken diagrams, before you
 deliver or spend a render on them:
-  ERROR  missing root cells id="0" / id="1"      (blank diagram)
+  ERROR  missing root cell / layer cell           (blank diagram)
   ERROR  duplicate id                            (cells clobber each other)
   ERROR  self-closing edge (no <mxGeometry>)      (edge won't render)
   ERROR  dangling edge (source/target id missing) (broken connection)
@@ -24,21 +24,35 @@ def _tag(el):
     return el.tag.rsplit('}', 1)[-1]
 
 
+def _inflate(text):
+    """Decode a compressed <diagram> payload (base64 -> raw deflate -> URI)."""
+    raw = base64.b64decode(text.strip())
+    xml = urllib.parse.unquote(zlib.decompress(raw, -15).decode('utf-8'))
+    return ET.fromstring(xml)
+
+
 def _find_models(root):
-    """Every <mxGraphModel>, inflating compressed <diagram> payloads if needed."""
+    """Every <mxGraphModel>, per <diagram> page, inflating compressed pages.
+
+    Pages are handled individually, so a multi-page file that mixes plain and
+    compressed pages has every page checked. A compressed page that cannot be
+    inflated is returned as an error string rather than silently skipped.
+    """
     if _tag(root) == 'mxGraphModel':
         return [root]
-    models = [el for el in root.iter() if _tag(el) == 'mxGraphModel']
-    if models:
-        return models
-    for el in root.iter():
-        if _tag(el) == 'diagram' and (el.text or '').strip():
+    diagrams = [el for el in root.iter() if _tag(el) == 'diagram']
+    if not diagrams:
+        return [el for el in root.iter() if _tag(el) == 'mxGraphModel']
+    models = []
+    for d in diagrams:
+        inline = next((el for el in d if _tag(el) == 'mxGraphModel'), None)
+        if inline is not None:
+            models.append(inline)
+        elif (d.text or '').strip():
             try:
-                raw = base64.b64decode(el.text.strip())
-                xml = urllib.parse.unquote(zlib.decompress(raw, -15).decode('utf-8'))
-                models.append(ET.fromstring(xml))
-            except Exception:
-                pass
+                models.append(_inflate(d.text))
+            except Exception as e:  # report, don't crash or skip silently
+                models.append(f'compressed page could not be decoded: {e}')
     return models
 
 
@@ -102,9 +116,18 @@ def validate_model(cells):
     errors, warnings = [], []
     ids = [c['id'] for c in cells if c['id'] is not None]
     idset = set(ids)
-    for needed in ('0', '1'):
-        if needed not in idset:
-            errors.append(f'missing required root cell id="{needed}"')
+    # draw.io needs a root cell (no parent) and at least one layer cell whose
+    # parent is that root. The ids are conventionally "0"/"1" but any ids are
+    # valid, so check the structure rather than the literal values.
+    roots = {c['id'] for c in cells if c['id'] is not None and not c['parent']
+             and not c['vertex'] and not c['edge']}
+    if not roots:
+        errors.append('missing root cell (a cell with no parent, '
+                      'conventionally id="0")')
+    elif not any(c['parent'] in roots and not c['vertex'] and not c['edge']
+                 for c in cells):
+        errors.append('missing layer cell (a cell whose parent is the root, '
+                      'conventionally id="1")')
     seen = set()
     for cid in ids:
         if cid in seen:
@@ -162,7 +185,10 @@ def main(argv):
             continue
         file_err = file_warn = 0
         for k, model in enumerate(models):
-            errs, warns = validate_model(_cells(model))
+            if isinstance(model, str):
+                errs, warns = [model], []
+            else:
+                errs, warns = validate_model(_cells(model))
             for e in errs:
                 print(f'{path}[diagram {k + 1}]: ERROR {e}')
             for w in warns:

@@ -47,7 +47,9 @@ preprocess = ColumnTransformer(
         ]), numeric),
         ("cat", Pipeline([
             ("impute", SimpleImputer(strategy="most_frequent")),
-            ("encode", OneHotEncoder(handle_unknown="ignore", min_frequency=20)),
+            # dense output: HistGradientBoosting* rejects sparse input at fit
+            ("encode", OneHotEncoder(handle_unknown="ignore", min_frequency=20,
+                                     sparse_output=False)),
         ]), categorical),
     ],
     remainder="drop",

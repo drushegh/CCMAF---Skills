@@ -85,14 +85,31 @@ public partial class App : Application
 
     protected override async void OnStartup(StartupEventArgs e)
     {
+        base.OnStartup(e);
         await _host.StartAsync();
         _host.Services.GetRequiredService<MainWindow>().Show();
     }
 
-    protected override async void OnExit(ExitEventArgs e)
-        => await _host.StopAsync();
+    protected override void OnExit(ExitEventArgs e)
+    {
+        // Must block: WPF returns from OnExit and ends the process, so an
+        // `async void OnExit` never resumes after its first await and hosted
+        // services never get to stop. Task.Run keeps the awaits off the UI
+        // SynchronizationContext, so blocking here can't deadlock.
+        using (_host)
+        {
+            Task.Run(() => _host.StopAsync(TimeSpan.FromSeconds(5)))
+                .GetAwaiter().GetResult();
+        }
+        base.OnExit(e);
+    }
 }
 ```
+
+Hosted services' `StopAsync` must not marshal back to the UI thread — it is
+blocked in `OnExit` at that point. WinUI 3 has no `OnExit` override: stop
+the host from the main window's `Closed` handler (same blocking pattern)
+or run shutdown work before calling `Application.Current.Exit()`.
 
 The window/page takes its view model by constructor and assigns
 `DataContext = vm;` (WPF) or exposes a `ViewModel` property for `x:Bind`

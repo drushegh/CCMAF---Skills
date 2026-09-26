@@ -1,24 +1,19 @@
 ---
 name: opus-5-calibration
 description: >-
-  Operate Claude Opus 5 well — the model whose failure mode is excess, not
-  deficiency. Leads with the two length dials that most often need setting
-  (conversational brevity, written-deliverable length), then the behaviours
-  it does not self-regulate (narration, task scope, delegation), the legacy
-  instructions that now backfire ("double-check", "only report
-  high-severity", "do not think"), effort as the primary cost lever
-  (default `high`; `low`/`medium` liberally; `xhigh` when demanding), and
-  the thinking-disabled artifacts (tool calls emitted as text, leaked
-  internal tags). Includes field corrections where practice diverges from
-  the vendor guidance — notably that *empirical* verification (execute,
-  render, measure) is not the redundant re-checking the guidance says to
-  delete. Use in both directions: when Opus 5 is doing the work —
-  especially as an orchestrator deciding whether to delegate — and when
-  writing a system prompt, CLAUDE.md, subagent prompt or harness targeting
-  it. Triggers: `claude-opus-5`, `output_config`/effort, disabling
-  thinking, "too verbose", "it did more than I asked", "too many
-  subagents", migrating prompts from Opus 4.7/4.8. General prompt
-  engineering, evals and harness design → llm-development.
+  Operate Claude Opus 5 well — its failure mode is excess, not deficiency.
+  Covers the two length dials (conversational brevity, written-deliverable
+  length), behaviours it does not self-regulate (narration, task scope,
+  delegation), legacy instructions that now backfire ("double-check",
+  "only report high-severity", "do not think"), effort as the cost lever
+  (default `high`), and thinking-disabled artifacts. Field corrections:
+  *empirical* verification (execute, render, measure) is not the redundant
+  re-checking the vendor guidance says to delete. Use when Opus 5 is doing
+  the work (especially orchestrating/delegating) and when writing a system
+  prompt, CLAUDE.md, subagent prompt or harness for it. Triggers:
+  `claude-opus-5`, `output_config`/effort, disabling thinking, "too
+  verbose", "it did more than I asked", "too many subagents", migrating
+  prompts from Opus 4.7/4.8. General prompt engineering → llm-development.
 metadata:
   author: Damien (distils Anthropic's "Prompting Claude Opus 5", "Effort" and
     "What's new in Claude Opus 5" documentation, retrieved 2026-07-25;

@@ -48,8 +48,9 @@ GET [org]/api/data/v9.2/accounts?$select=name,creditlimit
 
 - Bulk writes via the SDK's batch-capable operations (e.g.
   `CreateMultiple`/`UpdateMultiple` family) — not record-at-a-time loops,
-  and (from app code) not raw per-record POSTs. *(Inside plug-ins:
-  neither — see plugins.md.)*
+  and (from app code) not raw per-record POSTs. *(Inside synchronous
+  plug-ins the opposite holds: no batch or bulk request types — issue
+  individual requests; see plugins.md, "Transactions".)*
 - Respect **service protection limits** (429s with `Retry-After`): honour
   the header, back off, and design imports to stay under entitlement.
 - `Upsert` for integration-style idempotent writes keyed on alternate

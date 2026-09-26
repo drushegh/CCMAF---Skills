@@ -34,7 +34,10 @@ dependencies = [
     "pydantic>=2.0.0",
 ]
 
-[project.optional-dependencies]
+# Dev tooling as a PEP 735 dependency group: `uv add --dev` writes here and
+# `uv sync` installs it by default. (An extra under
+# [project.optional-dependencies] would need `uv sync --extra dev`.)
+[dependency-groups]
 dev = [
     "pytest>=8.0.0",
     "pytest-cov>=5.0.0",
@@ -76,8 +79,8 @@ uv init && uv add pydantic            # uv preferred for new projects
 uv add --dev pytest ruff pyright
 uv run pytest
 
-ruff check . --fix                    # lint + import sort
-ruff format .                         # format (replaces black + isort)
+ruff check . --fix                    # lint + import sort (rule "I")
+ruff format .                         # format (replaces black; no import sorting)
 pyright .                             # type check
 
 # Security / supply chain when relevant
@@ -85,8 +88,9 @@ bandit -r .
 pip-audit
 ```
 
-ruff replaces black, isort, and most of pylint — don't add those separately
-to new projects. Match the existing toolchain in established repos.
+ruff replaces black (`ruff format`), isort (`ruff check` with the `I`
+rules — `ruff format` alone does not sort imports), and most of pylint —
+don't add those separately to new projects. Match the existing toolchain in established repos.
 
 ## Package Exports
 

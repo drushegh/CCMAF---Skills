@@ -53,7 +53,9 @@ what a worker may touch — and the depth lives in `llm-development`.
 
 Choose the **cheapest model that clears the task's acceptance criteria**, per
 worker, not one model for the whole wave. The model-specific weekly sub-limit
-(the Opus-class cap) is usually the *first* to bind on heavy reasoning work — so
+(whichever model class your plan caps separately — read it from `/usage`, don't
+assume; it has changed between plan revisions) is often the *first* to bind on
+heavy work concentrated on that class — so
 spending it on mechanical edits (rename, mechanical refactor, boilerplate, test
 scaffolding) is how a fan-out trips that sub-limit while the all-model weekly cap
 still has headroom.
@@ -84,7 +86,8 @@ lead compiles briefs ─┬─→ worktree A ─┐
 ```
 
 Git mechanics (worktree add/remove, merge strategy, commit hygiene) →
-`bash-development` / `powershell-development`.
+`git-workflow`; scripting the wave loop around them → `bash-development` /
+`powershell-development`.
 
 ## 5. Choosing the wait mechanism
 

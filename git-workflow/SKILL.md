@@ -42,8 +42,9 @@ semantics* — treat command blocks as reviewed, not machine-proven.
    fetch. Bare `--force` is how a colleague's afternoon disappears.
    Never force-push a shared integration branch.
 3. **Committed work is recoverable — behave accordingly.** Before
-   re-doing "lost" work, check `git reflog`: commits stay reachable for
-   ~90 days by default. The inverse holds too: anything *pushed* is
+   re-doing "lost" work, check `git reflog`: reflog entries for commits no
+   longer on any branch expire after ~30 days by default
+   (`gc.reflogExpireUnreachable`; reachable entries keep 90). The inverse holds too: anything *pushed* is
    effectively permanent — a committed secret is a credential-rotation
    incident first and a history rewrite second
    ([references/recovery-and-disasters.md](references/recovery-and-disasters.md)).

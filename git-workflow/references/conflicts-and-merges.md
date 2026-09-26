@@ -62,7 +62,9 @@ git add path/to/file
 
 Beware the direction flip during **rebase**: "ours" is the branch you
 are rebasing *onto*, "theirs" is your own work being replayed. Verify
-with `git log --merge` before trusting either label.
+with `git log --merge` before trusting either label (during a rebase
+this needs git 2.45+; older git only supports it mid-*merge* — use
+`git show REBASE_HEAD` to see the commit being replayed).
 
 ## Lockfiles and other generated artifacts
 

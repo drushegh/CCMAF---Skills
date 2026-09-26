@@ -88,7 +88,7 @@ before swapping the implementation.
   enables rotation/revocation. Lives in cookie and DB.
 - `[reversible]` 30-day sliding expiry — a config constant, trivial to retune.
 ## File map
-```file-tree
+```
 src/auth/session-store.ts          # new: SessionStore interface + PG impl
 src/auth/require-auth.ts            # mod: read from store, not memory map
 src/db/migrations/0007_sessions.sql # new: sessions table + index

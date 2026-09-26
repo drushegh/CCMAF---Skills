@@ -39,7 +39,8 @@ target) — positive tabindex is a bug. Focus must always be visible
 - **Modal dialog**: on open — move focus to dialog (first control or
   heading); trap Tab within; background `inert` (or aria-hidden +
   scroll lock); on close — restore focus to the invoker. Prefer
-  native `<dialog showModal>` which delivers most of this.
+  a native `<dialog>` opened with `dialog.showModal()` (a JS method,
+  not an attribute), which delivers most of this.
 - **SPA route change**: move focus to the new view's `h1` (or a
   `tabindex="-1"` main heading) and update `document.title` —
   otherwise screen reader users get silence.

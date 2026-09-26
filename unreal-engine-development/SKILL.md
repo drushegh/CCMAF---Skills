@@ -116,10 +116,10 @@ paths to C++ rather than fighting the VM.
 
 ## Boundaries with sibling skills
 
-- Generic modern C++ (idioms, STL) → `dotnet-development` is NOT the
-  place either — UE C++ is its own dialect; this skill owns it.
-  tree-sitter parses standard C++; UE macros are structural-check
-  territory.
+- UE C++ is its own dialect and this skill owns it (no sibling covers
+  C++; `dotnet-development` is C#/.NET only). Generic parsers such as
+  tree-sitter handle standard C++ but not UE macros (`UCLASS`,
+  `GENERATED_BODY`) — rely on UHT/compilation for structural checks.
 - Asset authoring/export from DCC tools → `blender-development`.
 - Browser 3D alternative → `threejs-development`; other engines →
   `unity-development` / `godot-development`.

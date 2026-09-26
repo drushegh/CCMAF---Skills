@@ -36,9 +36,15 @@ marker at the end of the **shared** part only.
 - Model switch mid-session (cache is per-model) — give cheap sub-tasks to
   a sub-agent on the cheaper model instead.
 - Editing the system prompt mid-session — append new operator
-  instructions after history instead (mid-conversation system messages
-  where supported — beta, model-gated — else a clearly marked block in
-  the next user turn).
+  instructions after history instead (mid-conversation system messages —
+  `{"role": "system"}` entries in `messages`, GA with no beta header but
+  model-gated: Opus 4.8/5/5.5 and Fable 5/5.1, not Sonnet 5 — else a
+  clearly marked block in the next user turn).
+- Changing top-level `output_config.effort` mid-session — it invalidates
+  the cached messages prefix. Hold effort constant per conversation, or on
+  Opus 5/5.5 and Fable 5.1 change it with a per-message effort system
+  message (beta `mid-conversation-output-config-2026-07-01`), which keeps
+  the cache.
 - A/B variants that differ at byte 1 — fork *after* the shared prefix.
 
 Verify with response usage fields: `cache_read_input_tokens` should

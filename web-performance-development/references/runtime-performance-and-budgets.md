@@ -16,14 +16,21 @@ your handler even starts. The discipline:
   chunks so input can interleave.
 
 ```js
-async function processChunked(items, fn) {
-  const yieldToInput =
-    typeof scheduler !== "undefined" && scheduler.yield
-      ? () => scheduler.yield() // Chromium; cross-engine status: re-verify (July 2026)
-      : () => new Promise((r) => setTimeout(r, 0));
+const yieldToMain =
+  globalThis.scheduler?.yield
+    ? () => scheduler.yield() // cross-engine status: re-verify (July 2026)
+    : () => new Promise((r) => setTimeout(r, 0));
+
+async function processChunked(items, fn, budgetMs = 50) {
+  let deadline = performance.now() + budgetMs;
   for (const item of items) {
     fn(item);
-    if (navigator.scheduling?.isInputPending?.()) await yieldToInput();
+    // Yield on a time budget, not on isInputPending() — that API is
+    // Chromium-only, so gating on it means other engines never yield.
+    if (performance.now() >= deadline) {
+      await yieldToMain();
+      deadline = performance.now() + budgetMs;
+    }
   }
 }
 ```
@@ -73,7 +80,8 @@ A budget is a CI-enforced ceiling, agreed before the work, not aspiration:
 
 | Budget type | Example |
 |---|---|
-| Metric (lab, throttled) | LCP ≤ 2.5 s, INP ≤ 200 ms, CLS ≤ 0.1, TBT ≤ 200 ms |
+| Metric (lab, throttled) | LCP ≤ 2.5 s, CLS ≤ 0.1, TBT ≤ 200 ms (TBT is the lab proxy — INP needs real interactions) |
+| Metric (field, p75 RUM) | LCP ≤ 2.5 s, INP ≤ 200 ms, CLS ≤ 0.1 — alert on these; they can't gate a PR |
 | Resource size | Initial JS ≤ 200 KB compressed; entry CSS ≤ 50 KB; per-route chunk ceilings |
 | Count/behaviour | ≤ N third-party origins; zero unused preloads; bfcache-eligible |
 

@@ -10,15 +10,19 @@ process.on("SIGTERM", () => shutdown("SIGTERM"));
 process.on("SIGINT", () => shutdown("SIGINT"));
 process.on("unhandledRejection", (reason) => {
   console.error("Unhandled rejection:", reason);
-  shutdown("unhandledRejection");
+  shutdown("unhandledRejection", 1);   // a crash must exit non-zero
+});
+process.on("uncaughtException", (err) => {
+  console.error("Uncaught exception:", err);
+  shutdown("uncaughtException", 1);
 });
 
-function shutdown(signal: string) {
-  console.log(`Received ${signal}, shutting down...`);
+function shutdown(reason: string, exitCode = 0) {
+  console.log(`Received ${reason}, shutting down...`);
   server.close(() => {
-    db.destroy().then(() => process.exit(0));
+    db.destroy().finally(() => process.exit(exitCode));
   });
-  setTimeout(() => process.exit(1), 10_000);   // force-exit if close hangs
+  setTimeout(() => process.exit(1), 10_000).unref();   // force-exit if close hangs
 }
 ```
 

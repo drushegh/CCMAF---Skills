@@ -78,8 +78,13 @@ document review here). Review in this order — accuracy outranks polish:
 5. **Fresh-reader test.** Assume no chat/team context: undefined jargon,
    assumed setup, missing prerequisites are findings.
 6. **Perishables date-stamped?** Versions, tool claims, URLs.
-7. **Style.** Lint-clean (Vale/markdownlint); de-slopped (→ `uncanny`);
-   difficulty adjectives absent.
+7. **Style.** Lint-clean (Vale/markdownlint); de-slopped (→ `uncanny`,
+   applied to the reader-facing doc under review); difficulty adjectives
+   absent. The project's own style guide outranks `uncanny` on
+   punctuation: `uncanny` bans em dashes outright, but where the house
+   style (or the surrounding docs) uses them, a dash is at most a
+   style-nit, never a blocker. Mechanical conventions follow the house
+   guide; `uncanny` is for the AI-tell patterns it doesn't cover.
 
 Severity framing for findings: inaccurate > incomplete > unclear >
 style-nit. Block on the first two; batch the rest.

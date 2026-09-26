@@ -24,9 +24,13 @@ import { invoke } from "@tauri-apps/api/core";   // /core — /tauri is v1
 const greeting = await invoke<string>("greet", { name: "World" });
 ```
 
-- **Async commands take owned types** — `async fn f(name: String)`, never
-  `&str` (borrows can't cross await points; compile error).
-- Arguments: JS `camelCase` ↔ Rust `snake_case`, converted automatically.
+- **Async commands: prefer owned types** — `async fn f(name: String)`.
+  Borrowed arguments (`&str`, `State<'_, T>`) in an async command only
+  compile if the command returns a `Result`; otherwise switch to owned
+  types.
+- Argument names: JS `camelCase` ↔ Rust `snake_case`, converted
+  automatically (`#[tauri::command(rename_all = "snake_case")]` to opt
+  out). Command **names** are not converted — `invoke("get_user")`.
   `Option<T>` ↔ optional/undefined JS argument.
 - All argument types `Deserialize`, return types `Serialize`. Complex enums
   need `#[serde(tag = "type")]`-style representation to be JSON-safe.

@@ -18,9 +18,11 @@ XSD <https://github.com/jgraph/drawio-mcp/blob/main/shared/mxfile.xsd>.
   vocabulary.
 - **Decide whether you need a shape search.** Skip it for standard geometric
   diagrams (flowchart, UML, ERD, org chart, mind map, Venn, timeline,
-  wireframe). Use it only for branded/domain icons (AWS/Azure/GCP, Cisco,
+  wireframe). Use it only for branded/domain icons (AWS/GCP, Cisco,
   Kubernetes, BPMN, electrical, P&ID) — a wrong `shape=mxgraph.*` name renders
-  as a blank box.
+  as a blank box. **Azure is the exception:** use the bundled icon library
+  (`image=azure:<Name>` placeholders resolved by
+  `scripts/embed_azure_icons.py`, see `azure-icons.md`), not a shape search.
 - **Match label language to the user's** (German request → German labels).
 
 ## Document structure

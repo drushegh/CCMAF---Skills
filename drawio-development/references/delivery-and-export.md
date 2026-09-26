@@ -59,9 +59,12 @@ matters.*
 ### Naming
 
 Descriptive, lowercase-hyphenated (`login-flow`, `database-schema`). Exports use
-a **double extension** to signal embedded XML: `name.drawio.png`. After a
-successful export, delete the intermediate `.drawio` (the export already
-contains the full diagram). For `url` mode keep the single-extension `.drawio`.
+a **double extension** to signal embedded XML: `name.drawio.png`. **Keep the
+source `.drawio`** — it is the committable, diffable source of truth. An `-e`
+export embeds a copy of the XML, but `-e` PNGs can be truncated (see the
+gotchas below), non-`-e` exports carry no XML at all, and a binary export
+doesn't diff in review. Only discard the `.drawio` if the user explicitly asks
+for export-only output. For `url` mode keep the single-extension `.drawio`.
 
 ## Sandbox / no-desktop — the `#create=` URL
 

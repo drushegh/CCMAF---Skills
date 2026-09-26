@@ -31,10 +31,14 @@ framework to cite in security assessments (Top 10 is awareness, ASVS is testable
 - **Levels**: L1 (baseline, all apps), L2 (default for apps handling
   sensitive data — the sensible default target), L3 (high
   assurance: financial/health/critical).
-- Use chapter-wise during reviews (authentication, session management,
-  access control, validation/sanitisation, crypto, error/logging,
-  data protection, communication, malicious code, business logic,
-  files, API/web service, configuration).
+- Use chapter-wise during reviews. The 5.0 chapters: V1 Encoding and
+  Sanitization, V2 Validation and Business Logic, V3 Web Frontend
+  Security, V4 API and Web Service, V5 File Handling, V6 Authentication,
+  V7 Session Management, V8 Authorization, V9 Self-contained Tokens,
+  V10 OAuth and OIDC, V11 Cryptography, V12 Secure Communication,
+  V13 Configuration, V14 Data Protection, V15 Secure Coding and
+  Architecture, V16 Security Logging and Error Handling, V17 WebRTC.
+  (4.0.3's "Malicious Code" chapter is gone — folded into V15.)
 - 5.0 reorganised and renumbered substantially vs 4.0.3 — don't quote
   4.x requirement IDs against 5.0; check the published mapping.
 - Practical use: pick the level per data classification, generate the
@@ -57,8 +61,13 @@ Threat Modeling; LLM Prompt Injection Prevention.
 
 - **OWASP API Security Top 10** (2023) — API-specific list (BOLA top);
   use for API-heavy reviews.
-- **OWASP LLM Top 10** — prompt injection, insecure output handling,
-  training data poisoning; relevant to AI feature reviews alongside
-  `eu-ai-act.md`.
+- **OWASP Top 10 for LLM Applications (2025)** — LLM01 Prompt
+  Injection, LLM02 Sensitive Information Disclosure, LLM03 Supply Chain,
+  LLM04 Data and Model Poisoning, LLM05 Improper Output Handling,
+  LLM06 Excessive Agency, LLM07 System Prompt Leakage, LLM08 Vector and
+  Embedding Weaknesses, LLM09 Misinformation, LLM10 Unbounded
+  Consumption. (The 2023 names "Insecure Output Handling" / "Training
+  Data Poisoning" are superseded.) Relevant to AI feature reviews
+  alongside `eu-ai-act.md`.
 - **SAMM** — maturity model for programme-level conversations.
 - **Dependency-Check / CycloneDX** — see `supply-chain.md`.

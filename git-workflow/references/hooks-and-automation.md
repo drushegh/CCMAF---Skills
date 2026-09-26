@@ -25,16 +25,23 @@ and operate on the **staged** content, not the working tree:
 #   git config core.hooksPath .githooks
 set -Eeuo pipefail
 
-mapfile -t staged < <(git diff --cached --name-only --diff-filter=ACM)
-[[ ${#staged[@]} -eq 0 ]] && exit 0
-
-for f in "${staged[@]}"; do
+status=0
+# NUL-delimited read loop, not mapfile: macOS ships bash 3.2.
+while IFS= read -r -d '' f; do
   case "$f" in
-    *.sh)  bash -n "$f" ;;
     *.env|*secret*) echo "refusing to commit '$f'" >&2; exit 1 ;;
+    # check the STAGED blob (":path"), not the working-tree file
+    *.sh) git show ":$f" | bash -n             || { echo "syntax error in staged '$f'" >&2; status=1; } ;;
   esac
-done
+done < <(git diff --cached --name-only -z --diff-filter=ACM)
+exit "$status"
 ```
+
+Linting the working-tree file instead passes a commit whose staged
+version is broken whenever the file has unstaged edits (partial
+`git add -p`). Tools that need real files on disk can use
+`git stash push --keep-index` or a hook manager (pre-commit, lefthook)
+that handles the staged/unstaged split for you.
 
 Shell discipline inside hooks (quoting, strict mode, portability) →
 bash-development.

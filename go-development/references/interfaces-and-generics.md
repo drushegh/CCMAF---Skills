@@ -72,7 +72,10 @@ default.
 | Constraining two parameters to the *same* type | Signatures that just get longer, not safer |
 
 Check `slices`, `maps` and `cmp` (stdlib, 1.21+) before writing your own —
-`slices.Contains`, `slices.SortFunc`, `maps.Keys` cover most needs.
+`slices.Contains`, `slices.SortFunc`, `maps.Clone` cover most needs.
+`maps.Keys`/`maps.Values` arrived in 1.23 and return iterators
+(`iter.Seq`), not slices: `slices.Sorted(maps.Keys(m))` or
+`slices.Collect(maps.Keys(m))` when you need a slice.
 
 ```go
 type Number interface {

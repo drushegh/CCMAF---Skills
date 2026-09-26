@@ -43,8 +43,9 @@ def chunk_markdown(sections, max_tokens=600, min_tokens=80):
     chunks = []
     for heading_path, text in sections:
         for piece in split_at_paragraphs(text, max_tokens):
-            if chunks and count_tokens(piece) < min_tokens:
-                chunks[-1].merge(piece)          # no orphan fragments
+            if (chunks and chunks[-1].section == heading_path
+                    and count_tokens(piece) < min_tokens):
+                chunks[-1].merge(piece)          # no orphans; never across sections
             else:
                 chunks.append(Chunk(text=piece, section=heading_path))
     return chunks

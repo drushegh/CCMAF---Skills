@@ -22,8 +22,11 @@ git diff -z --numstat     A...B    # added del path<NUL>; binary files show "-  
 ```
 
 **Always pass `-z` when parsing.** Without it, records are newline-terminated and
-fields tab-separated, so a path with a space/quote/non-ASCII byte is munged and a
-rename appears as tab-separated `R100<TAB>old<TAB>new`, not an arrow. With `-z`, every field
+fields tab-separated, and any path containing a double quote, backslash, tab,
+newline or (with the default `core.quotePath=true`) a non-ASCII byte is emitted
+C-quoted and escaped (`"caf\303\251.txt"`) — plain spaces pass through unquoted,
+but a split on whitespace still breaks them. A rename appears as tab-separated
+`R100<TAB>old<TAB>new`, not an arrow. With `-z`, every field
 is NUL-terminated and raw, so renamed/spaced/unicode pathnames parse losslessly — a
 rename arrives as `R<score><NUL>old<NUL>new`; reassemble accordingly.
 
@@ -67,7 +70,7 @@ Each row is grounded in a command above — never inferred from prose or memory:
 | files added/removed/renamed | `diff -z --name-status` | `file-tree`, one flag per entry |
 | schema / migration change | the migration/DDL hunk | before/after `data-model` table |
 | API / route / contract change | diff of the **OpenAPI document** | before/after `api-endpoint` |
-| load-bearing code hunk | the hunk itself | split `diff` fence + caption + notes |
+| load-bearing code hunk | the hunk itself | unified `diff` fence + caption + notes |
 | brand-new file, no "before" | the file's added lines | annotated code fence |
 | architecture / data-flow shift | changed modules + their imports | a `mermaid` diagram |
 
@@ -95,8 +98,8 @@ drifts from it. If the spec file didn't change, the contract didn't change. Open
 **3.2.0** is the current stable spec (verified June 2026; re-verify at
 https://spec.openapis.org/); additive-vs-breaking classification → `api-development`.
 
-**Load-bearing hunk → split diff + caption.** Quote the real hunk in a fenced
-`diff` block (or a side-by-side split per `before-after.md`), add a one-line **"why
+**Load-bearing hunk → `diff` fence + caption.** Quote the real hunk in a fenced
+`diff` block (or paired before/after fences per `before-after.md`), add a one-line **"why
 this matters"** caption, and annotate the changed lines — for the highest-risk files
 only, never every hunk (that just rebuilds diff fatigue).
 

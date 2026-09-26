@@ -29,21 +29,27 @@ be HTTPS.
 
 ```bash
 cargo tauri signer generate -w ~/.tauri/myapp.key   # private key + pubkey
-TAURI_SIGNING_PRIVATE_KEY=... cargo tauri build      # produces installer + .sig
+TAURI_SIGNING_PRIVATE_KEY=... TAURI_SIGNING_PRIVATE_KEY_PASSWORD=... cargo tauri build
+# produces the update bundle + .sig ONLY when createUpdaterArtifacts is set
 ```
 
 ```json
 // tauri.conf.json
 {
+  "bundle": { "createUpdaterArtifacts": true },
   "plugins": {
     "updater": {
-      "active": true,
-      "endpoints": ["https://your-server.com/update/{{target}}/{{current_version}}"],
-      "pubkey": "BASE64_PUBLIC_KEY"
+      "endpoints": ["https://your-server.com/update/{{target}}/{{arch}}/{{current_version}}"],
+      "pubkey": "CONTENT OF THE .pub FILE"
     }
   }
 }
 ```
+
+v2 has no `plugins.updater.active` key (that was v1's `tauri.updater.active`);
+the plugin is on once registered. Without `bundle.createUpdaterArtifacts`
+the build emits no `.sig` files. Use `"v1Compatible"` instead of `true`
+only while migrating v1 users.
 
 Server response shape:
 
@@ -120,12 +126,18 @@ varies by desktop environment.
 ```
 
 ```json
-// capability — note "sidecar": true
+// capability — "name" matches the externalBin entry; "sidecar": true
 { "permissions": [{
     "identifier": "shell:allow-execute",
-    "allow": [{ "name": "my-sidecar", "args": true, "sidecar": true }]
+    "allow": [{ "name": "binaries/my-sidecar", "sidecar": true,
+                "args": ["--flag", { "validator": "^[A-Za-z0-9._-]+$" }] }]
 }] }
 ```
+
+List the exact arguments the sidecar needs (fixed strings plus
+`validator` regexes for dynamic slots); `"args": true` lets the webview
+pass anything to the binary. `sidecar()` in Rust takes just the file
+name (`"my-sidecar"`), not the `externalBin` path.
 
 ```rust
 use tauri_plugin_shell::ShellExt;
@@ -157,8 +169,15 @@ platform manifests.
 Prefer the built-in `asset:` protocol over custom URI schemes:
 
 ```json
-{ "app": { "security": { "assetScope": ["$APPDATA/assets/**"] } } }
+{ "app": { "security": {
+    "assetProtocol": { "enable": true, "scope": ["$APPDATA/assets/**"] },
+    "csp": "default-src 'self'; img-src 'self' asset: http://asset.localhost"
+} } }
 ```
+
+v2 key is `assetProtocol` (`enable` + `scope`); v1's `assetScope` is gone.
+Needs the `protocol-asset` feature on the `tauri` crate, and the CSP must
+allow `asset:` and `http://asset.localhost`.
 
 ```typescript
 import { convertFileSrc } from "@tauri-apps/api/core";

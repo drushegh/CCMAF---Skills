@@ -76,8 +76,11 @@ const progress = await getRenderProgress({ renderId, bucketName, functionName, r
 - Quality: `crf` (lower = better/bigger), `jpegQuality` for frame
   capture, `videoBitrate`/`audioBitrate`.
 - `imageFormat` (`jpeg` fast / `png` for alpha), `scale` (super-sampling),
-  `pixelFormat` (e.g. `yuva420p` + ProResfor transparency),
-  `concurrency`, `frameRange`, `muted`, `everyNthFrame`.
+  `pixelFormat`, `concurrency`, `frameRange`, `muted`, `everyNthFrame`.
+- Transparency: `imageFormat: "png"` plus either `codec: "prores"`,
+  `proResProfile: "4444"`, `pixelFormat: "yuva444p10le"` (editing), or
+  `codec: "vp8"`/`"vp9"` with `pixelFormat: "yuva420p"` (WebM, web
+  playback). `yuva420p` is the WebM format, not the ProRes one.
 
 ## @remotion/player — in-browser playback (not rendering)
 

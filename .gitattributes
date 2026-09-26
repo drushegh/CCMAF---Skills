@@ -1,5 +1,6 @@
-# Skills are plain Markdown consumed by parsers and synced byte-for-byte
-# into consumer repos (CCMAF skills-sync) — pin LF so Windows checkouts
-# don't introduce CRLF into what consumers receive.
-* text=auto
-*.md text eol=lf
+# Skills are plain Markdown (plus a few small helper scripts and JSON/SVG
+# assets) consumed by parsers and synced byte-for-byte into consumer repos
+# (CCMAF skills-sync) — pin LF on every text file so Windows checkouts
+# don't introduce CRLF into what consumers receive (a CRLF python3 shebang
+# breaks direct execution on POSIX). Binary files are auto-detected.
+* text=auto eol=lf

@@ -71,10 +71,15 @@ subclassing for "add this behaviour to any control" requirements.
 
 ## Value precedence (why "my style stopped working")
 
-A local value (`Width="100"` or a binding) **always beats** a style setter;
-animations beat local values; template values sit below styles. If a style
-setter has no effect, look for a local value or binding on the element —
-that's the answer far more often than a resource-lookup problem.
+WPF resolves highest-first: coercion → active animations → **local value**
+(`Width="100"` or a binding) → values the control template sets on its
+parts (TemplatedParent) → style triggers → template triggers → **style
+setters** → theme (default) style → inherited value → metadata default.
+So a local value **always beats** a style setter, and so do values set
+inside a template and style triggers. If a style setter has no effect, look
+for a local value or binding on the element first — that's the answer far
+more often than a resource-lookup problem — then for a template or trigger
+setting the same property.
 
 ## Routed events (WPF)
 

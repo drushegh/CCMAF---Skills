@@ -13,8 +13,13 @@ because the broken version controls whether the fix arrives.
 3. **Activate** — old pages gone (or `skipWaiting()` called): clean up old
    caches, take control (`clients.claim()` for immediately-controlled pages).
 4. **Update check** — the browser refetches the SW script on navigation
-   (byte-diff triggers a new install cycle). The SW script itself must be
-   served `Cache-Control: no-cache` — a far-future-cached SW is unupdatable.
+   (byte-diff triggers a new install cycle). Browsers bypass the HTTP cache
+   for that check by default (`updateViaCache: "imports"`: the top-level
+   script skips it, `importScripts()` dependencies don't), and a SW script's
+   HTTP freshness is capped at 24 h regardless. Still serve the script
+   `Cache-Control: no-cache` so CDNs/proxies don't pin a stale copy, never
+   register with `updateViaCache: "all"`, and version the URLs of imported
+   scripts.
 
 `skipWaiting()` is a decision, not a default: activating mid-session mixes
 old pages with a new cache set. The safe pattern: detect the waiting worker,
@@ -33,20 +38,30 @@ self.addEventListener("install", (event) => {
 
 self.addEventListener("activate", (event) => {
   event.waitUntil(
-    caches.keys().then((keys) =>
-      Promise.all(keys.filter((k) => k !== CACHE).map((k) => caches.delete(k))),
-    ),
+    Promise.all([
+      caches.keys().then((keys) =>
+        Promise.all(keys.filter((k) => k !== CACHE).map((k) => caches.delete(k))),
+      ),
+      // Navigation preload: the browser starts the navigation request while the SW boots
+      self.registration.navigationPreload?.enable(),
+    ]),
   );
 });
 
 self.addEventListener("fetch", (event) => {
   const req = event.request;
   if (req.mode === "navigate") {
-    // Network-first navigations: users get deploys; offline gets the fallback
+    // Network-first navigations: users get deploys; offline gets the fallback.
+    // Use the preloaded response when there is one — otherwise the preload is
+    // wasted and the navigation is fetched twice.
     event.respondWith(
-      fetch(req).catch(() =>
-        caches.match(req).then((hit) => hit ?? caches.match("/offline.html")),
-      ),
+      (async () => {
+        try {
+          return (await event.preloadResponse) ?? (await fetch(req));
+        } catch {
+          return (await caches.match(req)) ?? caches.match("/offline.html");
+        }
+      })(),
     );
   }
 });
@@ -55,9 +70,10 @@ self.addEventListener("fetch", (event) => {
 Strategy per resource class — the table in SKILL.md (cache-first shell,
 stale-while-revalidate statics, network-first data). **Workbox** is the
 reference implementation of all of them (routing, expiry, quota handling);
-prefer it over hand-rolling once you're past the skeleton. Enable
-**navigation preload** when using network-first navigations, so the network
-request starts in parallel with SW boot.
+prefer it over hand-rolling once you're past the skeleton. The skeleton
+enables **navigation preload** for its network-first navigations, so the
+network request starts in parallel with SW boot — enabling it is only half
+the job; the fetch handler must consume `event.preloadResponse`.
 
 HTTP caching semantics still apply *underneath* the SW
 (`caching-and-cdn.md`) — the Cache Storage API stores what the HTTP layer
@@ -83,13 +99,20 @@ Minimum manifest for install prompts (validate in DevTools → Application):
   "theme_color": "#101418",
   "icons": [
     { "src": "/icons/192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "/icons/512.png", "sizes": "512x512", "type": "image/png" },
     { "src": "/icons/512-maskable.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
   ]
 }
 ```
 
-Plus HTTPS and (Chromium) a fetch-handling SW. Provide a maskable icon or
-Android crops yours badly. iOS/Safari installed-app caveats shift by release
+Plus HTTPS. Chromium's criteria want `name`/`short_name`, `start_url`,
+`display`, no `prefer_related_applications: true`, and 192 px and 512 px
+icons — ship them as plain (`"any"`-purpose) icons, not maskable-only, since
+`purpose: "maskable"` icons aren't used where an `any` icon is expected.
+Chromium dropped the fetch-handler
+requirement (Chrome 108 mobile / 112 desktop); a SW is still what makes the
+installed app work offline. Provide a maskable icon too, or Android crops
+yours badly. iOS/Safari installed-app caveats shift by release
 (July 2026 — verify push, storage persistence and lifecycle before promising
 parity). Capture `beforeinstallprompt` (Chromium) to offer install at a
 sensible moment instead of the browser's.

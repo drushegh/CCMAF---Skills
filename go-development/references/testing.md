@@ -58,8 +58,9 @@ func FuzzParsePort(f *testing.F) {
 }
 ```
 
-Run: `go test -fuzz=FuzzParsePort -fuzztime=30s ./pkg/...` (one fuzz
-target per invocation). Assert invariants, not exact outputs: no panic,
+Run: `go test -fuzz='^FuzzParsePort$' -fuzztime=30s ./pkg/port` — `-fuzz`
+must match exactly one fuzz target in exactly one package, so name the
+package (a `./...` pattern spanning several packages is rejected). Assert invariants, not exact outputs: no panic,
 round-trips (`decode(encode(x)) == x`), validated values re-validate.
 Found crashers land in `testdata/fuzz/` — commit them; they become
 permanent regression cases run by plain `go test`. Fuzz anything parsing

@@ -93,7 +93,11 @@ class_name PlayerTest
 extends GdUnitTestSuite
 
 func test_take_damage_clamps_at_zero() -> void:
-    var player := auto_free(Player.new())
+    # auto_free() returns Variant, so type explicitly (`:=` can't infer).
+    # Instantiate the scene, not Player.new(), and add it to the tree so
+    # child nodes exist and @onready vars / _ready() are set up.
+    var player: Player = auto_free(preload("res://player/player.tscn").instantiate())
+    add_child(player)
     player.health = 10
     player.take_damage(50)
     assert_int(player.health).is_equal(0)

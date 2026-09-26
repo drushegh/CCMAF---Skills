@@ -28,7 +28,9 @@ import argparse, base64, json, os, re, sys
 ROOT = os.path.dirname(os.path.abspath(__file__))
 ASSETS = os.path.normpath(os.path.join(ROOT, "..", "assets", "azure-icons"))
 MANIFEST = os.path.join(ASSETS, "manifest.json")
-TOKEN_RE = re.compile(r"azure:([^;\"']+)")
+# Only a style `image=azure:<Name>` value is a placeholder — the lookbehind keeps
+# "azure:" in labels, tooltips, URLs or other attributes from being rewritten.
+TOKEN_RE = re.compile(r"(?<=\bimage=)azure:([^;\"'&<>\s]+)")
 
 
 def norm(s):

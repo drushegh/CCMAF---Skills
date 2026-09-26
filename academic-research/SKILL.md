@@ -12,8 +12,8 @@ description: >-
   review / referee reports, or grounding a claim in scholarly evidence.
   PROACTIVELY activate before asserting a research finding or writing any
   citation. Owns scholarly/peer-reviewed research and citation integrity;
-  general web research is deep-research, and formatting the output into a
-  document or deck is your docx/pptx tooling.
+  general web research is your runtime's web-research tooling, and formatting
+  the output into a document or deck is your docx/pptx tooling.
 ---
 
 # Academic Research
@@ -51,9 +51,11 @@ claimed. This skill exists to make that impossible by discipline.
 
 ## Tooling
 
-- **Consensus MCP** (already connected for this user) — evidence-based search
-  over scientific literature; the quickest grounded first pass. Call its
-  `search` tool, then verify and retrieve specifics via the APIs below.
+- **Consensus MCP** (optional — only if it is connected in this session; check
+  the available tools, never assume it) — evidence-based search over scientific
+  literature; the quickest grounded first pass. Call its `search` tool, then
+  verify and retrieve specifics via the APIs below. Not connected → start
+  straight from the free APIs.
 - **Free scholarly APIs** (no or low-friction keys): **OpenAlex** (works,
   citations, open metadata), **Crossref** (DOIs + bibliographic record),
   **Semantic Scholar** (abstracts, citation graph, influential-citation flags),
@@ -61,16 +63,18 @@ claimed. This skill exists to make that impossible by discipline.
   (legal open-access PDFs). Best-fit and query syntax in
   `references/discovery-and-search.md`.
 - **`scripts/verify_citation.py`** — confirm a DOI or title resolves to a real
-  record (Crossref → OpenAlex) before it enters a reference list.
-- For the **general web fan-out / fetch / verify** harness, use `deep-research`;
-  this skill is the scholarly layer on top.
+  record (Crossref → OpenAlex) before it enters a reference list. Pass `--doi`
+  and `--title` together to also catch a real DOI attached to the wrong paper.
+- For the **general web fan-out / fetch / verify** harness, use your runtime's
+  web-research tooling (for example a `deep-research` skill, if one is installed
+  — it is not part of this catalogue); this skill is the scholarly layer on top.
 
 ## Lifecycle (run only the phases the task needs)
 
 | Phase | Do | Reference |
 |---|---|---|
 | 1. Scope | Frame the question (PICO / PEO / SPIDER); set non-goals and inclusion/exclusion criteria up front | discovery-and-search |
-| 2. Discover | Consensus + APIs; expand synonyms; dedupe; capture DOIs; snowball (cited-by / references) | discovery-and-search |
+| 2. Discover | Free APIs (+ Consensus if connected); expand synonyms; dedupe; capture DOIs; snowball (cited-by / references) | discovery-and-search |
 | 3. Appraise | Quality dimensions, source tier, recency, retraction/predatory checks; label fact vs inference; triangulate | source-appraisal-and-integrity |
 | 4. Synthesise | Thematic / narrative / meta / scoping; build an evidence table; identify gaps; PRISMA flow | synthesis-and-review |
 | 5. Ideate* | Research question → gap → contribution; run the **novelty gate** | ideation-and-novelty |
@@ -116,8 +120,10 @@ Load on demand:
 ## Boundaries
 
 - **General web research** (fan-out search, fetch, adversarial verification of
-  any topic) → `deep-research`. This skill owns the *scholarly/peer-reviewed*
-  layer and citation integrity, and builds on that harness.
+  any topic) → your runtime's web-research tooling (a `deep-research` skill, if
+  installed — not shipped in this catalogue). This skill owns the
+  *scholarly/peer-reviewed* layer and citation integrity, and builds on that
+  harness.
 - **Turning the research into a deliverable** (formatted report, proposal, deck)
   → your docx/pptx tooling. This skill produces the evidenced content;
   that tooling owns the format.

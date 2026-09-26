@@ -88,8 +88,10 @@ with `bash -n script.sh` for a parse check.
 
 ## Structure Rules
 
-Functions: one concern each; `local -r` declarations first (assign
-command substitutions on a separate line); validate inputs; return
+Functions: one concern each; `local` declarations first (`local x;
+x=$(cmd)` on separate lines so the exit status isn't masked, SC2155 —
+`local -r` only for literal values, since a readonly local can't be
+assigned later); validate inputs; return
 non-zero on failure; errors to stderr. Constants `UPPER_CASE` and
 `readonly`; locals `lower_case`. Argument parsing via `getopts` or a
 `case` loop with `usage()` on `-h`/bad input. Leveled logging functions

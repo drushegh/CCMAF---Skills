@@ -54,10 +54,11 @@ function sendToAnalytics(metric) {
     name: metric.name,          // "LCP" | "INP" | "CLS"
     value: metric.value,
     rating: metric.rating,      // "good" | "needs-improvement" | "poor"
-    attribution: {
-      element: metric.attribution?.element,
-      target: metric.attribution?.interactionTarget,
-    },
+    // web-vitals v5: each metric names its culprit in a different field
+    target:
+      metric.attribution?.target ??             // LCP (v4 called it `element`)
+      metric.attribution?.interactionTarget ??  // INP
+      metric.attribution?.largestShiftTarget,   // CLS
     page: location.pathname,
   });
   // sendBeacon survives the page being torn down mid-send

@@ -55,22 +55,32 @@ When duration/size depend on the data, or you need to fetch once before
 rendering, use `calculateMetadata` on the `<Composition>`:
 
 ```tsx
+// Its own schema: the fetched data is part of the props contract
+export const dataVideoSchema = z.object({
+  src: z.string().url(),
+  scenes: z.array(z.object({ text: z.string() })).optional(),
+});
+
 <Composition
-  id="MyVideo"
-  component={MyVideo}
-  schema={myVideoSchema}
-  defaultProps={{ src: "" }}
-  calculateMetadata={async ({ props }) => {
-    const data = await fetch(props.src).then((r) => r.json());
+  id="DataVideo"
+  component={DataVideo}
+  schema={dataVideoSchema}
+  defaultProps={{ src: "https://example.com/scenes.json" }}
+  calculateMetadata={async ({ props, abortSignal }) => {
+    const data = await fetch(props.src, { signal: abortSignal })
+      .then((r) => r.json());
     return {
       durationInFrames: data.scenes.length * 90,  // data-driven length
-      props: { ...props, data },                  // inject fetched data
+      props: { ...props, scenes: data.scenes },   // inject fetched data
       // width/height/fps can also be returned
     };
   }}
   fps={30} width={1920} height={1080} durationInFrames={1}
 />
 ```
+
+Whatever `calculateMetadata` returns in `props` must still satisfy the
+composition's schema — declare the injected fields (optional) in it.
 
 - Runs once per render (not per frame) — the right place for fetches,
   `parseMedia()` to read a video's real duration/dimensions, etc.

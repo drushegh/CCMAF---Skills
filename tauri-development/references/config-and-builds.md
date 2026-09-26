@@ -4,7 +4,7 @@
 
 ```json
 {
-    "$schema": "./gen/schemas/desktop-schema.json",
+    "$schema": "https://schema.tauri.app/config/2",
     "productName": "my-app",
     "version": "1.0.0",
     "identifier": "com.example.myapp",

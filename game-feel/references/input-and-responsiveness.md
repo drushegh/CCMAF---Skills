@@ -23,19 +23,33 @@ frame-rate independent). Without it, frame-perfect ledge jumps feel
 broken.
 
 ```text
-on_leave_ground: coyote_timer = COYOTE_FRAMES
-each frame: if not grounded: coyote_timer -= 1
-can_jump = grounded or coyote_timer > 0
+COYOTE_TIME = 0.1            # seconds, not frames — frame-rate independent
+each step(dt):
+    if grounded: coyote_timer = COYOTE_TIME     # refill only while on the ground
+    else:        coyote_timer -= dt
+    can_jump = grounded or coyote_timer > 0
+do_jump():
+    velocity.y = JUMP_VELOCITY
+    coyote_timer = 0          # consume the window — else a second press
+                              # mid-air within it is a free double jump
 ```
 
+Refilling while grounded (rather than on a "left the ground" event) means
+walking off a ledge grants the window but jumping off it doesn't, because
+`do_jump` zeroes it.
+
 **Jump buffering** — if the player presses jump slightly *before* landing,
-remember it and jump on touchdown (≈5–8 frames). Without it, early presses are
+remember it and jump on touchdown (≈0.1 s; track it in seconds, like coyote
+time). Without it, early presses are
 eaten and the game feels unresponsive.
 
 ```text
-on_jump_pressed: buffer_timer = BUFFER_FRAMES
-each frame: buffer_timer -= 1
-on_land: if buffer_timer > 0: do_jump()
+JUMP_BUFFER = 0.1            # seconds
+on_jump_pressed: buffer_timer = JUMP_BUFFER
+each step(dt):
+    buffer_timer -= dt
+    if buffer_timer > 0 and can_jump:
+        do_jump(); buffer_timer = 0          # consume the buffered press
 ```
 
 **Variable jump height** — hold for a higher jump, tap for a hop: cut upward
@@ -57,7 +71,8 @@ tuned in the player's favour.
 ## Tuning windows
 
 The exact frame windows are feel choices, tuned by playtest, not universal
-constants. Typical starting points: coyote ~6 frames, buffer ~6 frames, but a
+constants. Typical starting points: coyote ~0.1 s, buffer ~0.1 s (≈6 frames at
+60 fps — store seconds, not frame counts), but a
 fast precision platformer and a floaty exploration game want different values —
 expose them and tune (`tuning-and-verification.md`).
 

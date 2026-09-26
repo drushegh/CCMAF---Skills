@@ -47,17 +47,42 @@ idempotent producer settings dedupe relay retries per session.
 | **CDC / log tailing** (Debezium as the de-facto standard) | Tail the DB's WAL/binlog, emit outbox rows to Kafka | Low latency, no poll load; adds a connector platform to operate |
 
 Polling relay discipline: publish in `id` order per aggregate to preserve
-per-key ordering; multiple relay instances need coordination — single
-leader, or `FOR UPDATE SKIP LOCKED` claims:
+per-key ordering. Multiple relay instances need coordination, and plain
+row-level `FOR UPDATE SKIP LOCKED` claims are **not** enough on their own:
+relay A can lock rows 1–100 while relay B skips them and claims row 101 —
+a later event for an aggregate already in A's batch — and publish it
+first. Row-level `SKIP LOCKED` is only safe when ordering does not
+matter. For ordered delivery, pick one:
+
+- **Single active relay** (leader election / advisory lock) — simplest;
+  one poller is enough for most estates.
+- **Partition the outbox by aggregate** — each relay owns a fixed hash
+  range of `aggregate_id` (e.g. `(hashtext(aggregate_id) & 2147483647) % N
+  = :shard`), so every aggregate is only ever published by one relay. Each
+  shard must be owned by exactly one live relay at a time — hold a lease or
+  a per-shard advisory lock (`pg_try_advisory_lock(:shard_key)`), not just
+  a config value:
 
 ```sql
-SELECT id, event_type, payload
+SELECT id, aggregate_id, event_type, payload
 FROM outbox
 WHERE published_at IS NULL
+  -- mask the sign bit: hashtext() is int4 and abs(-2147483648) overflows
+  AND (hashtext(aggregate_id) & 2147483647) % :relay_count = :relay_index
 ORDER BY id
 LIMIT 100
-FOR UPDATE SKIP LOCKED;
+FOR UPDATE;   -- NOT SKIP LOCKED: an overlapping instance of this shard must
+             -- block (or use NOWAIT to fail fast), never skip ahead
 ```
+
+`SKIP LOCKED` would re-introduce the reordering above if two instances of
+the same shard ever overlap (a failover before the old lease expires): the
+second would skip the first's locked rows and claim a later event for the
+same aggregate. The per-shard lease is what prevents the overlap; plain
+`FOR UPDATE` (blocks) or `FOR UPDATE NOWAIT` (errors) is the backstop.
+
+Also stop the batch at the first publish failure for an aggregate — do
+not mark later rows of that aggregate published past a failed one.
 
 Prune published rows on a schedule (the outbox is a buffer, not an
 archive); table design and migration mechanics → `sql-development`.

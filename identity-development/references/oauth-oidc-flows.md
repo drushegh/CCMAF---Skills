@@ -32,7 +32,11 @@ Keep the two purposes distinct even though one round trip often serves both.
 
 PKCE binds the code to the client instance that started the flow, defeating
 code interception; `state` defeats login CSRF; `nonce` defeats ID-token
-replay. All three, always — even for confidential clients (RFC 9700).
+replay. Use all three, always — even for confidential clients. That is
+this skill's house rule, stricter than the spec: RFC 9700 makes PKCE a
+MUST for public clients but only RECOMMENDED for confidential ones (OIDC
+`nonce` is an accepted alternative there), and requires CSRF protection
+via PKCE, `nonce`, or a one-time `state` value.
 
 ## Grant reference
 
@@ -44,7 +48,7 @@ replay. All three, always — even for confidential clients (RFC 9700).
 | Device authorization (RFC 8628) | TVs, CLIs, IoT — no usable browser | User enters `user_code` on a second device; client polls the token endpoint at the prescribed interval |
 | Token exchange (RFC 8693) | Service calls a downstream API on the user's behalf | Swaps one token for a narrower one; Entra's on-behalf-of is the same shape |
 | CIBA | Decoupled auth (agent asks, user approves on their phone) | Decision-level: confirm AS support before designing on it |
-| Implicit, password (ROPC) | Never for new work | Removed in OAuth 2.1; RFC 9700 forbids them |
+| Implicit, password (ROPC) | Never for new work | Removed in OAuth 2.1; RFC 9700 says ROPC MUST NOT be used and implicit SHOULD NOT be |
 
 ## What OAuth 2.1 consolidates (draft, July 2026 — re-verify status)
 

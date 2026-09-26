@@ -91,7 +91,8 @@ delete it. Code only used by tests IS dead code.
 ```rust
 // 1. MutexGuard across .await — deadlock + !Send. Scope it:
 let value = {
-    let guard = mutex.lock().unwrap();
+    // poison-tolerant; no .unwrap() (the lint baseline denies it)
+    let guard = mutex.lock().unwrap_or_else(std::sync::PoisonError::into_inner);
     guard.clone()
 };                              // guard dropped
 do_async(value).await;          // tokio::sync::Mutex only if you truly must hold
@@ -109,8 +110,9 @@ match state { State::A => a(), State::B => b() }   // no `_ =>`
 
 Also: unbounded channels (no backpressure — bound them and handle full);
 `Rc`/`RefCell` in spawned tasks (`Arc`/`Mutex` or `spawn_local`); serde
-`Option of T` without `#[serde(default)]` when the key may be absent (null
-and missing are different code paths); `_`-prefixing serde fields (changes
+`Option of T` with `deserialize_with`/`with` but no `#[serde(default)]`
+(plain `Option` fields already treat a missing key as `None`; a custom
+deserialiser drops that, so an absent key becomes an error); `_`-prefixing serde fields (changes
 the wire key — silently breaks deserialisation); no timeout on network
 operations (`tokio::time::timeout`).
 

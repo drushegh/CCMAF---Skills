@@ -21,10 +21,12 @@ LLMs — primarily the Claude API. The defining property of this domain:
 **the runtime is nondeterministic, so engineering discipline moves into
 contracts (schemas, tool definitions, prompts-as-code) and evals.**
 
-Version context (June 2026 — fast-moving, re-verify): current Claude
-models are Fable 5, Opus 4.8, Sonnet 4.6, Haiku 4.5 (aliases
-`claude-fable-5`, `claude-opus-4-8`, `claude-sonnet-4-6`,
-`claude-haiku-4-5`). Query the Models API for live capabilities rather
+Version context (September 2026 — fast-moving, re-verify): current
+Claude models are Fable 5.1, Opus 5.5, Opus 5, Sonnet 5 and Haiku 4.5
+(aliases `claude-fable-5-1`, `claude-opus-5-5`, `claude-opus-5`,
+`claude-sonnet-5`, `claude-haiku-4-5`); Fable 5, Opus 4.8 and Sonnet 4.6
+are still served as previous-generation models. Opus 5 specifics live in
+`opus-5-calibration`. Query the Models API for live capabilities rather
 than hard-coding. MCP spec: stable revision 2025-11-25; a 2026-07-28
 release candidate (stateless core, Tasks, MCP Apps) is not yet final.
 

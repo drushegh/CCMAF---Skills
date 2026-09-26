@@ -88,8 +88,10 @@ if resp.StatusCode != http.StatusOK {
 ## JSON
 
 - Struct tags are the contract: `json:"order_id"`, `json:"note,omitempty"`.
-  **`omitempty` does not omit zero-valued structs or empty non-nil
-  slices** — Go 1.24's `omitzero` handles zero structs (e.g. `time.Time`);
+  `omitempty` omits `false`, `0`, `""`, nil pointers/interfaces and
+  any slice or map of length zero (nil or not), **but never a
+  zero-valued struct** — Go 1.24's `omitzero` handles zero structs
+  (e.g. `time.Time`);
   use pointers when "absent" and "zero" must differ on the wire.
 - Strict decode when you own the contract:
   `dec.DisallowUnknownFields()`; stream large payloads with

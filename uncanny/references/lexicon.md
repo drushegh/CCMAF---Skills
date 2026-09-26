@@ -94,7 +94,7 @@ AI reaches for the impressive-sounding option. Reach back.
 
 These words co-occur in AI output. One is nothing. Three in a paragraph, or the same one twice on a page, is the tell.
 
-crucial, critical (as generic emphasis), essential, key (adjective), significant, notable, remarkable, fascinating, compelling, powerful, invaluable, seamless, intricate, nuanced, multifaceted, dynamic, transformative, innovative, groundbreaking, profound, rich (metaphorical), diverse, unique, dedicated, passionate, meticulous, thoughtful, actionable, insights, journey (metaphorical), realm, spearhead, champion (verb), empower, unlock, harness, amplify, resonate, align (metaphorical), granular
+crucial, critical (as generic emphasis), essential, key (adjective), significant, notable, remarkable, fascinating, compelling, powerful, invaluable, intricate, nuanced, multifaceted, dynamic, transformative, innovative, groundbreaking, profound, rich (metaphorical), diverse, unique, dedicated, passionate, meticulous, thoughtful, actionable, insights, journey (metaphorical), realm, spearhead, champion (verb), empower, unlock, harness, amplify, resonate, align (metaphorical), granular
 
 ### Adverb policy (nuanced, not a ban)
 

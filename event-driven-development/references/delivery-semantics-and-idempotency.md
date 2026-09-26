@@ -23,15 +23,22 @@ consumer-group rebalances and operational replays all produce them.
    "increment balance". Free and unbeatable when the domain allows it.
 2. **Inbox / dedupe table** — record the processed event `id` in the
    *same transaction* as the side effects; a duplicate hits the primary
-   key and is skipped:
+   key (`INSERT ... ON CONFLICT DO NOTHING`, check the row count) and is
+   skipped:
 
 ```sql
 CREATE TABLE inbox (
-    event_id     UUID PRIMARY KEY,
-    consumer     TEXT NOT NULL,
-    processed_at TIMESTAMPTZ NOT NULL DEFAULT now()
+    consumer     TEXT NOT NULL,          -- one row per (consumer, event)
+    event_id     UUID NOT NULL,
+    processed_at TIMESTAMPTZ NOT NULL DEFAULT now(),
+    PRIMARY KEY (consumer, event_id)
 );
 ```
+
+   Key on `(consumer, event_id)`, not `event_id` alone: when two
+   consumers (handlers, services sharing a database) process the same
+   event, an `event_id`-only key makes the second one's insert conflict
+   and it silently skips an event it never handled.
 
    Atomicity is the point: effects committed ⇔ event marked processed.
    Prune old rows past the maximum replay window.

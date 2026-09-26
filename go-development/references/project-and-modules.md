@@ -95,5 +95,9 @@ cover most services). When a module is genuinely warranted: verify the
 import path and API against its documentation before writing the import
 (`read-the-damn-docs`); prefer maintained, low-dependency modules; check
 `go mod graph` when the tree balloons. The Go module proxy + sumdb give
-integrity by default — don't disable `GOFLAGS=-mod=mod` sum checking to
-"fix" an error that is telling you something.
+integrity by default — don't set `GOSUMDB=off`, widen
+`GONOSUMDB`/`GOPRIVATE` to public paths, or delete `go.sum` to "fix" a
+checksum-mismatch error that is telling you something (a changed
+upstream or a tampered module). Nor paper over go.mod drift with
+`GOFLAGS=-mod=mod` (it lets any build silently rewrite go.mod); run
+`go mod tidy` and review the diff.

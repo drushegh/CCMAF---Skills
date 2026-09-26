@@ -54,11 +54,13 @@ bug is returning a bare value). `OUTPUT_NODE = True` marks terminal nodes
 V3 is object-oriented and type-safe (dynamic inputs, better IDE/typing).
 The shape: subclass `io.ComfyNode`, return an `io.Schema` from
 `define_schema`, return an `io.NodeOutput` from `execute`, and export via
-an async `comfy_entrypoint()` instead of `NODE_CLASS_MAPPINGS`. Use
+a `comfy_entrypoint()` that returns a `ComfyExtension` instance (whose
+async `get_node_list()` lists the node classes) instead of
+`NODE_CLASS_MAPPINGS`. Use
 versioned imports so the API is stable.
 
 ```python
-from comfy_api.latest import io   # or pin: from comfy_api.v0_0_3 import io
+from comfy_api.latest import ComfyExtension, io   # or pin a versioned module
 
 class InvertImage(io.ComfyNode):
     @classmethod
@@ -78,8 +80,12 @@ class InvertImage(io.ComfyNode):
     def execute(cls, image, strength) -> io.NodeOutput:
         return io.NodeOutput(1.0 - image * strength)
 
-async def comfy_entrypoint():
-    return [InvertImage]
+class MyPackExtension(ComfyExtension):
+    async def get_node_list(self) -> list[type[io.ComfyNode]]:
+        return [InvertImage]
+
+async def comfy_entrypoint() -> MyPackExtension:   # sync also accepted
+    return MyPackExtension()
 ```
 
 The exact `io.*` surface evolves — **verify against
