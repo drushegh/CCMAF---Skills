@@ -1,0 +1,25 @@
+{
+  "name": "ccmaf-skills-engineering",
+  "description": "CCMAF Skills — Engineering: The cross-cutting engineering disciplines: code review, secure development, test engineering, git workflow, architecture review, legacy modernisation, and Python as the general-purpose glue language. (7 skills)",
+  "author": {
+    "name": "drushegh"
+  },
+  "homepage": "https://github.com/drushegh/CCMAF---Skills",
+  "repository": "https://github.com/drushegh/CCMAF---Skills",
+  "license": "MIT",
+  "keywords": [
+    "skills",
+    "agent-skills",
+    "ccmaf",
+    "engineering"
+  ],
+  "skills": [
+    "./skills/architecture-review",
+    "./skills/code-review-development",
+    "./skills/git-workflow",
+    "./skills/legacy-modernisation",
+    "./skills/python-development",
+    "./skills/secure-development",
+    "./skills/testing-development"
+  ]
+}

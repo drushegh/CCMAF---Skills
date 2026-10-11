@@ -1,0 +1,27 @@
+{
+  "name": "ccmaf-skills-infra",
+  "description": "CCMAF Skills — Infrastructure & Operations: Running software in production: Azure, Terraform/OpenTofu, containers and Kubernetes, CI/CD pipelines, observability, incident response, and Linux as both workstation and server. (9 skills)",
+  "author": {
+    "name": "drushegh"
+  },
+  "homepage": "https://github.com/drushegh/CCMAF---Skills",
+  "repository": "https://github.com/drushegh/CCMAF---Skills",
+  "license": "MIT",
+  "keywords": [
+    "skills",
+    "agent-skills",
+    "ccmaf",
+    "infra"
+  ],
+  "skills": [
+    "./skills/azure-development",
+    "./skills/containers-development",
+    "./skills/devops-development",
+    "./skills/incident-response",
+    "./skills/kubernetes-development",
+    "./skills/linux-administration",
+    "./skills/linux-development",
+    "./skills/observability-development",
+    "./skills/terraform-development"
+  ]
+}

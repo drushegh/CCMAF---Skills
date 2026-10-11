@@ -1,0 +1,21 @@
+{
+  "name": "ccmaf-skills-ai",
+  "description": "CCMAF Skills — AI & Machine Learning: Software built on models: LLM applications and agents on the Claude API, retrieval-augmented generation as an engineered component, and classic/deep machine learning you train yourself. (3 skills)",
+  "author": {
+    "name": "drushegh"
+  },
+  "homepage": "https://github.com/drushegh/CCMAF---Skills",
+  "repository": "https://github.com/drushegh/CCMAF---Skills",
+  "license": "MIT",
+  "keywords": [
+    "skills",
+    "agent-skills",
+    "ccmaf",
+    "ai"
+  ],
+  "skills": [
+    "./skills/llm-development",
+    "./skills/machine-learning-development",
+    "./skills/rag-development"
+  ]
+}

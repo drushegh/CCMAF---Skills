@@ -1,0 +1,26 @@
+{
+  "name": "ccmaf-skills-backend",
+  "description": "CCMAF Skills — Backend & APIs: Services and the contracts between them: HTTP and GraphQL API design, .NET, Go and Rust, relational SQL, identity and auth, and event-driven architecture. (8 skills)",
+  "author": {
+    "name": "drushegh"
+  },
+  "homepage": "https://github.com/drushegh/CCMAF---Skills",
+  "repository": "https://github.com/drushegh/CCMAF---Skills",
+  "license": "MIT",
+  "keywords": [
+    "skills",
+    "agent-skills",
+    "ccmaf",
+    "backend"
+  ],
+  "skills": [
+    "./skills/api-development",
+    "./skills/dotnet-development",
+    "./skills/event-driven-development",
+    "./skills/go-development",
+    "./skills/graphql-development",
+    "./skills/identity-development",
+    "./skills/rust-development",
+    "./skills/sql-development"
+  ]
+}

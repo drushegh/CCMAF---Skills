@@ -1,0 +1,19 @@
+{
+  "name": "ccmaf-skills-automation",
+  "description": "CCMAF Skills — Automation: Automating the web and repetitive work responsibly: scrapers and crawlers with a legal/ethical gate first. (1 skill)",
+  "author": {
+    "name": "drushegh"
+  },
+  "homepage": "https://github.com/drushegh/CCMAF---Skills",
+  "repository": "https://github.com/drushegh/CCMAF---Skills",
+  "license": "MIT",
+  "keywords": [
+    "skills",
+    "agent-skills",
+    "ccmaf",
+    "automation"
+  ],
+  "skills": [
+    "./skills/web-scraping-development"
+  ]
+}

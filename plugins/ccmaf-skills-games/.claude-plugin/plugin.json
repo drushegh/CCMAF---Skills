@@ -1,0 +1,25 @@
+{
+  "name": "ccmaf-skills-games",
+  "description": "CCMAF Skills — Games & 3D: Games and interactive 3D: Godot (engine, shaders, MCP-driven workflow), Unity, Unreal Engine 5, three.js, and the engine-agnostic craft of game feel. (7 skills)",
+  "author": {
+    "name": "drushegh"
+  },
+  "homepage": "https://github.com/drushegh/CCMAF---Skills",
+  "repository": "https://github.com/drushegh/CCMAF---Skills",
+  "license": "MIT",
+  "keywords": [
+    "skills",
+    "agent-skills",
+    "ccmaf",
+    "games"
+  ],
+  "skills": [
+    "./skills/game-feel",
+    "./skills/godot-development",
+    "./skills/godot-mcp-workflow",
+    "./skills/godot-shaders-development",
+    "./skills/threejs-development",
+    "./skills/unity-development",
+    "./skills/unreal-engine-development"
+  ]
+}

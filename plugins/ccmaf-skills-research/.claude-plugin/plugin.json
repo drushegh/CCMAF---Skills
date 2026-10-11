@@ -1,0 +1,19 @@
+{
+  "name": "ccmaf-skills-research",
+  "description": "CCMAF Skills — Research: Scholarly research done carefully: literature discovery, source appraisal, evidence synthesis and citation-safe referencing. (1 skill)",
+  "author": {
+    "name": "drushegh"
+  },
+  "homepage": "https://github.com/drushegh/CCMAF---Skills",
+  "repository": "https://github.com/drushegh/CCMAF---Skills",
+  "license": "MIT",
+  "keywords": [
+    "skills",
+    "agent-skills",
+    "ccmaf",
+    "research"
+  ],
+  "skills": [
+    "./skills/academic-research"
+  ]
+}

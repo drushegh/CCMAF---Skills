@@ -1,0 +1,19 @@
+{
+  "name": "ccmaf-skills-data",
+  "description": "CCMAF Skills — Data: Moving and shaping data: vendor-neutral batch and streaming pipelines, ELT/dbt, orchestration, lakehouse modelling, data quality and contracts. (1 skill)",
+  "author": {
+    "name": "drushegh"
+  },
+  "homepage": "https://github.com/drushegh/CCMAF---Skills",
+  "repository": "https://github.com/drushegh/CCMAF---Skills",
+  "license": "MIT",
+  "keywords": [
+    "skills",
+    "agent-skills",
+    "ccmaf",
+    "data"
+  ],
+  "skills": [
+    "./skills/data-engineering-development"
+  ]
+}

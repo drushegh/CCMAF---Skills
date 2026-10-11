@@ -1,0 +1,198 @@
+{
+  "marketplace": {
+    "name": "ccmaf-skills",
+    "description": "CCMAF Skills — production-grade, vendor-neutral skills for Claude Code and compatible agent runtimes, packaged as role/section packs plus an all-in-one plugin.",
+    "owner": "drushegh",
+    "homepage": "https://github.com/drushegh/CCMAF---Skills",
+    "repository": "https://github.com/drushegh/CCMAF---Skills",
+    "license": "MIT"
+  },
+  "allInOne": {
+    "name": "ccmaf-skills",
+    "title": "CCMAF Skills (all-in-one)",
+    "description": "Every CCMAF skill as one plugin — senior-level engineering standards across languages, frameworks, cloud and operations, data, AI/agents, security and identity, plus agent-workflow and prose-quality disciplines. Prefer the role packs if you want a smaller skill listing."
+  },
+  "packs": [
+    {
+      "id": "ccmaf-skills-core",
+      "title": "Core",
+      "audience": "Everyone — install this first.",
+      "description": "The agent-workflow disciplines every session benefits from: de-slopped prose, technical writing, docs-grounding, usage-limit hygiene, model calibration, systematic debugging, reviewable plans and recaps, committable diagrams, and the two shells.",
+      "order": 1
+    },
+    {
+      "id": "ccmaf-skills-engineering",
+      "title": "Engineering",
+      "audience": "Every developer, whatever the stack — install alongside core.",
+      "description": "The cross-cutting engineering disciplines: code review, secure development, test engineering, git workflow, architecture review, legacy modernisation, and Python as the general-purpose glue language.",
+      "order": 2
+    },
+    {
+      "id": "ccmaf-skills-web",
+      "title": "Web & UI",
+      "audience": "Frontend and full-stack developers building user interfaces.",
+      "description": "Building web UIs that look chosen and behave well: HTML/CSS/Tailwind craft, React and Next.js, TypeScript, design taste, UX reasoning, accessibility, render-and-critique verification, and web performance.",
+      "order": 3
+    },
+    {
+      "id": "ccmaf-skills-backend",
+      "title": "Backend & APIs",
+      "audience": "Backend and full-stack developers building services and data access.",
+      "description": "Services and the contracts between them: HTTP and GraphQL API design, .NET, Go and Rust, relational SQL, identity and auth, and event-driven architecture.",
+      "order": 4
+    },
+    {
+      "id": "ccmaf-skills-infra",
+      "title": "Infrastructure & Operations",
+      "audience": "Platform, DevOps and SRE engineers, and anyone who ships to production.",
+      "description": "Running software in production: Azure, Terraform/OpenTofu, containers and Kubernetes, CI/CD pipelines, observability, incident response, and Linux as both workstation and server.",
+      "order": 5
+    },
+    {
+      "id": "ccmaf-skills-microsoft",
+      "title": "Microsoft Business Platforms",
+      "audience": "Developers and makers on Power Platform, Dynamics 365, Microsoft 365 and Fabric.",
+      "description": "The Microsoft business-application stack: Power Apps and Automate, Power Pages, Dynamics 365/Dataverse pro-code, Copilot Studio, Microsoft 365 development, Fabric, Power BI, and Sentinel/KQL.",
+      "order": 6
+    },
+    {
+      "id": "ccmaf-skills-ai",
+      "title": "AI & Machine Learning",
+      "audience": "Engineers building on LLMs or training their own models.",
+      "description": "Software built on models: LLM applications and agents on the Claude API, retrieval-augmented generation as an engineered component, and classic/deep machine learning you train yourself.",
+      "order": 7
+    },
+    {
+      "id": "ccmaf-skills-data",
+      "title": "Data",
+      "audience": "Data engineers and anyone moving or analysing data.",
+      "description": "Moving and shaping data: vendor-neutral batch and streaming pipelines, ELT/dbt, orchestration, lakehouse modelling, data quality and contracts.",
+      "order": 8
+    },
+    {
+      "id": "ccmaf-skills-apps",
+      "title": "Desktop & Mobile Apps",
+      "audience": "Developers shipping desktop or mobile applications.",
+      "description": "Native and cross-platform apps: Electron, Tauri, native Windows UI (WPF/WinUI/WinForms/MAUI), Android with Kotlin and Compose, and iOS with Swift and SwiftUI.",
+      "order": 9
+    },
+    {
+      "id": "ccmaf-skills-games",
+      "title": "Games & 3D",
+      "audience": "Game developers and real-time 3D engineers.",
+      "description": "Games and interactive 3D: Godot (engine, shaders, MCP-driven workflow), Unity, Unreal Engine 5, three.js, and the engine-agnostic craft of game feel.",
+      "order": 10
+    },
+    {
+      "id": "ccmaf-skills-creative",
+      "title": "Creative & Media",
+      "audience": "Artists, technical artists and video makers working with code.",
+      "description": "Code-driven creative tooling: Blender scripting and pipelines, ComfyUI image-generation workflows, and programmatic video with Remotion.",
+      "order": 11
+    },
+    {
+      "id": "ccmaf-skills-research",
+      "title": "Research",
+      "audience": "Researchers, students and anyone who needs citation-safe sources.",
+      "description": "Scholarly research done carefully: literature discovery, source appraisal, evidence synthesis and citation-safe referencing.",
+      "order": 12
+    },
+    {
+      "id": "ccmaf-skills-automation",
+      "title": "Automation",
+      "audience": "Anyone automating the web or repetitive work.",
+      "description": "Automating the web and repetitive work responsibly: scrapers and crawlers with a legal/ethical gate first.",
+      "order": 13
+    }
+  ],
+  "externalSkills": ["deep-research", "docx", "xlsx", "pptx", "pdf", "skill-creator"],
+  "roles": [
+    { "role": "Anyone using Claude Code", "packs": ["ccmaf-skills-core"] },
+    { "role": "Any developer", "packs": ["ccmaf-skills-core", "ccmaf-skills-engineering"] },
+    { "role": "Frontend / full-stack web", "packs": ["ccmaf-skills-core", "ccmaf-skills-engineering", "ccmaf-skills-web", "ccmaf-skills-backend"] },
+    { "role": "Backend / API", "packs": ["ccmaf-skills-core", "ccmaf-skills-engineering", "ccmaf-skills-backend"] },
+    { "role": "Platform / DevOps / SRE", "packs": ["ccmaf-skills-core", "ccmaf-skills-engineering", "ccmaf-skills-infra"] },
+    { "role": "Power Platform / Dynamics / M365", "packs": ["ccmaf-skills-core", "ccmaf-skills-microsoft"] },
+    { "role": "AI / LLM engineer", "packs": ["ccmaf-skills-core", "ccmaf-skills-engineering", "ccmaf-skills-ai"] },
+    { "role": "Data engineer", "packs": ["ccmaf-skills-core", "ccmaf-skills-engineering", "ccmaf-skills-data"] },
+    { "role": "Desktop / mobile app developer", "packs": ["ccmaf-skills-core", "ccmaf-skills-engineering", "ccmaf-skills-apps"] },
+    { "role": "Game developer", "packs": ["ccmaf-skills-core", "ccmaf-skills-games", "ccmaf-skills-creative"] },
+    { "role": "Technical artist / video maker", "packs": ["ccmaf-skills-core", "ccmaf-skills-creative"] },
+    { "role": "Researcher / student", "packs": ["ccmaf-skills-core", "ccmaf-skills-research"] },
+    { "role": "Automation / scraping", "packs": ["ccmaf-skills-core", "ccmaf-skills-automation"] }
+  ],
+  "skills": {
+    "uncanny": { "pack": "ccmaf-skills-core", "summary": "Remove AI tells from prose so it reads as human-written, without swapping in a different costume." },
+    "technical-writing": { "pack": "ccmaf-skills-core", "summary": "READMEs, ADRs, runbooks, changelogs and design docs on the Diátaxis framework, with every sample verified." },
+    "read-the-damn-docs": { "pack": "ccmaf-skills-core", "summary": "Ground claims in version-matched official docs and installed source, not training memory." },
+    "stay-within-limits": { "pack": "ccmaf-skills-core", "summary": "Keep long-running or parallel agent work inside usage limits: budget, checkpoint, stop on a soft threshold." },
+    "opus-5-calibration": { "pack": "ccmaf-skills-core", "summary": "Operate Claude Opus 5 well: set the length dials, drop backfiring double-checks, keep empirical verification." },
+    "systematic-debugging": { "pack": "ccmaf-skills-core", "summary": "Reproduce, minimise, bisect, test one falsifiable hypothesis at a time, fix the root cause, add a regression test." },
+    "visual-plan": { "pack": "ccmaf-skills-core", "summary": "A grounded, reviewable Markdown implementation plan with diagrams and an open-questions gate, before any code." },
+    "visual-recap": { "pack": "ccmaf-skills-core", "summary": "A high-altitude before/after recap of a completed change, true by construction from the real diff." },
+    "drawio-development": { "pack": "ccmaf-skills-core", "summary": "Native, committable .drawio XML: well-formedness, layout discipline, export, and a render-check loop." },
+    "bash-development": { "pack": "ccmaf-skills-core", "summary": "Production shell scripting: strict mode, quoting, ShellCheck, injection and temp-file safety, portability, BATS." },
+    "powershell-development": { "pack": "ccmaf-skills-core", "summary": "PowerShell 7+: advanced functions, the pipeline, error handling, Pester, PSScriptAnalyzer and the security stack." },
+    "code-review-development": { "pack": "ccmaf-skills-engineering", "summary": "Senior-level code review against one bar — the change improves codebase health — with a severity rubric." },
+    "secure-development": { "pack": "ccmaf-skills-engineering", "summary": "OWASP Top 10 and ASVS reviews, STRIDE threat modelling, secrets and crypto hygiene, supply-chain security." },
+    "testing-development": { "pack": "ccmaf-skills-engineering", "summary": "Test strategy above the unit level: Playwright E2E, load testing with SLO gates, contract testing, test data." },
+    "git-workflow": { "pack": "ccmaf-skills-engineering", "summary": "Branching and commit hygiene, rebase vs merge, history surgery, conflicts, bisect, worktrees, disaster recovery." },
+    "architecture-review": { "pack": "ccmaf-skills-engineering", "summary": "Review architecture on its own terms: quality-attribute trade-offs, one-way doors, failure modes, ADR quality." },
+    "legacy-modernisation": { "pack": "ccmaf-skills-engineering", "summary": "Change code you don't fully understand safely: characterisation tests, seams, strangler fig, codemods, rollback." },
+    "python-development": { "pack": "ccmaf-skills-engineering", "summary": "Modern Python 3.11+: idioms, the type system, asyncio, errors and logging, pyproject/pytest, performance." },
+    "frontend-development": { "pack": "ccmaf-skills-web", "summary": "HTML, CSS and Tailwind v4 craft: design tokens, theming, semantic markup, distinctive design, a11y baseline." },
+    "react-development": { "pack": "ccmaf-skills-web", "summary": "React and Next.js: render and data-fetching performance, composition, Server Components, the App Router." },
+    "typescript-development": { "pack": "ccmaf-skills-web", "summary": "TypeScript 5.x type safety: generics, eliminating any, Zod, Node backends, tsconfig and tsc error-fixing." },
+    "design-taste": { "pack": "ccmaf-skills-web", "summary": "Remove AI tells from visual design so a UI reads as chosen, not generated; register-aware polish." },
+    "ux-design": { "pack": "ccmaf-skills-web", "summary": "Interaction and perception reasoning for any UI: Laws of UX, Gestalt hierarchy, affordances, forms, ergonomics." },
+    "accessibility-development": { "pack": "ccmaf-skills-web", "summary": "WCAG 2.2 AA with the EU statutory frame: ARIA, keyboard and focus, accessible forms, testing, audit checklist." },
+    "ui-verification": { "pack": "ccmaf-skills-web", "summary": "Render, view, critique, iterate: screenshot a UI at real viewports and critique the image, not the code." },
+    "web-performance-development": { "pack": "ccmaf-skills-web", "summary": "Core Web Vitals, the critical rendering path, loading and caching strategy, service workers, budgets." },
+    "api-development": { "pack": "ccmaf-skills-backend", "summary": "HTTP API design: REST semantics, OpenAPI-first contracts, versioning, pagination, problem+json, webhooks." },
+    "dotnet-development": { "pack": "ccmaf-skills-backend", "summary": "Modern .NET and C#: ASP.NET Core APIs, EF Core, nullable reference types, testing, observability, performance." },
+    "go-development": { "pack": "ccmaf-skills-backend", "summary": "Modern Go: errors as values, goroutine/channel/context discipline, generics, modules, table-driven tests." },
+    "rust-development": { "pack": "ccmaf-skills-backend", "summary": "Rust 2024: type-driven API design, ownership and lifetimes, error and lint discipline, async/tokio, serde." },
+    "sql-development": { "pack": "ccmaf-skills-backend", "summary": "T-SQL and PostgreSQL: schema design, workload-aware indexing, query tuning, transactions, safe migrations." },
+    "identity-development": { "pack": "ccmaf-skills-backend", "summary": "Auth engineering: OAuth 2.1/OIDC flow selection, tokens, sessions, MFA and passkeys, SSO, RBAC/ABAC/ReBAC." },
+    "event-driven-development": { "pack": "ccmaf-skills-backend", "summary": "Delivery semantics, idempotent consumers, outbox, sagas, event sourcing/CQRS, dead letters, schema evolution." },
+    "graphql-development": { "pack": "ccmaf-skills-backend", "summary": "GraphQL end to end: SDL design, resolvers and DataLoader, mutations and errors, federation, security, caching." },
+    "azure-development": { "pack": "ccmaf-skills-infra", "summary": "Azure service selection and engineering: Bicep/Terraform and azd, compute, Entra ID, Key Vault, operations." },
+    "terraform-development": { "pack": "ccmaf-skills-infra", "summary": "Terraform and OpenTofu: module design, remote state, the plan-review gate, drift, environments, OIDC, testing." },
+    "containers-development": { "pack": "ccmaf-skills-infra", "summary": "Multi-stage Dockerfiles, compose for local dev, image and runtime security, registries, container hosting." },
+    "kubernetes-development": { "pack": "ccmaf-skills-infra", "summary": "Platform Kubernetes: workloads, autoscaling, networking, RBAC and Pod Security, storage, Helm, GitOps, AKS." },
+    "devops-development": { "pack": "ccmaf-skills-infra", "summary": "CI/CD on Azure DevOps and GitHub Actions: pipeline YAML, templates, OIDC, environments, pipeline security." },
+    "observability-development": { "pack": "ccmaf-skills-infra", "summary": "Correlated logs, metrics and traces with OpenTelemetry, the Collector, cardinality control, SLO burn alerts." },
+    "incident-response": { "pack": "ccmaf-skills-infra", "summary": "Run production incidents mitigate-first: severity, incident command, status cadence, blameless postmortems." },
+    "linux-development": { "pack": "ccmaf-skills-infra", "summary": "Linux as a workstation: filesystem and process models, permissions, the shell, packages, WSL2 in depth." },
+    "linux-administration": { "pack": "ccmaf-skills-infra", "summary": "Operating Linux servers: hardened systemd units, networking, users/sudo/PAM, performance, logging, automation." },
+    "power-platform-development": { "pack": "ccmaf-skills-microsoft", "summary": "Canvas apps and Power Fx, Power Automate flows, maker-side Dataverse, environments, solutions and ALM." },
+    "power-pages-development": { "pack": "ccmaf-skills-microsoft", "summary": "Power Pages: Liquid, the portal Web API, table permissions and web roles, SPA code sites, pac pages ALM." },
+    "dynamics-365-development": { "pack": "ccmaf-skills-microsoft", "summary": "Dynamics 365 / Dataverse pro-code: plug-ins and the pipeline, client scripting, PCF, Web API/SDK, ALM." },
+    "copilot-studio-development": { "pack": "ccmaf-skills-microsoft", "summary": "Copilot Studio agents, YAML-first: topics and actions, generative orchestration, knowledge, channels, ALM." },
+    "m365-development": { "pack": "ccmaf-skills-microsoft", "summary": "Microsoft 365 for developers: Graph and its SDKs, SPFx, Teams apps, SharePoint data access, Office add-ins." },
+    "fabric-development": { "pack": "ccmaf-skills-microsoft", "summary": "Microsoft Fabric: OneLake, lakehouse/medallion, Spark and Delta, ingestion, Direct Lake, capacity admin." },
+    "power-bi-development": { "pack": "ccmaf-skills-microsoft", "summary": "Power BI: star-schema semantic models, RLS, DAX and its performance, Power Query folding, TMDL/PBIP, ALM." },
+    "sentinel-development": { "pack": "ccmaf-skills-microsoft", "summary": "Microsoft Sentinel SIEM/SOAR and KQL: detections, ingestion cost, hunting, playbooks, MITRE ATT&CK mapping." },
+    "llm-development": { "pack": "ccmaf-skills-ai", "summary": "Software on LLMs: the Claude API, tool use and agent loops, prompts as code, caching, MCP servers, evals." },
+    "rag-development": { "pack": "ccmaf-skills-ai", "summary": "RAG as an engineered component: chunking, embeddings, hybrid retrieval and re-ranking, citations, evaluation." },
+    "machine-learning-development": { "pack": "ccmaf-skills-ai", "summary": "ML you train yourself: framing and baselines, leakage-safe splits, features, tuning, evaluation, production." },
+    "data-engineering-development": { "pack": "ccmaf-skills-data", "summary": "Batch and streaming pipelines, ELT/dbt, orchestration, Spark, lakehouse modelling, data quality and contracts." },
+    "electron-development": { "pack": "ccmaf-skills-apps", "summary": "Electron: main/preload/renderer, secure IPC via contextBridge, native modules, packaging, signing, updates." },
+    "tauri-development": { "pack": "ccmaf-skills-apps", "summary": "Tauri v2 desktop and mobile: Rust-frontend IPC, the capability security model, plugins, builds, signing." },
+    "windows-desktop-development": { "pack": "ccmaf-skills-apps", "summary": "Native Windows UI across WPF, WinUI 3, WinForms and MAUI: XAML, MVVM, threading, packaging, UI Automation." },
+    "android-development": { "pack": "ccmaf-skills-apps", "summary": "Kotlin and Jetpack Compose: MVVM with unidirectional data flow, offline-first Room, Hilt, Gradle, testing." },
+    "ios-development": { "pack": "ccmaf-skills-apps", "summary": "Swift and SwiftUI: concurrency, MVVM, Human Interface Guidelines and accessibility, persistence, App Store." },
+    "godot-development": { "pack": "ccmaf-skills-games", "summary": "Godot 4.x: typed GDScript and C#, scene composition, custom Resources, Jolt physics, headless CI exports." },
+    "godot-mcp-workflow": { "pack": "ccmaf-skills-games", "summary": "Drive Godot and Blender from an agent over MCP: the edit-run-debug loop, tool limits, the glTF pipeline." },
+    "godot-shaders-development": { "pack": "ccmaf-skills-games", "summary": "Godot 4.x shaders: the shading language, spatial/2D/particle shaders, compute GLSL, visual shaders, performance." },
+    "unity-development": { "pack": "ccmaf-skills-games", "summary": "Unity 6: lifecycle and serialization, ScriptableObjects, prefabs and scenes, Addressables, Input System, DOTS." },
+    "unreal-engine-development": { "pack": "ccmaf-skills-games", "summary": "Unreal Engine 5: Blueprints vs C++, the gameplay framework, reflection and GC, Nanite/Lumen, packaging." },
+    "threejs-development": { "pack": "ccmaf-skills-games", "summary": "three.js and React Three Fiber: colour-correct scenes, the glTF pipeline, performance, shaders, pmndrs." },
+    "game-feel": { "pack": "ccmaf-skills-games", "summary": "Make motion feel good in any engine: responsive input, coyote time and buffering, physics tuning, juice." },
+    "blender-development": { "pack": "ccmaf-skills-creative", "summary": "Blender bpy scripting, add-ons and extensions, Geometry Nodes, the engine export pipeline, headless automation." },
+    "comfyui-development": { "pack": "ccmaf-skills-creative", "summary": "ComfyUI: the graph model, UI vs API JSON, pipelines, custom nodes, the HTTP/WebSocket API, the RCE surface." },
+    "remotion-development": { "pack": "ccmaf-skills-creative", "summary": "Programmatic video with Remotion: compositions, frame-driven animation, sequencing, assets, rendering paths." },
+    "academic-research": { "pack": "ccmaf-skills-research", "summary": "Citation-safe scholarly research: discovery via free APIs, appraisal, evidence synthesis, reviewer simulation." },
+    "web-scraping-development": { "pack": "ccmaf-skills-automation", "summary": "Responsible scrapers: the legal gate, HTTP and HTML parsing, Playwright for dynamic sites, Scrapy, resilience." }
+  }
+}

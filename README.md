@@ -5,7 +5,7 @@
 
 *Skill directories on disk; the one a task matches crosses into context.*
 
-**72 ENGINEERING SKILLS FOR CLAUDE CODE — A STANDALONE PLUGIN, OR SYNCED SELECTIVELY BY CCMAF**
+**72 ENGINEERING SKILLS FOR CLAUDE CODE — ROLE PACKS OR ONE PLUGIN, OR SYNCED SELECTIVELY BY CCMAF**
 
 # CCMAF Skills
 
@@ -18,7 +18,7 @@
 
 </div>
 
-CCMAF Skills is a catalogue of 72 vendor-neutral, MIT-licensed engineering skills for Claude Code and compatible agent runtimes: install all 72 as a standalone plugin, or sync a selected subset into a [CCMAF](https://github.com/drushegh/CCMAF) project.
+CCMAF Skills is a catalogue of 72 vendor-neutral, MIT-licensed engineering skills for Claude Code and compatible agent runtimes: install the role packs your work needs (or all 72 as one plugin), or sync a selected subset into a [CCMAF](https://github.com/drushegh/CCMAF) project.
 
 ## What this is (and is not)
 
@@ -29,8 +29,8 @@ A skill packages the conventions, decision frameworks, pitfalls, and verificatio
 | 72 vendor-neutral engineering skills | A collection limited to programming languages |
 | Senior-practitioner conventions, decisions, pitfalls, and verification rules | Runtime enforcement or a hard quality gate |
 | Guidance loaded only when the task matches | Reference material loaded on every task |
-| A standalone Claude Code plugin that installs all 72 | Dependent on the CCMAF framework |
-| Selectively syncable into CCMAF projects | A per-skill plugin install — the plugin is all-or-nothing |
+| Claude Code plugins: 13 role packs, or all 72 in one | Dependent on the CCMAF framework |
+| Selectively syncable into CCMAF projects | A per-skill plugin install — the smallest plugin unit is a pack |
 | Domain-neutral for public v1.0 | A repository of client- or project-specific policy |
 
 [Explore the catalogue](#part-1--a-catalogue-not-a-language-shelf) · [See how a skill loads](#part-2--depth-disclosed-progressively) · [Choose an install path](#part-4--two-consumption-paths)
@@ -65,7 +65,7 @@ A skill packages the conventions, decision frameworks, pitfalls, and verificatio
 
 Six of the working-method skills govern how an agent works rather than what it works on: `opus-5-calibration`, `read-the-damn-docs`, `stay-within-limits`, `visual-plan`, `visual-recap`, and `uncanny`. The last of these removes AI tells from prose; its visual sibling, `design-taste`, sits in the Design & UX group and does the same for interfaces.
 
-This grouping exists for navigation in this README. It is not repository metadata; each skill is one directory in the catalogue, and every directory below appears exactly once. Each `SKILL.md` also carries an on-demand `references/` folder — open a group to see what its skills cover.
+This grouping exists for navigation in this README. It is not the install structure: on disk each skill is one directory inside one of 13 packs (`plugins/ccmaf-skills-<pack>/skills/<skill>/`), listed pack by pack in [SKILLS.md](SKILLS.md). Every skill below appears exactly once. Each `SKILL.md` also carries an on-demand `references/` folder — open a group to see what its skills cover.
 
 <details>
 <summary><strong>Languages &amp; shells</strong> · 7 skills</summary>
@@ -208,7 +208,7 @@ This grouping exists for navigation in this README. It is not repository metadat
 
 *On a trigger, the `SKILL.md` core enters context; of the reference files behind it, only the one the task touches follows.*
 
-**Load the core; open the depth only when the task needs it.** Every skill has the same two-layer shape (a few also carry a `scripts/` helper or static `assets/` beside it). The real `python-development/` directory:
+**Load the core; open the depth only when the task needs it.** Every skill has the same two-layer shape (a few also carry a `scripts/` helper or static `assets/` beside it). The real `python-development/` directory, in `plugins/ccmaf-skills-engineering/skills/`:
 
 ```
 python-development/
@@ -258,20 +258,30 @@ Outranking is advisory precedence, not enforcement. A loaded skill supplies expe
 <!-- IMG-5: Two consumption paths — left: grey marketplace manifests and a plugin bundle carrying all 72 green tiles into a blue Claude Code runtime, labeled "no CCMAF required"; right: an amber .claude/.skills-version selection, the grey catalogue pinned at a SHA, a dirty-check, then the selected green directories copied into .claude/skills/, labeled "refuses to clobber uncommitted edits". Asset: .github/assets/install-paths.webp -->
 ![The Claude Code plugin installs all 72 skills without CCMAF; CCMAF skills-sync copies selected directories at a pinned SHA and protects uncommitted edits.](.github/assets/install-paths.webp)
 
-*Left: the plugin carries all 72 into Claude Code, no CCMAF required. Right: `skills-sync` copies only the selected directories at a pinned SHA and refuses to clobber uncommitted edits.*
+*Left: the plugins carry the skills into Claude Code — a pack at a time, or all 72 at once — no CCMAF required. Right: `skills-sync` copies only the selected directories at a pinned SHA and refuses to clobber uncommitted edits.*
 
-**Standalone means all 72; CCMAF means selected directories.**
+**Plugins install by pack, or all 72 at once; CCMAF selects individual directories.**
 
-### Path 1 — the standalone Claude Code plugin
+### Path 1 — Claude Code plugins: role packs or all-in-one
 
-The repository ships `.claude-plugin/marketplace.json` and `.claude-plugin/plugin.json`. The marketplace is named `ccmaf-skills`; the plugin, also named `ccmaf-skills`, bundles all 72 skills. No CCMAF framework is required. Add this repository as a Claude Code plugin marketplace, then install the plugin:
+The repository is a Claude Code plugin marketplace named `ccmaf-skills`. Every skill lives in exactly one of 13 packs, and each pack is its own plugin, `ccmaf-skills-<pack>`. No CCMAF framework is required. Add the marketplace, install `core`, then the packs your work needs:
 
 ```
 /plugin marketplace add drushegh/CCMAF---Skills
+/plugin install ccmaf-skills-core@ccmaf-skills          # everyone
+/plugin install ccmaf-skills-engineering@ccmaf-skills   # every developer
+/plugin install ccmaf-skills-web@ccmaf-skills           # then your stack: web, backend, infra, microsoft, ai, data, apps, games, creative, research, automation
+```
+
+[SKILLS.md](SKILLS.md) lists every pack and its skills, with a "which packs do I need" table by role. Fewer packs means a shorter skill listing in every session; the validator reports what each pack adds.
+
+The all-in-one plugin is still there for anyone who wants everything:
+
+```
 /plugin install ccmaf-skills@ccmaf-skills
 ```
 
-No version is pinned, so `/plugin marketplace update` tracks `main` — every commit is a release. All 72 skills load at once, each auto-invoked from its trigger description.
+No version is pinned, so `/plugin marketplace update` tracks `main` — every commit is a release. Installed skills are auto-invoked from their trigger descriptions.
 
 ### Path 2 — CCMAF `skills-sync`, selective
 
@@ -281,7 +291,7 @@ A CCMAF project names the skills it wants in `.claude/.skills-version`:
 SKILLS_SELECTED="python-development rust-development typescript-development"
 ```
 
-Running `skills-sync.sh` clones the catalogue and copies only those directories into `.claude/skills/`. Four properties, stated precisely:
+Running `skills-sync.sh` clones the catalogue and copies only those directories into `.claude/skills/`. Selection is by skill name, not pack, so the pack layout does not change what a project selects — but skills now live at `plugins/<pack>/skills/<skill>/` rather than the repository root, and `skills-sync` needs a CCMAF framework update to resolve that path. Until a project takes that update, sync reports its selected skills as not found upstream, keeps the local copies, and holds the pin. Four properties, stated precisely:
 
 - **Per-directory ownership.** Only the selected directories are managed; anything else under `.claude/skills/` is consumer-local and never touched.
 - **A pinned catalogue SHA.** The project tracks a known version; `skills-check` reports when it is behind.
@@ -291,8 +301,8 @@ Running `skills-sync.sh` clones the catalogue and copies only those directories 
 | Property | Standalone plugin | CCMAF `skills-sync` |
 |---|---|---|
 | Requires CCMAF | No | Yes |
-| Installed scope | All 72 skills | Only the selected directories |
-| Entry point | `.claude-plugin/` marketplace + plugin | `.claude/.skills-version` (`SKILLS_SELECTED="…"`) |
+| Installed scope | The packs you install, or all 72 | Only the selected directories |
+| Entry point | `.claude-plugin/` marketplace + pack plugins | `.claude/.skills-version` (`SKILLS_SELECTED="…"`) |
 | Version tracking | `/plugin marketplace update` tracks `main` | Pinned catalogue SHA |
 | Local-edit protection | (plugin install) | Dirty-check refuses to clobber uncommitted edits |
 | Default catalogue access | The plugin marketplace | Anonymous public HTTPS |
@@ -306,7 +316,7 @@ Running `skills-sync.sh` clones the catalogue and copies only those directories 
 
 ## Relationship to CCMAF
 
-The plugin path needs no CCMAF; the selective path is a CCMAF mechanism. [CCMAF](https://github.com/drushegh/CCMAF) is the multi-agent framework this catalogue serves as a standards pack. What the standalone plugin gives everyone — all 72 skills, natively loaded by Claude Code — CCMAF extends with selection: `SKILLS_SELECTED` in `.claude/.skills-version`, the pinned catalogue SHA, the dirty-check, per-directory ownership, and `--suggest` stack detection. The link runs both ways: the CCMAF README points at this catalogue as its skills upstream, and this badge row points back at CCMAF.
+The plugin path needs no CCMAF; the selective path is a CCMAF mechanism. [CCMAF](https://github.com/drushegh/CCMAF) is the multi-agent framework this catalogue serves as a standards pack. What the plugins give everyone — role packs or all 72 skills, natively loaded by Claude Code — CCMAF extends with selection: `SKILLS_SELECTED` in `.claude/.skills-version`, the pinned catalogue SHA, the dirty-check, per-directory ownership, and `--suggest` stack detection. The link runs both ways: the CCMAF README points at this catalogue as its skills upstream, and this badge row points back at CCMAF.
 
 ## Limits & scope
 
@@ -318,7 +328,7 @@ The plugin path needs no CCMAF; the selective path is a CCMAF mechanism. [CCMAF]
 
 ## Contributing & license
 
-MIT, for all 72 skills, with one third-party exception: the Azure architecture icons bundled under `drawio-development/assets/azure-icons/` are Microsoft's, redistributed under Microsoft's own terms (the copy ships alongside them as `Microsoft_Terms_of_Use.pdf`), not under MIT. Contributions go through issues and pull requests on [this repository](https://github.com/drushegh/CCMAF---Skills). A skill contribution keeps the catalogue's shape: one self-contained directory, a lean `SKILL.md` whose frontmatter description carries the trigger phrases, and depth split into `references/` files by topic.
+MIT, for all 72 skills, with one third-party exception: the Azure architecture icons bundled under `plugins/ccmaf-skills-core/skills/drawio-development/assets/azure-icons/` are Microsoft's, redistributed under Microsoft's own terms (the copy ships alongside them as `Microsoft_Terms_of_Use.pdf`), not under MIT. Contributions go through issues and pull requests on [this repository](https://github.com/drushegh/CCMAF---Skills); [CONTRIBUTING.md](CONTRIBUTING.md) has the workflow and [CHANGELOG.md](CHANGELOG.md) the history. A skill contribution keeps the catalogue's shape: one self-contained directory, a lean `SKILL.md` whose frontmatter description carries the trigger phrases, and depth split into `references/` files by topic.
 
 <details>
 <summary><strong>How the skills are built and verified</strong></summary>
@@ -332,14 +342,14 @@ Skills were built from curated official and community sources (repositories and 
 
 This repo is the skills upstream the CCMAF framework consumes mechanically (`contract:skills-sync`). An agent session authoring or modifying skills must preserve these invariants:
 
-1. **One directory per skill at the repo root.** The directory name *is* the skill's identity — the token in `SKILLS_SELECTED`, the ownership boundary the sync overwrites, and the name other skills cross-reference. Renaming is a breaking change for every consumer that selected it.
+1. **One directory per skill, in exactly one pack** (`plugins/ccmaf-skills-<pack>/skills/<skill>/`). The directory name *is* the skill's identity — the token in `SKILLS_SELECTED`, the ownership boundary the sync overwrites, and the name other skills cross-reference. Renaming is a breaking change for every consumer that selected it.
 2. **Naming: lowercase and hyphenated**, so `skills-sync.sh --suggest` output stays paste-able. Technology-stack skills use `<domain>-development` (`python-development`, `azure-development`); discipline and agent-workflow skills use a short descriptive name instead (`academic-research`, `systematic-debugging`, `visual-plan`, `uncanny`).
 3. **`SKILL.md` is mandatory**, with YAML frontmatter: `name` equal to the directory name, and a `description` under 1,024 characters listing concrete triggers. Everything else in the directory ships verbatim on sync.
 4. **Cross-references are advisory names, not hard links.** Skills route adjacent concerns to siblings by directory name; a consumer who synced only one of a pair just gets less depth there, never breakage.
 5. **Every commit to `main` is a release.** Consumers pin a SHA in `.claude/.skills-version`; `skills-check.sh` compares that pin to `main` at cold start and prompts a re-sync. Keep `main` always-shippable.
 6. **Markdown-first, LF line endings, nothing that runs on its own.** A skill is Markdown plus, where a task genuinely needs it, small stdlib-only helper scripts under `scripts/` (for example `academic-research/scripts/verify_citation.py`, `drawio-development/scripts/validate.py`) and static `assets/`. Scripts ship verbatim on sync but never execute on install or sync; the agent runs one only when the skill tells it to, and they must stay dependency-free and readable. Consumer audits scan synced skills for hidden-character and instruction-injection patterns — keep skills free of zero-width/bidi characters and "ignore your instructions" phrasing, even in examples.
 
-**Adding a skill:** a directory named per invariant 2 whose `SKILL.md` frontmatter `name` matches it exactly; a lean `SKILL.md` plus `references/` topic files, with every reference in the index present on disk and vice versa; a boundary section routing adjacent concerns to real sibling directory names; UK English and date-stamped fast-moving claims; add the skill to this README's catalogue; append `"./<name>"` to the `skills` array in `.claude-plugin/plugin.json` (bare directory refs, forward slashes); and, if the stack is detectable from project files, add the mapping to the framework's `--suggest` detection.
+**Adding a skill:** a directory named per invariant 2, inside the pack it belongs to, whose `SKILL.md` frontmatter `name` matches it exactly; a lean `SKILL.md` plus `references/` topic files, with every reference in the index present on disk and vice versa; a boundary section routing adjacent concerns to real sibling directory names; UK English and date-stamped fast-moving claims; a one-line summary in `scripts/catalog-data.json`, then `node scripts/generate-catalog.mjs` (never hand-edit the manifests it writes) and `node scripts/validate-skills.mjs --strict`; add the skill to this README's catalogue; and, if the stack is detectable from project files, add the mapping to the framework's `--suggest` detection. [CONTRIBUTING.md](CONTRIBUTING.md) has the full workflow.
 
 </details>
 

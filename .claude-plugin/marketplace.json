@@ -1,7 +1,7 @@
 {
   "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
   "name": "ccmaf-skills",
-  "description": "CCMAF Skills — a library of production-grade, vendor-neutral engineering skills for Claude Code and compatible agent runtimes.",
+  "description": "CCMAF Skills — production-grade, vendor-neutral skills for Claude Code and compatible agent runtimes, packaged as role/section packs plus an all-in-one plugin.",
   "owner": {
     "name": "drushegh"
   },
@@ -9,9 +9,170 @@
     {
       "name": "ccmaf-skills",
       "source": "./",
-      "description": "All 72 CCMAF skills as one plugin — senior-level engineering standards across languages, frameworks, cloud and operations, data, AI/agents, security and identity, plus agent-workflow and prose-quality disciplines (planning, recap, docs-grounding, debugging, incident response, usage limits, de-slopping).",
+      "description": "All 72 CCMAF skills as one plugin. Every CCMAF skill as one plugin — senior-level engineering standards across languages, frameworks, cloud and operations, data, AI/agents, security and identity, plus agent-workflow and prose-quality disciplines. Prefer the role packs if you want a smaller skill listing.",
       "category": "development",
-      "keywords": ["skills", "engineering-standards", "agent-skills", "best-practices"]
+      "keywords": [
+        "skills",
+        "engineering-standards",
+        "agent-skills",
+        "best-practices"
+      ]
+    },
+    {
+      "name": "ccmaf-skills-core",
+      "source": "./plugins/ccmaf-skills-core",
+      "description": "Core — The agent-workflow disciplines every session benefits from: de-slopped prose, technical writing, docs-grounding, usage-limit hygiene, model calibration, systematic debugging, reviewable plans and recaps, committable diagrams, and the two shells. [Everyone — install this first.] (11 skills)",
+      "category": "development",
+      "keywords": [
+        "skills",
+        "agent-skills",
+        "ccmaf",
+        "core"
+      ]
+    },
+    {
+      "name": "ccmaf-skills-engineering",
+      "source": "./plugins/ccmaf-skills-engineering",
+      "description": "Engineering — The cross-cutting engineering disciplines: code review, secure development, test engineering, git workflow, architecture review, legacy modernisation, and Python as the general-purpose glue language. [Every developer, whatever the stack — install alongside core.] (7 skills)",
+      "category": "development",
+      "keywords": [
+        "skills",
+        "agent-skills",
+        "ccmaf",
+        "engineering"
+      ]
+    },
+    {
+      "name": "ccmaf-skills-web",
+      "source": "./plugins/ccmaf-skills-web",
+      "description": "Web & UI — Building web UIs that look chosen and behave well: HTML/CSS/Tailwind craft, React and Next.js, TypeScript, design taste, UX reasoning, accessibility, render-and-critique verification, and web performance. [Frontend and full-stack developers building user interfaces.] (8 skills)",
+      "category": "development",
+      "keywords": [
+        "skills",
+        "agent-skills",
+        "ccmaf",
+        "web"
+      ]
+    },
+    {
+      "name": "ccmaf-skills-backend",
+      "source": "./plugins/ccmaf-skills-backend",
+      "description": "Backend & APIs — Services and the contracts between them: HTTP and GraphQL API design, .NET, Go and Rust, relational SQL, identity and auth, and event-driven architecture. [Backend and full-stack developers building services and data access.] (8 skills)",
+      "category": "development",
+      "keywords": [
+        "skills",
+        "agent-skills",
+        "ccmaf",
+        "backend"
+      ]
+    },
+    {
+      "name": "ccmaf-skills-infra",
+      "source": "./plugins/ccmaf-skills-infra",
+      "description": "Infrastructure & Operations — Running software in production: Azure, Terraform/OpenTofu, containers and Kubernetes, CI/CD pipelines, observability, incident response, and Linux as both workstation and server. [Platform, DevOps and SRE engineers, and anyone who ships to production.] (9 skills)",
+      "category": "development",
+      "keywords": [
+        "skills",
+        "agent-skills",
+        "ccmaf",
+        "infra"
+      ]
+    },
+    {
+      "name": "ccmaf-skills-microsoft",
+      "source": "./plugins/ccmaf-skills-microsoft",
+      "description": "Microsoft Business Platforms — The Microsoft business-application stack: Power Apps and Automate, Power Pages, Dynamics 365/Dataverse pro-code, Copilot Studio, Microsoft 365 development, Fabric, Power BI, and Sentinel/KQL. [Developers and makers on Power Platform, Dynamics 365, Microsoft 365 and Fabric.] (8 skills)",
+      "category": "development",
+      "keywords": [
+        "skills",
+        "agent-skills",
+        "ccmaf",
+        "microsoft"
+      ]
+    },
+    {
+      "name": "ccmaf-skills-ai",
+      "source": "./plugins/ccmaf-skills-ai",
+      "description": "AI & Machine Learning — Software built on models: LLM applications and agents on the Claude API, retrieval-augmented generation as an engineered component, and classic/deep machine learning you train yourself. [Engineers building on LLMs or training their own models.] (3 skills)",
+      "category": "development",
+      "keywords": [
+        "skills",
+        "agent-skills",
+        "ccmaf",
+        "ai"
+      ]
+    },
+    {
+      "name": "ccmaf-skills-data",
+      "source": "./plugins/ccmaf-skills-data",
+      "description": "Data — Moving and shaping data: vendor-neutral batch and streaming pipelines, ELT/dbt, orchestration, lakehouse modelling, data quality and contracts. [Data engineers and anyone moving or analysing data.] (1 skill)",
+      "category": "development",
+      "keywords": [
+        "skills",
+        "agent-skills",
+        "ccmaf",
+        "data"
+      ]
+    },
+    {
+      "name": "ccmaf-skills-apps",
+      "source": "./plugins/ccmaf-skills-apps",
+      "description": "Desktop & Mobile Apps — Native and cross-platform apps: Electron, Tauri, native Windows UI (WPF/WinUI/WinForms/MAUI), Android with Kotlin and Compose, and iOS with Swift and SwiftUI. [Developers shipping desktop or mobile applications.] (5 skills)",
+      "category": "development",
+      "keywords": [
+        "skills",
+        "agent-skills",
+        "ccmaf",
+        "apps"
+      ]
+    },
+    {
+      "name": "ccmaf-skills-games",
+      "source": "./plugins/ccmaf-skills-games",
+      "description": "Games & 3D — Games and interactive 3D: Godot (engine, shaders, MCP-driven workflow), Unity, Unreal Engine 5, three.js, and the engine-agnostic craft of game feel. [Game developers and real-time 3D engineers.] (7 skills)",
+      "category": "development",
+      "keywords": [
+        "skills",
+        "agent-skills",
+        "ccmaf",
+        "games"
+      ]
+    },
+    {
+      "name": "ccmaf-skills-creative",
+      "source": "./plugins/ccmaf-skills-creative",
+      "description": "Creative & Media — Code-driven creative tooling: Blender scripting and pipelines, ComfyUI image-generation workflows, and programmatic video with Remotion. [Artists, technical artists and video makers working with code.] (3 skills)",
+      "category": "development",
+      "keywords": [
+        "skills",
+        "agent-skills",
+        "ccmaf",
+        "creative"
+      ]
+    },
+    {
+      "name": "ccmaf-skills-research",
+      "source": "./plugins/ccmaf-skills-research",
+      "description": "Research — Scholarly research done carefully: literature discovery, source appraisal, evidence synthesis and citation-safe referencing. [Researchers, students and anyone who needs citation-safe sources.] (1 skill)",
+      "category": "development",
+      "keywords": [
+        "skills",
+        "agent-skills",
+        "ccmaf",
+        "research"
+      ]
+    },
+    {
+      "name": "ccmaf-skills-automation",
+      "source": "./plugins/ccmaf-skills-automation",
+      "description": "Automation — Automating the web and repetitive work responsibly: scrapers and crawlers with a legal/ethical gate first. [Anyone automating the web or repetitive work.] (1 skill)",
+      "category": "development",
+      "keywords": [
+        "skills",
+        "agent-skills",
+        "ccmaf",
+        "automation"
+      ]
     }
   ]
 }

@@ -1,0 +1,29 @@
+{
+  "name": "ccmaf-skills-core",
+  "description": "CCMAF Skills — Core: The agent-workflow disciplines every session benefits from: de-slopped prose, technical writing, docs-grounding, usage-limit hygiene, model calibration, systematic debugging, reviewable plans and recaps, committable diagrams, and the two shells. (11 skills)",
+  "author": {
+    "name": "drushegh"
+  },
+  "homepage": "https://github.com/drushegh/CCMAF---Skills",
+  "repository": "https://github.com/drushegh/CCMAF---Skills",
+  "license": "MIT",
+  "keywords": [
+    "skills",
+    "agent-skills",
+    "ccmaf",
+    "core"
+  ],
+  "skills": [
+    "./skills/bash-development",
+    "./skills/drawio-development",
+    "./skills/opus-5-calibration",
+    "./skills/powershell-development",
+    "./skills/read-the-damn-docs",
+    "./skills/stay-within-limits",
+    "./skills/systematic-debugging",
+    "./skills/technical-writing",
+    "./skills/uncanny",
+    "./skills/visual-plan",
+    "./skills/visual-recap"
+  ]
+}

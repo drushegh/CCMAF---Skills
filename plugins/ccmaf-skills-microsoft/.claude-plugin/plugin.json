@@ -1,0 +1,26 @@
+{
+  "name": "ccmaf-skills-microsoft",
+  "description": "CCMAF Skills — Microsoft Business Platforms: The Microsoft business-application stack: Power Apps and Automate, Power Pages, Dynamics 365/Dataverse pro-code, Copilot Studio, Microsoft 365 development, Fabric, Power BI, and Sentinel/KQL. (8 skills)",
+  "author": {
+    "name": "drushegh"
+  },
+  "homepage": "https://github.com/drushegh/CCMAF---Skills",
+  "repository": "https://github.com/drushegh/CCMAF---Skills",
+  "license": "MIT",
+  "keywords": [
+    "skills",
+    "agent-skills",
+    "ccmaf",
+    "microsoft"
+  ],
+  "skills": [
+    "./skills/copilot-studio-development",
+    "./skills/dynamics-365-development",
+    "./skills/fabric-development",
+    "./skills/m365-development",
+    "./skills/power-bi-development",
+    "./skills/power-pages-development",
+    "./skills/power-platform-development",
+    "./skills/sentinel-development"
+  ]
+}

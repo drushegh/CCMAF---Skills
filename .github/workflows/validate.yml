@@ -1,0 +1,21 @@
+name: validate
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Validate skills (strict)
+        run: node scripts/validate-skills.mjs --strict
+      - name: Generated catalogue is up to date
+        run: node scripts/generate-catalog.mjs --check

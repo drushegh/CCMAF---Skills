@@ -1,0 +1,23 @@
+{
+  "name": "ccmaf-skills-apps",
+  "description": "CCMAF Skills — Desktop & Mobile Apps: Native and cross-platform apps: Electron, Tauri, native Windows UI (WPF/WinUI/WinForms/MAUI), Android with Kotlin and Compose, and iOS with Swift and SwiftUI. (5 skills)",
+  "author": {
+    "name": "drushegh"
+  },
+  "homepage": "https://github.com/drushegh/CCMAF---Skills",
+  "repository": "https://github.com/drushegh/CCMAF---Skills",
+  "license": "MIT",
+  "keywords": [
+    "skills",
+    "agent-skills",
+    "ccmaf",
+    "apps"
+  ],
+  "skills": [
+    "./skills/android-development",
+    "./skills/electron-development",
+    "./skills/ios-development",
+    "./skills/tauri-development",
+    "./skills/windows-desktop-development"
+  ]
+}
