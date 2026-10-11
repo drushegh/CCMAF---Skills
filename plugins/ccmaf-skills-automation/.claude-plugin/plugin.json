@@ -1,6 +1,6 @@
 {
   "name": "ccmaf-skills-automation",
-  "description": "CCMAF Skills — Automation: Automating the web and repetitive work responsibly: scrapers and crawlers with a legal/ethical gate first. (1 skill)",
+  "description": "CCMAF Skills — Automation: Automating the web, the desktop and repetitive work responsibly: scrapers and crawlers with a legal/ethical gate first, agent-driven browser and computer-use loops with hard stops, and folder rules with dry runs and undo. (4 skills)",
   "author": {
     "name": "drushegh"
   },
@@ -14,6 +14,9 @@
     "automation"
   ],
   "skills": [
+    "./skills/browser-automation",
+    "./skills/computer-use-automation",
+    "./skills/file-automation",
     "./skills/web-scraping-development"
   ]
 }

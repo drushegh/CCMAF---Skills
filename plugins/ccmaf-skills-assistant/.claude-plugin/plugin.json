@@ -1,0 +1,24 @@
+{
+  "name": "ccmaf-skills-assistant",
+  "description": "CCMAF Skills — Personal Assistant: A personal assistant that proposes and never acts unasked: an Obsidian-compatible knowledge vault, inbox triage, calendar help, a morning briefing, a commitments ledger, and care with personal data. (6 skills)",
+  "author": {
+    "name": "drushegh"
+  },
+  "homepage": "https://github.com/drushegh/CCMAF---Skills",
+  "repository": "https://github.com/drushegh/CCMAF---Skills",
+  "license": "MIT",
+  "keywords": [
+    "skills",
+    "agent-skills",
+    "ccmaf",
+    "assistant"
+  ],
+  "skills": [
+    "./skills/calendar-assistant",
+    "./skills/commitments-tracker",
+    "./skills/daily-briefing",
+    "./skills/inbox-triage",
+    "./skills/knowledge-vault",
+    "./skills/personal-data-care"
+  ]
+}

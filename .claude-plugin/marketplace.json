@@ -9,7 +9,7 @@
     {
       "name": "ccmaf-skills",
       "source": "./",
-      "description": "All 72 CCMAF skills as one plugin. Every CCMAF skill as one plugin — senior-level engineering standards across languages, frameworks, cloud and operations, data, AI/agents, security and identity, plus agent-workflow and prose-quality disciplines. Prefer the role packs if you want a smaller skill listing.",
+      "description": "All 102 CCMAF skills as one plugin. Every CCMAF skill as one plugin — senior-level engineering standards across languages, frameworks, cloud and operations, data, AI/agents, security and identity, plus agent-workflow and prose-quality disciplines and workspace skills for Claude working on your own machine. Prefer the role packs if you want a smaller skill listing.",
       "category": "development",
       "keywords": [
         "skills",
@@ -40,6 +40,18 @@
         "agent-skills",
         "ccmaf",
         "engineering"
+      ]
+    },
+    {
+      "name": "ccmaf-skills-workspace",
+      "source": "./plugins/ccmaf-skills-workspace",
+      "description": "Workspace — The safety disciplines every workspace agent needs: reversible system changes with a change journal, mail, web and tool output treated as data rather than instructions, bounded unattended scheduled runs, and authoring CCMAF-App workspace kits. [Anyone running Claude as an agent on their own machine — install alongside core for any workspace type.] (4 skills)",
+      "category": "development",
+      "keywords": [
+        "skills",
+        "agent-skills",
+        "ccmaf",
+        "workspace"
       ]
     },
     {
@@ -105,7 +117,7 @@
     {
       "name": "ccmaf-skills-data",
       "source": "./plugins/ccmaf-skills-data",
-      "description": "Data — Moving and shaping data: vendor-neutral batch and streaming pipelines, ELT/dbt, orchestration, lakehouse modelling, data quality and contracts. [Data engineers and anyone moving or analysing data.] (1 skill)",
+      "description": "Data — Moving, shaping and analysing data: vendor-neutral batch and streaming pipelines, ELT/dbt, orchestration, lakehouse modelling, data quality and contracts, and everyday CSV-to-chart analysis for non-developers. [Data engineers and anyone moving or analysing data.] (2 skills)",
       "category": "development",
       "keywords": [
         "skills",
@@ -141,7 +153,7 @@
     {
       "name": "ccmaf-skills-creative",
       "source": "./plugins/ccmaf-skills-creative",
-      "description": "Creative & Media — Code-driven creative tooling: Blender scripting and pipelines, ComfyUI image-generation workflows, and programmatic video with Remotion. [Artists, technical artists and video makers working with code.] (3 skills)",
+      "description": "Creative & Media — Code-driven creative tooling and writing craft: Blender scripting and pipelines, ComfyUI image-generation workflows, programmatic video with Remotion, and fiction craft and revision. [Artists, technical artists, video makers and writers.] (4 skills)",
       "category": "development",
       "keywords": [
         "skills",
@@ -153,7 +165,7 @@
     {
       "name": "ccmaf-skills-research",
       "source": "./plugins/ccmaf-skills-research",
-      "description": "Research — Scholarly research done carefully: literature discovery, source appraisal, evidence synthesis and citation-safe referencing. [Researchers, students and anyone who needs citation-safe sources.] (1 skill)",
+      "description": "Research — Research and learning done carefully: literature discovery, source appraisal, evidence synthesis and citation-safe referencing, source-traced research notes, and evidence-based study coaching. [Researchers, students and anyone who needs citation-safe sources.] (3 skills)",
       "category": "development",
       "keywords": [
         "skills",
@@ -165,13 +177,73 @@
     {
       "name": "ccmaf-skills-automation",
       "source": "./plugins/ccmaf-skills-automation",
-      "description": "Automation — Automating the web and repetitive work responsibly: scrapers and crawlers with a legal/ethical gate first. [Anyone automating the web or repetitive work.] (1 skill)",
+      "description": "Automation — Automating the web, the desktop and repetitive work responsibly: scrapers and crawlers with a legal/ethical gate first, agent-driven browser and computer-use loops with hard stops, and folder rules with dry runs and undo. [Anyone automating the web or repetitive work.] (4 skills)",
       "category": "development",
       "keywords": [
         "skills",
         "agent-skills",
         "ccmaf",
         "automation"
+      ]
+    },
+    {
+      "name": "ccmaf-skills-system",
+      "source": "./plugins/ccmaf-skills-system",
+      "description": "Windows System Care — Looking after a Windows PC: day-to-day administration, plain-language crash and slowdown diagnostics, security hygiene with reversible quarantine, measured performance tuning, and the machine's setup captured as code. [Anyone looking after a Windows PC — their own or the household's.] (5 skills)",
+      "category": "development",
+      "keywords": [
+        "skills",
+        "agent-skills",
+        "ccmaf",
+        "system"
+      ]
+    },
+    {
+      "name": "ccmaf-skills-documents",
+      "source": "./plugins/ccmaf-skills-documents",
+      "description": "Documents — Documents done properly: audience-first drafting and revision, editorial review with sourced fact-check flags, and Office/PDF handling routed to the dedicated format skills with versioned copies. [Anyone who drafts, edits or manages documents.] (3 skills)",
+      "category": "development",
+      "keywords": [
+        "skills",
+        "agent-skills",
+        "ccmaf",
+        "documents"
+      ]
+    },
+    {
+      "name": "ccmaf-skills-assistant",
+      "source": "./plugins/ccmaf-skills-assistant",
+      "description": "Personal Assistant — A personal assistant that proposes and never acts unasked: an Obsidian-compatible knowledge vault, inbox triage, calendar help, a morning briefing, a commitments ledger, and care with personal data. [Anyone using Claude as a personal assistant over notes, mail and calendar.] (6 skills)",
+      "category": "development",
+      "keywords": [
+        "skills",
+        "agent-skills",
+        "ccmaf",
+        "assistant"
+      ]
+    },
+    {
+      "name": "ccmaf-skills-homelab",
+      "source": "./plugins/ccmaf-skills-homelab",
+      "description": "Homelab — Running a home server safely: SSH hygiene, Compose stacks, updates with rollback, NAS storage health and 3-2-1 backups with restore tests, and a lawful media-server stack. [Hobbyists running a home server, NAS or media stack.] (3 skills)",
+      "category": "development",
+      "keywords": [
+        "skills",
+        "agent-skills",
+        "ccmaf",
+        "homelab"
+      ]
+    },
+    {
+      "name": "ccmaf-skills-life-admin",
+      "source": "./plugins/ccmaf-skills-life-admin",
+      "description": "Life Admin — Household admin kept local: bank and card records normalised, categorised and budgeted, receipts and documents filed, renewals and warranties tracked, reminders drafted. Records, not advice. [Anyone keeping household paperwork and money records in order.] (2 skills)",
+      "category": "development",
+      "keywords": [
+        "skills",
+        "agent-skills",
+        "ccmaf",
+        "life-admin"
       ]
     }
   ]

@@ -2,7 +2,7 @@
 
 # CCMAF Skills — Data (`ccmaf-skills-data`)
 
-Moving and shaping data: vendor-neutral batch and streaming pipelines, ELT/dbt, orchestration, lakehouse modelling, data quality and contracts.
+Moving, shaping and analysing data: vendor-neutral batch and streaming pipelines, ELT/dbt, orchestration, lakehouse modelling, data quality and contracts, and everyday CSV-to-chart analysis for non-developers.
 
 **Audience:** Data engineers and anyone moving or analysing data.
 
@@ -15,10 +15,11 @@ Moving and shaping data: vendor-neutral batch and streaming pipelines, ELT/dbt, 
 
 Install `ccmaf-skills-core` alongside this pack.
 
-## Skills (1)
+## Skills (2)
 
 | Skill | What it covers | Reference docs |
 |---|---|---|
 | [`data-engineering-development`](skills/data-engineering-development/SKILL.md) | Batch and streaming pipelines, ELT/dbt, orchestration, Spark, lakehouse modelling, data quality and contracts. | 7 |
+| [`everyday-data-analysis`](skills/everyday-data-analysis/SKILL.md) | CSV/export to questions, analysis and charts for non-developers: careful intake, logged cleaning, right chart, honest caveats, local tools. | 6 |
 
 The full catalogue across every pack is in [SKILLS.md](../../SKILLS.md).

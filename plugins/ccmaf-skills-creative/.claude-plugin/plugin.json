@@ -1,6 +1,6 @@
 {
   "name": "ccmaf-skills-creative",
-  "description": "CCMAF Skills — Creative & Media: Code-driven creative tooling: Blender scripting and pipelines, ComfyUI image-generation workflows, and programmatic video with Remotion. (3 skills)",
+  "description": "CCMAF Skills — Creative & Media: Code-driven creative tooling and writing craft: Blender scripting and pipelines, ComfyUI image-generation workflows, programmatic video with Remotion, and fiction craft and revision. (4 skills)",
   "author": {
     "name": "drushegh"
   },
@@ -16,6 +16,7 @@
   "skills": [
     "./skills/blender-development",
     "./skills/comfyui-development",
+    "./skills/creative-writing",
     "./skills/remotion-development"
   ]
 }

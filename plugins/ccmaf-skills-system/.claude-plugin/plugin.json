@@ -1,0 +1,23 @@
+{
+  "name": "ccmaf-skills-system",
+  "description": "CCMAF Skills — Windows System Care: Looking after a Windows PC: day-to-day administration, plain-language crash and slowdown diagnostics, security hygiene with reversible quarantine, measured performance tuning, and the machine's setup captured as code. (5 skills)",
+  "author": {
+    "name": "drushegh"
+  },
+  "homepage": "https://github.com/drushegh/CCMAF---Skills",
+  "repository": "https://github.com/drushegh/CCMAF---Skills",
+  "license": "MIT",
+  "keywords": [
+    "skills",
+    "agent-skills",
+    "ccmaf",
+    "system"
+  ],
+  "skills": [
+    "./skills/machine-config-as-code",
+    "./skills/windows-administration",
+    "./skills/windows-diagnostics",
+    "./skills/windows-performance-tuning",
+    "./skills/windows-security-hygiene"
+  ]
+}

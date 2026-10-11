@@ -1,6 +1,6 @@
 {
   "name": "ccmaf-skills-research",
-  "description": "CCMAF Skills — Research: Scholarly research done carefully: literature discovery, source appraisal, evidence synthesis and citation-safe referencing. (1 skill)",
+  "description": "CCMAF Skills — Research: Research and learning done carefully: literature discovery, source appraisal, evidence synthesis and citation-safe referencing, source-traced research notes, and evidence-based study coaching. (3 skills)",
   "author": {
     "name": "drushegh"
   },
@@ -14,6 +14,8 @@
     "research"
   ],
   "skills": [
-    "./skills/academic-research"
+    "./skills/academic-research",
+    "./skills/learning-coach",
+    "./skills/research-notes"
   ]
 }

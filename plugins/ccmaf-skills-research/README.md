@@ -2,7 +2,7 @@
 
 # CCMAF Skills — Research (`ccmaf-skills-research`)
 
-Scholarly research done carefully: literature discovery, source appraisal, evidence synthesis and citation-safe referencing.
+Research and learning done carefully: literature discovery, source appraisal, evidence synthesis and citation-safe referencing, source-traced research notes, and evidence-based study coaching.
 
 **Audience:** Researchers, students and anyone who needs citation-safe sources.
 
@@ -15,10 +15,12 @@ Scholarly research done carefully: literature discovery, source appraisal, evide
 
 Install `ccmaf-skills-core` alongside this pack.
 
-## Skills (1)
+## Skills (3)
 
 | Skill | What it covers | Reference docs |
 |---|---|---|
 | [`academic-research`](skills/academic-research/SKILL.md) | Citation-safe scholarly research: discovery via free APIs, appraisal, evidence synthesis, reviewer simulation. | 7 |
+| [`learning-coach`](skills/learning-coach/SKILL.md) | Evidence-based study coaching: diagnose, plan, Socratic checks, retrieval and spaced repetition, Anki-importable flashcard export. | 5 |
+| [`research-notes`](skills/research-notes/SKILL.md) | Structured research notes where every claim traces to a source and locator: source notes, claim ledger, traced synthesis. | 5 |
 
 The full catalogue across every pack is in [SKILLS.md](../../SKILLS.md).

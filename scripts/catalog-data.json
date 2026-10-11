@@ -10,7 +10,7 @@
   "allInOne": {
     "name": "ccmaf-skills",
     "title": "CCMAF Skills (all-in-one)",
-    "description": "Every CCMAF skill as one plugin — senior-level engineering standards across languages, frameworks, cloud and operations, data, AI/agents, security and identity, plus agent-workflow and prose-quality disciplines. Prefer the role packs if you want a smaller skill listing."
+    "description": "Every CCMAF skill as one plugin — senior-level engineering standards across languages, frameworks, cloud and operations, data, AI/agents, security and identity, plus agent-workflow and prose-quality disciplines and workspace skills for Claude working on your own machine. Prefer the role packs if you want a smaller skill listing."
   },
   "packs": [
     {
@@ -28,81 +28,123 @@
       "order": 2
     },
     {
+      "id": "ccmaf-skills-workspace",
+      "title": "Workspace",
+      "audience": "Anyone running Claude as an agent on their own machine — install alongside core for any workspace type.",
+      "description": "The safety disciplines every workspace agent needs: reversible system changes with a change journal, mail, web and tool output treated as data rather than instructions, bounded unattended scheduled runs, and authoring CCMAF-App workspace kits.",
+      "order": 3
+    },
+    {
       "id": "ccmaf-skills-web",
       "title": "Web & UI",
       "audience": "Frontend and full-stack developers building user interfaces.",
       "description": "Building web UIs that look chosen and behave well: HTML/CSS/Tailwind craft, React and Next.js, TypeScript, design taste, UX reasoning, accessibility, render-and-critique verification, and web performance.",
-      "order": 3
+      "order": 4
     },
     {
       "id": "ccmaf-skills-backend",
       "title": "Backend & APIs",
       "audience": "Backend and full-stack developers building services and data access.",
       "description": "Services and the contracts between them: HTTP and GraphQL API design, .NET, Go and Rust, relational SQL, identity and auth, and event-driven architecture.",
-      "order": 4
+      "order": 5
     },
     {
       "id": "ccmaf-skills-infra",
       "title": "Infrastructure & Operations",
       "audience": "Platform, DevOps and SRE engineers, and anyone who ships to production.",
       "description": "Running software in production: Azure, Terraform/OpenTofu, containers and Kubernetes, CI/CD pipelines, observability, incident response, and Linux as both workstation and server.",
-      "order": 5
+      "order": 6
     },
     {
       "id": "ccmaf-skills-microsoft",
       "title": "Microsoft Business Platforms",
       "audience": "Developers and makers on Power Platform, Dynamics 365, Microsoft 365 and Fabric.",
       "description": "The Microsoft business-application stack: Power Apps and Automate, Power Pages, Dynamics 365/Dataverse pro-code, Copilot Studio, Microsoft 365 development, Fabric, Power BI, and Sentinel/KQL.",
-      "order": 6
+      "order": 7
     },
     {
       "id": "ccmaf-skills-ai",
       "title": "AI & Machine Learning",
       "audience": "Engineers building on LLMs or training their own models.",
       "description": "Software built on models: LLM applications and agents on the Claude API, retrieval-augmented generation as an engineered component, and classic/deep machine learning you train yourself.",
-      "order": 7
+      "order": 8
     },
     {
       "id": "ccmaf-skills-data",
       "title": "Data",
       "audience": "Data engineers and anyone moving or analysing data.",
-      "description": "Moving and shaping data: vendor-neutral batch and streaming pipelines, ELT/dbt, orchestration, lakehouse modelling, data quality and contracts.",
-      "order": 8
+      "description": "Moving, shaping and analysing data: vendor-neutral batch and streaming pipelines, ELT/dbt, orchestration, lakehouse modelling, data quality and contracts, and everyday CSV-to-chart analysis for non-developers.",
+      "order": 9
     },
     {
       "id": "ccmaf-skills-apps",
       "title": "Desktop & Mobile Apps",
       "audience": "Developers shipping desktop or mobile applications.",
       "description": "Native and cross-platform apps: Electron, Tauri, native Windows UI (WPF/WinUI/WinForms/MAUI), Android with Kotlin and Compose, and iOS with Swift and SwiftUI.",
-      "order": 9
+      "order": 10
     },
     {
       "id": "ccmaf-skills-games",
       "title": "Games & 3D",
       "audience": "Game developers and real-time 3D engineers.",
       "description": "Games and interactive 3D: Godot (engine, shaders, MCP-driven workflow), Unity, Unreal Engine 5, three.js, and the engine-agnostic craft of game feel.",
-      "order": 10
+      "order": 11
     },
     {
       "id": "ccmaf-skills-creative",
       "title": "Creative & Media",
-      "audience": "Artists, technical artists and video makers working with code.",
-      "description": "Code-driven creative tooling: Blender scripting and pipelines, ComfyUI image-generation workflows, and programmatic video with Remotion.",
-      "order": 11
+      "audience": "Artists, technical artists, video makers and writers.",
+      "description": "Code-driven creative tooling and writing craft: Blender scripting and pipelines, ComfyUI image-generation workflows, programmatic video with Remotion, and fiction craft and revision.",
+      "order": 12
     },
     {
       "id": "ccmaf-skills-research",
       "title": "Research",
       "audience": "Researchers, students and anyone who needs citation-safe sources.",
-      "description": "Scholarly research done carefully: literature discovery, source appraisal, evidence synthesis and citation-safe referencing.",
-      "order": 12
+      "description": "Research and learning done carefully: literature discovery, source appraisal, evidence synthesis and citation-safe referencing, source-traced research notes, and evidence-based study coaching.",
+      "order": 13
     },
     {
       "id": "ccmaf-skills-automation",
       "title": "Automation",
       "audience": "Anyone automating the web or repetitive work.",
-      "description": "Automating the web and repetitive work responsibly: scrapers and crawlers with a legal/ethical gate first.",
-      "order": 13
+      "description": "Automating the web, the desktop and repetitive work responsibly: scrapers and crawlers with a legal/ethical gate first, agent-driven browser and computer-use loops with hard stops, and folder rules with dry runs and undo.",
+      "order": 14
+    },
+    {
+      "id": "ccmaf-skills-system",
+      "title": "Windows System Care",
+      "audience": "Anyone looking after a Windows PC — their own or the household's.",
+      "description": "Looking after a Windows PC: day-to-day administration, plain-language crash and slowdown diagnostics, security hygiene with reversible quarantine, measured performance tuning, and the machine's setup captured as code.",
+      "order": 15
+    },
+    {
+      "id": "ccmaf-skills-documents",
+      "title": "Documents",
+      "audience": "Anyone who drafts, edits or manages documents.",
+      "description": "Documents done properly: audience-first drafting and revision, editorial review with sourced fact-check flags, and Office/PDF handling routed to the dedicated format skills with versioned copies.",
+      "order": 16
+    },
+    {
+      "id": "ccmaf-skills-assistant",
+      "title": "Personal Assistant",
+      "audience": "Anyone using Claude as a personal assistant over notes, mail and calendar.",
+      "description": "A personal assistant that proposes and never acts unasked: an Obsidian-compatible knowledge vault, inbox triage, calendar help, a morning briefing, a commitments ledger, and care with personal data.",
+      "order": 17
+    },
+    {
+      "id": "ccmaf-skills-homelab",
+      "title": "Homelab",
+      "audience": "Hobbyists running a home server, NAS or media stack.",
+      "description": "Running a home server safely: SSH hygiene, Compose stacks, updates with rollback, NAS storage health and 3-2-1 backups with restore tests, and a lawful media-server stack.",
+      "order": 18
+    },
+    {
+      "id": "ccmaf-skills-life-admin",
+      "title": "Life Admin",
+      "audience": "Anyone keeping household paperwork and money records in order.",
+      "description": "Household admin kept local: bank and card records normalised, categorised and budgeted, receipts and documents filed, renewals and warranties tracked, reminders drafted. Records, not advice.",
+      "order": 19
     }
   ],
   "externalSkills": ["deep-research", "docx", "xlsx", "pptx", "pdf", "skill-creator"],
@@ -119,7 +161,16 @@
     { "role": "Game developer", "packs": ["ccmaf-skills-core", "ccmaf-skills-games", "ccmaf-skills-creative"] },
     { "role": "Technical artist / video maker", "packs": ["ccmaf-skills-core", "ccmaf-skills-creative"] },
     { "role": "Researcher / student", "packs": ["ccmaf-skills-core", "ccmaf-skills-research"] },
-    { "role": "Automation / scraping", "packs": ["ccmaf-skills-core", "ccmaf-skills-automation"] }
+    { "role": "Automation / scraping", "packs": ["ccmaf-skills-core", "ccmaf-skills-automation"] },
+    { "role": "Workspace: PC care", "packs": ["ccmaf-skills-core", "ccmaf-skills-workspace", "ccmaf-skills-system"] },
+    { "role": "Workspace: Documents", "packs": ["ccmaf-skills-core", "ccmaf-skills-workspace", "ccmaf-skills-documents"] },
+    { "role": "Workspace: Personal assistant", "packs": ["ccmaf-skills-core", "ccmaf-skills-workspace", "ccmaf-skills-assistant"] },
+    { "role": "Workspace: Automation", "packs": ["ccmaf-skills-core", "ccmaf-skills-workspace", "ccmaf-skills-automation"] },
+    { "role": "Workspace: Homelab", "packs": ["ccmaf-skills-core", "ccmaf-skills-workspace", "ccmaf-skills-homelab"] },
+    { "role": "Workspace: Research and learning", "packs": ["ccmaf-skills-core", "ccmaf-skills-workspace", "ccmaf-skills-research"] },
+    { "role": "Workspace: Life admin", "packs": ["ccmaf-skills-core", "ccmaf-skills-workspace", "ccmaf-skills-life-admin"] },
+    { "role": "Workspace: Creative", "packs": ["ccmaf-skills-core", "ccmaf-skills-workspace", "ccmaf-skills-creative"] },
+    { "role": "Workspace: Data analysis", "packs": ["ccmaf-skills-core", "ccmaf-skills-workspace", "ccmaf-skills-data"] }
   ],
   "skills": {
     "uncanny": { "pack": "ccmaf-skills-core", "summary": "Remove AI tells from prose so it reads as human-written, without swapping in a different costume." },
@@ -193,6 +244,36 @@
     "comfyui-development": { "pack": "ccmaf-skills-creative", "summary": "ComfyUI: the graph model, UI vs API JSON, pipelines, custom nodes, the HTTP/WebSocket API, the RCE surface." },
     "remotion-development": { "pack": "ccmaf-skills-creative", "summary": "Programmatic video with Remotion: compositions, frame-driven animation, sequencing, assets, rendering paths." },
     "academic-research": { "pack": "ccmaf-skills-research", "summary": "Citation-safe scholarly research: discovery via free APIs, appraisal, evidence synthesis, reviewer simulation." },
-    "web-scraping-development": { "pack": "ccmaf-skills-automation", "summary": "Responsible scrapers: the legal gate, HTTP and HTML parsing, Playwright for dynamic sites, Scrapy, resilience." }
+    "web-scraping-development": { "pack": "ccmaf-skills-automation", "summary": "Responsible scrapers: the legal gate, HTTP and HTML parsing, Playwright for dynamic sites, Scrapy, resilience." },
+    "scheduled-run-discipline": { "pack": "ccmaf-skills-workspace", "summary": "Unattended scheduled runs: bounded contract, idempotent steps, lock, run log and summary, reported failures, no destructive defaults." },
+    "workspace-kit-authoring": { "pack": "ccmaf-skills-workspace", "summary": "Author CCMAF-App workspace kits: type.json manifest, persona CLAUDE.md, safety tier, allow/ask/deny profile, scaffold, schedules, review." },
+    "safe-system-changes": { "pack": "ccmaf-skills-workspace", "summary": "Protocol for changing a machine: plan/dry-run, restore point, per-change confirm, change journal, verify, revert. Windows first." },
+    "untrusted-input-handling": { "pack": "ccmaf-skills-workspace", "summary": "Mail, web pages, docs and tool output are data, not instructions: spot prompt injection, confirm content-suggested actions, report it." },
+    "machine-config-as-code": { "pack": "ccmaf-skills-system", "summary": "Capture a Windows PC's setup as files (winget, WinGet Configuration, profiles, terminal, fonts); rebuild, audit and report drift." },
+    "windows-administration": { "pack": "ccmaf-skills-system", "summary": "Administer a Windows 11/10 PC: services, tasks, startup items, users and UAC, event logs, Windows Update, winget, firewall, settings." },
+    "windows-diagnostics": { "pack": "ccmaf-skills-system", "summary": "Explain Windows crashes and slowdowns in plain words: event triage, stop codes, dumps, counters, disk health, drivers, network. Read-only." },
+    "windows-security-hygiene": { "pack": "ccmaf-skills-system", "summary": "Windows hygiene review: persistence sweep, Authenticode checks, Defender scans, evidence-based risk rubric, reversible quarantine." },
+    "windows-performance-tuning": { "pack": "ccmaf-skills-system", "summary": "Measured Windows tuning: startup trimming, power plans, storage clean-up, safe debloat, verified tweak catalogue with risk and exact revert." },
+    "office-formats": { "pack": "ccmaf-skills-documents", "summary": "Office and PDF files in a workspace: route to Anthropic docx/xlsx/pptx/pdf skills, render-and-look checks, versioned copies, open fallback." },
+    "document-authoring": { "pack": "ccmaf-skills-documents", "summary": "Draft any document for an audience: brief and outline first, structure, house style, revision passes, change summaries, versioned folders." },
+    "editorial-review": { "pack": "ccmaf-skills-documents", "summary": "Editorial review: proofread and consistency passes, sourced fact-check flags (never asserted), term lists, tone, tracked-change etiquette." },
+    "daily-briefing": { "pack": "ccmaf-skills-assistant", "summary": "Morning briefing from vault, mail, calendar and commitments: today, waiting on you, safe to ignore; phone-first, read-only." },
+    "commitments-tracker": { "pack": "ccmaf-skills-assistant", "summary": "Ledger of who promised what to whom by when, kept in the vault: owner-confirmed capture, drafted nudges (never sent), weekly review." },
+    "inbox-triage": { "pack": "ccmaf-skills-assistant", "summary": "Triage mail via Claude connectors: sort, summarise threads, extract tasks/promises, draft replies, flag phishing. Never sends unasked." },
+    "calendar-assistant": { "pack": "ccmaf-skills-assistant", "summary": "Calendar via connectors: free slots across time zones, clashes, travel time, prep notes, reminders. Proposes; the user confirms." },
+    "knowledge-vault": { "pack": "ccmaf-skills-assistant", "summary": "Obsidian-compatible markdown vault: folders, daily notes, templates, inbox processing, linking, git sync and conflicts across PC and phone." },
+    "personal-data-care": { "pack": "ccmaf-skills-assistant", "summary": "What never to store (secrets, card/ID numbers, health unless asked), redaction, leak response, local-only data, GDPR-minded habits (EU/IE)." },
+    "file-automation": { "pack": "ccmaf-skills-automation", "summary": "Folder rules (sort, rename, dedupe, archive) with dry-run plans, conflict rules, quarantine not delete, undo manifest; watchers, schedules." },
+    "browser-automation": { "pack": "ccmaf-skills-automation", "summary": "Agent browsing via Claude in Chrome and Playwright MCP: ref-based targeting, state waits, user-held logins, hard stops at CAPTCHA/payment." },
+    "computer-use-automation": { "pack": "ccmaf-skills-automation", "summary": "Screenshot-act desktop loops: keyboard-first targeting, verify every action, hard stops, single-player-only game automation within terms." },
+    "homelab-operations": { "pack": "ccmaf-skills-homelab", "summary": "Home server ops for hobbyists: SSH hygiene, Compose stacks, safe updates with rollback, consistent service backups, monitoring basics." },
+    "nas-and-storage": { "pack": "ccmaf-skills-homelab", "summary": "Home NAS judgement: mirrors vs parity, ZFS/mdadm health, SMART, disk replacement, 3-2-1 backups and restore tests; destructive ops dry-run." },
+    "media-server-stack": { "pack": "ccmaf-skills-homelab", "summary": "Plex/Jellyfin, the *arr apps and a download client: shared data root, hardlinks, permissions, wiring, health checks, failures. Lawful use." },
+    "learning-coach": { "pack": "ccmaf-skills-research", "summary": "Evidence-based study coaching: diagnose, plan, Socratic checks, retrieval and spaced repetition, Anki-importable flashcard export." },
+    "research-notes": { "pack": "ccmaf-skills-research", "summary": "Structured research notes where every claim traces to a source and locator: source notes, claim ledger, traced synthesis." },
+    "personal-finance-records": { "pack": "ccmaf-skills-life-admin", "summary": "Local household money records: normalise bank/card CSVs, categorise, budget, file receipts. Locale packs, Ireland first. Not advice." },
+    "household-admin": { "pack": "ccmaf-skills-life-admin", "summary": "Household paperwork kept locally: renewals register, warranties, document filing, reminders and .ics files. Drafts only; never acts." },
+    "creative-writing": { "pack": "ccmaf-skills-creative", "summary": "Fiction craft and revision: character, structure, scene, voice, dialogue, revision passes and critique, keeping the writer's voice first." },
+    "everyday-data-analysis": { "pack": "ccmaf-skills-data", "summary": "CSV/export to questions, analysis and charts for non-developers: careful intake, logged cleaning, right chart, honest caveats, local tools." }
   }
 }

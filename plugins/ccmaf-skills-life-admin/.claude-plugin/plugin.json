@@ -1,0 +1,20 @@
+{
+  "name": "ccmaf-skills-life-admin",
+  "description": "CCMAF Skills — Life Admin: Household admin kept local: bank and card records normalised, categorised and budgeted, receipts and documents filed, renewals and warranties tracked, reminders drafted. Records, not advice. (2 skills)",
+  "author": {
+    "name": "drushegh"
+  },
+  "homepage": "https://github.com/drushegh/CCMAF---Skills",
+  "repository": "https://github.com/drushegh/CCMAF---Skills",
+  "license": "MIT",
+  "keywords": [
+    "skills",
+    "agent-skills",
+    "ccmaf",
+    "life-admin"
+  ],
+  "skills": [
+    "./skills/household-admin",
+    "./skills/personal-finance-records"
+  ]
+}

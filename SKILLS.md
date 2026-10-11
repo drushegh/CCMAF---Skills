@@ -2,7 +2,7 @@
 
 # CCMAF Skills — catalogue
 
-**72 skills** in **13 packs**. Each skill is a self-contained directory: a lean `SKILL.md` plus on-demand reference docs.
+**102 skills** in **19 packs**. Each skill is a self-contained directory: a lean `SKILL.md` plus on-demand reference docs.
 
 ## Install
 
@@ -13,7 +13,7 @@
 /plugin install ccmaf-skills-<pack>@ccmaf-skills      # the packs your work needs
 ```
 
-Or install everything at once with `/plugin install ccmaf-skills@ccmaf-skills` (all 72 skills; a larger skill listing in every session).
+Or install everything at once with `/plugin install ccmaf-skills@ccmaf-skills` (all 102 skills; a larger skill listing in every session).
 
 ## Which packs do I need?
 
@@ -32,6 +32,15 @@ Or install everything at once with `/plugin install ccmaf-skills@ccmaf-skills` (
 | Technical artist / video maker | `ccmaf-skills-core` + `ccmaf-skills-creative` |
 | Researcher / student | `ccmaf-skills-core` + `ccmaf-skills-research` |
 | Automation / scraping | `ccmaf-skills-core` + `ccmaf-skills-automation` |
+| Workspace: PC care | `ccmaf-skills-core` + `ccmaf-skills-workspace` + `ccmaf-skills-system` |
+| Workspace: Documents | `ccmaf-skills-core` + `ccmaf-skills-workspace` + `ccmaf-skills-documents` |
+| Workspace: Personal assistant | `ccmaf-skills-core` + `ccmaf-skills-workspace` + `ccmaf-skills-assistant` |
+| Workspace: Automation | `ccmaf-skills-core` + `ccmaf-skills-workspace` + `ccmaf-skills-automation` |
+| Workspace: Homelab | `ccmaf-skills-core` + `ccmaf-skills-workspace` + `ccmaf-skills-homelab` |
+| Workspace: Research and learning | `ccmaf-skills-core` + `ccmaf-skills-workspace` + `ccmaf-skills-research` |
+| Workspace: Life admin | `ccmaf-skills-core` + `ccmaf-skills-workspace` + `ccmaf-skills-life-admin` |
+| Workspace: Creative | `ccmaf-skills-core` + `ccmaf-skills-workspace` + `ccmaf-skills-creative` |
+| Workspace: Data analysis | `ccmaf-skills-core` + `ccmaf-skills-workspace` + `ccmaf-skills-data` |
 
 ## Packs
 
@@ -39,17 +48,23 @@ Or install everything at once with `/plugin install ccmaf-skills@ccmaf-skills` (
 |---|---|---|---|
 | [Core](#core-ccmaf-skills-core) | `ccmaf-skills-core` | 11 | Everyone — install this first. |
 | [Engineering](#engineering-ccmaf-skills-engineering) | `ccmaf-skills-engineering` | 7 | Every developer, whatever the stack — install alongside core. |
+| [Workspace](#workspace-ccmaf-skills-workspace) | `ccmaf-skills-workspace` | 4 | Anyone running Claude as an agent on their own machine — install alongside core for any workspace type. |
 | [Web & UI](#web--ui-ccmaf-skills-web) | `ccmaf-skills-web` | 8 | Frontend and full-stack developers building user interfaces. |
 | [Backend & APIs](#backend--apis-ccmaf-skills-backend) | `ccmaf-skills-backend` | 8 | Backend and full-stack developers building services and data access. |
 | [Infrastructure & Operations](#infrastructure--operations-ccmaf-skills-infra) | `ccmaf-skills-infra` | 9 | Platform, DevOps and SRE engineers, and anyone who ships to production. |
 | [Microsoft Business Platforms](#microsoft-business-platforms-ccmaf-skills-microsoft) | `ccmaf-skills-microsoft` | 8 | Developers and makers on Power Platform, Dynamics 365, Microsoft 365 and Fabric. |
 | [AI & Machine Learning](#ai--machine-learning-ccmaf-skills-ai) | `ccmaf-skills-ai` | 3 | Engineers building on LLMs or training their own models. |
-| [Data](#data-ccmaf-skills-data) | `ccmaf-skills-data` | 1 | Data engineers and anyone moving or analysing data. |
+| [Data](#data-ccmaf-skills-data) | `ccmaf-skills-data` | 2 | Data engineers and anyone moving or analysing data. |
 | [Desktop & Mobile Apps](#desktop--mobile-apps-ccmaf-skills-apps) | `ccmaf-skills-apps` | 5 | Developers shipping desktop or mobile applications. |
 | [Games & 3D](#games--3d-ccmaf-skills-games) | `ccmaf-skills-games` | 7 | Game developers and real-time 3D engineers. |
-| [Creative & Media](#creative--media-ccmaf-skills-creative) | `ccmaf-skills-creative` | 3 | Artists, technical artists and video makers working with code. |
-| [Research](#research-ccmaf-skills-research) | `ccmaf-skills-research` | 1 | Researchers, students and anyone who needs citation-safe sources. |
-| [Automation](#automation-ccmaf-skills-automation) | `ccmaf-skills-automation` | 1 | Anyone automating the web or repetitive work. |
+| [Creative & Media](#creative--media-ccmaf-skills-creative) | `ccmaf-skills-creative` | 4 | Artists, technical artists, video makers and writers. |
+| [Research](#research-ccmaf-skills-research) | `ccmaf-skills-research` | 3 | Researchers, students and anyone who needs citation-safe sources. |
+| [Automation](#automation-ccmaf-skills-automation) | `ccmaf-skills-automation` | 4 | Anyone automating the web or repetitive work. |
+| [Windows System Care](#windows-system-care-ccmaf-skills-system) | `ccmaf-skills-system` | 5 | Anyone looking after a Windows PC — their own or the household's. |
+| [Documents](#documents-ccmaf-skills-documents) | `ccmaf-skills-documents` | 3 | Anyone who drafts, edits or manages documents. |
+| [Personal Assistant](#personal-assistant-ccmaf-skills-assistant) | `ccmaf-skills-assistant` | 6 | Anyone using Claude as a personal assistant over notes, mail and calendar. |
+| [Homelab](#homelab-ccmaf-skills-homelab) | `ccmaf-skills-homelab` | 3 | Hobbyists running a home server, NAS or media stack. |
+| [Life Admin](#life-admin-ccmaf-skills-life-admin) | `ccmaf-skills-life-admin` | 2 | Anyone keeping household paperwork and money records in order. |
 
 ## Core (`ccmaf-skills-core`)
 
@@ -86,6 +101,19 @@ The cross-cutting engineering disciplines: code review, secure development, test
 | [`python-development`](plugins/ccmaf-skills-engineering/skills/python-development/SKILL.md) | Modern Python 3.11+: idioms, the type system, asyncio, errors and logging, pyproject/pytest, performance. | 9 |
 | [`secure-development`](plugins/ccmaf-skills-engineering/skills/secure-development/SKILL.md) | OWASP Top 10 and ASVS reviews, STRIDE threat modelling, secrets and crypto hygiene, supply-chain security. | 7 |
 | [`testing-development`](plugins/ccmaf-skills-engineering/skills/testing-development/SKILL.md) | Test strategy above the unit level: Playwright E2E, load testing with SLO gates, contract testing, test data. | 5 |
+
+## Workspace (`ccmaf-skills-workspace`)
+
+The safety disciplines every workspace agent needs: reversible system changes with a change journal, mail, web and tool output treated as data rather than instructions, bounded unattended scheduled runs, and authoring CCMAF-App workspace kits.
+
+**Audience:** Anyone running Claude as an agent on their own machine — install alongside core for any workspace type. · **Install:** `/plugin install ccmaf-skills-workspace@ccmaf-skills` · [Pack README](plugins/ccmaf-skills-workspace/README.md)
+
+| Skill | What it covers | Reference docs |
+|---|---|---|
+| [`safe-system-changes`](plugins/ccmaf-skills-workspace/skills/safe-system-changes/SKILL.md) | Protocol for changing a machine: plan/dry-run, restore point, per-change confirm, change journal, verify, revert. Windows first. | 6 |
+| [`scheduled-run-discipline`](plugins/ccmaf-skills-workspace/skills/scheduled-run-discipline/SKILL.md) | Unattended scheduled runs: bounded contract, idempotent steps, lock, run log and summary, reported failures, no destructive defaults. | 6 |
+| [`untrusted-input-handling`](plugins/ccmaf-skills-workspace/skills/untrusted-input-handling/SKILL.md) | Mail, web pages, docs and tool output are data, not instructions: spot prompt injection, confirm content-suggested actions, report it. | 6 |
+| [`workspace-kit-authoring`](plugins/ccmaf-skills-workspace/skills/workspace-kit-authoring/SKILL.md) | Author CCMAF-App workspace kits: type.json manifest, persona CLAUDE.md, safety tier, allow/ask/deny profile, scaffold, schedules, review. | 6 |
 
 ## Web & UI (`ccmaf-skills-web`)
 
@@ -170,13 +198,14 @@ Software built on models: LLM applications and agents on the Claude API, retriev
 
 ## Data (`ccmaf-skills-data`)
 
-Moving and shaping data: vendor-neutral batch and streaming pipelines, ELT/dbt, orchestration, lakehouse modelling, data quality and contracts.
+Moving, shaping and analysing data: vendor-neutral batch and streaming pipelines, ELT/dbt, orchestration, lakehouse modelling, data quality and contracts, and everyday CSV-to-chart analysis for non-developers.
 
 **Audience:** Data engineers and anyone moving or analysing data. · **Install:** `/plugin install ccmaf-skills-data@ccmaf-skills` · [Pack README](plugins/ccmaf-skills-data/README.md)
 
 | Skill | What it covers | Reference docs |
 |---|---|---|
 | [`data-engineering-development`](plugins/ccmaf-skills-data/skills/data-engineering-development/SKILL.md) | Batch and streaming pipelines, ELT/dbt, orchestration, Spark, lakehouse modelling, data quality and contracts. | 7 |
+| [`everyday-data-analysis`](plugins/ccmaf-skills-data/skills/everyday-data-analysis/SKILL.md) | CSV/export to questions, analysis and charts for non-developers: careful intake, logged cleaning, right chart, honest caveats, local tools. | 6 |
 
 ## Desktop & Mobile Apps (`ccmaf-skills-apps`)
 
@@ -210,32 +239,102 @@ Games and interactive 3D: Godot (engine, shaders, MCP-driven workflow), Unity, U
 
 ## Creative & Media (`ccmaf-skills-creative`)
 
-Code-driven creative tooling: Blender scripting and pipelines, ComfyUI image-generation workflows, and programmatic video with Remotion.
+Code-driven creative tooling and writing craft: Blender scripting and pipelines, ComfyUI image-generation workflows, programmatic video with Remotion, and fiction craft and revision.
 
-**Audience:** Artists, technical artists and video makers working with code. · **Install:** `/plugin install ccmaf-skills-creative@ccmaf-skills` · [Pack README](plugins/ccmaf-skills-creative/README.md)
+**Audience:** Artists, technical artists, video makers and writers. · **Install:** `/plugin install ccmaf-skills-creative@ccmaf-skills` · [Pack README](plugins/ccmaf-skills-creative/README.md)
 
 | Skill | What it covers | Reference docs |
 |---|---|---|
 | [`blender-development`](plugins/ccmaf-skills-creative/skills/blender-development/SKILL.md) | Blender bpy scripting, add-ons and extensions, Geometry Nodes, the engine export pipeline, headless automation. | 5 |
 | [`comfyui-development`](plugins/ccmaf-skills-creative/skills/comfyui-development/SKILL.md) | ComfyUI: the graph model, UI vs API JSON, pipelines, custom nodes, the HTTP/WebSocket API, the RCE surface. | 6 |
+| [`creative-writing`](plugins/ccmaf-skills-creative/skills/creative-writing/SKILL.md) | Fiction craft and revision: character, structure, scene, voice, dialogue, revision passes and critique, keeping the writer's voice first. | 6 |
 | [`remotion-development`](plugins/ccmaf-skills-creative/skills/remotion-development/SKILL.md) | Programmatic video with Remotion: compositions, frame-driven animation, sequencing, assets, rendering paths. | 7 |
 
 ## Research (`ccmaf-skills-research`)
 
-Scholarly research done carefully: literature discovery, source appraisal, evidence synthesis and citation-safe referencing.
+Research and learning done carefully: literature discovery, source appraisal, evidence synthesis and citation-safe referencing, source-traced research notes, and evidence-based study coaching.
 
 **Audience:** Researchers, students and anyone who needs citation-safe sources. · **Install:** `/plugin install ccmaf-skills-research@ccmaf-skills` · [Pack README](plugins/ccmaf-skills-research/README.md)
 
 | Skill | What it covers | Reference docs |
 |---|---|---|
 | [`academic-research`](plugins/ccmaf-skills-research/skills/academic-research/SKILL.md) | Citation-safe scholarly research: discovery via free APIs, appraisal, evidence synthesis, reviewer simulation. | 7 |
+| [`learning-coach`](plugins/ccmaf-skills-research/skills/learning-coach/SKILL.md) | Evidence-based study coaching: diagnose, plan, Socratic checks, retrieval and spaced repetition, Anki-importable flashcard export. | 5 |
+| [`research-notes`](plugins/ccmaf-skills-research/skills/research-notes/SKILL.md) | Structured research notes where every claim traces to a source and locator: source notes, claim ledger, traced synthesis. | 5 |
 
 ## Automation (`ccmaf-skills-automation`)
 
-Automating the web and repetitive work responsibly: scrapers and crawlers with a legal/ethical gate first.
+Automating the web, the desktop and repetitive work responsibly: scrapers and crawlers with a legal/ethical gate first, agent-driven browser and computer-use loops with hard stops, and folder rules with dry runs and undo.
 
 **Audience:** Anyone automating the web or repetitive work. · **Install:** `/plugin install ccmaf-skills-automation@ccmaf-skills` · [Pack README](plugins/ccmaf-skills-automation/README.md)
 
 | Skill | What it covers | Reference docs |
 |---|---|---|
+| [`browser-automation`](plugins/ccmaf-skills-automation/skills/browser-automation/SKILL.md) | Agent browsing via Claude in Chrome and Playwright MCP: ref-based targeting, state waits, user-held logins, hard stops at CAPTCHA/payment. | 6 |
+| [`computer-use-automation`](plugins/ccmaf-skills-automation/skills/computer-use-automation/SKILL.md) | Screenshot-act desktop loops: keyboard-first targeting, verify every action, hard stops, single-player-only game automation within terms. | 6 |
+| [`file-automation`](plugins/ccmaf-skills-automation/skills/file-automation/SKILL.md) | Folder rules (sort, rename, dedupe, archive) with dry-run plans, conflict rules, quarantine not delete, undo manifest; watchers, schedules. | 7 |
 | [`web-scraping-development`](plugins/ccmaf-skills-automation/skills/web-scraping-development/SKILL.md) | Responsible scrapers: the legal gate, HTTP and HTML parsing, Playwright for dynamic sites, Scrapy, resilience. | 5 |
+
+## Windows System Care (`ccmaf-skills-system`)
+
+Looking after a Windows PC: day-to-day administration, plain-language crash and slowdown diagnostics, security hygiene with reversible quarantine, measured performance tuning, and the machine's setup captured as code.
+
+**Audience:** Anyone looking after a Windows PC — their own or the household's. · **Install:** `/plugin install ccmaf-skills-system@ccmaf-skills` · [Pack README](plugins/ccmaf-skills-system/README.md)
+
+| Skill | What it covers | Reference docs |
+|---|---|---|
+| [`machine-config-as-code`](plugins/ccmaf-skills-system/skills/machine-config-as-code/SKILL.md) | Capture a Windows PC's setup as files (winget, WinGet Configuration, profiles, terminal, fonts); rebuild, audit and report drift. | 6 |
+| [`windows-administration`](plugins/ccmaf-skills-system/skills/windows-administration/SKILL.md) | Administer a Windows 11/10 PC: services, tasks, startup items, users and UAC, event logs, Windows Update, winget, firewall, settings. | 7 |
+| [`windows-diagnostics`](plugins/ccmaf-skills-system/skills/windows-diagnostics/SKILL.md) | Explain Windows crashes and slowdowns in plain words: event triage, stop codes, dumps, counters, disk health, drivers, network. Read-only. | 7 |
+| [`windows-performance-tuning`](plugins/ccmaf-skills-system/skills/windows-performance-tuning/SKILL.md) | Measured Windows tuning: startup trimming, power plans, storage clean-up, safe debloat, verified tweak catalogue with risk and exact revert. | 6 |
+| [`windows-security-hygiene`](plugins/ccmaf-skills-system/skills/windows-security-hygiene/SKILL.md) | Windows hygiene review: persistence sweep, Authenticode checks, Defender scans, evidence-based risk rubric, reversible quarantine. | 6 |
+
+## Documents (`ccmaf-skills-documents`)
+
+Documents done properly: audience-first drafting and revision, editorial review with sourced fact-check flags, and Office/PDF handling routed to the dedicated format skills with versioned copies.
+
+**Audience:** Anyone who drafts, edits or manages documents. · **Install:** `/plugin install ccmaf-skills-documents@ccmaf-skills` · [Pack README](plugins/ccmaf-skills-documents/README.md)
+
+| Skill | What it covers | Reference docs |
+|---|---|---|
+| [`document-authoring`](plugins/ccmaf-skills-documents/skills/document-authoring/SKILL.md) | Draft any document for an audience: brief and outline first, structure, house style, revision passes, change summaries, versioned folders. | 6 |
+| [`editorial-review`](plugins/ccmaf-skills-documents/skills/editorial-review/SKILL.md) | Editorial review: proofread and consistency passes, sourced fact-check flags (never asserted), term lists, tone, tracked-change etiquette. | 6 |
+| [`office-formats`](plugins/ccmaf-skills-documents/skills/office-formats/SKILL.md) | Office and PDF files in a workspace: route to Anthropic docx/xlsx/pptx/pdf skills, render-and-look checks, versioned copies, open fallback. | 4 |
+
+## Personal Assistant (`ccmaf-skills-assistant`)
+
+A personal assistant that proposes and never acts unasked: an Obsidian-compatible knowledge vault, inbox triage, calendar help, a morning briefing, a commitments ledger, and care with personal data.
+
+**Audience:** Anyone using Claude as a personal assistant over notes, mail and calendar. · **Install:** `/plugin install ccmaf-skills-assistant@ccmaf-skills` · [Pack README](plugins/ccmaf-skills-assistant/README.md)
+
+| Skill | What it covers | Reference docs |
+|---|---|---|
+| [`calendar-assistant`](plugins/ccmaf-skills-assistant/skills/calendar-assistant/SKILL.md) | Calendar via connectors: free slots across time zones, clashes, travel time, prep notes, reminders. Proposes; the user confirms. | 7 |
+| [`commitments-tracker`](plugins/ccmaf-skills-assistant/skills/commitments-tracker/SKILL.md) | Ledger of who promised what to whom by when, kept in the vault: owner-confirmed capture, drafted nudges (never sent), weekly review. | 5 |
+| [`daily-briefing`](plugins/ccmaf-skills-assistant/skills/daily-briefing/SKILL.md) | Morning briefing from vault, mail, calendar and commitments: today, waiting on you, safe to ignore; phone-first, read-only. | 5 |
+| [`inbox-triage`](plugins/ccmaf-skills-assistant/skills/inbox-triage/SKILL.md) | Triage mail via Claude connectors: sort, summarise threads, extract tasks/promises, draft replies, flag phishing. Never sends unasked. | 7 |
+| [`knowledge-vault`](plugins/ccmaf-skills-assistant/skills/knowledge-vault/SKILL.md) | Obsidian-compatible markdown vault: folders, daily notes, templates, inbox processing, linking, git sync and conflicts across PC and phone. | 7 |
+| [`personal-data-care`](plugins/ccmaf-skills-assistant/skills/personal-data-care/SKILL.md) | What never to store (secrets, card/ID numbers, health unless asked), redaction, leak response, local-only data, GDPR-minded habits (EU/IE). | 6 |
+
+## Homelab (`ccmaf-skills-homelab`)
+
+Running a home server safely: SSH hygiene, Compose stacks, updates with rollback, NAS storage health and 3-2-1 backups with restore tests, and a lawful media-server stack.
+
+**Audience:** Hobbyists running a home server, NAS or media stack. · **Install:** `/plugin install ccmaf-skills-homelab@ccmaf-skills` · [Pack README](plugins/ccmaf-skills-homelab/README.md)
+
+| Skill | What it covers | Reference docs |
+|---|---|---|
+| [`homelab-operations`](plugins/ccmaf-skills-homelab/skills/homelab-operations/SKILL.md) | Home server ops for hobbyists: SSH hygiene, Compose stacks, safe updates with rollback, consistent service backups, monitoring basics. | 6 |
+| [`media-server-stack`](plugins/ccmaf-skills-homelab/skills/media-server-stack/SKILL.md) | Plex/Jellyfin, the *arr apps and a download client: shared data root, hardlinks, permissions, wiring, health checks, failures. Lawful use. | 6 |
+| [`nas-and-storage`](plugins/ccmaf-skills-homelab/skills/nas-and-storage/SKILL.md) | Home NAS judgement: mirrors vs parity, ZFS/mdadm health, SMART, disk replacement, 3-2-1 backups and restore tests; destructive ops dry-run. | 6 |
+
+## Life Admin (`ccmaf-skills-life-admin`)
+
+Household admin kept local: bank and card records normalised, categorised and budgeted, receipts and documents filed, renewals and warranties tracked, reminders drafted. Records, not advice.
+
+**Audience:** Anyone keeping household paperwork and money records in order. · **Install:** `/plugin install ccmaf-skills-life-admin@ccmaf-skills` · [Pack README](plugins/ccmaf-skills-life-admin/README.md)
+
+| Skill | What it covers | Reference docs |
+|---|---|---|
+| [`household-admin`](plugins/ccmaf-skills-life-admin/skills/household-admin/SKILL.md) | Household paperwork kept locally: renewals register, warranties, document filing, reminders and .ics files. Drafts only; never acts. | 6 |
+| [`personal-finance-records`](plugins/ccmaf-skills-life-admin/skills/personal-finance-records/SKILL.md) | Local household money records: normalise bank/card CSVs, categorise, budget, file receipts. Locale packs, Ireland first. Not advice. | 7 |

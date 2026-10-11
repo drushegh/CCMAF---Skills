@@ -2,6 +2,20 @@
 
 Every commit to `main` is a release; entries are dated rather than versioned. Newest first.
 
+## 2026-10-11 — workspace-type packs: 30 new skills, 6 new packs
+
+For Claude working as an agent on your own machine rather than in a codebase. Install `core` and `workspace`, then the pack for the kind of workspace; SKILLS.md has the "which packs do I need" rows.
+
+- New pack `workspace` (ordered straight after `engineering`): `safe-system-changes`, `untrusted-input-handling`, `scheduled-run-discipline`, `workspace-kit-authoring`.
+- New pack `system`: `windows-administration`, `windows-diagnostics`, `windows-security-hygiene`, `windows-performance-tuning`, `machine-config-as-code`.
+- New pack `documents`: `document-authoring`, `editorial-review`, `office-formats`.
+- New pack `assistant`: `knowledge-vault`, `inbox-triage`, `calendar-assistant`, `daily-briefing`, `commitments-tracker`, `personal-data-care`. The assistant skills share `knowledge-vault`'s default layout: briefings in `01-daily/briefings/`, the commitments ledger in `03-areas/commitments/`, the briefing config at `03-areas/assistant/briefing.md`.
+- New pack `homelab`: `homelab-operations`, `nas-and-storage`, `media-server-stack`.
+- New pack `life-admin`: `personal-finance-records`, `household-admin`.
+- Added to existing packs: `browser-automation`, `computer-use-automation`, `file-automation` (`automation`); `research-notes`, `learning-coach` (`research`); `creative-writing` (`creative`); `everyday-data-analysis` (`data`). Those packs' descriptions now cover the new skills.
+- The catalogue is now 102 skills in 19 packs. Existing pack ids and skill names are unchanged; pack `order` values from `web` onwards moved down one to make room for `workspace`.
+- `validate-skills.mjs` no longer treats Markdown link syntax inside inline code spans as a link to resolve.
+
 ## 2026-10-11 — role/section packs
 
 **Breaking for path-based consumers.** Skills no longer live at the repository root.

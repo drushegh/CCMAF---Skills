@@ -1,0 +1,21 @@
+{
+  "name": "ccmaf-skills-documents",
+  "description": "CCMAF Skills — Documents: Documents done properly: audience-first drafting and revision, editorial review with sourced fact-check flags, and Office/PDF handling routed to the dedicated format skills with versioned copies. (3 skills)",
+  "author": {
+    "name": "drushegh"
+  },
+  "homepage": "https://github.com/drushegh/CCMAF---Skills",
+  "repository": "https://github.com/drushegh/CCMAF---Skills",
+  "license": "MIT",
+  "keywords": [
+    "skills",
+    "agent-skills",
+    "ccmaf",
+    "documents"
+  ],
+  "skills": [
+    "./skills/document-authoring",
+    "./skills/editorial-review",
+    "./skills/office-formats"
+  ]
+}

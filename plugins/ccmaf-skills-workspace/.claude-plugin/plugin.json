@@ -1,0 +1,22 @@
+{
+  "name": "ccmaf-skills-workspace",
+  "description": "CCMAF Skills — Workspace: The safety disciplines every workspace agent needs: reversible system changes with a change journal, mail, web and tool output treated as data rather than instructions, bounded unattended scheduled runs, and authoring CCMAF-App workspace kits. (4 skills)",
+  "author": {
+    "name": "drushegh"
+  },
+  "homepage": "https://github.com/drushegh/CCMAF---Skills",
+  "repository": "https://github.com/drushegh/CCMAF---Skills",
+  "license": "MIT",
+  "keywords": [
+    "skills",
+    "agent-skills",
+    "ccmaf",
+    "workspace"
+  ],
+  "skills": [
+    "./skills/safe-system-changes",
+    "./skills/scheduled-run-discipline",
+    "./skills/untrusted-input-handling",
+    "./skills/workspace-kit-authoring"
+  ]
+}

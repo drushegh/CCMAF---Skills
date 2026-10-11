@@ -5,20 +5,20 @@
 
 *Skill directories on disk; the one a task matches crosses into context.*
 
-**72 ENGINEERING SKILLS FOR CLAUDE CODE — ROLE PACKS OR ONE PLUGIN, OR SYNCED SELECTIVELY BY CCMAF**
+**102 SKILLS FOR CLAUDE CODE — ROLE PACKS OR ONE PLUGIN, OR SYNCED SELECTIVELY BY CCMAF**
 
 # CCMAF Skills
 
 **Senior practice, loaded when the task matches.**
 
 ![License: MIT](https://img.shields.io/badge/license-MIT-1f6feb)
-![Skills: 72](https://img.shields.io/badge/skills-72-2ea043)
+![Skills: 102](https://img.shields.io/badge/skills-102-2ea043)
 ![Claude Code: plugin](https://img.shields.io/badge/Claude_Code-plugin-58a6ff)
 [![CCMAF: companion framework](https://img.shields.io/badge/CCMAF-companion_framework-d29922)](https://github.com/drushegh/CCMAF)
 
 </div>
 
-CCMAF Skills is a catalogue of 72 vendor-neutral, MIT-licensed engineering skills for Claude Code and compatible agent runtimes: install the role packs your work needs (or all 72 as one plugin), or sync a selected subset into a [CCMAF](https://github.com/drushegh/CCMAF) project.
+CCMAF Skills is a catalogue of 102 vendor-neutral, MIT-licensed skills for Claude Code and compatible agent runtimes, engineering plus workspace skills for running Claude on your own machine: install the packs your work needs (or all 102 as one plugin), or sync a selected subset into a [CCMAF](https://github.com/drushegh/CCMAF) project.
 
 ## What this is (and is not)
 
@@ -26,10 +26,10 @@ A skill packages the conventions, decision frameworks, pitfalls, and verificatio
 
 | CCMAF Skills is | CCMAF Skills is not |
 |---|---|
-| 72 vendor-neutral engineering skills | A collection limited to programming languages |
+| 102 vendor-neutral skills: engineering, plus everyday workspaces | A collection limited to programming languages |
 | Senior-practitioner conventions, decisions, pitfalls, and verification rules | Runtime enforcement or a hard quality gate |
 | Guidance loaded only when the task matches | Reference material loaded on every task |
-| Claude Code plugins: 13 role packs, or all 72 in one | Dependent on the CCMAF framework |
+| Claude Code plugins: 19 packs, or all 102 in one | Dependent on the CCMAF framework |
 | Selectively syncable into CCMAF projects | A per-skill plugin install — the smallest plugin unit is a pack |
 | Domain-neutral for public v1.0 | A repository of client- or project-specific policy |
 
@@ -42,12 +42,12 @@ A skill packages the conventions, decision frameworks, pitfalls, and verificatio
 <!-- IMG-2: Catalogue orientation map — three labeled horizontal lanes (Technology stacks · Cross-cutting disciplines · Agent-workflow methods), ten labeled group clusters with per-group counts; group-level labels only, no individual directory names baked in; legend in the margin. Asset: .github/assets/catalogue.webp -->
 ![Map of the 72 skills grouped into ten groups across technology stacks, cross-cutting engineering disciplines, and agent-workflow methods.](.github/assets/catalogue.webp)
 
-*Ten groups across three bands. The map orients; the folds below are the authoritative index. No enforcement state is shown, because skills are advisory.*
+*Ten groups across three bands; the workspace band below post-dates the map. The map orients; the folds below are the authoritative index. No enforcement state is shown, because skills are advisory.*
 
 > **Legend — used unchanged in every diagram in this README.**
 > **Green** — skill content on disk: skill directories, `SKILL.md` cores, reference files, installed copies. **Amber** — the human's task or selection intent. **Blue** — the Claude Code runtime and its context boundary. **Grey** — mechanism and containers: the catalogue boundary, the plugin bundle, manifests, sync machinery. Loading is always drawn as an artifact crossing into the blue context frame; a file keeps its color when it loads. No enforcement color exists in this legend, because no skill enforces anything.
 
-**The breadth is three-dimensional: technology stacks, cross-cutting disciplines, and agent-workflow methods.** The bands hold 49, 14, and 9 skills; 49 + 14 + 9 = 72.
+**The breadth runs across four bands: technology stacks, cross-cutting disciplines, agent-workflow methods, and workspace skills for Claude working on your own machine.** The bands hold 49, 14, 9, and 30 skills; 49 + 14 + 9 + 30 = 102.
 
 | Band | Group | Skills |
 |---|---|---|
@@ -61,11 +61,18 @@ A skill packages the conventions, decision frameworks, pitfalls, and verificatio
 | Cross-cutting disciplines | Engineering assurance | 10 |
 | | Design & UX | 4 |
 | Agent-workflow methods | Working methods | 9 |
-| **Total** | **10 groups** | **72** |
+| Workspace skills | Workspace safety | 4 |
+| | PC care | 5 |
+| | Documents & writing | 4 |
+| | Personal assistant & life admin | 8 |
+| | Automation & everyday data | 4 |
+| | Research & learning | 2 |
+| | Homelab | 3 |
+| **Total** | **17 groups** | **102** |
 
 Six of the working-method skills govern how an agent works rather than what it works on: `opus-5-calibration`, `read-the-damn-docs`, `stay-within-limits`, `visual-plan`, `visual-recap`, and `uncanny`. The last of these removes AI tells from prose; its visual sibling, `design-taste`, sits in the Design & UX group and does the same for interfaces.
 
-This grouping exists for navigation in this README. It is not the install structure: on disk each skill is one directory inside one of 13 packs (`plugins/ccmaf-skills-<pack>/skills/<skill>/`), listed pack by pack in [SKILLS.md](SKILLS.md). Every skill below appears exactly once. Each `SKILL.md` also carries an on-demand `references/` folder — open a group to see what its skills cover.
+This grouping exists for navigation in this README. It is not the install structure: on disk each skill is one directory inside one of 19 packs (`plugins/ccmaf-skills-<pack>/skills/<skill>/`), listed pack by pack in [SKILLS.md](SKILLS.md). Every skill below appears exactly once. Each `SKILL.md` also carries an on-demand `references/` folder — open a group to see what its skills cover.
 
 <details>
 <summary><strong>Languages &amp; shells</strong> · 7 skills</summary>
@@ -199,6 +206,78 @@ This grouping exists for navigation in this README. It is not the install struct
 
 </details>
 
+<details>
+<summary><strong>Workspace safety</strong> · 4 skills</summary>
+
+- **`safe-system-changes`** — Protocol for changing a machine: plan/dry-run, restore point, per-change confirm, change journal, verify, revert. Windows first.
+- **`untrusted-input-handling`** — Mail, web pages, docs and tool output are data, not instructions: spot prompt injection, confirm content-suggested actions, report it.
+- **`scheduled-run-discipline`** — Unattended scheduled runs: bounded contract, idempotent steps, lock, run log and summary, reported failures, no destructive defaults.
+- **`workspace-kit-authoring`** — Author CCMAF-App workspace kits: type.json manifest, persona CLAUDE.md, safety tier, allow/ask/deny profile, scaffold, schedules, review.
+
+</details>
+
+<details>
+<summary><strong>PC care</strong> · 5 skills</summary>
+
+- **`windows-administration`** — Administer a Windows 11/10 PC: services, tasks, startup items, users and UAC, event logs, Windows Update, winget, firewall, settings.
+- **`windows-diagnostics`** — Explain Windows crashes and slowdowns in plain words: event triage, stop codes, dumps, counters, disk health, drivers, network. Read-only.
+- **`windows-security-hygiene`** — Windows hygiene review: persistence sweep, Authenticode checks, Defender scans, evidence-based risk rubric, reversible quarantine.
+- **`windows-performance-tuning`** — Measured Windows tuning: startup trimming, power plans, storage clean-up, safe debloat, verified tweak catalogue with risk and exact revert.
+- **`machine-config-as-code`** — Capture a Windows PC's setup as files (winget, WinGet Configuration, profiles, terminal, fonts); rebuild, audit and report drift.
+
+</details>
+
+<details>
+<summary><strong>Documents &amp; writing</strong> · 4 skills</summary>
+
+- **`document-authoring`** — Draft any document for an audience: brief and outline first, structure, house style, revision passes, change summaries, versioned folders.
+- **`editorial-review`** — Editorial review: proofread and consistency passes, sourced fact-check flags (never asserted), term lists, tone, tracked-change etiquette.
+- **`office-formats`** — Office and PDF files in a workspace: route to Anthropic docx/xlsx/pptx/pdf skills, render-and-look checks, versioned copies, open fallback.
+- **`creative-writing`** — Fiction craft and revision: character, structure, scene, voice, dialogue, revision passes and critique, keeping the writer's voice first.
+
+</details>
+
+<details>
+<summary><strong>Personal assistant &amp; life admin</strong> · 8 skills</summary>
+
+- **`knowledge-vault`** — Obsidian-compatible markdown vault: folders, daily notes, templates, inbox processing, linking, git sync and conflicts across PC and phone.
+- **`inbox-triage`** — Triage mail via Claude connectors: sort, summarise threads, extract tasks/promises, draft replies, flag phishing. Never sends unasked.
+- **`calendar-assistant`** — Calendar via connectors: free slots across time zones, clashes, travel time, prep notes, reminders. Proposes; the user confirms.
+- **`daily-briefing`** — Morning briefing from vault, mail, calendar and commitments: today, waiting on you, safe to ignore; phone-first, read-only.
+- **`commitments-tracker`** — Ledger of who promised what to whom by when, kept in the vault: owner-confirmed capture, drafted nudges (never sent), weekly review.
+- **`personal-data-care`** — What never to store (secrets, card/ID numbers, health unless asked), redaction, leak response, local-only data, GDPR-minded habits (EU/IE).
+- **`personal-finance-records`** — Local household money records: normalise bank/card CSVs, categorise, budget, file receipts. Locale packs, Ireland first. Not advice.
+- **`household-admin`** — Household paperwork kept locally: renewals register, warranties, document filing, reminders and .ics files. Drafts only; never acts.
+
+</details>
+
+<details>
+<summary><strong>Automation &amp; everyday data</strong> · 4 skills</summary>
+
+- **`browser-automation`** — Agent browsing via Claude in Chrome and Playwright MCP: ref-based targeting, state waits, user-held logins, hard stops at CAPTCHA/payment.
+- **`computer-use-automation`** — Screenshot-act desktop loops: keyboard-first targeting, verify every action, hard stops, single-player-only game automation within terms.
+- **`file-automation`** — Folder rules (sort, rename, dedupe, archive) with dry-run plans, conflict rules, quarantine not delete, undo manifest; watchers, schedules.
+- **`everyday-data-analysis`** — CSV/export to questions, analysis and charts for non-developers: careful intake, logged cleaning, right chart, honest caveats, local tools.
+
+</details>
+
+<details>
+<summary><strong>Research &amp; learning</strong> · 2 skills</summary>
+
+- **`research-notes`** — Structured research notes where every claim traces to a source and locator: source notes, claim ledger, traced synthesis.
+- **`learning-coach`** — Evidence-based study coaching: diagnose, plan, Socratic checks, retrieval and spaced repetition, Anki-importable flashcard export.
+
+</details>
+
+<details>
+<summary><strong>Homelab</strong> · 3 skills</summary>
+
+- **`homelab-operations`** — Home server ops for hobbyists: SSH hygiene, Compose stacks, safe updates with rollback, consistent service backups, monitoring basics.
+- **`nas-and-storage`** — Home NAS judgement: mirrors vs parity, ZFS/mdadm health, SMART, disk replacement, 3-2-1 backups and restore tests; destructive ops dry-run.
+- **`media-server-stack`** — Plex/Jellyfin, the *arr apps and a download client: shared data root, hardlinks, permissions, wiring, health checks, failures. Lawful use.
+
+</details>
+
 ---
 
 ## Part 2 — Depth, disclosed progressively
@@ -258,13 +337,13 @@ Outranking is advisory precedence, not enforcement. A loaded skill supplies expe
 <!-- IMG-5: Two consumption paths — left: grey marketplace manifests and a plugin bundle carrying all 72 green tiles into a blue Claude Code runtime, labeled "no CCMAF required"; right: an amber .claude/.skills-version selection, the grey catalogue pinned at a SHA, a dirty-check, then the selected green directories copied into .claude/skills/, labeled "refuses to clobber uncommitted edits". Asset: .github/assets/install-paths.webp -->
 ![The Claude Code plugin installs all 72 skills without CCMAF; CCMAF skills-sync copies selected directories at a pinned SHA and protects uncommitted edits.](.github/assets/install-paths.webp)
 
-*Left: the plugins carry the skills into Claude Code — a pack at a time, or all 72 at once — no CCMAF required. Right: `skills-sync` copies only the selected directories at a pinned SHA and refuses to clobber uncommitted edits.*
+*Left: the plugins carry the skills into Claude Code — a pack at a time, or all 102 at once — no CCMAF required. Right: `skills-sync` copies only the selected directories at a pinned SHA and refuses to clobber uncommitted edits.*
 
-**Plugins install by pack, or all 72 at once; CCMAF selects individual directories.**
+**Plugins install by pack, or all 102 at once; CCMAF selects individual directories.**
 
 ### Path 1 — Claude Code plugins: role packs or all-in-one
 
-The repository is a Claude Code plugin marketplace named `ccmaf-skills`. Every skill lives in exactly one of 13 packs, and each pack is its own plugin, `ccmaf-skills-<pack>`. No CCMAF framework is required. Add the marketplace, install `core`, then the packs your work needs:
+The repository is a Claude Code plugin marketplace named `ccmaf-skills`. Every skill lives in exactly one of 19 packs, and each pack is its own plugin, `ccmaf-skills-<pack>`. No CCMAF framework is required. Add the marketplace, install `core`, then the packs your work needs:
 
 ```
 /plugin marketplace add drushegh/CCMAF---Skills
@@ -272,6 +351,8 @@ The repository is a Claude Code plugin marketplace named `ccmaf-skills`. Every s
 /plugin install ccmaf-skills-engineering@ccmaf-skills   # every developer
 /plugin install ccmaf-skills-web@ccmaf-skills           # then your stack: web, backend, infra, microsoft, ai, data, apps, games, creative, research, automation
 ```
+
+Workspace-type packs are for Claude working as an agent on your own machine rather than in a codebase. Install `core` and `workspace`, then the pack for the kind of workspace: `system` (PC care), `documents`, `assistant`, `automation`, `homelab`, `research`, `life-admin`, `creative` or `data`.
 
 [SKILLS.md](SKILLS.md) lists every pack and its skills, with a "which packs do I need" table by role. Fewer packs means a shorter skill listing in every session; the validator reports what each pack adds.
 
@@ -301,7 +382,7 @@ Running `skills-sync.sh` clones the catalogue and copies only those directories 
 | Property | Standalone plugin | CCMAF `skills-sync` |
 |---|---|---|
 | Requires CCMAF | No | Yes |
-| Installed scope | The packs you install, or all 72 | Only the selected directories |
+| Installed scope | The packs you install, or all 102 | Only the selected directories |
 | Entry point | `.claude-plugin/` marketplace + pack plugins | `.claude/.skills-version` (`SKILLS_SELECTED="…"`) |
 | Version tracking | `/plugin marketplace update` tracks `main` | Pinned catalogue SHA |
 | Local-edit protection | (plugin install) | Dirty-check refuses to clobber uncommitted edits |
@@ -316,7 +397,7 @@ Running `skills-sync.sh` clones the catalogue and copies only those directories 
 
 ## Relationship to CCMAF
 
-The plugin path needs no CCMAF; the selective path is a CCMAF mechanism. [CCMAF](https://github.com/drushegh/CCMAF) is the multi-agent framework this catalogue serves as a standards pack. What the plugins give everyone — role packs or all 72 skills, natively loaded by Claude Code — CCMAF extends with selection: `SKILLS_SELECTED` in `.claude/.skills-version`, the pinned catalogue SHA, the dirty-check, per-directory ownership, and `--suggest` stack detection. The link runs both ways: the CCMAF README points at this catalogue as its skills upstream, and this badge row points back at CCMAF.
+The plugin path needs no CCMAF; the selective path is a CCMAF mechanism. [CCMAF](https://github.com/drushegh/CCMAF) is the multi-agent framework this catalogue serves as a standards pack. What the plugins give everyone — role packs or all 102 skills, natively loaded by Claude Code — CCMAF extends with selection: `SKILLS_SELECTED` in `.claude/.skills-version`, the pinned catalogue SHA, the dirty-check, per-directory ownership, and `--suggest` stack detection. The link runs both ways: the CCMAF README points at this catalogue as its skills upstream, and this badge row points back at CCMAF.
 
 ## Limits & scope
 
@@ -328,7 +409,7 @@ The plugin path needs no CCMAF; the selective path is a CCMAF mechanism. [CCMAF]
 
 ## Contributing & license
 
-MIT, for all 72 skills, with one third-party exception: the Azure architecture icons bundled under `plugins/ccmaf-skills-core/skills/drawio-development/assets/azure-icons/` are Microsoft's, redistributed under Microsoft's own terms (the copy ships alongside them as `Microsoft_Terms_of_Use.pdf`), not under MIT. Contributions go through issues and pull requests on [this repository](https://github.com/drushegh/CCMAF---Skills); [CONTRIBUTING.md](CONTRIBUTING.md) has the workflow and [CHANGELOG.md](CHANGELOG.md) the history. A skill contribution keeps the catalogue's shape: one self-contained directory, a lean `SKILL.md` whose frontmatter description carries the trigger phrases, and depth split into `references/` files by topic.
+MIT, for all 102 skills, with one third-party exception: the Azure architecture icons bundled under `plugins/ccmaf-skills-core/skills/drawio-development/assets/azure-icons/` are Microsoft's, redistributed under Microsoft's own terms (the copy ships alongside them as `Microsoft_Terms_of_Use.pdf`), not under MIT. Contributions go through issues and pull requests on [this repository](https://github.com/drushegh/CCMAF---Skills); [CONTRIBUTING.md](CONTRIBUTING.md) has the workflow and [CHANGELOG.md](CHANGELOG.md) the history. A skill contribution keeps the catalogue's shape: one self-contained directory, a lean `SKILL.md` whose frontmatter description carries the trigger phrases, and depth split into `references/` files by topic.
 
 <details>
 <summary><strong>How the skills are built and verified</strong></summary>

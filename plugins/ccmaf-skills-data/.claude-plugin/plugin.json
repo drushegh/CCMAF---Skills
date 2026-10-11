@@ -1,6 +1,6 @@
 {
   "name": "ccmaf-skills-data",
-  "description": "CCMAF Skills — Data: Moving and shaping data: vendor-neutral batch and streaming pipelines, ELT/dbt, orchestration, lakehouse modelling, data quality and contracts. (1 skill)",
+  "description": "CCMAF Skills — Data: Moving, shaping and analysing data: vendor-neutral batch and streaming pipelines, ELT/dbt, orchestration, lakehouse modelling, data quality and contracts, and everyday CSV-to-chart analysis for non-developers. (2 skills)",
   "author": {
     "name": "drushegh"
   },
@@ -14,6 +14,7 @@
     "data"
   ],
   "skills": [
-    "./skills/data-engineering-development"
+    "./skills/data-engineering-development",
+    "./skills/everyday-data-analysis"
   ]
 }

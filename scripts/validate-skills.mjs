@@ -171,7 +171,8 @@ for (const f of mdFiles) {
     const where = `${rel(f)}:${i + 1}`;
     if (/^\s*(```|~~~)/.test(line)) { fence = !fence; }
     if (!fence) {
-      for (const m of line.matchAll(/\]\(([^)\s]+)(?:\s+"[^"]*")?\)/g)) {
+      // Links inside inline code spans are syntax examples, not links.
+      for (const m of line.replace(/`[^`]*`/g, '').matchAll(/\]\(([^)\s]+)(?:\s+"[^"]*")?\)/g)) {
         const target = m[1];
         if (/^([a-z][a-z0-9+.-]*:|#|\/)/i.test(target)) continue;
         const clean = decodeURIComponent(target.split('#')[0]);

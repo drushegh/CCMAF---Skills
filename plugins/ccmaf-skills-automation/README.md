@@ -2,7 +2,7 @@
 
 # CCMAF Skills — Automation (`ccmaf-skills-automation`)
 
-Automating the web and repetitive work responsibly: scrapers and crawlers with a legal/ethical gate first.
+Automating the web, the desktop and repetitive work responsibly: scrapers and crawlers with a legal/ethical gate first, agent-driven browser and computer-use loops with hard stops, and folder rules with dry runs and undo.
 
 **Audience:** Anyone automating the web or repetitive work.
 
@@ -15,10 +15,13 @@ Automating the web and repetitive work responsibly: scrapers and crawlers with a
 
 Install `ccmaf-skills-core` alongside this pack.
 
-## Skills (1)
+## Skills (4)
 
 | Skill | What it covers | Reference docs |
 |---|---|---|
+| [`browser-automation`](skills/browser-automation/SKILL.md) | Agent browsing via Claude in Chrome and Playwright MCP: ref-based targeting, state waits, user-held logins, hard stops at CAPTCHA/payment. | 6 |
+| [`computer-use-automation`](skills/computer-use-automation/SKILL.md) | Screenshot-act desktop loops: keyboard-first targeting, verify every action, hard stops, single-player-only game automation within terms. | 6 |
+| [`file-automation`](skills/file-automation/SKILL.md) | Folder rules (sort, rename, dedupe, archive) with dry-run plans, conflict rules, quarantine not delete, undo manifest; watchers, schedules. | 7 |
 | [`web-scraping-development`](skills/web-scraping-development/SKILL.md) | Responsible scrapers: the legal gate, HTTP and HTML parsing, Playwright for dynamic sites, Scrapy, resilience. | 5 |
 
 The full catalogue across every pack is in [SKILLS.md](../../SKILLS.md).

@@ -1,0 +1,21 @@
+{
+  "name": "ccmaf-skills-homelab",
+  "description": "CCMAF Skills — Homelab: Running a home server safely: SSH hygiene, Compose stacks, updates with rollback, NAS storage health and 3-2-1 backups with restore tests, and a lawful media-server stack. (3 skills)",
+  "author": {
+    "name": "drushegh"
+  },
+  "homepage": "https://github.com/drushegh/CCMAF---Skills",
+  "repository": "https://github.com/drushegh/CCMAF---Skills",
+  "license": "MIT",
+  "keywords": [
+    "skills",
+    "agent-skills",
+    "ccmaf",
+    "homelab"
+  ],
+  "skills": [
+    "./skills/homelab-operations",
+    "./skills/media-server-stack",
+    "./skills/nas-and-storage"
+  ]
+}
