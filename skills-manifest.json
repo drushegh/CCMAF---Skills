@@ -2,7 +2,7 @@
   "name": "ccmaf-skills",
   "title": "CCMAF Skills — skill catalogue",
   "repository": "https://github.com/drushegh/CCMAF---Skills",
-  "skillCount": 107,
+  "skillCount": 108,
   "packCount": 19,
   "allInOne": {
     "name": "ccmaf-skills",
@@ -172,7 +172,7 @@
       "id": "ccmaf-skills-web",
       "title": "Web & UI",
       "audience": "Frontend and full-stack developers building user interfaces.",
-      "description": "Building web UIs that look chosen and behave well: HTML/CSS/Tailwind craft, React and Next.js, TypeScript, design taste, UX reasoning, accessibility, render-and-critique verification, web performance, and Manifest V3 browser extensions.",
+      "description": "Building web UIs that look chosen and behave well: HTML/CSS/Tailwind craft, React and Next.js, TypeScript, design taste, UX reasoning, accessibility, render-and-critique verification, web performance, Astro content sites, and Manifest V3 browser extensions.",
       "install": "/plugin install ccmaf-skills-web@ccmaf-skills",
       "skills": [
         {
@@ -180,6 +180,12 @@
           "summary": "WCAG 2.2 AA with the EU statutory frame: ARIA, keyboard and focus, accessible forms, testing, audit checklist.",
           "path": "plugins/ccmaf-skills-web/skills/accessibility-development",
           "referenceDocs": 7
+        },
+        {
+          "id": "astro-development",
+          "summary": "Astro content sites: URL shape, typed collections, astro:env, scripts under a strict CSP, pixel-art images, testing the built site.",
+          "path": "plugins/ccmaf-skills-web/skills/astro-development",
+          "referenceDocs": 9
         },
         {
           "id": "browser-extension-development",

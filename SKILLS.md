@@ -2,7 +2,7 @@
 
 # CCMAF Skills — catalogue
 
-**107 skills** in **19 packs**. Each skill is a self-contained directory: a lean `SKILL.md` plus on-demand reference docs.
+**108 skills** in **19 packs**. Each skill is a self-contained directory: a lean `SKILL.md` plus on-demand reference docs.
 
 ## Install
 
@@ -13,7 +13,7 @@
 /plugin install ccmaf-skills-<pack>@ccmaf-skills      # the packs your work needs
 ```
 
-Or install everything at once with `/plugin install ccmaf-skills@ccmaf-skills` (all 107 skills; a larger skill listing in every session).
+Or install everything at once with `/plugin install ccmaf-skills@ccmaf-skills` (all 108 skills; a larger skill listing in every session).
 
 ## Which packs do I need?
 
@@ -50,7 +50,7 @@ Or install everything at once with `/plugin install ccmaf-skills@ccmaf-skills` (
 | [Core](#core-ccmaf-skills-core) | `ccmaf-skills-core` | 11 | Everyone — install this first. |
 | [Engineering](#engineering-ccmaf-skills-engineering) | `ccmaf-skills-engineering` | 7 | Every developer, whatever the stack — install alongside core. |
 | [Workspace](#workspace-ccmaf-skills-workspace) | `ccmaf-skills-workspace` | 4 | Anyone running Claude as an agent on their own machine — install alongside core for any workspace type. |
-| [Web & UI](#web--ui-ccmaf-skills-web) | `ccmaf-skills-web` | 9 | Frontend and full-stack developers building user interfaces. |
+| [Web & UI](#web--ui-ccmaf-skills-web) | `ccmaf-skills-web` | 10 | Frontend and full-stack developers building user interfaces. |
 | [Backend & APIs](#backend--apis-ccmaf-skills-backend) | `ccmaf-skills-backend` | 8 | Backend and full-stack developers building services and data access. |
 | [Infrastructure & Operations](#infrastructure--operations-ccmaf-skills-infra) | `ccmaf-skills-infra` | 10 | Platform, DevOps and SRE engineers, and anyone who ships to production. |
 | [Microsoft Business Platforms](#microsoft-business-platforms-ccmaf-skills-microsoft) | `ccmaf-skills-microsoft` | 8 | Developers and makers on Power Platform, Dynamics 365, Microsoft 365 and Fabric. |
@@ -118,13 +118,14 @@ The safety disciplines every workspace agent needs: reversible system changes wi
 
 ## Web & UI (`ccmaf-skills-web`)
 
-Building web UIs that look chosen and behave well: HTML/CSS/Tailwind craft, React and Next.js, TypeScript, design taste, UX reasoning, accessibility, render-and-critique verification, web performance, and Manifest V3 browser extensions.
+Building web UIs that look chosen and behave well: HTML/CSS/Tailwind craft, React and Next.js, TypeScript, design taste, UX reasoning, accessibility, render-and-critique verification, web performance, Astro content sites, and Manifest V3 browser extensions.
 
 **Audience:** Frontend and full-stack developers building user interfaces. · **Install:** `/plugin install ccmaf-skills-web@ccmaf-skills` · [Pack README](plugins/ccmaf-skills-web/README.md)
 
 | Skill | What it covers | Reference docs |
 |---|---|---|
 | [`accessibility-development`](plugins/ccmaf-skills-web/skills/accessibility-development/SKILL.md) | WCAG 2.2 AA with the EU statutory frame: ARIA, keyboard and focus, accessible forms, testing, audit checklist. | 7 |
+| [`astro-development`](plugins/ccmaf-skills-web/skills/astro-development/SKILL.md) | Astro content sites: URL shape, typed collections, astro:env, scripts under a strict CSP, pixel-art images, testing the built site. | 9 |
 | [`browser-extension-development`](plugins/ccmaf-skills-web/skills/browser-extension-development/SKILL.md) | MV3 browser extensions: service-worker lifecycle, permissions, content scripts, messaging, storage, CSP, store review; Chrome→Firefox/Edge. | 6 |
 | [`design-taste`](plugins/ccmaf-skills-web/skills/design-taste/SKILL.md) | Remove AI tells from visual design so a UI reads as chosen, not generated; register-aware polish. | 7 |
 | [`frontend-development`](plugins/ccmaf-skills-web/skills/frontend-development/SKILL.md) | HTML, CSS and Tailwind v4 craft: design tokens, theming, semantic markup, distinctive design, a11y baseline. | 4 |

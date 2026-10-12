@@ -2,6 +2,11 @@
 
 Every commit to `main` is a release; entries are dated rather than versioned. Newest first.
 
+## 2026-10-12 — new skill: astro-development
+
+- New `astro-development` (`web`): Astro content sites as decision rules and field-tested traps rather than an API tutorial, from one production static site. Covers when to choose Astro, deciding `trailingSlash` with `build.format` and setting `site` first, typed content collections with https-only URL fields, `astro:env` and why local flags belong in `.env.development`, processed vs `is:inline` scripts under a strict hash-based CSP (built-in `security.csp` vs a postbuild header, with tokenizer rules and test fixtures), pixel-art-safe images and font licences, sitemap/RSS/Pagefind, testing the built site with Playwright, Windows build traps and static deploys. Version-specific facts were checked against the official docs for Astro 7.3.8; anything unconfirmed is marked "(verify)". It defers Cloudflare Pages depth to `cloudflare-workers-development`.
+- The `web` pack description names it. The catalogue is now 108 skills in 19 packs.
+
 ## 2026-10-12 — new skill: motion-design
 
 - New `motion-design` (`creative`): direction, numbers and verification for code-driven motion — rendered motion graphics (launch films, title reveals, explainer loops, GIF/MP4) and the motion layer of live UI. Directed-brief template and ban lists, easing/spring (damping ratio)/stagger/beat-grid values, the deterministic render contract, a stills → contact sheet → frame-numbered notes review loop, Web Audio scoring and A/V sync, seamless loops and export. Ships helper scripts: a Playwright frame renderer, motion tokens (closed-form spring, bezier, seeded RNG, beat grid), a `?t=` freeze hook, an ffmpeg contact-sheet/export script and a smoke test.

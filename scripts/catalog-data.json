@@ -38,7 +38,7 @@
       "id": "ccmaf-skills-web",
       "title": "Web & UI",
       "audience": "Frontend and full-stack developers building user interfaces.",
-      "description": "Building web UIs that look chosen and behave well: HTML/CSS/Tailwind craft, React and Next.js, TypeScript, design taste, UX reasoning, accessibility, render-and-critique verification, web performance, and Manifest V3 browser extensions.",
+      "description": "Building web UIs that look chosen and behave well: HTML/CSS/Tailwind craft, React and Next.js, TypeScript, design taste, UX reasoning, accessibility, render-and-critique verification, web performance, Astro content sites, and Manifest V3 browser extensions.",
       "order": 4
     },
     {
@@ -201,6 +201,7 @@
     "ui-verification": { "pack": "ccmaf-skills-web", "summary": "Render, view, critique, iterate: screenshot a UI at real viewports and critique the image, not the code." },
     "web-performance-development": { "pack": "ccmaf-skills-web", "summary": "Core Web Vitals, the critical rendering path, loading and caching strategy, service workers, budgets." },
     "browser-extension-development": { "pack": "ccmaf-skills-web", "summary": "MV3 browser extensions: service-worker lifecycle, permissions, content scripts, messaging, storage, CSP, store review; Chrome→Firefox/Edge." },
+    "astro-development": { "pack": "ccmaf-skills-web", "summary": "Astro content sites: URL shape, typed collections, astro:env, scripts under a strict CSP, pixel-art images, testing the built site." },
     "api-development": { "pack": "ccmaf-skills-backend", "summary": "HTTP API design: REST semantics, OpenAPI-first contracts, versioning, pagination, problem+json, webhooks." },
     "dotnet-development": { "pack": "ccmaf-skills-backend", "summary": "Modern .NET and C#: ASP.NET Core APIs, EF Core, nullable reference types, testing, observability, performance." },
     "go-development": { "pack": "ccmaf-skills-backend", "summary": "Modern Go: errors as values, goroutine/channel/context discipline, generics, modules, table-driven tests." },

@@ -2,7 +2,7 @@
 
 # CCMAF Skills — Web & UI (`ccmaf-skills-web`)
 
-Building web UIs that look chosen and behave well: HTML/CSS/Tailwind craft, React and Next.js, TypeScript, design taste, UX reasoning, accessibility, render-and-critique verification, web performance, and Manifest V3 browser extensions.
+Building web UIs that look chosen and behave well: HTML/CSS/Tailwind craft, React and Next.js, TypeScript, design taste, UX reasoning, accessibility, render-and-critique verification, web performance, Astro content sites, and Manifest V3 browser extensions.
 
 **Audience:** Frontend and full-stack developers building user interfaces.
 
@@ -15,11 +15,12 @@ Building web UIs that look chosen and behave well: HTML/CSS/Tailwind craft, Reac
 
 Install `ccmaf-skills-core` alongside this pack.
 
-## Skills (9)
+## Skills (10)
 
 | Skill | What it covers | Reference docs |
 |---|---|---|
 | [`accessibility-development`](skills/accessibility-development/SKILL.md) | WCAG 2.2 AA with the EU statutory frame: ARIA, keyboard and focus, accessible forms, testing, audit checklist. | 7 |
+| [`astro-development`](skills/astro-development/SKILL.md) | Astro content sites: URL shape, typed collections, astro:env, scripts under a strict CSP, pixel-art images, testing the built site. | 9 |
 | [`browser-extension-development`](skills/browser-extension-development/SKILL.md) | MV3 browser extensions: service-worker lifecycle, permissions, content scripts, messaging, storage, CSP, store review; Chrome→Firefox/Edge. | 6 |
 | [`design-taste`](skills/design-taste/SKILL.md) | Remove AI tells from visual design so a UI reads as chosen, not generated; register-aware polish. | 7 |
 | [`frontend-development`](skills/frontend-development/SKILL.md) | HTML, CSS and Tailwind v4 craft: design tokens, theming, semantic markup, distinctive design, a11y baseline. | 4 |
