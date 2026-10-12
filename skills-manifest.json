@@ -2,7 +2,7 @@
   "name": "ccmaf-skills",
   "title": "CCMAF Skills — skill catalogue",
   "repository": "https://github.com/drushegh/CCMAF---Skills",
-  "skillCount": 106,
+  "skillCount": 107,
   "packCount": 19,
   "allInOne": {
     "name": "ccmaf-skills",
@@ -567,8 +567,8 @@
     {
       "id": "ccmaf-skills-creative",
       "title": "Creative & Media",
-      "audience": "Artists, technical artists, video makers and writers.",
-      "description": "Code-driven creative tooling and writing craft: Blender scripting and pipelines, ComfyUI image-generation workflows, programmatic video with Remotion, and fiction craft and revision.",
+      "audience": "Artists, technical artists, motion designers, video makers and writers.",
+      "description": "Code-driven creative tooling and writing craft: motion design direction and verification, Blender scripting and pipelines, ComfyUI image-generation workflows, programmatic video with Remotion, and fiction craft and revision.",
       "install": "/plugin install ccmaf-skills-creative@ccmaf-skills",
       "skills": [
         {
@@ -588,6 +588,12 @@
           "summary": "Fiction craft and revision: character, structure, scene, voice, dialogue, revision passes and critique, keeping the writer's voice first.",
           "path": "plugins/ccmaf-skills-creative/skills/creative-writing",
           "referenceDocs": 6
+        },
+        {
+          "id": "motion-design",
+          "summary": "Directing and verifying code-driven motion: directed briefs, easing/spring numbers, deterministic frame renders, review loop, A/V sync.",
+          "path": "plugins/ccmaf-skills-creative/skills/motion-design",
+          "referenceDocs": 8
         },
         {
           "id": "remotion-development",

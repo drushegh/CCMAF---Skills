@@ -2,6 +2,11 @@
 
 Every commit to `main` is a release; entries are dated rather than versioned. Newest first.
 
+## 2026-10-12 — new skill: motion-design
+
+- New `motion-design` (`creative`): direction, numbers and verification for code-driven motion — rendered motion graphics (launch films, title reveals, explainer loops, GIF/MP4) and the motion layer of live UI. Directed-brief template and ban lists, easing/spring (damping ratio)/stagger/beat-grid values, the deterministic render contract, a stills → contact sheet → frame-numbered notes review loop, Web Audio scoring and A/V sync, seamless loops and export. Ships helper scripts: a Playwright frame renderer, motion tokens (closed-form spring, bezier, seeded RNG, beat grid), a `?t=` freeze hook, an ffmpeg contact-sheet/export script and a smoke test.
+- The `creative` pack description names it. The catalogue is now 107 skills in 19 packs.
+
 ## 2026-10-12 — gotchas fix wave: 33 skills updated, 4 new skills
 
 Field-tested corrections and traps from an audit of the gotchas logs kept by 38 projects that use these skills. Items seen in practice but not confirmed against official docs are marked "(verify)" in the text.

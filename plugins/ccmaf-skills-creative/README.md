@@ -2,9 +2,9 @@
 
 # CCMAF Skills — Creative & Media (`ccmaf-skills-creative`)
 
-Code-driven creative tooling and writing craft: Blender scripting and pipelines, ComfyUI image-generation workflows, programmatic video with Remotion, and fiction craft and revision.
+Code-driven creative tooling and writing craft: motion design direction and verification, Blender scripting and pipelines, ComfyUI image-generation workflows, programmatic video with Remotion, and fiction craft and revision.
 
-**Audience:** Artists, technical artists, video makers and writers.
+**Audience:** Artists, technical artists, motion designers, video makers and writers.
 
 ## Install
 
@@ -15,13 +15,14 @@ Code-driven creative tooling and writing craft: Blender scripting and pipelines,
 
 Install `ccmaf-skills-core` alongside this pack.
 
-## Skills (4)
+## Skills (5)
 
 | Skill | What it covers | Reference docs |
 |---|---|---|
 | [`blender-development`](skills/blender-development/SKILL.md) | Blender bpy scripting, add-ons and extensions, Geometry Nodes, the engine export pipeline, headless automation. | 5 |
 | [`comfyui-development`](skills/comfyui-development/SKILL.md) | ComfyUI: the graph model, UI vs API JSON, pipelines, custom nodes, the HTTP/WebSocket API, the RCE surface. | 6 |
 | [`creative-writing`](skills/creative-writing/SKILL.md) | Fiction craft and revision: character, structure, scene, voice, dialogue, revision passes and critique, keeping the writer's voice first. | 6 |
+| [`motion-design`](skills/motion-design/SKILL.md) | Directing and verifying code-driven motion: directed briefs, easing/spring numbers, deterministic frame renders, review loop, A/V sync. | 8 |
 | [`remotion-development`](skills/remotion-development/SKILL.md) | Programmatic video with Remotion: compositions, frame-driven animation, sequencing, assets, rendering paths. | 7 |
 
 The full catalogue across every pack is in [SKILLS.md](../../SKILLS.md).

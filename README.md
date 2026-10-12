@@ -5,20 +5,20 @@
 
 *Skill directories on disk; the one a task matches crosses into context.*
 
-**106 SKILLS FOR CLAUDE CODE — ROLE PACKS OR ONE PLUGIN, OR SYNCED SELECTIVELY BY CCMAF**
+**107 SKILLS FOR CLAUDE CODE — ROLE PACKS OR ONE PLUGIN, OR SYNCED SELECTIVELY BY CCMAF**
 
 # CCMAF Skills
 
 **Senior practice, loaded when the task matches.**
 
 ![License: MIT](https://img.shields.io/badge/license-MIT-1f6feb)
-![Skills: 106](https://img.shields.io/badge/skills-106-2ea043)
+![Skills: 107](https://img.shields.io/badge/skills-107-2ea043)
 ![Claude Code: plugin](https://img.shields.io/badge/Claude_Code-plugin-58a6ff)
 [![CCMAF: companion framework](https://img.shields.io/badge/CCMAF-companion_framework-d29922)](https://github.com/drushegh/CCMAF)
 
 </div>
 
-CCMAF Skills is a catalogue of 106 vendor-neutral, MIT-licensed skills for Claude Code and compatible agent runtimes, engineering plus workspace skills for running Claude on your own machine: install the packs your work needs (or all 106 as one plugin), or sync a selected subset into a [CCMAF](https://github.com/drushegh/CCMAF) project.
+CCMAF Skills is a catalogue of 107 vendor-neutral, MIT-licensed skills for Claude Code and compatible agent runtimes, engineering plus workspace skills for running Claude on your own machine: install the packs your work needs (or all 107 as one plugin), or sync a selected subset into a [CCMAF](https://github.com/drushegh/CCMAF) project.
 
 ## What this is (and is not)
 
@@ -26,10 +26,10 @@ A skill packages the conventions, decision frameworks, pitfalls, and verificatio
 
 | CCMAF Skills is | CCMAF Skills is not |
 |---|---|
-| 106 vendor-neutral skills: engineering, plus everyday workspaces | A collection limited to programming languages |
+| 107 vendor-neutral skills: engineering, plus everyday workspaces | A collection limited to programming languages |
 | Senior-practitioner conventions, decisions, pitfalls, and verification rules | Runtime enforcement or a hard quality gate |
 | Guidance loaded only when the task matches | Reference material loaded on every task |
-| Claude Code plugins: 19 packs, or all 106 in one | Dependent on the CCMAF framework |
+| Claude Code plugins: 19 packs, or all 107 in one | Dependent on the CCMAF framework |
 | Selectively syncable into CCMAF projects | A per-skill plugin install — the smallest plugin unit is a pack |
 | Domain-neutral for public v1.0 | A repository of client- or project-specific policy |
 
@@ -47,7 +47,7 @@ A skill packages the conventions, decision frameworks, pitfalls, and verificatio
 > **Legend — used unchanged in every diagram in this README.**
 > **Green** — skill content on disk: skill directories, `SKILL.md` cores, reference files, installed copies. **Amber** — the human's task or selection intent. **Blue** — the Claude Code runtime and its context boundary. **Grey** — mechanism and containers: the catalogue boundary, the plugin bundle, manifests, sync machinery. Loading is always drawn as an artifact crossing into the blue context frame; a file keeps its color when it loads. No enforcement color exists in this legend, because no skill enforces anything.
 
-**The breadth runs across four bands: technology stacks, cross-cutting disciplines, agent-workflow methods, and workspace skills for Claude working on your own machine.** The bands hold 53, 14, 9, and 30 skills; 53 + 14 + 9 + 30 = 106.
+**The breadth runs across four bands: technology stacks, cross-cutting disciplines, agent-workflow methods, and workspace skills for Claude working on your own machine.** The bands hold 54, 14, 9, and 30 skills; 54 + 14 + 9 + 30 = 107.
 
 | Band | Group | Skills |
 |---|---|---|
@@ -57,7 +57,7 @@ A skill packages the conventions, decision frameworks, pitfalls, and verificatio
 | | Cloud, infrastructure & operations | 9 |
 | | Data, AI & integration | 6 |
 | | Microsoft business platforms | 7 |
-| | Games, 3D & media | 11 |
+| | Games, 3D & media | 12 |
 | Cross-cutting disciplines | Engineering assurance | 10 |
 | | Design & UX | 4 |
 | Agent-workflow methods | Working methods | 9 |
@@ -68,7 +68,7 @@ A skill packages the conventions, decision frameworks, pitfalls, and verificatio
 | | Automation & everyday data | 4 |
 | | Research & learning | 2 |
 | | Homelab | 3 |
-| **Total** | **17 groups** | **106** |
+| **Total** | **17 groups** | **107** |
 
 Six of the working-method skills govern how an agent works rather than what it works on: `opus-5-calibration`, `read-the-damn-docs`, `stay-within-limits`, `visual-plan`, `visual-recap`, and `uncanny`. The last of these removes AI tells from prose; its visual sibling, `design-taste`, sits in the Design & UX group and does the same for interfaces.
 
@@ -153,7 +153,7 @@ This grouping exists for navigation in this README. It is not the install struct
 </details>
 
 <details>
-<summary><strong>Games, 3D &amp; media</strong> · 11 skills</summary>
+<summary><strong>Games, 3D &amp; media</strong> · 12 skills</summary>
 
 - **`unity-development`** — Unity 6.x: the MonoBehaviour lifecycle and serialization rules, ScriptableObject data architecture, prefabs and additive scene management, Addressables, the Input System, ECS/DOTS, the build pipeline.
 - **`unreal-engine-development`** — Unreal Engine 5: the Blueprints-vs-C++ decision and hybrid pattern, the gameplay framework, UCLASS/UPROPERTY reflection and GC, modules and plugins, Nanite/Lumen/Niagara, cooking and packaging, replication.
@@ -166,6 +166,7 @@ This grouping exists for navigation in this README. It is not the install struct
 - **`kenney-asset-integration`** — Integrating Kenney CC0 kits: the external colormap, per-kit scale, glTF +Z facing, GridMap tiles, autotile yaws, z-fighting — in Godot, three.js and Phaser.
 - **`comfyui-development`** — Building, automating and extending ComfyUI: the graph/execution model and UI-vs-API JSON, the generation pipelines, custom node development, the HTTP+WebSocket API, model management, the RCE surface.
 - **`remotion-development`** — Making videos programmatically with Remotion: compositions and the Studio, frame-driven animation, sequencing and transitions, assets and audio, data-driven video, every rendering path, the paid Company Licence flag.
+- **`motion-design`** — Directing, building and verifying code-driven motion: the directed brief (numbers, not adjectives), easing/spring/stagger/beat-grid values, the deterministic render contract (`window.renderAt(t)`), stills, contact sheets and frame-numbered review notes, code-synthesised sound and A/V sync, seamless loops and export.
 
 </details>
 
@@ -341,9 +342,9 @@ Outranking is advisory precedence, not enforcement. A loaded skill supplies expe
 <!-- IMG-5: Two consumption paths — left: grey marketplace manifests and a plugin bundle carrying all 72 green tiles into a blue Claude Code runtime, labeled "no CCMAF required"; right: an amber .claude/.skills-version selection, the grey catalogue pinned at a SHA, a dirty-check, then the selected green directories copied into .claude/skills/, labeled "refuses to clobber uncommitted edits". Asset: .github/assets/install-paths.webp -->
 ![The Claude Code plugin installs all 72 skills without CCMAF; CCMAF skills-sync copies selected directories at a pinned SHA and protects uncommitted edits.](.github/assets/install-paths.webp)
 
-*Left: the plugins carry the skills into Claude Code — a pack at a time, or all 106 at once — no CCMAF required. Right: `skills-sync` copies only the selected directories at a pinned SHA and refuses to clobber uncommitted edits.*
+*Left: the plugins carry the skills into Claude Code — a pack at a time, or all 107 at once — no CCMAF required. Right: `skills-sync` copies only the selected directories at a pinned SHA and refuses to clobber uncommitted edits.*
 
-**Plugins install by pack, or all 106 at once; CCMAF selects individual directories.**
+**Plugins install by pack, or all 107 at once; CCMAF selects individual directories.**
 
 ### Path 1 — Claude Code plugins: role packs or all-in-one
 
@@ -386,7 +387,7 @@ Running `skills-sync.sh` clones the catalogue and copies only those directories 
 | Property | Standalone plugin | CCMAF `skills-sync` |
 |---|---|---|
 | Requires CCMAF | No | Yes |
-| Installed scope | The packs you install, or all 106 | Only the selected directories |
+| Installed scope | The packs you install, or all 107 | Only the selected directories |
 | Entry point | `.claude-plugin/` marketplace + pack plugins | `.claude/.skills-version` (`SKILLS_SELECTED="…"`) |
 | Version tracking | `/plugin marketplace update` tracks `main` | Pinned catalogue SHA |
 | Local-edit protection | (plugin install) | Dirty-check refuses to clobber uncommitted edits |
@@ -401,7 +402,7 @@ Running `skills-sync.sh` clones the catalogue and copies only those directories 
 
 ## Relationship to CCMAF
 
-The plugin path needs no CCMAF; the selective path is a CCMAF mechanism. [CCMAF](https://github.com/drushegh/CCMAF) is the multi-agent framework this catalogue serves as a standards pack. What the plugins give everyone — role packs or all 106 skills, natively loaded by Claude Code — CCMAF extends with selection: `SKILLS_SELECTED` in `.claude/.skills-version`, the pinned catalogue SHA, the dirty-check, per-directory ownership, and `--suggest` stack detection. The link runs both ways: the CCMAF README points at this catalogue as its skills upstream, and this badge row points back at CCMAF.
+The plugin path needs no CCMAF; the selective path is a CCMAF mechanism. [CCMAF](https://github.com/drushegh/CCMAF) is the multi-agent framework this catalogue serves as a standards pack. What the plugins give everyone — role packs or all 107 skills, natively loaded by Claude Code — CCMAF extends with selection: `SKILLS_SELECTED` in `.claude/.skills-version`, the pinned catalogue SHA, the dirty-check, per-directory ownership, and `--suggest` stack detection. The link runs both ways: the CCMAF README points at this catalogue as its skills upstream, and this badge row points back at CCMAF.
 
 ## Limits & scope
 
@@ -413,7 +414,7 @@ The plugin path needs no CCMAF; the selective path is a CCMAF mechanism. [CCMAF]
 
 ## Contributing & license
 
-MIT, for all 106 skills, with one third-party exception: the Azure architecture icons bundled under `plugins/ccmaf-skills-core/skills/drawio-development/assets/azure-icons/` are Microsoft's, redistributed under Microsoft's own terms (the copy ships alongside them as `Microsoft_Terms_of_Use.pdf`), not under MIT. Contributions go through issues and pull requests on [this repository](https://github.com/drushegh/CCMAF---Skills); [CONTRIBUTING.md](CONTRIBUTING.md) has the workflow and [CHANGELOG.md](CHANGELOG.md) the history. A skill contribution keeps the catalogue's shape: one self-contained directory, a lean `SKILL.md` whose frontmatter description carries the trigger phrases, and depth split into `references/` files by topic.
+MIT, for all 107 skills, with one third-party exception: the Azure architecture icons bundled under `plugins/ccmaf-skills-core/skills/drawio-development/assets/azure-icons/` are Microsoft's, redistributed under Microsoft's own terms (the copy ships alongside them as `Microsoft_Terms_of_Use.pdf`), not under MIT. Contributions go through issues and pull requests on [this repository](https://github.com/drushegh/CCMAF---Skills); [CONTRIBUTING.md](CONTRIBUTING.md) has the workflow and [CHANGELOG.md](CHANGELOG.md) the history. A skill contribution keeps the catalogue's shape: one self-contained directory, a lean `SKILL.md` whose frontmatter description carries the trigger phrases, and depth split into `references/` files by topic.
 
 <details>
 <summary><strong>How the skills are built and verified</strong></summary>

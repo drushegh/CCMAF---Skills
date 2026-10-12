@@ -1,0 +1,18 @@
+<!doctype html><html><head><meta charset="utf-8"><style>
+html,body{margin:0;background:#F3F1EC}canvas{display:block}
+.title{position:fixed;left:80px;top:80px;font:600 64px/1 system-ui;color:#1A1A1A;animation:in 750ms cubic-bezier(0.16,1,0.3,1) 500ms both}
+@keyframes in{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:none}}
+</style></head><body><div class="title">One timeline.</div><canvas id="c" width="1080" height="1080"></canvas>
+<script type="module">
+import { spring, seg, ease, rng, phase } from './motion-tokens.js';
+const ctx=document.getElementById('c').getContext('2d'); const FPS=24,N=144; const r=rng(7);
+const cards=Array.from({length:6},(_,i)=>({x:200+r()*680,y:300+r()*600,i}));
+window.renderAt=(t)=>{ const f=t*FPS, p=phase(f,N);
+ ctx.fillStyle='#F3F1EC';ctx.fillRect(0,0,1080,1080);
+ const draw=seg(t,1,2.5,ease.move); ctx.strokeStyle='#2F6BFF';ctx.lineWidth=6;ctx.beginPath();ctx.moveTo(540,260);ctx.lineTo(540,260+draw*700);ctx.stroke();
+ for(const c of cards){ const s=spring(t-1-c.i*2/FPS,0.75,2.2); const tx=540-110, ty=280+c.i*110;
+  const drift=4*Math.sin(2*Math.PI*(p+c.i/6));
+  ctx.fillStyle='#1A1A1A';ctx.fillRect(c.x+(tx-c.x)*s, c.y+(ty-c.y)*s+drift*(1-s),220,80);}
+};
+window.renderAt(0);
+</script></body></html>

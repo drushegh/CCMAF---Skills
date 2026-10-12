@@ -1,6 +1,6 @@
 {
   "name": "ccmaf-skills",
-  "description": "All 106 CCMAF skills in one plugin — the conventions, decision frameworks, pitfalls and verification rules a senior practitioner enforces, packaged so an agent behaves like a disciplined specialist. The same skills are also published as 19 role packs (ccmaf-skills-<pack>).",
+  "description": "All 107 CCMAF skills in one plugin — the conventions, decision frameworks, pitfalls and verification rules a senior practitioner enforces, packaged so an agent behaves like a disciplined specialist. The same skills are also published as 19 role packs (ccmaf-skills-<pack>).",
   "author": {
     "name": "drushegh"
   },
@@ -54,6 +54,7 @@
     "./plugins/ccmaf-skills-creative/skills/blender-development",
     "./plugins/ccmaf-skills-creative/skills/comfyui-development",
     "./plugins/ccmaf-skills-creative/skills/creative-writing",
+    "./plugins/ccmaf-skills-creative/skills/motion-design",
     "./plugins/ccmaf-skills-creative/skills/remotion-development",
     "./plugins/ccmaf-skills-data/skills/data-engineering-development",
     "./plugins/ccmaf-skills-data/skills/everyday-data-analysis",

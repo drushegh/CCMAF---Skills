@@ -93,8 +93,8 @@
     {
       "id": "ccmaf-skills-creative",
       "title": "Creative & Media",
-      "audience": "Artists, technical artists, video makers and writers.",
-      "description": "Code-driven creative tooling and writing craft: Blender scripting and pipelines, ComfyUI image-generation workflows, programmatic video with Remotion, and fiction craft and revision.",
+      "audience": "Artists, technical artists, motion designers, video makers and writers.",
+      "description": "Code-driven creative tooling and writing craft: motion design direction and verification, Blender scripting and pipelines, ComfyUI image-generation workflows, programmatic video with Remotion, and fiction craft and revision.",
       "order": 12
     },
     {
@@ -248,6 +248,7 @@
     "blender-development": { "pack": "ccmaf-skills-creative", "summary": "Blender bpy scripting, add-ons and extensions, Geometry Nodes, the engine export pipeline, headless automation." },
     "comfyui-development": { "pack": "ccmaf-skills-creative", "summary": "ComfyUI: the graph model, UI vs API JSON, pipelines, custom nodes, the HTTP/WebSocket API, the RCE surface." },
     "remotion-development": { "pack": "ccmaf-skills-creative", "summary": "Programmatic video with Remotion: compositions, frame-driven animation, sequencing, assets, rendering paths." },
+    "motion-design": { "pack": "ccmaf-skills-creative", "summary": "Directing and verifying code-driven motion: directed briefs, easing/spring numbers, deterministic frame renders, review loop, A/V sync." },
     "academic-research": { "pack": "ccmaf-skills-research", "summary": "Citation-safe scholarly research: discovery via free APIs, appraisal, evidence synthesis, reviewer simulation." },
     "web-scraping-development": { "pack": "ccmaf-skills-automation", "summary": "Responsible scrapers: the legal gate, HTTP and HTML parsing, Playwright for dynamic sites, Scrapy, resilience." },
     "scheduled-run-discipline": { "pack": "ccmaf-skills-workspace", "summary": "Unattended scheduled runs: bounded contract, idempotent steps, lock, run log and summary, reported failures, no destructive defaults." },

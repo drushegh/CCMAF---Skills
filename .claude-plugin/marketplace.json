@@ -9,7 +9,7 @@
     {
       "name": "ccmaf-skills",
       "source": "./",
-      "description": "All 106 CCMAF skills as one plugin. Every CCMAF skill as one plugin — senior-level engineering standards across languages, frameworks, cloud and operations, data, AI/agents, security and identity, plus agent-workflow and prose-quality disciplines and workspace skills for Claude working on your own machine. Prefer the role packs if you want a smaller skill listing.",
+      "description": "All 107 CCMAF skills as one plugin. Every CCMAF skill as one plugin — senior-level engineering standards across languages, frameworks, cloud and operations, data, AI/agents, security and identity, plus agent-workflow and prose-quality disciplines and workspace skills for Claude working on your own machine. Prefer the role packs if you want a smaller skill listing.",
       "category": "development",
       "keywords": [
         "skills",
@@ -153,7 +153,7 @@
     {
       "name": "ccmaf-skills-creative",
       "source": "./plugins/ccmaf-skills-creative",
-      "description": "Creative & Media — Code-driven creative tooling and writing craft: Blender scripting and pipelines, ComfyUI image-generation workflows, programmatic video with Remotion, and fiction craft and revision. [Artists, technical artists, video makers and writers.] (4 skills)",
+      "description": "Creative & Media — Code-driven creative tooling and writing craft: motion design direction and verification, Blender scripting and pipelines, ComfyUI image-generation workflows, programmatic video with Remotion, and fiction craft and revision. [Artists, technical artists, motion designers, video makers and writers.] (5 skills)",
       "category": "development",
       "keywords": [
         "skills",

@@ -2,7 +2,7 @@
 
 # CCMAF Skills — catalogue
 
-**106 skills** in **19 packs**. Each skill is a self-contained directory: a lean `SKILL.md` plus on-demand reference docs.
+**107 skills** in **19 packs**. Each skill is a self-contained directory: a lean `SKILL.md` plus on-demand reference docs.
 
 ## Install
 
@@ -13,7 +13,7 @@
 /plugin install ccmaf-skills-<pack>@ccmaf-skills      # the packs your work needs
 ```
 
-Or install everything at once with `/plugin install ccmaf-skills@ccmaf-skills` (all 106 skills; a larger skill listing in every session).
+Or install everything at once with `/plugin install ccmaf-skills@ccmaf-skills` (all 107 skills; a larger skill listing in every session).
 
 ## Which packs do I need?
 
@@ -58,7 +58,7 @@ Or install everything at once with `/plugin install ccmaf-skills@ccmaf-skills` (
 | [Data](#data-ccmaf-skills-data) | `ccmaf-skills-data` | 2 | Data engineers and anyone moving or analysing data. |
 | [Desktop & Mobile Apps](#desktop--mobile-apps-ccmaf-skills-apps) | `ccmaf-skills-apps` | 5 | Developers shipping desktop or mobile applications. |
 | [Games & 3D](#games--3d-ccmaf-skills-games) | `ccmaf-skills-games` | 9 | Game developers and real-time 3D engineers. |
-| [Creative & Media](#creative--media-ccmaf-skills-creative) | `ccmaf-skills-creative` | 4 | Artists, technical artists, video makers and writers. |
+| [Creative & Media](#creative--media-ccmaf-skills-creative) | `ccmaf-skills-creative` | 5 | Artists, technical artists, motion designers, video makers and writers. |
 | [Research](#research-ccmaf-skills-research) | `ccmaf-skills-research` | 3 | Researchers, students and anyone who needs citation-safe sources. |
 | [Automation](#automation-ccmaf-skills-automation) | `ccmaf-skills-automation` | 4 | Anyone automating the web or repetitive work. |
 | [Windows System Care](#windows-system-care-ccmaf-skills-system) | `ccmaf-skills-system` | 5 | Anyone looking after a Windows PC — their own or the household's. |
@@ -244,15 +244,16 @@ Games and interactive 3D: Godot (engine, shaders, MCP-driven workflow), Unity, U
 
 ## Creative & Media (`ccmaf-skills-creative`)
 
-Code-driven creative tooling and writing craft: Blender scripting and pipelines, ComfyUI image-generation workflows, programmatic video with Remotion, and fiction craft and revision.
+Code-driven creative tooling and writing craft: motion design direction and verification, Blender scripting and pipelines, ComfyUI image-generation workflows, programmatic video with Remotion, and fiction craft and revision.
 
-**Audience:** Artists, technical artists, video makers and writers. · **Install:** `/plugin install ccmaf-skills-creative@ccmaf-skills` · [Pack README](plugins/ccmaf-skills-creative/README.md)
+**Audience:** Artists, technical artists, motion designers, video makers and writers. · **Install:** `/plugin install ccmaf-skills-creative@ccmaf-skills` · [Pack README](plugins/ccmaf-skills-creative/README.md)
 
 | Skill | What it covers | Reference docs |
 |---|---|---|
 | [`blender-development`](plugins/ccmaf-skills-creative/skills/blender-development/SKILL.md) | Blender bpy scripting, add-ons and extensions, Geometry Nodes, the engine export pipeline, headless automation. | 5 |
 | [`comfyui-development`](plugins/ccmaf-skills-creative/skills/comfyui-development/SKILL.md) | ComfyUI: the graph model, UI vs API JSON, pipelines, custom nodes, the HTTP/WebSocket API, the RCE surface. | 6 |
 | [`creative-writing`](plugins/ccmaf-skills-creative/skills/creative-writing/SKILL.md) | Fiction craft and revision: character, structure, scene, voice, dialogue, revision passes and critique, keeping the writer's voice first. | 6 |
+| [`motion-design`](plugins/ccmaf-skills-creative/skills/motion-design/SKILL.md) | Directing and verifying code-driven motion: directed briefs, easing/spring numbers, deterministic frame renders, review loop, A/V sync. | 8 |
 | [`remotion-development`](plugins/ccmaf-skills-creative/skills/remotion-development/SKILL.md) | Programmatic video with Remotion: compositions, frame-driven animation, sequencing, assets, rendering paths. | 7 |
 
 ## Research (`ccmaf-skills-research`)
