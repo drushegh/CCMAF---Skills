@@ -80,6 +80,25 @@ HTTP caching semantics still apply *underneath* the SW
 handed it, including a stale response you then serve forever. Bound
 everything you cache (expiry/quota — storage is finite, eviction per-origin).
 
+**Stale-while-revalidate is wrong for mutable API data.** SWR on API `GET`s
+serves the pre-mutation snapshot after every write (the update lands in cache
+only after the response is already shown), so users "lose" edits on reload.
+Use network-first with a short network timeout (falling back to cache) for
+anything a user can change; keep SWR for static, versioned assets.
+
+Workbox / vite-plugin-pwa specifics that bite:
+- An explicit `cacheName` is used verbatim — your cleanup must
+  `caches.delete()` that exact name; a wrong key fails silently and the old
+  cache lives on. List `caches.keys()` in DevTools to confirm.
+- `generateSW` precaches every built `js`/`css`/`html` file that matches its
+  glob patterns — including lazy-loaded chunks, which defeats code-splitting
+  on first install. Exclude heavy on-demand chunks with `globIgnores` (and
+  runtime-cache them instead).
+- vite-plugin-pwa's `generateSW` configures an SPA `navigateFallback` to the
+  app shell by default (verify for your version) — routes the server should
+  answer (API paths, auth callbacks, static files) need
+  `navigateFallbackDenylist`.
+
 ## Kill switch — decide before you need it
 
 A misbehaving SW persists until replaced. Keep deployable escape hatches: a

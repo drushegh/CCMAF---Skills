@@ -1,6 +1,6 @@
 {
   "name": "ccmaf-skills-infra",
-  "description": "CCMAF Skills — Infrastructure & Operations: Running software in production: Azure, Terraform/OpenTofu, containers and Kubernetes, CI/CD pipelines, observability, incident response, and Linux as both workstation and server. (9 skills)",
+  "description": "CCMAF Skills — Infrastructure & Operations: Running software in production: Azure, Terraform/OpenTofu, containers and Kubernetes, CI/CD pipelines, Cloudflare Workers, observability, incident response, and Linux as both workstation and server. (10 skills)",
   "author": {
     "name": "drushegh"
   },
@@ -15,6 +15,7 @@
   ],
   "skills": [
     "./skills/azure-development",
+    "./skills/cloudflare-workers-development",
     "./skills/containers-development",
     "./skills/devops-development",
     "./skills/incident-response",

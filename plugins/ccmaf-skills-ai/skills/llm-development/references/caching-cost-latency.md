@@ -73,6 +73,14 @@ Budgeting: count tokens before sending (`count_tokens` endpoint);
 record `usage` per feature and per template version; alert on cost per
 task drifting, not just total spend (total spend rises with success).
 
+**Price tables must match every id the API can report.** A cost table
+keyed only on dated/versioned model ids silently misses aliases (and
+vice versa) — one tracker priced every tier at the fallback rate for
+weeks. Key both the alias and the versioned form (or normalise ids
+through one function), make an unknown id a logged warning rather than
+a silent default, and test the table against the ids your config and the
+Models API actually return.
+
 ## Latency levers
 
 | Lever | Effect |

@@ -167,6 +167,14 @@ one request per endpoint (realistic bodies, at least one error path, port
 matching `launchSettings.json`) — living documentation plus a manual test
 harness.
 
+**Local multi-tenant subdomains**: use `tenant1.localhost` — `.localhost`
+is reserved for loopback (RFC 6761) and Chromium/Firefox resolve any
+`*.localhost` name to 127.0.0.1 with no DNS. Avoid public wildcard-DNS
+helpers (`localtest.me`, `nip.io`-style): filtered or corporate DNS often
+blocks them (`ERR_NAME_NOT_RESOLVED`). Non-browser clients may still need
+help (verify yours): `curl --resolve tenant1.localhost:5001:127.0.0.1 …`
+or a `Host:` header.
+
 ## Validation Checklist
 
 Status codes per table; 201s carry `Location`; `CancellationToken`

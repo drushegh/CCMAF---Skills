@@ -103,6 +103,10 @@ control right first; polish amplifies a good core and can't rescue a bad one.
   almost every good platformer falls faster than it rises.
 - **Camera that snaps** to the target with no smoothing — jarring and nauseating.
 - **Claiming feel from code** — declaring it good without anyone playing it.
+- **Effects that fight the base pose** — squash/stretch decaying to scale 1
+  instead of the model's base scale; set-on-enter state flags that other
+  systems read every frame (`references/juice-and-feedback.md`,
+  `references/tuning-and-verification.md`).
 
 ## Workflow for tuning feel
 

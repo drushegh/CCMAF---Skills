@@ -41,6 +41,18 @@ complete.
   screenshot`, `adb exec-out screencap`), or the platform's UI-test screenshot
   APIs. Review layout/states the same way as web.
 - **Desktop**: the app's own screenshot tooling or an OS capture.
+- **WebView2 shells (Tauri, WinUI, WPF on Windows)**: you can drive the
+  webview with Playwright over CDP. Pass the port through
+  `WEBVIEW2_ADDITIONAL_BROWSER_ARGUMENTS=--remote-debugging-port=9222`, then
+  `chromium.connectOverCDP('http://localhost:9222')`. WebView2 starts one browser
+  process per user data folder, so if the installed copy of the app is already
+  running with the same folder, your dev window joins that process and the flag
+  is ignored. Point the dev run at its own folder with
+  `WEBVIEW2_USER_DATA_FOLDER=<scratch dir>`.
+- **Record the observed configuration.** A capture's sidecar or log must read
+  the renderer, backend, resolution and quality settings back from the engine,
+  not echo the flags it was launched with — a harness that echoed its input
+  labelled mobile-renderer captures with the desktop renderer's name.
 - Platform-build specifics → `ios-development` / `android-development` / the
   desktop skill; this skill owns the *review*.
 

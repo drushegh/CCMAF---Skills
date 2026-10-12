@@ -2,7 +2,7 @@
 
 # CCMAF Skills — Web & UI (`ccmaf-skills-web`)
 
-Building web UIs that look chosen and behave well: HTML/CSS/Tailwind craft, React and Next.js, TypeScript, design taste, UX reasoning, accessibility, render-and-critique verification, and web performance.
+Building web UIs that look chosen and behave well: HTML/CSS/Tailwind craft, React and Next.js, TypeScript, design taste, UX reasoning, accessibility, render-and-critique verification, web performance, and Manifest V3 browser extensions.
 
 **Audience:** Frontend and full-stack developers building user interfaces.
 
@@ -15,16 +15,17 @@ Building web UIs that look chosen and behave well: HTML/CSS/Tailwind craft, Reac
 
 Install `ccmaf-skills-core` alongside this pack.
 
-## Skills (8)
+## Skills (9)
 
 | Skill | What it covers | Reference docs |
 |---|---|---|
 | [`accessibility-development`](skills/accessibility-development/SKILL.md) | WCAG 2.2 AA with the EU statutory frame: ARIA, keyboard and focus, accessible forms, testing, audit checklist. | 7 |
+| [`browser-extension-development`](skills/browser-extension-development/SKILL.md) | MV3 browser extensions: service-worker lifecycle, permissions, content scripts, messaging, storage, CSP, store review; Chrome→Firefox/Edge. | 6 |
 | [`design-taste`](skills/design-taste/SKILL.md) | Remove AI tells from visual design so a UI reads as chosen, not generated; register-aware polish. | 7 |
 | [`frontend-development`](skills/frontend-development/SKILL.md) | HTML, CSS and Tailwind v4 craft: design tokens, theming, semantic markup, distinctive design, a11y baseline. | 4 |
-| [`react-development`](skills/react-development/SKILL.md) | React and Next.js: render and data-fetching performance, composition, Server Components, the App Router. | 5 |
+| [`react-development`](skills/react-development/SKILL.md) | React and Next.js: render and data-fetching performance, composition, Server Components, the App Router. | 6 |
 | [`typescript-development`](skills/typescript-development/SKILL.md) | TypeScript 5.x type safety: generics, eliminating any, Zod, Node backends, tsconfig and tsc error-fixing. | 8 |
-| [`ui-verification`](skills/ui-verification/SKILL.md) | Render, view, critique, iterate: screenshot a UI at real viewports and critique the image, not the code. | 5 |
+| [`ui-verification`](skills/ui-verification/SKILL.md) | Render, view, critique, iterate: screenshot a UI at real viewports and critique the image, not the code. | 6 |
 | [`ux-design`](skills/ux-design/SKILL.md) | Interaction and perception reasoning for any UI: Laws of UX, Gestalt hierarchy, affordances, forms, ergonomics. | 6 |
 | [`web-performance-development`](skills/web-performance-development/SKILL.md) | Core Web Vitals, the critical rendering path, loading and caching strategy, service workers, budgets. | 7 |
 

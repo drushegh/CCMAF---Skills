@@ -109,6 +109,14 @@ detail in `references/eu-legal-framework.md`:
   encoding and no text alternative.
 - Target size under 24×24 CSS px (2.5.8, new in 2.2) on mobile-dense
   UIs.
+- Trusting a clean axe run: `incomplete` items (e.g. contrast over
+  gradients) are unreviewed, `display:none` UI is never scanned, and
+  mid-animation frames fail falsely (`references/testing-tooling.md`).
+- Trusting computed focus styles: an `outline` can be set and still
+  not paint (clipped, same colour as backdrop) — verify the ring in
+  pixels.
+- A descendant's `aria-label` (icon slot) silently joins the parent
+  button's accessible name — assert exact names.
 
 ## References
 

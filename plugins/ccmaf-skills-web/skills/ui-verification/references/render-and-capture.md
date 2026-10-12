@@ -27,6 +27,11 @@ await browser.close();
 - **`fullPage: true`** captures the entire scroll height (good for reviewing the
   whole screen); omit it to capture just the viewport (good for "above the
   fold" / first impression).
+- **`fullPage` only follows document scroll.** In an app shell that scrolls
+  inside a container (`overflow: auto` on a main pane), `fullPage` stops at the
+  first viewport. Scroll each section into view
+  (`locator.scrollIntoViewIfNeeded()`) and shoot the viewport, or screenshot the
+  container element; never trust `fullPage` inside a shell.
 
 ## Capture a single element or region
 
@@ -67,6 +72,48 @@ await page.evaluate(() => document.fonts.ready);
   `state-and-viewport-coverage.md`).
 - **Reduced motion / locale / RTL**: `reducedMotion`, `locale`, and a `dir="rtl"`
   pass catch a class of layout bugs.
+
+## Serving and environment traps
+
+When a capture hangs, times out or renders with the wrong font, check the
+environment before the code:
+
+- **`python -m http.server` speaks HTTP/1.0** by default (one request per
+  connection). A page that fetches dozens of ES modules concurrently can stall
+  indefinitely with zero console errors. Serve previews with an HTTP/1.1
+  keep-alive server (the project's dev server, `npx serve`, or
+  `python -m http.server --protocol HTTP/1.1` on Python 3.11+), and check the
+  server's PID and protocol before suspecting the page.
+- **Is the server still alive?** A backgrounded dev server can be reaped
+  between steps; a probe returning status `000` / connection refused means the
+  server died, not that the page broke. Confirm with a request before each
+  capture batch.
+- **Vite + a junctioned/symlinked `node_modules`** (common in extra git
+  worktrees): Vite serves dependency assets such as `@fontsource` fonts via
+  `/@fs/<real path>`; the real path lies outside `server.fs.allow`, so the
+  request gets a 403 and the page silently falls back to a system font — every
+  text screenshot then diffs by a few per cent. Run visual gates in the main
+  checkout, or add the real `node_modules` path to `server.fs.allow`.
+- **A hidden tab suspends `requestAnimationFrame`.** In a background or
+  preview tab that is not visible, screenshots time out and it looks like an
+  infinite render loop; the tell is that synchronous `evaluate` calls still
+  answer. Check `document.visibilityState` first; if `hidden`, capture in a
+  visible tab or a headless browser.
+- **Firefox prefs:** pass `firefoxUserPrefs` to
+  `firefox.launchPersistentContext()`; prefs passed to `launch()` were observed
+  not to take effect in a context made with `newContext()` (verify on your
+  Playwright version). When a repro "can't reproduce", inspect the profile
+  actually in use, and simulate the failure condition directly (e.g. blocked
+  storage) instead of hoping the environment matches.
+- **Playwright empties `test-results/`** (its `outputDir`) at the start of every
+  run. Review screenshots saved there by an earlier step vanish before anyone
+  reads them — save them elsewhere (a scratch directory) or capture after the
+  e2e run.
+- **Watch the console and failed requests while capturing.** A 404 stylesheet
+  (for example a framework's generated bundle that is only emitted when source
+  styles exist) renders as plain, unstyled markup that an HTTP smoke check
+  reports as 200 OK. `page.on('requestfailed')` and `page.on('response')` with
+  `status >= 400` catch it.
 
 ## In this environment
 

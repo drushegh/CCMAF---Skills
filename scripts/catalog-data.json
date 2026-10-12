@@ -38,7 +38,7 @@
       "id": "ccmaf-skills-web",
       "title": "Web & UI",
       "audience": "Frontend and full-stack developers building user interfaces.",
-      "description": "Building web UIs that look chosen and behave well: HTML/CSS/Tailwind craft, React and Next.js, TypeScript, design taste, UX reasoning, accessibility, render-and-critique verification, and web performance.",
+      "description": "Building web UIs that look chosen and behave well: HTML/CSS/Tailwind craft, React and Next.js, TypeScript, design taste, UX reasoning, accessibility, render-and-critique verification, web performance, and Manifest V3 browser extensions.",
       "order": 4
     },
     {
@@ -52,7 +52,7 @@
       "id": "ccmaf-skills-infra",
       "title": "Infrastructure & Operations",
       "audience": "Platform, DevOps and SRE engineers, and anyone who ships to production.",
-      "description": "Running software in production: Azure, Terraform/OpenTofu, containers and Kubernetes, CI/CD pipelines, observability, incident response, and Linux as both workstation and server.",
+      "description": "Running software in production: Azure, Terraform/OpenTofu, containers and Kubernetes, CI/CD pipelines, Cloudflare Workers, observability, incident response, and Linux as both workstation and server.",
       "order": 6
     },
     {
@@ -87,7 +87,7 @@
       "id": "ccmaf-skills-games",
       "title": "Games & 3D",
       "audience": "Game developers and real-time 3D engineers.",
-      "description": "Games and interactive 3D: Godot (engine, shaders, MCP-driven workflow), Unity, Unreal Engine 5, three.js, and the engine-agnostic craft of game feel.",
+      "description": "Games and interactive 3D: Godot (engine, shaders, MCP-driven workflow), Unity, Unreal Engine 5, three.js, Phaser, Kenney asset-kit integration, and the engine-agnostic craft of game feel.",
       "order": 11
     },
     {
@@ -152,6 +152,7 @@
     { "role": "Anyone using Claude Code", "packs": ["ccmaf-skills-core"] },
     { "role": "Any developer", "packs": ["ccmaf-skills-core", "ccmaf-skills-engineering"] },
     { "role": "Frontend / full-stack web", "packs": ["ccmaf-skills-core", "ccmaf-skills-engineering", "ccmaf-skills-web", "ccmaf-skills-backend"] },
+    { "role": "Browser extension developer", "packs": ["ccmaf-skills-core", "ccmaf-skills-engineering", "ccmaf-skills-web"] },
     { "role": "Backend / API", "packs": ["ccmaf-skills-core", "ccmaf-skills-engineering", "ccmaf-skills-backend"] },
     { "role": "Platform / DevOps / SRE", "packs": ["ccmaf-skills-core", "ccmaf-skills-engineering", "ccmaf-skills-infra"] },
     { "role": "Power Platform / Dynamics / M365", "packs": ["ccmaf-skills-core", "ccmaf-skills-microsoft"] },
@@ -199,6 +200,7 @@
     "accessibility-development": { "pack": "ccmaf-skills-web", "summary": "WCAG 2.2 AA with the EU statutory frame: ARIA, keyboard and focus, accessible forms, testing, audit checklist." },
     "ui-verification": { "pack": "ccmaf-skills-web", "summary": "Render, view, critique, iterate: screenshot a UI at real viewports and critique the image, not the code." },
     "web-performance-development": { "pack": "ccmaf-skills-web", "summary": "Core Web Vitals, the critical rendering path, loading and caching strategy, service workers, budgets." },
+    "browser-extension-development": { "pack": "ccmaf-skills-web", "summary": "MV3 browser extensions: service-worker lifecycle, permissions, content scripts, messaging, storage, CSP, store review; Chrome→Firefox/Edge." },
     "api-development": { "pack": "ccmaf-skills-backend", "summary": "HTTP API design: REST semantics, OpenAPI-first contracts, versioning, pagination, problem+json, webhooks." },
     "dotnet-development": { "pack": "ccmaf-skills-backend", "summary": "Modern .NET and C#: ASP.NET Core APIs, EF Core, nullable reference types, testing, observability, performance." },
     "go-development": { "pack": "ccmaf-skills-backend", "summary": "Modern Go: errors as values, goroutine/channel/context discipline, generics, modules, table-driven tests." },
@@ -211,6 +213,7 @@
     "terraform-development": { "pack": "ccmaf-skills-infra", "summary": "Terraform and OpenTofu: module design, remote state, the plan-review gate, drift, environments, OIDC, testing." },
     "containers-development": { "pack": "ccmaf-skills-infra", "summary": "Multi-stage Dockerfiles, compose for local dev, image and runtime security, registries, container hosting." },
     "kubernetes-development": { "pack": "ccmaf-skills-infra", "summary": "Platform Kubernetes: workloads, autoscaling, networking, RBAC and Pod Security, storage, Helm, GitOps, AKS." },
+    "cloudflare-workers-development": { "pack": "ccmaf-skills-infra", "summary": "Cloudflare Workers, free tier first: Wrangler, local dev, D1/KV/R2, Pages, _headers, secrets, deploy traps like Pages bypassing CI." },
     "devops-development": { "pack": "ccmaf-skills-infra", "summary": "CI/CD on Azure DevOps and GitHub Actions: pipeline YAML, templates, OIDC, environments, pipeline security." },
     "observability-development": { "pack": "ccmaf-skills-infra", "summary": "Correlated logs, metrics and traces with OpenTelemetry, the Collector, cardinality control, SLO burn alerts." },
     "incident-response": { "pack": "ccmaf-skills-infra", "summary": "Run production incidents mitigate-first: severity, incident command, status cadence, blameless postmortems." },
@@ -240,6 +243,8 @@
     "unreal-engine-development": { "pack": "ccmaf-skills-games", "summary": "Unreal Engine 5: Blueprints vs C++, the gameplay framework, reflection and GC, Nanite/Lumen, packaging." },
     "threejs-development": { "pack": "ccmaf-skills-games", "summary": "three.js and React Three Fiber: colour-correct scenes, the glTF pipeline, performance, shaders, pmndrs." },
     "game-feel": { "pack": "ccmaf-skills-games", "summary": "Make motion feel good in any engine: responsive input, coyote time and buffering, physics tuning, juice." },
+    "phaser-development": { "pack": "ccmaf-skills-games", "summary": "Phaser 3/4 browser games: scene lifecycle and data, destroy semantics and pooling, topOnly input, Arcade/Matter, assets, v3→v4 migration." },
+    "kenney-asset-integration": { "pack": "ccmaf-skills-games", "summary": "Use Kenney CC0 kits: external colormap, per-kit scale, glTF +Z facing, GridMap tiles, autotile yaws, z-fighting. Godot, three.js, Phaser." },
     "blender-development": { "pack": "ccmaf-skills-creative", "summary": "Blender bpy scripting, add-ons and extensions, Geometry Nodes, the engine export pipeline, headless automation." },
     "comfyui-development": { "pack": "ccmaf-skills-creative", "summary": "ComfyUI: the graph model, UI vs API JSON, pipelines, custom nodes, the HTTP/WebSocket API, the RCE surface." },
     "remotion-development": { "pack": "ccmaf-skills-creative", "summary": "Programmatic video with Remotion: compositions, frame-driven animation, sequencing, assets, rendering paths." },

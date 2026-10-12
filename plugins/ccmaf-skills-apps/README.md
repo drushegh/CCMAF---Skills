@@ -22,7 +22,7 @@ Install `ccmaf-skills-core` alongside this pack.
 | [`android-development`](skills/android-development/SKILL.md) | Kotlin and Jetpack Compose: MVVM with unidirectional data flow, offline-first Room, Hilt, Gradle, testing. | 5 |
 | [`electron-development`](skills/electron-development/SKILL.md) | Electron: main/preload/renderer, secure IPC via contextBridge, native modules, packaging, signing, updates. | 4 |
 | [`ios-development`](skills/ios-development/SKILL.md) | Swift and SwiftUI: concurrency, MVVM, Human Interface Guidelines and accessibility, persistence, App Store. | 5 |
-| [`tauri-development`](skills/tauri-development/SKILL.md) | Tauri v2 desktop and mobile: Rust-frontend IPC, the capability security model, plugins, builds, signing. | 5 |
+| [`tauri-development`](skills/tauri-development/SKILL.md) | Tauri v2 desktop and mobile: Rust-frontend IPC, the capability security model, plugins, builds, signing. | 6 |
 | [`windows-desktop-development`](skills/windows-desktop-development/SKILL.md) | Native Windows UI across WPF, WinUI 3, WinForms and MAUI: XAML, MVVM, threading, packaging, UI Automation. | 7 |
 
 The full catalogue across every pack is in [SKILLS.md](../../SKILLS.md).

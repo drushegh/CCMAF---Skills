@@ -69,6 +69,35 @@ MSYS builds with subtle flag differences; line endings — enforce LF via
 `.gitattributes` (`*.sh text eol=lf`) or CRLF shebangs break with
 `bad interpreter: /bin/bash^M`.
 
+### CRLF data and Windows-native tools
+
+Native Windows tools called from Git Bash (winget `jq`, `node`, `python`,
+`.exe` CLIs) can emit CRLF, and data files may be CRLF. Behaviour observed
+on Git Bash (bash 5.3, grep 3.0):
+
+| Construct | What happens | Do instead |
+|---|---|---|
+| `x=$(tool)` | strips the *final* `\r\n`, keeps interior `\r` | `x=$(tool \| tr -d '\r')` |
+| `while IFS= read -r line` / `read < <(jq …)` | `\r` stays on every line — comparisons silently fail | `line=${line%$'\r'}` at every read site, or pipe through `tr -d '\r'` |
+| `n=$(grep -c $'\r' file)` to detect CRLF | **false positive** — inside `$( )` the `$'\r'` pattern arrives empty, so every line matches | `tr -cd '\r' < file \| wc -c` (0 means no CR) |
+| `sed -i 's/\r$//'` to normalise | unreliable across MSYS builds | `tr -d '\r' < f > f.tmp && mv f.tmp f`, or a binary-mode Python rewrite |
+
+### Calling PowerShell from bash
+
+Bash expands `$vars` inside double quotes **before** PowerShell sees them:
+`powershell.exe -Command "Remove-Item x -Recurse:$false"` arrives as
+`-Recurse:` (empty). Single-quote the command, escape `\$`, or put the
+logic in a `.ps1` and use `-File`. `.cmd`/`.bat` shims (npm globals,
+some vendor CLIs) may not resolve from bash by bare name — call `cmd //c
+tool …` or run them from PowerShell.
+
+### awk has no `\b` word boundary
+
+`\b` in an awk regex is a backspace, not a word boundary — in mawk, BWK
+awk **and** gawk (gawk's word boundary is `\y`, which mawk lacks). For
+portable matching use explicit classes:
+`awk '/(^|[^[:alnum:]_])foo([^[:alnum:]_]|$)/'`, or `grep -w`.
+
 ## POSIX `sh` (containers, init scripts, maximum reach)
 
 When targeting `#!/bin/sh`:

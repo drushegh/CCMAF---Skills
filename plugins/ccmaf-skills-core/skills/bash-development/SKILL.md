@@ -69,6 +69,22 @@ with `bash -n script.sh` for a parse check.
   or `local var=$(cmd)` / `readonly var=$(cmd)` / `declare var=$(cmd)` (the
   declaration keyword masks the command's exit code — SC2155; declare and
   assign on separate lines).
+- **`set -e` + `pipefail` kill on "no match"**: `grep` exits 1 when
+  nothing matches, so `x=$(grep pat f | head -1)` aborts the script on an
+  optional lookup. Wrap optional reads: `{ grep pat f || true; }`. Never
+  `$(grep -c pat f || echo 0)` — `grep -c` already prints `0` before
+  exiting 1, so you get `"0\n0"`; use `n=$(grep -c pat f) || true`.
+- **Bare `|| return` under `set -e`**: `[[ -f $x ]] || return` returns
+  the *failed test's* status, so the caller dies. Skip-guards are
+  `|| return 0`.
+- **Empty variable as a `sed` address**: `sed -i "${n}s/a/b/" f` with an
+  empty `$n` becomes `s/a/b/` on **every line** (this has wiped whole
+  state files). Guard first — `sed -i "${n:?line number unset}s/a/b/" f`
+  — and check `git diff --stat` after scripted edits to tracked files.
+- **Never edit a script while it runs** (or files it sources): bash reads
+  the file incrementally by byte offset, so the running instance executes
+  a spliced mix — spurious `syntax error near unexpected token` or worse.
+  Stop it first, or write the new version elsewhere and `mv` it in.
 - **`[[ ]]` vs `[ ]`**: `[[ ]]` in Bash scripts (safer, no quoting traps
   in conditionals, regex via `=~`); `[ ]` only for POSIX `sh`.
 - **Predictable temp files**: `/tmp/app-$$.tmp` is a symlink-attack race

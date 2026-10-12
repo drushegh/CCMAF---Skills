@@ -96,6 +96,11 @@ sprawl, and keep each assembly's definition in a single solution.
 - `SharedVariables` — pass data between plugins in the same pipeline.
 - In PreOperation, mutate the Target directly — don't call Update on the
   record being saved.
+- **Whose rights?** `CreateOrganizationService(context.UserId)` runs as
+  the step's run-as user — the **calling user** by default, not elevated.
+  `CreateOrganizationService(null)` is the SYSTEM user. Derived writes the
+  user couldn't make themselves need the elevated service, and must be
+  tested as a non-admin persona (security-model.md).
 
 ## Transactions — the rule that bites
 

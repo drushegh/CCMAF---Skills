@@ -9,7 +9,7 @@
     {
       "name": "ccmaf-skills",
       "source": "./",
-      "description": "All 102 CCMAF skills as one plugin. Every CCMAF skill as one plugin — senior-level engineering standards across languages, frameworks, cloud and operations, data, AI/agents, security and identity, plus agent-workflow and prose-quality disciplines and workspace skills for Claude working on your own machine. Prefer the role packs if you want a smaller skill listing.",
+      "description": "All 106 CCMAF skills as one plugin. Every CCMAF skill as one plugin — senior-level engineering standards across languages, frameworks, cloud and operations, data, AI/agents, security and identity, plus agent-workflow and prose-quality disciplines and workspace skills for Claude working on your own machine. Prefer the role packs if you want a smaller skill listing.",
       "category": "development",
       "keywords": [
         "skills",
@@ -57,7 +57,7 @@
     {
       "name": "ccmaf-skills-web",
       "source": "./plugins/ccmaf-skills-web",
-      "description": "Web & UI — Building web UIs that look chosen and behave well: HTML/CSS/Tailwind craft, React and Next.js, TypeScript, design taste, UX reasoning, accessibility, render-and-critique verification, and web performance. [Frontend and full-stack developers building user interfaces.] (8 skills)",
+      "description": "Web & UI — Building web UIs that look chosen and behave well: HTML/CSS/Tailwind craft, React and Next.js, TypeScript, design taste, UX reasoning, accessibility, render-and-critique verification, web performance, and Manifest V3 browser extensions. [Frontend and full-stack developers building user interfaces.] (9 skills)",
       "category": "development",
       "keywords": [
         "skills",
@@ -81,7 +81,7 @@
     {
       "name": "ccmaf-skills-infra",
       "source": "./plugins/ccmaf-skills-infra",
-      "description": "Infrastructure & Operations — Running software in production: Azure, Terraform/OpenTofu, containers and Kubernetes, CI/CD pipelines, observability, incident response, and Linux as both workstation and server. [Platform, DevOps and SRE engineers, and anyone who ships to production.] (9 skills)",
+      "description": "Infrastructure & Operations — Running software in production: Azure, Terraform/OpenTofu, containers and Kubernetes, CI/CD pipelines, Cloudflare Workers, observability, incident response, and Linux as both workstation and server. [Platform, DevOps and SRE engineers, and anyone who ships to production.] (10 skills)",
       "category": "development",
       "keywords": [
         "skills",
@@ -141,7 +141,7 @@
     {
       "name": "ccmaf-skills-games",
       "source": "./plugins/ccmaf-skills-games",
-      "description": "Games & 3D — Games and interactive 3D: Godot (engine, shaders, MCP-driven workflow), Unity, Unreal Engine 5, three.js, and the engine-agnostic craft of game feel. [Game developers and real-time 3D engineers.] (7 skills)",
+      "description": "Games & 3D — Games and interactive 3D: Godot (engine, shaders, MCP-driven workflow), Unity, Unreal Engine 5, three.js, Phaser, Kenney asset-kit integration, and the engine-agnostic craft of game feel. [Game developers and real-time 3D engineers.] (9 skills)",
       "category": "development",
       "keywords": [
         "skills",

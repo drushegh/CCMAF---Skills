@@ -131,6 +131,29 @@ In `tauri.conf.json` → `app.security`:
   paths it may serve (the `tauri` crate needs the `protocol-asset` feature).
   v1's `assetScope` key does not exist in v2.
 
+## Webviews That Load Other Content
+
+Tauri 2 injects `window.__TAURI_INTERNALS__` (the IPC bridge and invoke
+key) into every top-level webview, and **app commands registered in
+`generate_handler!` are callable from every window and webview of the
+app** unless you restrict them with an app manifest (`AppManifest::commands`
+in `build.rs`, then grant them per capability). Remote origins are denied
+IPC by default, but pages served from the app's own origin are not.
+Consequences for preview / mini-browser panes:
+
+- Never let a preview window load the app's own origin or dev-server port
+  (`http://localhost:<devPort>`, `tauri://localhost`) — that page gets
+  full command access.
+- Add `on_navigation` / `on_new_window` guards (webviews-and-windows.md)
+  so untrusted pages can't steer a webview onto a local origin or spawn
+  new windows.
+- Bind capabilities to window labels, and give preview windows labels no
+  capability matches.
+- Rust-side HTTP through `tauri_plugin_http::reqwest` is plain reqwest:
+  the `http:` capability scope constrains only the **JS** API. Validate
+  the scheme/host yourself before fetching a URL that came from the
+  frontend.
+
 ## Review Checklist
 
 - Every permission justified by a feature; no "full-desktop" blanket sets

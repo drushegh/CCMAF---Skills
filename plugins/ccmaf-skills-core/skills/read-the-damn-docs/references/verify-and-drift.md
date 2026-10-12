@@ -116,6 +116,26 @@ can re-verify: the **source URL** and the **doc's version/date**.
 # verified against the urllib3 2.x changelog/docs on <date>: <docs-url>#retry
 ```
 
+### Live catalogues rot fastest
+
+Some facts are not documentation but **inventories that rotate**: device-farm
+model lists (which phones/OS levels a test lab offers today), cloud region and
+SKU availability, model catalogues, browser support tables, free-tier quotas.
+Third-party lists of these go stale quietly — a "supported devices" table
+copied years ago reads exactly like a current one.
+
+- Trust only a **live dump from the provider's own tool or API** (for
+  example `gcloud firebase test android models list`, a cloud CLI's
+  `list-skus`/`list-locations`, a Models API call), and store it with the
+  **date captured and the source tier** (live CLI output vs official doc vs
+  third-party list).
+- Re-capture before any decision that depends on it; an old dump is a
+  hypothesis.
+- **Quote evidence rows, don't paraphrase them.** Summarising a table into
+  prose drops rows, and the prose then contradicts the data it came from.
+  Keep the rows (or a verbatim excerpt) next to the conclusion, and derive
+  claims from the rows, not from your summary.
+
 This is the engineering analogue of a reproducible literature search
 (`academic-research`): the grounding is inspectable, so the claim is auditable
 and the next upgrade starts from a known anchor rather than fresh recall.

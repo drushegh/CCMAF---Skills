@@ -91,8 +91,6 @@ the default safe target — choose deliberately
 
 - Stale imports (`examples/jsm`, old CDN script tags) from outdated
   tutorials — use `three/addons/` via import map/bundler.
-- Memory leak via hot-reload/SPA navigation: renderer + scene not
-  disposed on unmount.
 - Shadows: forgetting `castShadow`/`receiveShadow` per object, or a
   shadow camera frustum that doesn't cover the scene (or covers far
   too much — resolution waste).
@@ -100,6 +98,13 @@ the default safe target — choose deliberately
   updated matrices); raycast against a small candidates list, not
   `scene.children` deep.
 - `OrbitControls` requires `controls.update()` when damping enabled.
+  Its `'start'` event fires on pointer-down, before any drag, so
+  classify click vs drag by pointer travel yourself
+  (`references/interaction-animation.md`).
+- `renderer.dispose()` doesn't free scene geometry, materials,
+  textures or `scene.environment`. HMR then leaks GPU memory and
+  stacks listeners unless you replay cleanup in
+  `import.meta.hot.dispose` (`references/performance.md`).
 - Z-fighting from coplanar surfaces — offset geometry or
   `polygonOffset`, not depth hacks.
 - R3F: creating geometries/materials inline per render instead of

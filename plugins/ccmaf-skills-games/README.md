@@ -2,7 +2,7 @@
 
 # CCMAF Skills — Games & 3D (`ccmaf-skills-games`)
 
-Games and interactive 3D: Godot (engine, shaders, MCP-driven workflow), Unity, Unreal Engine 5, three.js, and the engine-agnostic craft of game feel.
+Games and interactive 3D: Godot (engine, shaders, MCP-driven workflow), Unity, Unreal Engine 5, three.js, Phaser, Kenney asset-kit integration, and the engine-agnostic craft of game feel.
 
 **Audience:** Game developers and real-time 3D engineers.
 
@@ -15,14 +15,16 @@ Games and interactive 3D: Godot (engine, shaders, MCP-driven workflow), Unity, U
 
 Install `ccmaf-skills-core` alongside this pack.
 
-## Skills (7)
+## Skills (9)
 
 | Skill | What it covers | Reference docs |
 |---|---|---|
 | [`game-feel`](skills/game-feel/SKILL.md) | Make motion feel good in any engine: responsive input, coyote time and buffering, physics tuning, juice. | 5 |
-| [`godot-development`](skills/godot-development/SKILL.md) | Godot 4.x: typed GDScript and C#, scene composition, custom Resources, Jolt physics, headless CI exports. | 5 |
+| [`godot-development`](skills/godot-development/SKILL.md) | Godot 4.x: typed GDScript and C#, scene composition, custom Resources, Jolt physics, headless CI exports. | 6 |
 | [`godot-mcp-workflow`](skills/godot-mcp-workflow/SKILL.md) | Drive Godot and Blender from an agent over MCP: the edit-run-debug loop, tool limits, the glTF pipeline. | 5 |
 | [`godot-shaders-development`](skills/godot-shaders-development/SKILL.md) | Godot 4.x shaders: the shading language, spatial/2D/particle shaders, compute GLSL, visual shaders, performance. | 6 |
+| [`kenney-asset-integration`](skills/kenney-asset-integration/SKILL.md) | Use Kenney CC0 kits: external colormap, per-kit scale, glTF +Z facing, GridMap tiles, autotile yaws, z-fighting. Godot, three.js, Phaser. | 5 |
+| [`phaser-development`](skills/phaser-development/SKILL.md) | Phaser 3/4 browser games: scene lifecycle and data, destroy semantics and pooling, topOnly input, Arcade/Matter, assets, v3→v4 migration. | 6 |
 | [`threejs-development`](skills/threejs-development/SKILL.md) | three.js and React Three Fiber: colour-correct scenes, the glTF pipeline, performance, shaders, pmndrs. | 6 |
 | [`unity-development`](skills/unity-development/SKILL.md) | Unity 6: lifecycle and serialization, ScriptableObjects, prefabs and scenes, Addressables, Input System, DOTS. | 6 |
 | [`unreal-engine-development`](skills/unreal-engine-development/SKILL.md) | Unreal Engine 5: Blueprints vs C++, the gameplay framework, reflection and GC, Nanite/Lumen, packaging. | 6 |

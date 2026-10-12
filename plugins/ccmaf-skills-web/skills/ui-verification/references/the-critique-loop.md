@@ -40,6 +40,16 @@ Go through the rendered screen against `ux-design`:
 - **Consistency** — do like things look alike vs the rest of the product?
 - **Convention** — anything that violates user expectations (Jakob)?
 
+## List the visual channels before optimising one
+
+Correctness gates can pass while the result is rejected on sight. Before tuning
+one channel (silhouette, layout metric, a naming check), list every channel the
+viewer actually perceives — shape, hue, value/lightness, size, motion — and
+check which ones the design is using. A set of items that differ only in
+silhouette while sharing one hue at near-identical value reads as a single grey
+mass, however good the silhouettes score. Also check that the technique can do
+what you need (a multiply tint can only darken, never brighten).
+
 ## Produce located findings
 
 For each issue, write: **what** you see, **where** (which element/region),

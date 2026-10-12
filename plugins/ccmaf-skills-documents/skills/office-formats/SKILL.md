@@ -140,7 +140,8 @@ Load on demand:
   change notes, received documents, and tracked-changes etiquette pointers.
 - `references/open-tooling-fallback.md` — the minimal free toolchain when the
   Anthropic skills are absent: install, read, convert, edit and render
-  recipes per format.
+  recipes per format, plus Word merge fields vs bound content controls
+  (`w:sdt`) and mail-merge switch traps.
 
 ## Boundaries
 

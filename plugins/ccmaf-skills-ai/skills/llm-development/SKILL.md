@@ -92,8 +92,11 @@ release candidate (stateless core, Tasks, MCP Apps) is not yet final.
 - LLM-as-judge evals with the same model family grading its own output,
   unanchored scales, or no human-spot-check calibration.
 - MCP servers that dump unpaginated result sets into context, log to
-  stdout on stdio transport (corrupts the protocol stream), or skip
-  Origin validation on local HTTP.
+  stdout on stdio transport (corrupts the protocol stream), skip
+  Origin validation on local HTTP, or block on long-running work instead
+  of returning a handle at once.
+- `str.format()` over a prompt that already contains document text —
+  braces in the content crash or corrupt it; insert content last.
 - Burning context on sub-task detail the main loop never needs — spawn a
   sub-agent and return only the conclusion.
 

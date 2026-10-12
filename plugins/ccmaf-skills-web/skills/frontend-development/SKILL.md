@@ -122,6 +122,16 @@ migration checklist: [references/tailwind.md](references/tailwind.md).
   `label`.
 - **Unreadable contrast** — body text ≥ 4.5:1 against its background
   (3:1 for large text); muted-on-muted fails silently in dark mode.
+- **Tailwind v4 silent overrides** — unlayered custom CSS beats every
+  utility (put component classes in `@layer components` or `@utility`);
+  `@theme` is build-time only (runtime themes are plain `:root` variable
+  overrides); `transition-[transform]` doesn't animate `translate-*`/`scale-*`.
+  Full list: [references/tailwind.md](references/tailwind.md) "v4 Traps".
+- **Popups clipped by `overflow` or hidden under another overlay** — portal
+  them (or use the top layer) and verify with `elementFromPoint` in a real
+  browser. Sidebar layouts need container queries, not viewport breakpoints.
+  More: [references/html-css-foundations.md](references/html-css-foundations.md)
+  "Layout, Cascade and Parsing Traps".
 - **Fixed heights causing overflow** — content varies; prefer min-height
   and intrinsic sizing. Test at 375px width and with longer text.
 
@@ -154,6 +164,6 @@ no filler.
 | Load when the task involves... | File |
 |---|---|
 | Visual design decisions: palette, typography, layout, hero, motion, copy | [references/design-craft.md](references/design-craft.md) |
-| Tailwind v4 theme/config, tokens, dark mode, animations, v3→v4 migration | [references/tailwind.md](references/tailwind.md) |
+| Tailwind v4 theme/config, tokens, dark mode, animations, v4 traps, v3→v4 migration | [references/tailwind.md](references/tailwind.md) |
 | Component variant architecture: CVA, compound components, cn(), theming provider | [references/components.md](references/components.md) |
-| Semantic HTML, accessibility, modern CSS layout (grid/flex/container queries) | [references/html-css-foundations.md](references/html-css-foundations.md) |
+| Semantic HTML, accessibility, modern CSS layout (grid/flex/container queries), clipping/stacking, theming and CSS parsing traps | [references/html-css-foundations.md](references/html-css-foundations.md) |

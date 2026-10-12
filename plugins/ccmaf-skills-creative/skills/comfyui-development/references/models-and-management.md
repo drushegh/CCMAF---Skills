@@ -34,6 +34,19 @@ my_models:
   vae: vae/
 ```
 
+## Check the repo layout before downloading
+
+Many Hugging Face mirrors publish models in **diffusers format**:
+separate `unet/` (or `transformer/`), `vae/` and `text_encoder/`
+folders with a `model_index.json`. `Load Checkpoint`
+(`CheckpointLoaderSimple`) needs one bundled `.safetensors` file. Before
+pulling gigabytes, list the files:
+`curl -s https://huggingface.co/api/models/<owner>/<repo>` and look at
+`siblings[].rfilename` for a root-level `.safetensors`. If there is
+only a split layout, find the single-file ("ComfyUI" / "all-in-one")
+release, or load the parts with the separate diffusion-model, CLIP and
+VAE loaders into the matching `models/` subfolders.
+
 ## Tooling
 
 - **comfy-cli** — the official CLI: `comfy install` (set up ComfyUI),
@@ -68,6 +81,20 @@ work this is the difference between a usable asset and a liability.
 - VRAM is the binding constraint; quantised (fp8/GGUF) variants trade
   quality for fitting on smaller GPUs. ComfyUI offloads to CPU/RAM when
   short, at a speed cost.
+- **Slow or inconsistent renders are often disk and RAM, not GPU.**
+  When system RAM is tight, models are evicted and re-read from disk
+  on each run or each switch. From a slow HDD or network share, that
+  reload dwarfs sampling time. Keep the model library on local NVMe
+  (point `extra_model_paths.yaml` at it), keep enough free RAM for the
+  working set, and avoid switching checkpoints between queued jobs.
+  Recent builds also offer `--fast-disk` for disk-backed offload on
+  fast NVMe (verify on your build). Time the first run after launch
+  separately from warm runs before blaming the sampler or GPU.
+- **Video on about 12 GB VRAM:** feasible families include
+  LTX-Video, SVD, AnimateDiff and quantised (fp8/GGUF) Wan variants at
+  modest resolution and frame counts. Full-precision large video
+  models generally aren't. Check each model card's VRAM guidance
+  (verify; this changes with every release).
 - Pin a Python venv; ComfyUI + custom nodes are sensitive to torch/CUDA
   versions. Containerising → `containers-development`.
 - Keep `models/` out of git (huge binaries); track only workflows and

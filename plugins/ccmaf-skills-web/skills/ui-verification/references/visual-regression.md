@@ -42,12 +42,23 @@ made on your machine will diff endlessly against CI. Rules:
 - **Pin font rendering** — bundle/self-host the exact fonts (don't rely on
   system fonts that differ across machines); font substitution and hinting
   differences are a top cause of cross-environment diffs.
+- **Check the font actually loaded** — a font request that 403s or 404s (for
+  example from a git worktree with a linked `node_modules`, see
+  `render-and-capture.md`) falls back silently and diffs every text region.
 - **Mask the dynamic** — timestamps, avatars, ads, random IDs, anything
   non-deterministic.
 - **Allow a small tolerance** (`maxDiffPixelRatio`) for sub-pixel noise, but not
   so much it hides real regressions.
 - Treat a failed diff as **review-then-update**, not reflexive `--update-snapshots`.
   Blind baseline updates are how regressions sail through.
+
+## Diff changes no style check can see
+
+Some changes alter pixels without altering any computed property — new
+stacking contexts (`isolation`, `backdrop-filter`, an empty fixed
+pseudo-element) can flip text anti-aliasing from subpixel to greyscale. For any
+stacking or compositing change, screenshot HEAD and the working tree at the same
+viewport and pixel-diff them, even when no baseline exists yet.
 
 ## Tooling choices
 

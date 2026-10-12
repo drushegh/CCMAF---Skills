@@ -23,8 +23,8 @@ Install `ccmaf-skills-core` alongside this pack.
 | [`code-review-development`](skills/code-review-development/SKILL.md) | Senior-level code review against one bar — the change improves codebase health — with a severity rubric. | 9 |
 | [`git-workflow`](skills/git-workflow/SKILL.md) | Branching and commit hygiene, rebase vs merge, history surgery, conflicts, bisect, worktrees, disaster recovery. | 7 |
 | [`legacy-modernisation`](skills/legacy-modernisation/SKILL.md) | Change code you don't fully understand safely: characterisation tests, seams, strangler fig, codemods, rollback. | 6 |
-| [`python-development`](skills/python-development/SKILL.md) | Modern Python 3.11+: idioms, the type system, asyncio, errors and logging, pyproject/pytest, performance. | 9 |
-| [`secure-development`](skills/secure-development/SKILL.md) | OWASP Top 10 and ASVS reviews, STRIDE threat modelling, secrets and crypto hygiene, supply-chain security. | 7 |
-| [`testing-development`](skills/testing-development/SKILL.md) | Test strategy above the unit level: Playwright E2E, load testing with SLO gates, contract testing, test data. | 5 |
+| [`python-development`](skills/python-development/SKILL.md) | Modern Python 3.11+: idioms, the type system, asyncio, errors and logging, pyproject/pytest, performance. | 10 |
+| [`secure-development`](skills/secure-development/SKILL.md) | OWASP Top 10 and ASVS reviews, STRIDE threat modelling, secrets and crypto hygiene, supply-chain security. | 8 |
+| [`testing-development`](skills/testing-development/SKILL.md) | Test strategy above the unit level: Playwright E2E, load testing with SLO gates, contract testing, test data. | 7 |
 
 The full catalogue across every pack is in [SKILLS.md](../../SKILLS.md).

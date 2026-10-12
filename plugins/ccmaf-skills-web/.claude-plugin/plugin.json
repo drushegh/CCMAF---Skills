@@ -1,6 +1,6 @@
 {
   "name": "ccmaf-skills-web",
-  "description": "CCMAF Skills — Web & UI: Building web UIs that look chosen and behave well: HTML/CSS/Tailwind craft, React and Next.js, TypeScript, design taste, UX reasoning, accessibility, render-and-critique verification, and web performance. (8 skills)",
+  "description": "CCMAF Skills — Web & UI: Building web UIs that look chosen and behave well: HTML/CSS/Tailwind craft, React and Next.js, TypeScript, design taste, UX reasoning, accessibility, render-and-critique verification, web performance, and Manifest V3 browser extensions. (9 skills)",
   "author": {
     "name": "drushegh"
   },
@@ -15,6 +15,7 @@
   ],
   "skills": [
     "./skills/accessibility-development",
+    "./skills/browser-extension-development",
     "./skills/design-taste",
     "./skills/frontend-development",
     "./skills/react-development",

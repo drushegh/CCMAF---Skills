@@ -19,6 +19,22 @@ Don Norman's model plus the state/feedback and findability discipline.
   what can't be used, mask inputs, limit ranges) — better than catching them
   after.
 
+## Cold sign audit (before building on an icon or symbol set)
+
+A sign grammar can be internally consistent and still mean the opposite
+to a cold reader: its author reads every symbol through the mapping they
+wrote, so a closed world always "makes sense" from inside. A cog reads as
+"settings" or "automation", a solid block as "storage", a shield as
+"security" — whatever the mapping says.
+
+- **Before** content is authored against the set, show each sign alone,
+  without its legend, to someone who did not write the mapping, and ask
+  "what does this mean / what would happen if you clicked it?"
+- Record mismatches and change the **sign**, not the reader — conventional
+  meanings (Jakob's Law) win over a private grammar.
+- Repeat after any significant addition; one misread sign multiplies
+  across every screen that uses it.
+
 ## State and feedback
 
 Every interactive element needs a full set of visible **states**, or users

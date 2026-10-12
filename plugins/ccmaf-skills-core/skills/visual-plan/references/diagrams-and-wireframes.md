@@ -5,7 +5,8 @@ Picking and authoring the right visual primitive for a plan — which Mermaid ty
 it renders. Keep it in-plan: heavy exportable diagrams (auto-layout, brand icons,
 PNG/SVG, committable `.drawio`) belong to `drawio-development`. Why these
 primitives: Mermaid, ASCII and diff fences are plain text — they diff in a PR,
-commit beside the code, render natively on GitHub/GitLab/VS Code, and an agent
+commit beside the code, render natively on GitHub/GitLab (VS Code's built-in
+preview needs a Mermaid extension — see "When Mermaid won't render"), and an agent
 parses them more reliably than a screenshot. A diagram you can't review line by
 line isn't a planning artefact.
 
@@ -118,3 +119,26 @@ confirm the box characters line up, fixing any column that drifts; **re-read
 every named symbol** in diffs, trees and ER blocks against the real repo, since a
 diagram that contradicts grounding is worse than none; and **drop any visual that
 doesn't earn its place** — no spatial relationship to show means prose is right.
+
+## When Mermaid won't render
+
+Mermaid is fragile outside GitHub/GitLab. Known failure modes:
+
+- **No renderer.** VS Code's built-in Markdown preview does not render Mermaid
+  without an extension, and many doc viewers, email clients and terminals show
+  the raw fence. Ask where the plan will be read before relying on it.
+- **Silent blank or parse errors from label characters.** Unquoted `(`, `)`,
+  `[`, `]`, `{`, `}` inside node labels are parsed as shape syntax. Quote every
+  label that contains punctuation: `A["Load config (cached)"]`. Emoji and some
+  quoting forms in `subgraph` titles have rendered blank in some renderers — keep
+  subgraph ids plain (`subgraph api [API layer]`) and test on the real target.
+- **Mermaid → SVG loses its text inside `<img>`.** Default output puts labels in
+  `<foreignObject>` HTML, which browsers don't render when the SVG is loaded as
+  an image (README `<img>`, many previewers). Export with `htmlLabels: false`
+  (mermaid-cli config) so labels become SVG `<text>`, then check the file.
+
+**Fallback order** when the target can't render Mermaid reliably: (1) an
+ASCII/Unicode diagram in a fenced block — renders everywhere, reviews line by
+line; (2) a committed `.drawio.svg` or a generated SVG that uses plain `<text>`
+(→ `drawio-development`); (3) a PNG only as a last resort, with the source kept
+beside it. State in the plan which surface you chose and why.

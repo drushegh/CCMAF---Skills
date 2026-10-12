@@ -23,7 +23,7 @@ How an autonomous agent actually builds a Godot game through MCP, using
 `@coding-solo/godot-mcp` (the Godot side) and `ahujasid/blender-mcp`
 (the asset side). This is the **workflow** layer: the Godot engine
 knowledge lives in `godot-development` and `godot-shaders-development`,
-the Blender knowledge in `blender-development`/`blender-toolkit`. Here we
+the Blender knowledge in `blender-development`. Here we
 cover how to drive them over MCP and how to verify when you can't see the
 screen.
 
@@ -122,6 +122,19 @@ bridge** — Godot imports `.glb`/`.gltf` natively.
   → conflicts; run one.
 - Assuming godot-mcp can manipulate a *running* game or read live state
   — it can't; it runs and reports, that's the contract.
+- **Trusting `run_project` + `get_debug_output` for acceptance.** It has
+  been seen to boot `main.tscn` rather than `run/main_scene` when no
+  `scene` was passed, and `print()` output can be lost when the process
+  is stopped before stdout flushes. A "stuck black screen, no logs" can
+  be a tooling artefact rather than a bug. Use the MCP for quick crash
+  smoke tests. For acceptance, run Godot directly:
+  `godot --headless --path <p> --import`, then
+  `godot --path <p> res://scenes/<scene>.tscn --quit-after <n>`
+  (`*_console.exe` on Windows), plus command-line-gated self-tests
+  (`references/the-development-loop.md`).
+- Running anything on a fresh clone or after adding a `class_name`
+  without `--import` first → missing imported assets and "identifier
+  not declared" errors that aren't real (`godot-development`).
 - Renaming/moving a `.gd`/scene and breaking `res://` UID references on
   Godot 4.4+ → use `get_uid`/`update_project_uids`.
 - Blender Z-up vs Godot Y-up and unit/scale surprises → apply transforms
@@ -145,7 +158,7 @@ bridge** — Godot imports `.glb`/`.gltf` natively.
 - Godot engine/GDScript/scenes → `godot-development`; shaders →
   `godot-shaders-development`.
 - Blender concepts, bpy scripting, geometry nodes, export mechanics →
-  `blender-development` / `blender-toolkit`.
+  `blender-development`.
 - Security of arbitrary code execution and supply chain →
   `secure-development`. MCP *server authoring* (building your own) →
   `llm-development`.

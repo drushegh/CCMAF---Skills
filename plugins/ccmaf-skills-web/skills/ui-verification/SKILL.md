@@ -150,6 +150,21 @@ was rendering a program nobody would ever run.
   synthetic-DOM fixture is a different program from the shipped one.
 - **Declaring a component verified because it exists** — if no page renders it,
   nobody has seen it. Build a specimen and look.
+- **Signing off an empty shell or a mocked mount** — an empty state hides
+  unported styles, and a component test can pass while the component is not
+  mounted in the live layout at all. Capture fixture-populated states and check
+  the real mount point in the running app.
+- **Synthetic clicks as interaction proof** — `el.click()` / `dispatchEvent`
+  skip hit-testing, so an overlay or backdrop that swallows real clicks stays
+  invisible. Drive real input (Playwright `locator.click()`, `page.mouse`, CDP
+  `Input.dispatchMouseEvent`); a pass that used only synthetic events is not
+  accepted (`dom-probes-and-input.md`).
+- **"The rule ships" ≠ "the rule wins"** — a CSS-string test or a computed
+  `outline` proves nothing about what paints. Read computed style in a real
+  engine, and gate focus rings and stacking changes on pixels.
+- **curl/HTTP smoke as UI testing** — a 200 says nothing about unstyled
+  markup, missing classes or a 404 stylesheet. Render, look, and check the
+  failed-request list.
 
 ## Workflow
 
@@ -176,6 +191,7 @@ Load on demand:
 - `references/state-and-viewport-coverage.md` — the state × viewport × theme × locale capture matrix
 - `references/visual-regression.md` — automated pixel-diff (toHaveScreenshot, tools), baselines, flakiness control
 - `references/3d-and-non-web.md` — canvas/WebGL/game frames, native app capture, and the honest limits
+- `references/dom-probes-and-input.md` — real input vs synthetic clicks, visibility and collision probes, computed-style and painted-pixel checks, robust waits
 
 ## Boundaries
 

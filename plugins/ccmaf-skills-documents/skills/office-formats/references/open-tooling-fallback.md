@@ -80,6 +80,44 @@ runs, and keep their formatting. python-docx has no API for tracked changes
 or comments; when the edit must be tracked, say the fallback cannot do it
 properly and offer the routed `docx` skill instead of faking revisions.
 
+### Merge fields and content controls (Word templates)
+
+Two ways a Word template pulls in data, and they are not interchangeable:
+
+- **MERGEFIELD fields** (`{ MERGEFIELD Name \@ "d MMMM yyyy" }`) — classic
+  mail merge. Filled by a merge engine; the switches after the name format
+  the value.
+- **Content controls bound to a custom XML part** (`w:sdt` with
+  `w:sdtPr/w:dataBinding w:xpath="..." w:storeItemID="{GUID}"`) — the
+  value is read live from a data store inside the package
+  (`customXml/itemN.xml`, whose `itemPropsN.xml` carries the matching
+  `ds:itemID`). Platforms that generate documents from records (for
+  example model-driven app Word templates) use this shape, not
+  MERGEFIELDs.
+
+Rebuilding or converting a template by script:
+
+- Replacing MERGEFIELDs for a content-control platform means writing
+  `w:sdt` elements whose `w:storeItemID` and `w:xpath` match the target
+  platform's own data part — copy the store id and namespace from a
+  template the platform generated (they are platform- and table-specific),
+  never invent them. Re-open the result in Word to confirm the controls
+  bind.
+- Repeating sections use the Word 2013 namespace
+  (`w15`, `http://schemas.microsoft.com/office/word/2012/wordml`). A check
+  that it is declared must read the namespace declarations on the
+  `<w:document>` root element (parse it), not grep the first line — that
+  line is the `<?xml ...?>` declaration.
+- Merge libraries parse field codes loosely. With `docx-mailmerge2` a date
+  switch glued to the name (`MERGEFIELD Date\@"dd/MM/yyyy"`, no space)
+  makes the switch part of the field name, so formatting silently does
+  nothing. Put a space before every switch; when the template can't be
+  fixed, pass pre-formatted strings. The library applies `\@` only to real
+  `date`/`datetime` values, so a string is inserted as-is either way.
+  Field names from `get_merge_fields()` can come back with the switch
+  attached: strip everything from the first backslash before matching
+  them to data keys.
+
 Excel (openpyxl):
 
 ```python

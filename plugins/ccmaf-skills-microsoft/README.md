@@ -20,7 +20,7 @@ Install `ccmaf-skills-core` alongside this pack.
 | Skill | What it covers | Reference docs |
 |---|---|---|
 | [`copilot-studio-development`](skills/copilot-studio-development/SKILL.md) | Copilot Studio agents, YAML-first: topics and actions, generative orchestration, knowledge, channels, ALM. | 7 |
-| [`dynamics-365-development`](skills/dynamics-365-development/SKILL.md) | Dynamics 365 / Dataverse pro-code: plug-ins and the pipeline, client scripting, PCF, Web API/SDK, ALM. | 5 |
+| [`dynamics-365-development`](skills/dynamics-365-development/SKILL.md) | Dynamics 365 / Dataverse pro-code: plug-ins and the pipeline, client scripting, PCF, Web API/SDK, ALM. | 7 |
 | [`fabric-development`](skills/fabric-development/SKILL.md) | Microsoft Fabric: OneLake, lakehouse/medallion, Spark and Delta, ingestion, Direct Lake, capacity admin. | 6 |
 | [`m365-development`](skills/m365-development/SKILL.md) | Microsoft 365 for developers: Graph and its SDKs, SPFx, Teams apps, SharePoint data access, Office add-ins. | 6 |
 | [`power-bi-development`](skills/power-bi-development/SKILL.md) | Power BI: star-schema semantic models, RLS, DAX and its performance, Power Query folding, TMDL/PBIP, ALM. | 6 |

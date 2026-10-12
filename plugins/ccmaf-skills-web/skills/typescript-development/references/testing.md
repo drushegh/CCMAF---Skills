@@ -113,7 +113,13 @@ export default defineConfig({
 The snippets above rely on `globals: true`; for TypeScript also add
 `"types": ["vitest/globals"]` to tsconfig. Without globals, import them
 explicitly: `import { describe, it, expect, vi } from "vitest"`.
-`vite-tsconfig-paths` plugin if the project uses path aliases. Run with
+`vite-tsconfig-paths` plugin if the project uses path aliases.
+
+Vitest replaces CSS imports with empty strings unless they match
+`test.css.include` — observed to include `?raw` imports, so a test that
+asserts on a stylesheet imported with `?raw` sees `""`. Add
+`css: { include: [/\?raw$/] }` to the test config (verify against the
+installed Vitest version). Run with
 `vitest run` (CI) / `vitest` (watch). Coverage focuses on critical paths —
 don't chase 100%.
 

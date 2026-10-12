@@ -2,7 +2,7 @@
   "name": "ccmaf-skills",
   "title": "CCMAF Skills — skill catalogue",
   "repository": "https://github.com/drushegh/CCMAF---Skills",
-  "skillCount": 102,
+  "skillCount": 106,
   "packCount": 19,
   "allInOne": {
     "name": "ccmaf-skills",
@@ -119,19 +119,19 @@
           "id": "python-development",
           "summary": "Modern Python 3.11+: idioms, the type system, asyncio, errors and logging, pyproject/pytest, performance.",
           "path": "plugins/ccmaf-skills-engineering/skills/python-development",
-          "referenceDocs": 9
+          "referenceDocs": 10
         },
         {
           "id": "secure-development",
           "summary": "OWASP Top 10 and ASVS reviews, STRIDE threat modelling, secrets and crypto hygiene, supply-chain security.",
           "path": "plugins/ccmaf-skills-engineering/skills/secure-development",
-          "referenceDocs": 7
+          "referenceDocs": 8
         },
         {
           "id": "testing-development",
           "summary": "Test strategy above the unit level: Playwright E2E, load testing with SLO gates, contract testing, test data.",
           "path": "plugins/ccmaf-skills-engineering/skills/testing-development",
-          "referenceDocs": 5
+          "referenceDocs": 7
         }
       ]
     },
@@ -172,7 +172,7 @@
       "id": "ccmaf-skills-web",
       "title": "Web & UI",
       "audience": "Frontend and full-stack developers building user interfaces.",
-      "description": "Building web UIs that look chosen and behave well: HTML/CSS/Tailwind craft, React and Next.js, TypeScript, design taste, UX reasoning, accessibility, render-and-critique verification, and web performance.",
+      "description": "Building web UIs that look chosen and behave well: HTML/CSS/Tailwind craft, React and Next.js, TypeScript, design taste, UX reasoning, accessibility, render-and-critique verification, web performance, and Manifest V3 browser extensions.",
       "install": "/plugin install ccmaf-skills-web@ccmaf-skills",
       "skills": [
         {
@@ -180,6 +180,12 @@
           "summary": "WCAG 2.2 AA with the EU statutory frame: ARIA, keyboard and focus, accessible forms, testing, audit checklist.",
           "path": "plugins/ccmaf-skills-web/skills/accessibility-development",
           "referenceDocs": 7
+        },
+        {
+          "id": "browser-extension-development",
+          "summary": "MV3 browser extensions: service-worker lifecycle, permissions, content scripts, messaging, storage, CSP, store review; Chrome→Firefox/Edge.",
+          "path": "plugins/ccmaf-skills-web/skills/browser-extension-development",
+          "referenceDocs": 6
         },
         {
           "id": "design-taste",
@@ -197,7 +203,7 @@
           "id": "react-development",
           "summary": "React and Next.js: render and data-fetching performance, composition, Server Components, the App Router.",
           "path": "plugins/ccmaf-skills-web/skills/react-development",
-          "referenceDocs": 5
+          "referenceDocs": 6
         },
         {
           "id": "typescript-development",
@@ -209,7 +215,7 @@
           "id": "ui-verification",
           "summary": "Render, view, critique, iterate: screenshot a UI at real viewports and critique the image, not the code.",
           "path": "plugins/ccmaf-skills-web/skills/ui-verification",
-          "referenceDocs": 5
+          "referenceDocs": 6
         },
         {
           "id": "ux-design",
@@ -236,7 +242,7 @@
           "id": "api-development",
           "summary": "HTTP API design: REST semantics, OpenAPI-first contracts, versioning, pagination, problem+json, webhooks.",
           "path": "plugins/ccmaf-skills-backend/skills/api-development",
-          "referenceDocs": 7
+          "referenceDocs": 8
         },
         {
           "id": "dotnet-development",
@@ -278,7 +284,7 @@
           "id": "sql-development",
           "summary": "T-SQL and PostgreSQL: schema design, workload-aware indexing, query tuning, transactions, safe migrations.",
           "path": "plugins/ccmaf-skills-backend/skills/sql-development",
-          "referenceDocs": 8
+          "referenceDocs": 9
         }
       ]
     },
@@ -286,7 +292,7 @@
       "id": "ccmaf-skills-infra",
       "title": "Infrastructure & Operations",
       "audience": "Platform, DevOps and SRE engineers, and anyone who ships to production.",
-      "description": "Running software in production: Azure, Terraform/OpenTofu, containers and Kubernetes, CI/CD pipelines, observability, incident response, and Linux as both workstation and server.",
+      "description": "Running software in production: Azure, Terraform/OpenTofu, containers and Kubernetes, CI/CD pipelines, Cloudflare Workers, observability, incident response, and Linux as both workstation and server.",
       "install": "/plugin install ccmaf-skills-infra@ccmaf-skills",
       "skills": [
         {
@@ -294,6 +300,12 @@
           "summary": "Azure service selection and engineering: Bicep/Terraform and azd, compute, Entra ID, Key Vault, operations.",
           "path": "plugins/ccmaf-skills-infra/skills/azure-development",
           "referenceDocs": 8
+        },
+        {
+          "id": "cloudflare-workers-development",
+          "summary": "Cloudflare Workers, free tier first: Wrangler, local dev, D1/KV/R2, Pages, _headers, secrets, deploy traps like Pages bypassing CI.",
+          "path": "plugins/ccmaf-skills-infra/skills/cloudflare-workers-development",
+          "referenceDocs": 6
         },
         {
           "id": "containers-development",
@@ -305,7 +317,7 @@
           "id": "devops-development",
           "summary": "CI/CD on Azure DevOps and GitHub Actions: pipeline YAML, templates, OIDC, environments, pipeline security.",
           "path": "plugins/ccmaf-skills-infra/skills/devops-development",
-          "referenceDocs": 5
+          "referenceDocs": 6
         },
         {
           "id": "incident-response",
@@ -362,7 +374,7 @@
           "id": "dynamics-365-development",
           "summary": "Dynamics 365 / Dataverse pro-code: plug-ins and the pipeline, client scripting, PCF, Web API/SDK, ALM.",
           "path": "plugins/ccmaf-skills-microsoft/skills/dynamics-365-development",
-          "referenceDocs": 5
+          "referenceDocs": 7
         },
         {
           "id": "fabric-development",
@@ -479,7 +491,7 @@
           "id": "tauri-development",
           "summary": "Tauri v2 desktop and mobile: Rust-frontend IPC, the capability security model, plugins, builds, signing.",
           "path": "plugins/ccmaf-skills-apps/skills/tauri-development",
-          "referenceDocs": 5
+          "referenceDocs": 6
         },
         {
           "id": "windows-desktop-development",
@@ -493,7 +505,7 @@
       "id": "ccmaf-skills-games",
       "title": "Games & 3D",
       "audience": "Game developers and real-time 3D engineers.",
-      "description": "Games and interactive 3D: Godot (engine, shaders, MCP-driven workflow), Unity, Unreal Engine 5, three.js, and the engine-agnostic craft of game feel.",
+      "description": "Games and interactive 3D: Godot (engine, shaders, MCP-driven workflow), Unity, Unreal Engine 5, three.js, Phaser, Kenney asset-kit integration, and the engine-agnostic craft of game feel.",
       "install": "/plugin install ccmaf-skills-games@ccmaf-skills",
       "skills": [
         {
@@ -506,7 +518,7 @@
           "id": "godot-development",
           "summary": "Godot 4.x: typed GDScript and C#, scene composition, custom Resources, Jolt physics, headless CI exports.",
           "path": "plugins/ccmaf-skills-games/skills/godot-development",
-          "referenceDocs": 5
+          "referenceDocs": 6
         },
         {
           "id": "godot-mcp-workflow",
@@ -518,6 +530,18 @@
           "id": "godot-shaders-development",
           "summary": "Godot 4.x shaders: the shading language, spatial/2D/particle shaders, compute GLSL, visual shaders, performance.",
           "path": "plugins/ccmaf-skills-games/skills/godot-shaders-development",
+          "referenceDocs": 6
+        },
+        {
+          "id": "kenney-asset-integration",
+          "summary": "Use Kenney CC0 kits: external colormap, per-kit scale, glTF +Z facing, GridMap tiles, autotile yaws, z-fighting. Godot, three.js, Phaser.",
+          "path": "plugins/ccmaf-skills-games/skills/kenney-asset-integration",
+          "referenceDocs": 5
+        },
+        {
+          "id": "phaser-development",
+          "summary": "Phaser 3/4 browser games: scene lifecycle and data, destroy semantics and pooling, topOnly input, Arcade/Matter, assets, v3→v4 migration.",
+          "path": "plugins/ccmaf-skills-games/skills/phaser-development",
           "referenceDocs": 6
         },
         {

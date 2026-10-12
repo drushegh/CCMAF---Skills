@@ -38,6 +38,15 @@ five-call dance. When unsure, favour coverage.
   protocol errors.
 - Define `outputSchema` / return `structuredContent` where the SDK
   supports it, alongside readable text.
+- **Long-running work is fire-and-return.** A tool that dispatches a
+  build, a sub-agent or a batch job should validate and policy-check the
+  request first (refuse with advice if it fails), then return at once
+  with `{accepted: true, handle}`; stream progress and output
+  out-of-band keyed by the handle (a status tool, a resource, logs).
+  Blocking until completion, or piping a sub-agent's whole output
+  through the tool result, runs into client timeouts and result-size
+  caps. The 2026 spec work on Tasks formalises this pattern — use it
+  when your SDK and clients support it (verify).
 
 ## Stack and transports
 

@@ -108,6 +108,9 @@ Service-worker strategy, per resource
 
 ## High-frequency pitfalls
 
+- **Stale-while-revalidate on API `GET`s** — replays the pre-mutation
+  snapshot after every write; mutable data is network-first with a timeout,
+  and Workbox precaches lazy chunks unless `globIgnores` excludes them.
 - **Preload spam** — a dozen `preload`s deprioritise each other and the
   things the parser found on its own; preload only what's critical *and*
   late-discovered.

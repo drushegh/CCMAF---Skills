@@ -82,6 +82,11 @@ pair. Details: [references/security.md](references/security.md).
 | Compile error on async command | Borrowed `&str` parameter | Owned `String` |
 | State panic | `State of T` type ≠ `.manage()` type | Exact type match |
 | Works on desktop, breaks mobile | Desktop-only API (tray, multi-window, some plugins) | Check plugin platform matrix; `#[cfg(desktop)]`/`#[cfg(mobile)]` |
+| `target="_blank"` / `window.open` does nothing | No new-window handling in a webview | Opener plugin, or `on_new_window` + `on_navigation` (webviews-and-windows.md) |
+| HTML5 drag-and-drop never fires (Windows) | Tauri's native file-drop handler replaces WebView2's | `"dragDropEnabled": false` or pointer-event DnD |
+| Menus/dialogs hidden behind an embedded page | Child webviews composite above all host DOM | Shrink child webview bounds; z-index can't fix it |
+| "there is no reactor running" in `setup()` | `tokio::spawn` outside Tauri's runtime | `tauri::async_runtime::spawn` |
+| Closing a secondary window quits the app | App-wide `CloseRequested` handler | Gate teardown on `window.label()` |
 | Mobile build fails | Missing Rust targets | `rustup target add aarch64-linux-android …` / iOS targets |
 | Updater fails in production | Unsigned artifacts or HTTP endpoint | `cargo tauri signer generate`, HTTPS only |
 | IPC timeout | Blocking work in async command | `spawn_blocking` / async I/O (see rust-development) |
@@ -125,6 +130,7 @@ scopes).
 | Load when the task involves... | File |
 |---|---|
 | Commands, events, channels, state, IPC errors, serde boundary, windows | [references/ipc.md](references/ipc.md) |
+| Links/popups, navigation guards, drag-drop, pop-outs, child webviews, cookies/zoom, CDP on WebView2 | [references/webviews-and-windows.md](references/webviews-and-windows.md) |
 | Capabilities, permissions, scopes, CSP, multi-window security | [references/security.md](references/security.md) |
 | tauri.conf.json, Cargo.toml, dev/build, bundles, signing, CI | [references/config-and-builds.md](references/config-and-builds.md) |
 | Official plugins, updater, tray, sidecars, deep links, asset protocol | [references/plugins-and-runtime.md](references/plugins-and-runtime.md) |

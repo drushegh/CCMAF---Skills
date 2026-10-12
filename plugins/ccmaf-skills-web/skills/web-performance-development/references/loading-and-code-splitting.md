@@ -31,6 +31,17 @@ trigger.addEventListener("click", async () => {
   (source-map-explorer, webpack/rollup analyser plugins) before and after;
   duplicated dependencies (two versions of one lib) are the classic silent
   win.
+- **Proving dev-only code (mocks, fixtures, seed data) is absent from the
+  production bundle**: zero grep hits proves nothing (minifiers rename
+  identifiers) and a non-zero hit may be inert residue. Make elimination
+  structural: gate on the literal `import.meta.env.DEV` (or
+  `process.env.NODE_ENV !== "production"`) inline at the import/call site so
+  the bundler constant-folds it; dynamic-import mock modules inside that
+  branch; mark call-built seeds `/* @__PURE__ */`; gate the merge of mock and
+  real data too, and give pure helpers used only by mocks their own gate.
+  Then grep `dist/` for a unique string literal from the mock *and* for one
+  from real code as a positive control — a check that cannot fail proves
+  nothing.
 - Set a **size budget per entry chunk** and enforce it in CI
   (`runtime-performance-and-budgets.md`).
 

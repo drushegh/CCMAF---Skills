@@ -63,6 +63,9 @@ tokio::select! {
 Don't gate `select!` branches on racy preconditions
 (`if !sleep.is_elapsed()`) — let the branches themselves decide.
 
+Two branches that both read into the same `&mut buf` fail with E0499
+(mutable borrow twice) — give each branch its own buffer.
+
 ## Structured Concurrency
 
 ```rust
@@ -77,6 +80,9 @@ while let Some(res) = set.join_next().await { res??; }
 true parallelism across cores. Never bare fire-and-forget
 `tokio::spawn` — track handles via `JoinSet`/`TaskTracker` or you lose
 errors and shutdown control.
+A detached `JoinHandle` swallows the task's panic: the panic surfaces
+only as `Err(JoinError)` when the handle is awaited, so a dropped handle
+means a silently dead task.
 
 ## Blocking and CPU Work
 
@@ -141,3 +147,10 @@ Native `async fn` in traits (1.75+) — but not dyn-compatible. For
 `F: Fn(X) -> Fut, Fut: Future` pair. Caveat: an `AsyncFn` bound can't yet
 require the returned future to be `Send`; keep the two-parameter form
 where the caller must `tokio::spawn` the result.
+
+## Observability Gotcha
+
+`tracing` is a facade: with no subscriber installed (e.g.
+`tracing_subscriber::fmt().with_env_filter(EnvFilter::from_default_env()).init()`
+in `main`, or a test-writer subscriber in tests), every event is dropped
+and `RUST_LOG` does nothing. "No logs" means check the subscriber first.

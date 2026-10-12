@@ -22,6 +22,18 @@ data-driven values) mean feel can be dialled in seconds — the difference betwe
 a game that gets tuned and one that doesn't. Implementation of data-driven
 config → the engine skill (e.g. ScriptableObjects, Godot Resources, data assets).
 
+## State that feeds feel must be live
+
+A flag that another system reads *continuously* (noticed, grounded,
+in-cover, sprinting) must be recomputed every tick in **every** state
+that consumes it, not set once on state-enter. Set-on-enter flags
+desync: a pursuer that latches `noticed = true` on entering PURSUE
+pins an alert meter at maximum, so escape and every counter-mechanic
+stop working, and the game *feels* unfair even though each system
+works on its own. When two inputs compete (a "self-care overrides
+alert" rule), encode the documented precedence explicitly, and test
+it.
+
 ## The tuning loop (human in the loop)
 
 1. Set a starting point based on intended character (`physics-tuning.md`) and

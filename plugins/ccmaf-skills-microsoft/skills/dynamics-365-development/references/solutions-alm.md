@@ -93,6 +93,8 @@ pac admin assign-user --user user@contoso.com \
 
 App users (service principals) for integrations get purpose-built
 roles, never System Administrator by default.
+Building custom roles (App Opener baseline, depth clamping), team
+ownership and testing as a non-admin persona: security-model.md.
 
 ## Pipeline Shape (CI/CD)
 

@@ -130,7 +130,10 @@ inline in PR bodies (verified June 2026).
 - **Wrong range** — `A..B` vs `A...B` mis-scopes the whole recap; missing `-z`
   mangles renamed/spaced paths.
 - **Over-annotating** — quoting every hunk; **broken Mermaid** — shipping a
-  diagram that degrades to raw text.
+  diagram that degrades to raw text. Quote labels containing punctuation, and
+  if the recap will be read outside GitHub/GitLab (VS Code preview, email, an
+  `<img>`-embedded SVG) use the fallback order in `visual-plan`'s
+  `references/diagrams-and-wireframes.md` (ASCII → `.drawio.svg` → PNG).
 
 ## Reference index
 

@@ -48,7 +48,8 @@ delivery per environment.
    `references/diagram-recipes.md`.
 6. **Dark mode is automatic.** Set `adaptiveColors="auto"` on `mxGraphModel`
    and let draw.io invert; only hand-specify dark colours with `light-dark()`
-   when the auto-inverse is wrong.
+   when the auto-inverse is wrong. SVG exports are transparent — for a fixed
+   light image in a dark-mode README see `references/delivery-and-export.md`.
 
 ## Workflow
 

@@ -83,6 +83,35 @@ async fn check_for_updates(app: tauri::AppHandle) -> Result<String, String> {
 Capability: `updater:default`. Private key never in the repo —
 `TAURI_SIGNING_PRIVATE_KEY` env in CI.
 
+Release traps:
+
+- GitHub's `releases/latest/download/latest.json` ignores **draft and
+  prerelease** releases, so the endpoint 404s until the release is
+  published as a full release.
+- Set `TAURI_SIGNING_PRIVATE_KEY_PASSWORD` in CI even when the key has no
+  password (an empty value) — otherwise the build can stop at an
+  interactive password prompt and hang the job (observed; verify).
+- **Back up the private key.** Lose it and no installed copy can ever
+  accept an update again — users must reinstall manually.
+
+## Runtime Pitfalls
+
+- An `async` command that takes a `std::sync::Mutex` and does blocking
+  I/O stalls a Tokio worker; move the blocking section into
+  `tauri::async_runtime::spawn_blocking`.
+- `tokio::spawn` from the synchronous `setup()` closure panics with
+  "there is no reactor running"; use `tauri::async_runtime::spawn`, which
+  targets Tauri's runtime.
+- `cargo test` / `cargo build` in `src-tauri` while `tauri dev` runs
+  fights over the same target dir and can kill the dev chain; use a
+  separate `CARGO_TARGET_DIR` for side builds.
+- `npm install` while the Vite dev server runs can leave a white screen
+  from stale pre-bundled deps: stop dev, delete `node_modules/.vite`,
+  restart.
+- **Windows notifications are keyed by the app's AUMID**, which the
+  installer registers. Under `tauri dev` the notification call can return
+  `Ok` and show nothing; test toasts from an installed build (verify).
+
 ## System Tray (desktop-only)
 
 ```rust

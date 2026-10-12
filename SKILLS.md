@@ -2,7 +2,7 @@
 
 # CCMAF Skills — catalogue
 
-**102 skills** in **19 packs**. Each skill is a self-contained directory: a lean `SKILL.md` plus on-demand reference docs.
+**106 skills** in **19 packs**. Each skill is a self-contained directory: a lean `SKILL.md` plus on-demand reference docs.
 
 ## Install
 
@@ -13,7 +13,7 @@
 /plugin install ccmaf-skills-<pack>@ccmaf-skills      # the packs your work needs
 ```
 
-Or install everything at once with `/plugin install ccmaf-skills@ccmaf-skills` (all 102 skills; a larger skill listing in every session).
+Or install everything at once with `/plugin install ccmaf-skills@ccmaf-skills` (all 106 skills; a larger skill listing in every session).
 
 ## Which packs do I need?
 
@@ -22,6 +22,7 @@ Or install everything at once with `/plugin install ccmaf-skills@ccmaf-skills` (
 | Anyone using Claude Code | `ccmaf-skills-core` |
 | Any developer | `ccmaf-skills-core` + `ccmaf-skills-engineering` |
 | Frontend / full-stack web | `ccmaf-skills-core` + `ccmaf-skills-engineering` + `ccmaf-skills-web` + `ccmaf-skills-backend` |
+| Browser extension developer | `ccmaf-skills-core` + `ccmaf-skills-engineering` + `ccmaf-skills-web` |
 | Backend / API | `ccmaf-skills-core` + `ccmaf-skills-engineering` + `ccmaf-skills-backend` |
 | Platform / DevOps / SRE | `ccmaf-skills-core` + `ccmaf-skills-engineering` + `ccmaf-skills-infra` |
 | Power Platform / Dynamics / M365 | `ccmaf-skills-core` + `ccmaf-skills-microsoft` |
@@ -49,14 +50,14 @@ Or install everything at once with `/plugin install ccmaf-skills@ccmaf-skills` (
 | [Core](#core-ccmaf-skills-core) | `ccmaf-skills-core` | 11 | Everyone — install this first. |
 | [Engineering](#engineering-ccmaf-skills-engineering) | `ccmaf-skills-engineering` | 7 | Every developer, whatever the stack — install alongside core. |
 | [Workspace](#workspace-ccmaf-skills-workspace) | `ccmaf-skills-workspace` | 4 | Anyone running Claude as an agent on their own machine — install alongside core for any workspace type. |
-| [Web & UI](#web--ui-ccmaf-skills-web) | `ccmaf-skills-web` | 8 | Frontend and full-stack developers building user interfaces. |
+| [Web & UI](#web--ui-ccmaf-skills-web) | `ccmaf-skills-web` | 9 | Frontend and full-stack developers building user interfaces. |
 | [Backend & APIs](#backend--apis-ccmaf-skills-backend) | `ccmaf-skills-backend` | 8 | Backend and full-stack developers building services and data access. |
-| [Infrastructure & Operations](#infrastructure--operations-ccmaf-skills-infra) | `ccmaf-skills-infra` | 9 | Platform, DevOps and SRE engineers, and anyone who ships to production. |
+| [Infrastructure & Operations](#infrastructure--operations-ccmaf-skills-infra) | `ccmaf-skills-infra` | 10 | Platform, DevOps and SRE engineers, and anyone who ships to production. |
 | [Microsoft Business Platforms](#microsoft-business-platforms-ccmaf-skills-microsoft) | `ccmaf-skills-microsoft` | 8 | Developers and makers on Power Platform, Dynamics 365, Microsoft 365 and Fabric. |
 | [AI & Machine Learning](#ai--machine-learning-ccmaf-skills-ai) | `ccmaf-skills-ai` | 3 | Engineers building on LLMs or training their own models. |
 | [Data](#data-ccmaf-skills-data) | `ccmaf-skills-data` | 2 | Data engineers and anyone moving or analysing data. |
 | [Desktop & Mobile Apps](#desktop--mobile-apps-ccmaf-skills-apps) | `ccmaf-skills-apps` | 5 | Developers shipping desktop or mobile applications. |
-| [Games & 3D](#games--3d-ccmaf-skills-games) | `ccmaf-skills-games` | 7 | Game developers and real-time 3D engineers. |
+| [Games & 3D](#games--3d-ccmaf-skills-games) | `ccmaf-skills-games` | 9 | Game developers and real-time 3D engineers. |
 | [Creative & Media](#creative--media-ccmaf-skills-creative) | `ccmaf-skills-creative` | 4 | Artists, technical artists, video makers and writers. |
 | [Research](#research-ccmaf-skills-research) | `ccmaf-skills-research` | 3 | Researchers, students and anyone who needs citation-safe sources. |
 | [Automation](#automation-ccmaf-skills-automation) | `ccmaf-skills-automation` | 4 | Anyone automating the web or repetitive work. |
@@ -98,9 +99,9 @@ The cross-cutting engineering disciplines: code review, secure development, test
 | [`code-review-development`](plugins/ccmaf-skills-engineering/skills/code-review-development/SKILL.md) | Senior-level code review against one bar — the change improves codebase health — with a severity rubric. | 9 |
 | [`git-workflow`](plugins/ccmaf-skills-engineering/skills/git-workflow/SKILL.md) | Branching and commit hygiene, rebase vs merge, history surgery, conflicts, bisect, worktrees, disaster recovery. | 7 |
 | [`legacy-modernisation`](plugins/ccmaf-skills-engineering/skills/legacy-modernisation/SKILL.md) | Change code you don't fully understand safely: characterisation tests, seams, strangler fig, codemods, rollback. | 6 |
-| [`python-development`](plugins/ccmaf-skills-engineering/skills/python-development/SKILL.md) | Modern Python 3.11+: idioms, the type system, asyncio, errors and logging, pyproject/pytest, performance. | 9 |
-| [`secure-development`](plugins/ccmaf-skills-engineering/skills/secure-development/SKILL.md) | OWASP Top 10 and ASVS reviews, STRIDE threat modelling, secrets and crypto hygiene, supply-chain security. | 7 |
-| [`testing-development`](plugins/ccmaf-skills-engineering/skills/testing-development/SKILL.md) | Test strategy above the unit level: Playwright E2E, load testing with SLO gates, contract testing, test data. | 5 |
+| [`python-development`](plugins/ccmaf-skills-engineering/skills/python-development/SKILL.md) | Modern Python 3.11+: idioms, the type system, asyncio, errors and logging, pyproject/pytest, performance. | 10 |
+| [`secure-development`](plugins/ccmaf-skills-engineering/skills/secure-development/SKILL.md) | OWASP Top 10 and ASVS reviews, STRIDE threat modelling, secrets and crypto hygiene, supply-chain security. | 8 |
+| [`testing-development`](plugins/ccmaf-skills-engineering/skills/testing-development/SKILL.md) | Test strategy above the unit level: Playwright E2E, load testing with SLO gates, contract testing, test data. | 7 |
 
 ## Workspace (`ccmaf-skills-workspace`)
 
@@ -117,18 +118,19 @@ The safety disciplines every workspace agent needs: reversible system changes wi
 
 ## Web & UI (`ccmaf-skills-web`)
 
-Building web UIs that look chosen and behave well: HTML/CSS/Tailwind craft, React and Next.js, TypeScript, design taste, UX reasoning, accessibility, render-and-critique verification, and web performance.
+Building web UIs that look chosen and behave well: HTML/CSS/Tailwind craft, React and Next.js, TypeScript, design taste, UX reasoning, accessibility, render-and-critique verification, web performance, and Manifest V3 browser extensions.
 
 **Audience:** Frontend and full-stack developers building user interfaces. · **Install:** `/plugin install ccmaf-skills-web@ccmaf-skills` · [Pack README](plugins/ccmaf-skills-web/README.md)
 
 | Skill | What it covers | Reference docs |
 |---|---|---|
 | [`accessibility-development`](plugins/ccmaf-skills-web/skills/accessibility-development/SKILL.md) | WCAG 2.2 AA with the EU statutory frame: ARIA, keyboard and focus, accessible forms, testing, audit checklist. | 7 |
+| [`browser-extension-development`](plugins/ccmaf-skills-web/skills/browser-extension-development/SKILL.md) | MV3 browser extensions: service-worker lifecycle, permissions, content scripts, messaging, storage, CSP, store review; Chrome→Firefox/Edge. | 6 |
 | [`design-taste`](plugins/ccmaf-skills-web/skills/design-taste/SKILL.md) | Remove AI tells from visual design so a UI reads as chosen, not generated; register-aware polish. | 7 |
 | [`frontend-development`](plugins/ccmaf-skills-web/skills/frontend-development/SKILL.md) | HTML, CSS and Tailwind v4 craft: design tokens, theming, semantic markup, distinctive design, a11y baseline. | 4 |
-| [`react-development`](plugins/ccmaf-skills-web/skills/react-development/SKILL.md) | React and Next.js: render and data-fetching performance, composition, Server Components, the App Router. | 5 |
+| [`react-development`](plugins/ccmaf-skills-web/skills/react-development/SKILL.md) | React and Next.js: render and data-fetching performance, composition, Server Components, the App Router. | 6 |
 | [`typescript-development`](plugins/ccmaf-skills-web/skills/typescript-development/SKILL.md) | TypeScript 5.x type safety: generics, eliminating any, Zod, Node backends, tsconfig and tsc error-fixing. | 8 |
-| [`ui-verification`](plugins/ccmaf-skills-web/skills/ui-verification/SKILL.md) | Render, view, critique, iterate: screenshot a UI at real viewports and critique the image, not the code. | 5 |
+| [`ui-verification`](plugins/ccmaf-skills-web/skills/ui-verification/SKILL.md) | Render, view, critique, iterate: screenshot a UI at real viewports and critique the image, not the code. | 6 |
 | [`ux-design`](plugins/ccmaf-skills-web/skills/ux-design/SKILL.md) | Interaction and perception reasoning for any UI: Laws of UX, Gestalt hierarchy, affordances, forms, ergonomics. | 6 |
 | [`web-performance-development`](plugins/ccmaf-skills-web/skills/web-performance-development/SKILL.md) | Core Web Vitals, the critical rendering path, loading and caching strategy, service workers, budgets. | 7 |
 
@@ -140,26 +142,27 @@ Services and the contracts between them: HTTP and GraphQL API design, .NET, Go a
 
 | Skill | What it covers | Reference docs |
 |---|---|---|
-| [`api-development`](plugins/ccmaf-skills-backend/skills/api-development/SKILL.md) | HTTP API design: REST semantics, OpenAPI-first contracts, versioning, pagination, problem+json, webhooks. | 7 |
+| [`api-development`](plugins/ccmaf-skills-backend/skills/api-development/SKILL.md) | HTTP API design: REST semantics, OpenAPI-first contracts, versioning, pagination, problem+json, webhooks. | 8 |
 | [`dotnet-development`](plugins/ccmaf-skills-backend/skills/dotnet-development/SKILL.md) | Modern .NET and C#: ASP.NET Core APIs, EF Core, nullable reference types, testing, observability, performance. | 9 |
 | [`event-driven-development`](plugins/ccmaf-skills-backend/skills/event-driven-development/SKILL.md) | Delivery semantics, idempotent consumers, outbox, sagas, event sourcing/CQRS, dead letters, schema evolution. | 6 |
 | [`go-development`](plugins/ccmaf-skills-backend/skills/go-development/SKILL.md) | Modern Go: errors as values, goroutine/channel/context discipline, generics, modules, table-driven tests. | 6 |
 | [`graphql-development`](plugins/ccmaf-skills-backend/skills/graphql-development/SKILL.md) | GraphQL end to end: SDL design, resolvers and DataLoader, mutations and errors, federation, security, caching. | 7 |
 | [`identity-development`](plugins/ccmaf-skills-backend/skills/identity-development/SKILL.md) | Auth engineering: OAuth 2.1/OIDC flow selection, tokens, sessions, MFA and passkeys, SSO, RBAC/ABAC/ReBAC. | 7 |
 | [`rust-development`](plugins/ccmaf-skills-backend/skills/rust-development/SKILL.md) | Rust 2024: type-driven API design, ownership and lifetimes, error and lint discipline, async/tokio, serde. | 7 |
-| [`sql-development`](plugins/ccmaf-skills-backend/skills/sql-development/SKILL.md) | T-SQL and PostgreSQL: schema design, workload-aware indexing, query tuning, transactions, safe migrations. | 8 |
+| [`sql-development`](plugins/ccmaf-skills-backend/skills/sql-development/SKILL.md) | T-SQL and PostgreSQL: schema design, workload-aware indexing, query tuning, transactions, safe migrations. | 9 |
 
 ## Infrastructure & Operations (`ccmaf-skills-infra`)
 
-Running software in production: Azure, Terraform/OpenTofu, containers and Kubernetes, CI/CD pipelines, observability, incident response, and Linux as both workstation and server.
+Running software in production: Azure, Terraform/OpenTofu, containers and Kubernetes, CI/CD pipelines, Cloudflare Workers, observability, incident response, and Linux as both workstation and server.
 
 **Audience:** Platform, DevOps and SRE engineers, and anyone who ships to production. · **Install:** `/plugin install ccmaf-skills-infra@ccmaf-skills` · [Pack README](plugins/ccmaf-skills-infra/README.md)
 
 | Skill | What it covers | Reference docs |
 |---|---|---|
 | [`azure-development`](plugins/ccmaf-skills-infra/skills/azure-development/SKILL.md) | Azure service selection and engineering: Bicep/Terraform and azd, compute, Entra ID, Key Vault, operations. | 8 |
+| [`cloudflare-workers-development`](plugins/ccmaf-skills-infra/skills/cloudflare-workers-development/SKILL.md) | Cloudflare Workers, free tier first: Wrangler, local dev, D1/KV/R2, Pages, _headers, secrets, deploy traps like Pages bypassing CI. | 6 |
 | [`containers-development`](plugins/ccmaf-skills-infra/skills/containers-development/SKILL.md) | Multi-stage Dockerfiles, compose for local dev, image and runtime security, registries, container hosting. | 7 |
-| [`devops-development`](plugins/ccmaf-skills-infra/skills/devops-development/SKILL.md) | CI/CD on Azure DevOps and GitHub Actions: pipeline YAML, templates, OIDC, environments, pipeline security. | 5 |
+| [`devops-development`](plugins/ccmaf-skills-infra/skills/devops-development/SKILL.md) | CI/CD on Azure DevOps and GitHub Actions: pipeline YAML, templates, OIDC, environments, pipeline security. | 6 |
 | [`incident-response`](plugins/ccmaf-skills-infra/skills/incident-response/SKILL.md) | Run production incidents mitigate-first: severity, incident command, status cadence, blameless postmortems. | 6 |
 | [`kubernetes-development`](plugins/ccmaf-skills-infra/skills/kubernetes-development/SKILL.md) | Platform Kubernetes: workloads, autoscaling, networking, RBAC and Pod Security, storage, Helm, GitOps, AKS. | 8 |
 | [`linux-administration`](plugins/ccmaf-skills-infra/skills/linux-administration/SKILL.md) | Operating Linux servers: hardened systemd units, networking, users/sudo/PAM, performance, logging, automation. | 7 |
@@ -176,7 +179,7 @@ The Microsoft business-application stack: Power Apps and Automate, Power Pages, 
 | Skill | What it covers | Reference docs |
 |---|---|---|
 | [`copilot-studio-development`](plugins/ccmaf-skills-microsoft/skills/copilot-studio-development/SKILL.md) | Copilot Studio agents, YAML-first: topics and actions, generative orchestration, knowledge, channels, ALM. | 7 |
-| [`dynamics-365-development`](plugins/ccmaf-skills-microsoft/skills/dynamics-365-development/SKILL.md) | Dynamics 365 / Dataverse pro-code: plug-ins and the pipeline, client scripting, PCF, Web API/SDK, ALM. | 5 |
+| [`dynamics-365-development`](plugins/ccmaf-skills-microsoft/skills/dynamics-365-development/SKILL.md) | Dynamics 365 / Dataverse pro-code: plug-ins and the pipeline, client scripting, PCF, Web API/SDK, ALM. | 7 |
 | [`fabric-development`](plugins/ccmaf-skills-microsoft/skills/fabric-development/SKILL.md) | Microsoft Fabric: OneLake, lakehouse/medallion, Spark and Delta, ingestion, Direct Lake, capacity admin. | 6 |
 | [`m365-development`](plugins/ccmaf-skills-microsoft/skills/m365-development/SKILL.md) | Microsoft 365 for developers: Graph and its SDKs, SPFx, Teams apps, SharePoint data access, Office add-ins. | 6 |
 | [`power-bi-development`](plugins/ccmaf-skills-microsoft/skills/power-bi-development/SKILL.md) | Power BI: star-schema semantic models, RLS, DAX and its performance, Power Query folding, TMDL/PBIP, ALM. | 6 |
@@ -218,21 +221,23 @@ Native and cross-platform apps: Electron, Tauri, native Windows UI (WPF/WinUI/Wi
 | [`android-development`](plugins/ccmaf-skills-apps/skills/android-development/SKILL.md) | Kotlin and Jetpack Compose: MVVM with unidirectional data flow, offline-first Room, Hilt, Gradle, testing. | 5 |
 | [`electron-development`](plugins/ccmaf-skills-apps/skills/electron-development/SKILL.md) | Electron: main/preload/renderer, secure IPC via contextBridge, native modules, packaging, signing, updates. | 4 |
 | [`ios-development`](plugins/ccmaf-skills-apps/skills/ios-development/SKILL.md) | Swift and SwiftUI: concurrency, MVVM, Human Interface Guidelines and accessibility, persistence, App Store. | 5 |
-| [`tauri-development`](plugins/ccmaf-skills-apps/skills/tauri-development/SKILL.md) | Tauri v2 desktop and mobile: Rust-frontend IPC, the capability security model, plugins, builds, signing. | 5 |
+| [`tauri-development`](plugins/ccmaf-skills-apps/skills/tauri-development/SKILL.md) | Tauri v2 desktop and mobile: Rust-frontend IPC, the capability security model, plugins, builds, signing. | 6 |
 | [`windows-desktop-development`](plugins/ccmaf-skills-apps/skills/windows-desktop-development/SKILL.md) | Native Windows UI across WPF, WinUI 3, WinForms and MAUI: XAML, MVVM, threading, packaging, UI Automation. | 7 |
 
 ## Games & 3D (`ccmaf-skills-games`)
 
-Games and interactive 3D: Godot (engine, shaders, MCP-driven workflow), Unity, Unreal Engine 5, three.js, and the engine-agnostic craft of game feel.
+Games and interactive 3D: Godot (engine, shaders, MCP-driven workflow), Unity, Unreal Engine 5, three.js, Phaser, Kenney asset-kit integration, and the engine-agnostic craft of game feel.
 
 **Audience:** Game developers and real-time 3D engineers. · **Install:** `/plugin install ccmaf-skills-games@ccmaf-skills` · [Pack README](plugins/ccmaf-skills-games/README.md)
 
 | Skill | What it covers | Reference docs |
 |---|---|---|
 | [`game-feel`](plugins/ccmaf-skills-games/skills/game-feel/SKILL.md) | Make motion feel good in any engine: responsive input, coyote time and buffering, physics tuning, juice. | 5 |
-| [`godot-development`](plugins/ccmaf-skills-games/skills/godot-development/SKILL.md) | Godot 4.x: typed GDScript and C#, scene composition, custom Resources, Jolt physics, headless CI exports. | 5 |
+| [`godot-development`](plugins/ccmaf-skills-games/skills/godot-development/SKILL.md) | Godot 4.x: typed GDScript and C#, scene composition, custom Resources, Jolt physics, headless CI exports. | 6 |
 | [`godot-mcp-workflow`](plugins/ccmaf-skills-games/skills/godot-mcp-workflow/SKILL.md) | Drive Godot and Blender from an agent over MCP: the edit-run-debug loop, tool limits, the glTF pipeline. | 5 |
 | [`godot-shaders-development`](plugins/ccmaf-skills-games/skills/godot-shaders-development/SKILL.md) | Godot 4.x shaders: the shading language, spatial/2D/particle shaders, compute GLSL, visual shaders, performance. | 6 |
+| [`kenney-asset-integration`](plugins/ccmaf-skills-games/skills/kenney-asset-integration/SKILL.md) | Use Kenney CC0 kits: external colormap, per-kit scale, glTF +Z facing, GridMap tiles, autotile yaws, z-fighting. Godot, three.js, Phaser. | 5 |
+| [`phaser-development`](plugins/ccmaf-skills-games/skills/phaser-development/SKILL.md) | Phaser 3/4 browser games: scene lifecycle and data, destroy semantics and pooling, topOnly input, Arcade/Matter, assets, v3→v4 migration. | 6 |
 | [`threejs-development`](plugins/ccmaf-skills-games/skills/threejs-development/SKILL.md) | three.js and React Three Fiber: colour-correct scenes, the glTF pipeline, performance, shaders, pmndrs. | 6 |
 | [`unity-development`](plugins/ccmaf-skills-games/skills/unity-development/SKILL.md) | Unity 6: lifecycle and serialization, ScriptableObjects, prefabs and scenes, Addressables, Input System, DOTS. | 6 |
 | [`unreal-engine-development`](plugins/ccmaf-skills-games/skills/unreal-engine-development/SKILL.md) | Unreal Engine 5: Blueprints vs C++, the gameplay framework, reflection and GC, Nanite/Lumen, packaging. | 6 |

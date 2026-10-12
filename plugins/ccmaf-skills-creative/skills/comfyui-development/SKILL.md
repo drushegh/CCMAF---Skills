@@ -116,6 +116,23 @@ spine; see `references/generation-pipelines.md`.
   forgetting that a `denoise` below 1.0 is what makes img2img/refiner work.
 - VRAM OOM from resolution/batch — reduce, tile, or use a smaller/
   quantised model.
+- **`--highvram`/`--gpu-only` on a model larger than VRAM** (an fp8
+  Flux checkpoint of about 16 GB on a 12 GB card) OOM-kills the Python
+  process, and the UI just shows "Reconnecting". Launch with the
+  default memory management (offload, dynamic VRAM where supported).
+  Reserve those flags for models that fit with headroom
+  (`references/mcp-and-deployment.md`).
+- Downloading a **diffusers-format** repo (split `unet/`, `vae/`,
+  `text_encoder/` folders) for `Load Checkpoint`, which needs a single
+  root-level `.safetensors`. Check the file list first
+  (`references/models-and-management.md`).
+- Slow or erratic render times blamed on the GPU when the cause is
+  checkpoint reloads from slow disk under RAM pressure.
+- Asking diffusion for **diagrams, charts, infographics or anything
+  with exact text and numbers**. Labels, axes and numbers come out
+  garbled. Render structure with `drawio-development`, Mermaid or
+  HTML/SVG (`frontend-development`), and use diffusion only for
+  imagery (backgrounds, illustration) around it.
 
 ## References
 

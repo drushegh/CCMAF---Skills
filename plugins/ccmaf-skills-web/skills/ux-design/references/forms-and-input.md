@@ -48,6 +48,12 @@ gentlest possible error handling.
 - **On submit**: disable the button and show progress/loading so users don't
   double-submit; re-enable on error with the message shown. Keep the action in
   the thumb zone on mobile.
+- **The submit gate is not the dirty guard.** "Can submit" (valid and
+  changed) and "has unsaved changes" are different questions; reusing the
+  `disabled` flag for both means an invalid half-edited form closes without
+  a "discard changes?" prompt. Derive two booleans — `canSubmit` and
+  `isDirty` — and wire `isDirty` to the close/navigate-away guard (modal
+  close, route change, `beforeunload`).
 - **Don't gate prematurely** — let users attempt submit and show all issues,
   rather than disabling submit with no explanation of why.
 

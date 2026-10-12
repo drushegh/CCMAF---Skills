@@ -46,6 +46,10 @@ set `Nullable` and `ImplicitUsings` to enable, and `TreatWarningsAsErrors` and `
 - **`DateTimeOffset` over `DateTime`** for timestamps — preserves offset,
   serialises unambiguously. Never `DateTime.Now` in logic (untestable,
   timezone-ambiguous); inject `TimeProvider` where time matters.
+  **Exception — EF Core on SQLite**: `DateTimeOffset` (also `decimal`,
+  `TimeSpan`, `ulong`) supports only equality there; `OrderBy` or
+  `<`/`>=` throws "could not be translated" at runtime, which in-memory
+  fixtures never hit. Store UTC `DateTime` or ticks — see ef-core.md.
 - **`CancellationToken` on every async endpoint and service method**,
   forwarded through the whole call chain (EF queries, HttpClient, etc.).
 - **`async`/`await` all the way down.** Never `.Result`, `.Wait()`, or

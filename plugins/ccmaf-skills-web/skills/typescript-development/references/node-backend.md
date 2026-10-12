@@ -87,6 +87,15 @@ app.use((err: unknown, req: Request, res: Response, _next: NextFunction) => {
 });
 ```
 
+## Child Processes on Windows
+
+`spawn(cmd, { shell: true })` on Windows starts `cmd.exe`, and
+`child.kill()` kills only that shell — the real process (a dev server, a
+preview server) survives and keeps its port. Kill the tree:
+`spawnSync("taskkill", ["/pid", String(child.pid), "/T", "/F"])`, or avoid
+`shell: true` and spawn the executable directly (resolve `.cmd` shims
+explicitly, and never pass untrusted arguments through a shell).
+
 ## Other Essentials
 
 - Validate `process.env` at startup with Zod (see validation-and-apis.md).

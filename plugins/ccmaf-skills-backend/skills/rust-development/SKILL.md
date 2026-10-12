@@ -145,6 +145,14 @@ operations (`tokio::time::timeout`).
 4. **Before completion**: `cargo clippy --all-targets -- -D warnings`,
    `cargo fmt`, `cargo nextest run` + `cargo test --doc`; zero
    `dead_code`/WIP suppressions; no stray `dbg!`/`println!` debugging.
+   **A green clippy can be a no-op**: cargo's freshness check is
+   mtime-based, so an edit that lands with an older mtime (checkout,
+   restore, copy from another worktree, a tool that preserves timestamps)
+   leaves the crate "fresh" and `-D warnings` exits 0 without analysing
+   it. The tell: `Finished` in well under 2s with **no `Checking <your
+   crate>` line**. Force it (`touch src/lib.rs` or `cargo clean -p
+   <crate>`) and re-run before trusting the gate — and treat a subagent's
+   "clippy clean" as unverified until you see the `Checking` line.
 5. **Unsafe code**: avoid unless genuinely required (FFI, proven hot
    path); every block gets `// SAFETY:` documenting the invariant; run
    Miri on crates containing unsafe.

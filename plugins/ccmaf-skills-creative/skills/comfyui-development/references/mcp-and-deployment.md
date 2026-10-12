@@ -10,7 +10,21 @@ flags that matter:
   value) binds ALL interfaces (`0.0.0.0,::`, IPv4 + IPv6), as does
   `--listen 0.0.0.0` — both expose the server on the network.
 - `--port` — default 8188.
-- `--cpu`, `--lowvram`/`--novram`/`--highvram` — execution/VRAM mode.
+- VRAM mode (mutually exclusive): `--gpu-only`, `--highvram`,
+  `--lowvram`, `--novram`, `--cpu`. **Default (no flag) is the right
+  choice for most cards.** By default, models are offloaded to system
+  RAM after use, and recent builds manage VRAM dynamically.
+  `--highvram` keeps models resident in VRAM and `--gpu-only` puts
+  everything (text encoders too) on the GPU. Both disable dynamic VRAM,
+  and on a model that doesn't fit they OOM-crash the server rather than
+  degrade. Use them only when the whole working set fits with headroom.
+  `--lowvram` is a no-op while dynamic VRAM is active. Related:
+  `--reserve-vram <GB>` (leave room for the OS and other apps),
+  `--disable-smart-memory` (offload aggressively), and
+  `--cache-ram`/`--cache-lru N`/`--cache-none` (node-result caching
+  versus RAM). Flag set checked against `comfy/cli_args.py` (Oct 2026).
+  It changes often, so run `python main.py --help` on the installed
+  build.
 - `--output-directory`, `--input-directory`, `--extra-model-paths-config`.
 - `--disable-auto-launch` for servers/CI.
 

@@ -68,7 +68,11 @@ Causes and fixes: browser-only APIs → mounted-check client component;
 dates/locale → render client-side or `suppressHydrationWarning`; random
 IDs → `useId()`; invalid HTML nesting (`<div>` inside `<p>`) → fix the
 markup; DOM-modifying third-party scripts → `next/script` with
-`afterInteractive`. Dev overlay shows the server/client diff.
+`afterInteractive`. Dev overlay shows the server/client diff. A lazy
+`useState(() => typeof window !== "undefined" ? read() : fallback)`
+initialiser is itself a mismatch — the server renders `fallback`, the client's
+first render reads the real value. Initialise to the server-safe value and
+update in an effect (or use the inline-script pattern for theme-like data).
 
 ## File Conventions
 
@@ -98,6 +102,11 @@ otherwise); close modals with `router.back()`, never `router.push()`.
   Components only; file conventions (`opengraph-image.png`, `sitemap.ts`,
   `robots.ts`) cover most needs — one static OG image serves Twitter
   too; dynamic `generateMetadata` only when content varies per page.
+- **JSON-LD**: render a plain `<script type="application/ld+json">` (not
+  `next/script`) with
+  `JSON.stringify(data).replace(/</g, '\\u003c')` (two backslashes in the
+  JS source, so the JSON text carries the `\u003c` escape) — bare
+  `JSON.stringify` lets a `</script>` inside CMS or user data break out (XSS).
 
 ## Runtime and Bundling
 

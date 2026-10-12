@@ -58,6 +58,35 @@ The most reliable signal is logic that self-checks:
   acceptance (does the shader look right, is the animation smooth) and
   ask the user explicitly.
 
+## Acceptance runs: go direct, not through the MCP
+
+`run_project`/`get_debug_output` are fine for "does it crash on boot".
+For anything you will report as verified, run Godot yourself so the
+scene is explicit and the process exits cleanly, which flushes stdio:
+
+```bash
+godot --headless --path game --import                       # warm the cache
+timeout 120 godot --path game res://scenes/level_1.tscn --quit-after 600   > run.log 2>&1
+grep -E 'SCRIPT ERROR|ERROR:|flushing queries|Error calling from signal' run.log
+```
+
+`--quit-after` counts main-loop iterations (roughly frames). On
+Windows use the `*_console.exe` executable to capture output.
+
+For input-driven paths (enter the vehicle, fire, open the door) add a
+**command-line-gated self-test** that drives the logic and prints
+asserts:
+`if "--selftest-door" in OS.get_cmdline_user_args(): …`, invoked as
+`godot --path game res://scenes/level_1.tscn -- --selftest-door`.
+Keep it debug-only or strip it afterwards. Full recipes, timeouts and
+the GUT parse-failure trap: `godot-development`
+(`references/headless-testing-ci.md`).
+
+Visual facts (model facing, scale, colour) still can't be verified
+this way. Expose them as `@export` knobs (`model_yaw_deg`,
+`model_scale`) so the user's play-test fix is a number change, not a
+code change.
+
 ## UID management (Godot 4.4+)
 
 Godot 4.4+ tracks resources by UID (`.uid` sidecar files) as well as
@@ -77,7 +106,9 @@ edits, references can break.
 |------|------|
 | Create empty scene / add a placeholder node | `create_scene`/`add_node` (fast skeleton) |
 | Script logic, signals, complex nodes, sub-resources | Direct `.gd`/`.tscn` edits |
-| Run and see errors | `run_project` + `get_debug_output` |
+| Run and see errors (smoke) | `run_project` + `get_debug_output` |
+| Acceptance run / reliable logs | direct `godot --path … <scene> --quit-after N` |
+| Fresh clone, new assets or `class_name` | `godot --headless --path … --import` first |
 | Confirm Godot/version/project | `get_godot_version`/`get_project_info` |
 | Refresh references after a rename | `get_uid`/`update_project_uids` |
 | Anything visual | ask the user; you can't see it |

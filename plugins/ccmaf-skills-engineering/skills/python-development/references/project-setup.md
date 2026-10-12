@@ -92,6 +92,32 @@ ruff replaces black (`ruff format`), isort (`ruff check` with the `I`
 rules — `ruff format` alone does not sort imports), and most of pylint —
 don't add those separately to new projects. Match the existing toolchain in established repos.
 
+## Native and GPU Dependencies
+
+- **Installing a torch-dependent package can silently replace CUDA torch
+  with the CPU build from PyPI.** After any `pip install`/`uv add` that
+  pulls `torch` transitively, check
+  `python -c "import torch; print(torch.__version__, torch.cuda.is_available())"`.
+  Repair by reinstalling from the PyTorch index for your CUDA version
+  (`pip install torch --index-url https://download.pytorch.org/whl/<cuXXX>
+  --force-reinstall --no-deps` — take the exact tag from pytorch.org).
+  With uv, pin torch to that index via `[[tool.uv.index]]` +
+  `[tool.uv.sources]` so it cannot drift back.
+- **A segfault in a native extension cannot be caught.** `try: import x
+  except ImportError:` does not protect the process when the import
+  crashes the interpreter (seen with mismatched MinGW-built NumPy wheels
+  on a new Python version on Windows). For an *optional* native
+  dependency, probe it in a child process first and import in-process
+  only if the probe exits 0:
+
+  ```python
+  ok = subprocess.run([sys.executable, "-c", "import fast_ranker"],
+                      capture_output=True, timeout=60).returncode == 0
+  ```
+- Promoting an optional dependency to a required one unmasks every test
+  gated by `pytest.importorskip("<pkg>")`, and those tests may carry
+  stale expectations. Grep for them and run each newly active file.
+
 ## Package Exports
 
 ```python

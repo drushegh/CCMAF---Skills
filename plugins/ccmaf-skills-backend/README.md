@@ -19,13 +19,13 @@ Install `ccmaf-skills-core` alongside this pack.
 
 | Skill | What it covers | Reference docs |
 |---|---|---|
-| [`api-development`](skills/api-development/SKILL.md) | HTTP API design: REST semantics, OpenAPI-first contracts, versioning, pagination, problem+json, webhooks. | 7 |
+| [`api-development`](skills/api-development/SKILL.md) | HTTP API design: REST semantics, OpenAPI-first contracts, versioning, pagination, problem+json, webhooks. | 8 |
 | [`dotnet-development`](skills/dotnet-development/SKILL.md) | Modern .NET and C#: ASP.NET Core APIs, EF Core, nullable reference types, testing, observability, performance. | 9 |
 | [`event-driven-development`](skills/event-driven-development/SKILL.md) | Delivery semantics, idempotent consumers, outbox, sagas, event sourcing/CQRS, dead letters, schema evolution. | 6 |
 | [`go-development`](skills/go-development/SKILL.md) | Modern Go: errors as values, goroutine/channel/context discipline, generics, modules, table-driven tests. | 6 |
 | [`graphql-development`](skills/graphql-development/SKILL.md) | GraphQL end to end: SDL design, resolvers and DataLoader, mutations and errors, federation, security, caching. | 7 |
 | [`identity-development`](skills/identity-development/SKILL.md) | Auth engineering: OAuth 2.1/OIDC flow selection, tokens, sessions, MFA and passkeys, SSO, RBAC/ABAC/ReBAC. | 7 |
 | [`rust-development`](skills/rust-development/SKILL.md) | Rust 2024: type-driven API design, ownership and lifetimes, error and lint discipline, async/tokio, serde. | 7 |
-| [`sql-development`](skills/sql-development/SKILL.md) | T-SQL and PostgreSQL: schema design, workload-aware indexing, query tuning, transactions, safe migrations. | 8 |
+| [`sql-development`](skills/sql-development/SKILL.md) | T-SQL and PostgreSQL: schema design, workload-aware indexing, query tuning, transactions, safe migrations. | 9 |
 
 The full catalogue across every pack is in [SKILLS.md](../../SKILLS.md).

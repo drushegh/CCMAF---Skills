@@ -74,3 +74,20 @@ texture, one scene at a time.
 - `run_project` is debug-mode, so `print` output and error backtraces
   come through `get_debug_output` — the richer your logging, the more
   you can "see".
+- **Always pass `scene` explicitly.** In one project, a run without
+  it booted `main.tscn` instead of the configured `run/main_scene`, so
+  the menu never appeared. The current server source spawns
+  `godot -d --path <project> [scene]`, which should honour
+  `run/main_scene`; the cause may sit in the client or an older server
+  (verify). Confirm from the output which scene booted.
+- **Output can be incomplete.** The server captures piped stdout. A
+  process killed by `stop_project` (or a Windows GUI-subsystem
+  executable) may not hand over everything it printed, and runs have
+  shown only the engine banner. Treat missing logs as unknown, not as
+  "nothing happened". Point `GODOT_PATH` at the `*_console.exe` build
+  on Windows, and keep `application/run/flush_stdout_on_print.debug`
+  on (the default).
+- The server never runs `--import`. On a fresh clone, or after adding
+  assets or `class_name` scripts, run
+  `godot --headless --path <project> --import` yourself before
+  `run_project`.

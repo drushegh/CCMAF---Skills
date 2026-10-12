@@ -40,6 +40,10 @@ skills) supplies the concrete sink list used in reviews.
    queries always; context-appropriate encoding (HTML/attribute/URL/JS)
    at output time; allow-lists over deny-lists; canonicalise before
    validating paths. Sinks list: `references/input-output-crypto.md`.
+   Before trusting any validator, path/URL check, "sandbox" or
+   per-instance rate limiter, check it against
+   `references/bypass-pitfalls.md` — deny-lists, `startsWith` checks
+   and `exec` with empty builtins are routinely bypassed.
 2. **No secrets in code, config files in repos, logs, or prompts.**
    Key Vault/equivalent + managed identities; rotate on exposure;
    pre-commit secret scanning. A leaked secret is an incident, not a
@@ -100,6 +104,7 @@ assessments ask for.
 | `references/owasp-frameworks.md` | Top 10:2025 detail, ASVS 5.0 usage, cheat sheet index |
 | `references/threat-modelling.md` | STRIDE, data-flow diagrams, session facilitation |
 | `references/input-output-crypto.md` | Injection/XSS defence, sinks, secrets, crypto rules |
+| `references/bypass-pitfalls.md` | Reviewing validators, Windows path/URL checks, sandboxes, serverless rate limits, service-role/RLS boundaries |
 | `references/supply-chain.md` | Dependencies, SBOM, build integrity, A03/A08 |
 | `references/nis2.md` | NIS2 scope and developer-relevant obligations (incl. Irish status) |
 | `references/gdpr.md` | Privacy by design for developers: minimisation, retention, DSR-ready models |

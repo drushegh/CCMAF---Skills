@@ -131,6 +131,24 @@ produce interchangeable output.
   and `-x`/`-f` fail with `bad option`. Unset it before exporting
   (`unset ELECTRON_RUN_AS_NODE` / PowerShell `Remove-Item Env:\ELECTRON_RUN_AS_NODE`).
 
+### SVG backgrounds and dark-mode viewers
+
+Observed on draw.io Desktop 32.4.1 (re-check on other versions):
+
+- A plain SVG export is **transparent** — the root `<svg>` carries
+  `background: transparent` and `color-scheme: light dark`. Black lines and text
+  vanish on a dark-mode README or dark IDE preview.
+- Setting a page background (`background="#ffffff"` on `mxGraphModel`) adds a
+  full-size `<rect>`, but its fill is `light-dark(#ffffff, #121212)` and shape
+  colours are adaptive too, so viewers in dark mode still repaint it dark. That
+  is right for an adaptive diagram, not for a fixed light image.
+- For a **fixed white background** (e.g. a diagram embedded in a README via
+  `<img>`), post-process the SVG: insert
+  `<rect width="100%" height="100%" fill="#ffffff"/>` (no `style`) as the first
+  child after `<defs/>`, and drop `color-scheme: light dark` from the root
+  style if shapes must keep their light colours. Or export PNG instead.
+- Check the result in both themes (open in a browser with dark mode forced).
+
 ## Fallback chain
 
 | Situation | Do |

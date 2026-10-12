@@ -140,6 +140,10 @@ Depth and the current landscape: `references/source-hierarchy-and-tools.md`.
   name.
 - **Date-blind sourcing** — following a blog without checking its date against the
   release timeline.
+- **Stale inventories** — device-farm models, regions/SKUs, quotas and model
+  catalogues rotate; only a dated live dump from the provider's own CLI/API
+  counts, and evidence rows are quoted, never paraphrased
+  (`references/verify-and-drift.md`).
 
 ## Reference index
 

@@ -1,6 +1,6 @@
 {
   "name": "ccmaf-skills-games",
-  "description": "CCMAF Skills — Games & 3D: Games and interactive 3D: Godot (engine, shaders, MCP-driven workflow), Unity, Unreal Engine 5, three.js, and the engine-agnostic craft of game feel. (7 skills)",
+  "description": "CCMAF Skills — Games & 3D: Games and interactive 3D: Godot (engine, shaders, MCP-driven workflow), Unity, Unreal Engine 5, three.js, Phaser, Kenney asset-kit integration, and the engine-agnostic craft of game feel. (9 skills)",
   "author": {
     "name": "drushegh"
   },
@@ -18,6 +18,8 @@
     "./skills/godot-development",
     "./skills/godot-mcp-workflow",
     "./skills/godot-shaders-development",
+    "./skills/kenney-asset-integration",
+    "./skills/phaser-development",
     "./skills/threejs-development",
     "./skills/unity-development",
     "./skills/unreal-engine-development"

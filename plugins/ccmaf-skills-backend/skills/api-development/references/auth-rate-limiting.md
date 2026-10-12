@@ -13,6 +13,13 @@ this covers how the API *presents* auth and protects itself.
 | **API keys** | Server-to-server or simple partner access. `X-API-Key: <key>` (a header, never the URL). Lower assurance — scope tightly, rotate, rate-limit per key |
 | **mTLS** | High-assurance service-to-service / regulated integrations |
 
+**JWKS caching after key rotation:** remote-JWKS helpers cache keys and rate-limit
+refetches. In `jose`, `createRemoteJWKSet` refetches on an unknown `kid` only once
+`cooldownDuration` (default 30 s) has passed since the last successful fetch, and
+caches for `cacheMaxAge` (default 10 min). Right after an IdP rotates keys — or in a
+test that mints a token with a fresh key — expect up to 30 s of `401`s; tests should
+inject a local JWKS rather than wait, and incident runbooks should mention the delay.
+
 Prefer short-lived bearer tokens with refresh over long-lived static
 credentials. Never put tokens or keys in query strings — they end up in logs,
 history and caches.

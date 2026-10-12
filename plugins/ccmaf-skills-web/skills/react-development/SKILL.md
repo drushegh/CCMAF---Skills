@@ -131,6 +131,18 @@ authenticate inside every action, never rely on page-level guards.
   values, invalid HTML nesting. Fix with mounted-check, `useId`, or the
   inline-script pattern (no flicker); `suppressHydrationWarning` only for
   genuinely expected differences.
+- **StrictMode double-mount bugs are real cleanup bugs** — setup and
+  teardown of an external resource or imperative-DOM library belong in ONE
+  effect whose cleanup fully undoes it; never "fix" by removing StrictMode.
+- **Derived arrays/objects from a store selector** (`useStore(s =>
+  s.items.filter(...))`) loop the render ("getSnapshot should be cached").
+  Select the stable slice and derive in the body, or `useShallow`.
+- **Hooks below an early return** — keep `eslint-plugin-react-hooks` in the
+  lint gate; recommend adding it if the repo lacks it.
+- **No error boundary** — one render-phase throw (often parsing untrusted
+  data in a grid cell) blanks the whole app; wrap page content in a
+  route-keyed boundary. Effect, identity and interop traps:
+  [references/effects-and-lifecycle.md](references/effects-and-lifecycle.md).
 - **`localStorage`/listeners without care** — version stored schemas,
   wrap in try/catch (throws in private browsing), passive listeners for
   scroll/touch.
@@ -147,6 +159,9 @@ authenticate inside every action, never rely on page-level guards.
 3. **Before completion**: typecheck, lint, test (per
    typescript-development); for Next.js verify the build
    (`next build`) passes — RSC boundary violations surface at build time.
+   Run the project's full `tsc --noEmit` as a separate gate (a warm `.next`
+   cache has let `next build` exit 0 with broken types), and hit runtime-only
+   routes (OG images, route handlers) on `next start` before calling them done.
 4. **Animations between UI states**: use the native View Transition API
    via React's `ViewTransition` (experimental) rather than animation
    libraries — see [references/view-transitions.md](references/view-transitions.md).
@@ -160,3 +175,4 @@ authenticate inside every action, never rely on page-level guards.
 | Component architecture: compound components, providers, variants | [references/composition.md](references/composition.md) |
 | RSC boundaries, Next.js conventions, data patterns, images/fonts/metadata, errors | [references/rsc-and-nextjs.md](references/rsc-and-nextjs.md) |
 | Page/route/list animations, shared element morphs | [references/view-transitions.md](references/view-transitions.md) |
+| Effects, StrictMode, stale closures, keys, external stores, error boundaries, outside-click, duplicate React, library adoption | [references/effects-and-lifecycle.md](references/effects-and-lifecycle.md) |

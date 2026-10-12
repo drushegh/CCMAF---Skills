@@ -74,6 +74,14 @@ def build(document_text: str, schema: str) -> list[dict]:
   attributable to a template version.
 - Variables validated before injection (length budgets, stripping of
   control tokens).
+- **Never run `str.format()` (or `string.Template`-style
+  substitution, or `.replace` chains on `{name}`) over a template after
+  untrusted content is in it.** Documents, code and JSON contain `{` and
+  `}`; `format` raises `KeyError`/`ValueError` or, worse, substitutes
+  into the payload. Format the template first and insert content last,
+  use f-strings/concatenation on the *template* only, or a templating
+  engine with explicit escaping; add a test that feeds a document full
+  of braces.
 - Per-model variants where behaviour diverges; a prompt tuned on one
   model is a hypothesis on another (and tokenisers differ — re-check
   budgets when changing tier).

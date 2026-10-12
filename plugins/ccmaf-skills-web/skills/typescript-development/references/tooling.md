@@ -76,6 +76,28 @@ Libraries additionally need `declaration: true`, `sourceMap: true`, and an
 emit config. Large repos: project references + incremental compilation cut
 build times.
 
+**Split app and test configs.** The build config (`tsconfig.app.json` /
+`tsconfig.build.json`) excludes `**/*.test.ts(x)` and test setup; a
+`tsconfig.test.json` (or Vitest's own config) adds `"types":
+["vitest/globals"]`. Otherwise either the build type-checks test-only globals
+or the tests lose their types. With a references-only root
+`tsconfig.json`, the real check is `tsc -b` (or each `-p` config) — see the
+SKILL.md warning on bare `tsc`.
+
+## pnpm Specifics
+
+- **Dependency build scripts are blocked by default** (pnpm 10+). Packages
+  with native postinstall steps (esbuild, workerd, better-sqlite3, sharp)
+  fail the install with `ERR_PNPM_IGNORED_BUILDS` until approved. pnpm
+  10.26+ and 11 use an `allowBuilds` map in `pnpm-workspace.yaml`
+  (`esbuild: true`); pnpm 11 removed `onlyBuiltDependencies` and friends
+  (codemod: `pnpx codemod run pnpm-v10-to-v11`). `pnpm approve-builds` and
+  `pnpm add --allow-build` write the map for you — check the written value
+  is a real `true`/`false`, not a placeholder.
+- **`pnpm --filter web test -- path` forwards a literal `--`** to the script
+  and can run the whole suite. Target the binary instead:
+  `pnpm --filter web exec vitest run path/to/file.test.ts`.
+
 ## Biome (if chosen over ESLint + Prettier)
 
 ```json

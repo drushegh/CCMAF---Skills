@@ -94,7 +94,9 @@ Top to bottom; include only the parts the change needs
 ## Choosing the visual surface
 
 Don't default to one diagram type — match it to the question the reader has.
-Mermaid is plain text, so it diffs, commits, and renders on GitHub/GitLab/VS Code.
+Mermaid is plain text, so it diffs, commits, and renders on GitHub/GitLab — but not
+in VS Code's built-in preview without an extension, and punctuation in unquoted labels
+can blank a diagram; see the fallback order in `references/diagrams-and-wireframes.md`.
 
 | The question | Surface |
 |---|---|

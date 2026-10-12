@@ -2,7 +2,7 @@
 
 # CCMAF Skills — Infrastructure & Operations (`ccmaf-skills-infra`)
 
-Running software in production: Azure, Terraform/OpenTofu, containers and Kubernetes, CI/CD pipelines, observability, incident response, and Linux as both workstation and server.
+Running software in production: Azure, Terraform/OpenTofu, containers and Kubernetes, CI/CD pipelines, Cloudflare Workers, observability, incident response, and Linux as both workstation and server.
 
 **Audience:** Platform, DevOps and SRE engineers, and anyone who ships to production.
 
@@ -15,13 +15,14 @@ Running software in production: Azure, Terraform/OpenTofu, containers and Kubern
 
 Install `ccmaf-skills-core` alongside this pack.
 
-## Skills (9)
+## Skills (10)
 
 | Skill | What it covers | Reference docs |
 |---|---|---|
 | [`azure-development`](skills/azure-development/SKILL.md) | Azure service selection and engineering: Bicep/Terraform and azd, compute, Entra ID, Key Vault, operations. | 8 |
+| [`cloudflare-workers-development`](skills/cloudflare-workers-development/SKILL.md) | Cloudflare Workers, free tier first: Wrangler, local dev, D1/KV/R2, Pages, _headers, secrets, deploy traps like Pages bypassing CI. | 6 |
 | [`containers-development`](skills/containers-development/SKILL.md) | Multi-stage Dockerfiles, compose for local dev, image and runtime security, registries, container hosting. | 7 |
-| [`devops-development`](skills/devops-development/SKILL.md) | CI/CD on Azure DevOps and GitHub Actions: pipeline YAML, templates, OIDC, environments, pipeline security. | 5 |
+| [`devops-development`](skills/devops-development/SKILL.md) | CI/CD on Azure DevOps and GitHub Actions: pipeline YAML, templates, OIDC, environments, pipeline security. | 6 |
 | [`incident-response`](skills/incident-response/SKILL.md) | Run production incidents mitigate-first: severity, incident command, status cadence, blameless postmortems. | 6 |
 | [`kubernetes-development`](skills/kubernetes-development/SKILL.md) | Platform Kubernetes: workloads, autoscaling, networking, RBAC and Pod Security, storage, Helm, GitOps, AKS. | 8 |
 | [`linux-administration`](skills/linux-administration/SKILL.md) | Operating Linux servers: hardened systemd units, networking, users/sudo/PAM, performance, logging, automation. | 7 |

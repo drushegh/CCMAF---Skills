@@ -123,3 +123,12 @@ nothing. **Never `_`-prefix a field to silence dead_code** — serde derives
 the wire key from the identifier, so `_field` expects `"_field"` in the
 JSON and deserialisation silently breaks. Delete the field and document
 the full schema in a comment.
+
+## Trailing Content
+
+`serde_json::from_str` / `from_slice` reject anything after the first
+value (`trailing characters` error) — a log line with a suffix, or
+several concatenated JSON documents. Parse a prefix with
+`let mut de = serde_json::Deserializer::from_str(s); T::deserialize(&mut de)?`
+(skip `de.end()`), or iterate a stream of values with
+`Deserializer::from_str(s).into_iter::<T>()`.

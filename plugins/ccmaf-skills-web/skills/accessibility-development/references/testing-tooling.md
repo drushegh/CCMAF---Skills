@@ -31,10 +31,36 @@ test('dashboard has no detectable a11y violations', async ({ page }) => {
 ```
 
   Also test states, not just pages: open the modal, expand the menu,
-  trigger the error summary, then scan. Playwright can additionally
+  trigger the error summary, then scan. axe only evaluates rendered
+  content — `display: none` subtrees (closed menus, nav hidden by a
+  media query, jsdom where media queries don't apply) are skipped, so
+  scan each state and viewport in which the UI is actually visible. Playwright can additionally
   assert focus (`toBeFocused()`), keyboard journeys
   (`page.keyboard.press('Tab')` sequences) and the accessibility tree
   snapshot.
+- **Review `incomplete`, not just `violations`.** When axe cannot
+  decide, it reports the node as `incomplete` (needs review) instead of
+  failing it — e.g. `color-contrast` over a background gradient
+  (reason `bgGradient`), image (`bgImage`) or overlapping element
+  (`bgOverlap`). A real 4.41:1 failure hid there. Attach
+  `results.incomplete` to the report and check each contrast item by
+  hand or with a pixel sample.
+- **Let animations finish before scanning.** A fade-in caught mid-frame
+  blends text at partial opacity and fails `color-contrast` falsely and
+  intermittently. Await finite animations first — infinite ones (spinners)
+  never finish, so exclude them or the scan hangs:
+
+```javascript
+await page.evaluate(() => Promise.all(document.getAnimations()
+  .filter(a => a.effect?.getComputedTiming().iterations !== Infinity)
+  .map(a => a.finished.catch(() => {}))));
+```
+
+- **Gate focus visibility on pixels.** A computed `outline` is not a
+  painted ring: `clip-path`, a clipping ancestor or a ring the colour
+  of its backdrop leaves `getComputedStyle().outline` set while
+  nothing visible draws. Screenshot the element focused (via keyboard)
+  and unfocused and require a visible difference.
 - **Lighthouse** a11y category for quick triage (it embeds axe);
   **pa11y/pa11y-ci** for URL-list sweeps; **eslint-plugin-jsx-a11y**
   for React static lint.

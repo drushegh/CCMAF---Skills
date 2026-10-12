@@ -2,6 +2,18 @@
 
 Every commit to `main` is a release; entries are dated rather than versioned. Newest first.
 
+## 2026-10-12 — gotchas fix wave: 33 skills updated, 4 new skills
+
+Field-tested corrections and traps from an audit of the gotchas logs kept by 38 projects that use these skills. Items seen in practice but not confirmed against official docs are marked "(verify)" in the text.
+
+- Updated 33 skills, some with new reference files: `accessibility-development`, `api-development`, `azure-development`, `bash-development`, `comfyui-development`, `devops-development`, `dotnet-development`, `drawio-development`, `dynamics-365-development`, `frontend-development`, `game-feel`, `godot-development`, `godot-mcp-workflow`, `llm-development`, `office-formats`, `power-pages-development`, `power-platform-development`, `powershell-development`, `python-development`, `react-development`, `read-the-damn-docs`, `rust-development`, `secure-development`, `sql-development`, `tauri-development`, `testing-development`, `threejs-development`, `typescript-development`, `ui-verification`, `ux-design`, `visual-plan`, `visual-recap`, `web-performance-development`.
+- New `browser-extension-development` (`web`): Manifest V3 extensions from service-worker lifecycle to store review, plus porting from Chrome to Firefox and Edge.
+- New `cloudflare-workers-development` (`infra`): Workers on the free tier, covering Wrangler, local dev, D1/KV/R2, Pages, secrets and deploy traps.
+- New `phaser-development` and `kenney-asset-integration` (`games`): Phaser 3/4 browser games, and getting Kenney's CC0 asset kits into Godot, three.js and Phaser.
+- The `web`, `infra` and `games` pack descriptions now name the new skills. SKILLS.md has a new "Browser extension developer" row in its "which packs do I need" table.
+- `godot-mcp-workflow` pointed at a "blender-toolkit" skill that doesn't exist. It now points at `blender-development`.
+- The catalogue is now 106 skills in 19 packs.
+
 ## 2026-10-11 — workspace-type packs: 30 new skills, 6 new packs
 
 For Claude working as an agent on your own machine rather than in a codebase. Install `core` and `workspace`, then the pack for the kind of workspace; SKILLS.md has the "which packs do I need" rows.

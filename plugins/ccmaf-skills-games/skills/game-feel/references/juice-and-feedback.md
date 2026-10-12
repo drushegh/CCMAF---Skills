@@ -19,7 +19,12 @@ so it reads instantly:
   material.
 - **Squash & stretch** — deform on acceleration/impact (a ball squashes on
   landing, stretches when launched). From the Disney 12 principles; cheap, huge
-  feel return.
+  feel return. **Decay towards the base scale, not towards 1.** An effect
+  that lerps the model's scale back to `(1, 1, 1)` every frame silently
+  erases any size set in the scene or by a designer, and "making the
+  character smaller" then does nothing. Expose one `model_scale` tunable,
+  apply it at start, use `ONE * model_scale` as the decay target and
+  multiply the squash/stretch poses by it. One knob owns the size.
 - **Flash / colour** — a hit flash or tint confirms a hit landed.
 - **Knockback / recoil** — both target and source move; force you can see.
 - **Sound** — tightly synced to the visual; audio is half of perceived impact.

@@ -22,12 +22,24 @@ Render and view each applicable state, not just the populated one:
 - **Interactive states** — hover, focus, active, disabled, selected (focus is
   also an accessibility requirement).
 
+**Sign off on populated captures, in the live mount.** An empty shell hides
+styling that was never ported (dozens of missing classes passed an empty-state
+review), and a component test can pass while the component is not mounted in
+the live layout at all; mocked transport (IPC, fetch) hides reload, StrictMode
+and timing bugs. Acceptance needs fixture-populated captures **and** one check
+of the real mount path in the running app.
+
 ## The viewports
 
 At minimum **mobile (~390 px)** and **desktop (~1280–1440 px)**; add **tablet
 (~768 px)** and the project's actual breakpoints (just below and just above
 each). At each: does it reflow, are targets reachable, any horizontal scroll or
 clipped content?
+
+Breakpoints are not enough on their own: fluid type against a fixed-width
+track can collide at widths *between* breakpoints with no overflow reported.
+For text-heavy layouts, sweep a width range and measure glyph rects
+(`dom-probes-and-input.md`).
 
 ## The variants
 

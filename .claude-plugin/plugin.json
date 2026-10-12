@@ -1,6 +1,6 @@
 {
   "name": "ccmaf-skills",
-  "description": "All 102 CCMAF skills in one plugin — the conventions, decision frameworks, pitfalls and verification rules a senior practitioner enforces, packaged so an agent behaves like a disciplined specialist. The same skills are also published as 19 role packs (ccmaf-skills-<pack>).",
+  "description": "All 106 CCMAF skills in one plugin — the conventions, decision frameworks, pitfalls and verification rules a senior practitioner enforces, packaged so an agent behaves like a disciplined specialist. The same skills are also published as 19 role packs (ccmaf-skills-<pack>).",
   "author": {
     "name": "drushegh"
   },
@@ -71,6 +71,8 @@
     "./plugins/ccmaf-skills-games/skills/godot-development",
     "./plugins/ccmaf-skills-games/skills/godot-mcp-workflow",
     "./plugins/ccmaf-skills-games/skills/godot-shaders-development",
+    "./plugins/ccmaf-skills-games/skills/kenney-asset-integration",
+    "./plugins/ccmaf-skills-games/skills/phaser-development",
     "./plugins/ccmaf-skills-games/skills/threejs-development",
     "./plugins/ccmaf-skills-games/skills/unity-development",
     "./plugins/ccmaf-skills-games/skills/unreal-engine-development",
@@ -78,6 +80,7 @@
     "./plugins/ccmaf-skills-homelab/skills/media-server-stack",
     "./plugins/ccmaf-skills-homelab/skills/nas-and-storage",
     "./plugins/ccmaf-skills-infra/skills/azure-development",
+    "./plugins/ccmaf-skills-infra/skills/cloudflare-workers-development",
     "./plugins/ccmaf-skills-infra/skills/containers-development",
     "./plugins/ccmaf-skills-infra/skills/devops-development",
     "./plugins/ccmaf-skills-infra/skills/incident-response",
@@ -105,6 +108,7 @@
     "./plugins/ccmaf-skills-system/skills/windows-performance-tuning",
     "./plugins/ccmaf-skills-system/skills/windows-security-hygiene",
     "./plugins/ccmaf-skills-web/skills/accessibility-development",
+    "./plugins/ccmaf-skills-web/skills/browser-extension-development",
     "./plugins/ccmaf-skills-web/skills/design-taste",
     "./plugins/ccmaf-skills-web/skills/frontend-development",
     "./plugins/ccmaf-skills-web/skills/react-development",
