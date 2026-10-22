@@ -2,6 +2,12 @@
 
 Every commit to `main` is a release; entries are dated rather than versioned. Newest first.
 
+## 2026-10-22 — workspace-kit journal contract alignment
+
+- `safe-system-changes`: when the host enforces a per-change prompt (Claude Code `ask` rules or a guard hook), that prompt is the confirmation, and the change card is printed right before the single command. A workspace persona may pre-approve low-risk change kinds and raise any item to a higher tier. `references/change-journal.md` gains the journal's machine-readable rules (no format change).
+- `machine-config-as-code`: the workspace layout's journal is `journal/CHANGES.md`, the same file `safe-system-changes` writes.
+- `workspace-kit-authoring`: the worked example uses the `book-open` icon (`book` is not in the app's allowlist), and the manifest reference lists the known panel ids, including `systemHealth` and `changeJournal`.
+
 ## 2026-10-12 — new skill: astro-development
 
 - New `astro-development` (`web`): Astro content sites as decision rules and field-tested traps rather than an API tutorial, from one production static site. Covers when to choose Astro, deciding `trailingSlash` with `build.format` and setting `site` first, typed content collections with https-only URL fields, `astro:env` and why local flags belong in `.env.development`, processed vs `is:inline` scripts under a strict hash-based CSP (built-in `security.csp` vs a postbuild header, with tokenizer rules and test fixtures), pixel-art-safe images and font licences, sitemap/RSS/Pagefind, testing the built site with Playwright, Windows build traps and static deploys. Version-specific facts were checked against the official docs for Astro 7.3.8; anything unconfirmed is marked "(verify)". It defers Cloudflare Pages depth to `cloudflare-workers-development`.

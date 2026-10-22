@@ -110,6 +110,26 @@ Written at the end of every run, including aborted ones:
 
 Revert order is always the reverse of apply order.
 
+## Machine-readable rules
+
+Apps may parse the journal (a change-journal panel does). Keep to this grammar
+and the parser stays tolerant: anything it cannot place becomes a problem, not
+an error. No format change; this is the layout above, stated as rules.
+
+```text
+FILE    <workspace>/journal/CHANGES.md, UTF-8, append-only
+RUN     ^## Run (?<run>\d{4}-\d{2}-\d{2}-\d{2})\s+[—–-]\s+(?<title>.+)$
+        header bullets until the next heading: Requested by, Machine, Elevated,
+        Restore point, Plan approved (field names case-insensitive)
+CHANGE  ^### (?<run>\d{4}-\d{2}-\d{2}-\d{2})/(?<seq>\d{2})\s+[—–-]\s+(?<title>.+)$
+        a title starting "Revert <run>/<seq>" is a revert entry for that change
+FIELD   ^- (?<name>[A-Za-z ]+):\s*(?<value>.*)$
+        lines indented by 2+ spaces continue the value
+        known: Tier, Why, Target, Before, After, Backup, Command, Undo, Verify,
+        Status, Confirmed by user
+SUMMARY ^#### Summary (?<run>\d{4}-\d{2}-\d{2}-\d{2})
+```
+
 ## Tell the user where it is
 
 End every run by telling the user the journal path and the one-line "to undo

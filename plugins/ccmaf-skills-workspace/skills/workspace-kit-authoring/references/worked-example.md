@@ -53,7 +53,7 @@ reading-list/
   "id": "reading-list",
   "name": "Reading list",
   "description": "Files and summarises saved articles in this folder and writes a weekly digest. Changes files in this folder only.",
-  "icon": "book",
+  "icon": "book-open",
   "version": "0.1.0",
   "agents": ["claude"],
   "safety_tier": "T1",

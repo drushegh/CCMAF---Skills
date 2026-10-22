@@ -53,7 +53,7 @@ form and use it consistently.)
 | `safety_tier` | string | `T0`, `T1`, `T2` or `T3` | M1 displays and reviews it; enforcement for T2/T3 arrives in later milestones. Declare it honestly now |
 | `requires_plugins` | string[] | ≤ 20; each `<plugin>@<marketplace>`, validated as a plugin id | Each must come from a source the owner has added; missing ⇒ create flow offers to add it, through review |
 | `permissions.allow/ask/deny` | string[] | Each ≤ 200 chars; ≤ 200 per list | Only these three lists. Cannot set `defaultMode`, `bypassPermissions`, hooks or env |
-| `panels` | string[] | Known widget ids only | Unknown dropped with a warning |
+| `panels` | string[] | Known widget ids only: `session`, `files`, `fileView`, `livePreview`, `agentView`, `attention`, `agentsRoster`, `agentsTopology`, `events`, `contracts`, `tasks`, `decisions`, `gotchas`, `progress`, `hooks`, `skills`, `frameworkHealth`, `findings`, `projectUsage`, and the PC-care panels `systemHealth`, `changeJournal` | Unknown dropped with a warning |
 | `schedules[]` | object[] | `cron`: 5 fields; `prompt` ≤ 2000 chars, sanitised (no control or bidi chars) | Stored and shown in M1, inert until the scheduler milestone |
 | `resident_allowed` | boolean | | Whether the paid resident mode may be offered. No type may require it; default `false` |
 

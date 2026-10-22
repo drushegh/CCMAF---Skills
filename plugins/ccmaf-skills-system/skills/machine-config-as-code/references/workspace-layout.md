@@ -38,7 +38,7 @@ what they have in common. Keep it boring and predictable: the next session
   drift/
     2026-11-02.md               # one report per audit
   journal/
-    2026-10-12-rebuild.md       # change journal entries (safe-system-changes)
+    CHANGES.md                  # change journal, append-only (safe-system-changes)
   drift-ignore.txt              # paths and keys excluded from drift
 ```
 

@@ -56,6 +56,11 @@ Each arrow is a gate. A failed gate stops the run; it does not get skipped
    not consent to ten changes. Each change is shown as: target, current value,
    new value, risk, undo. The user may approve a named group of low-risk,
    same-kind changes explicitly ("apply all five visual-effects changes").
+   When the host enforces a per-change prompt (Claude Code `ask` rules or a
+   guard hook), that prompt is the per-change confirmation: print the change
+   card right before the single command instead of asking in chat. A workspace
+   persona may name pre-approved low-risk change kinds and may raise any item
+   to a higher tier.
 6. **Journal before moving on.** The journal entry for change *N* is written
    before change *N+1* starts, so a crash mid-run leaves an accurate record
    ([references/change-journal.md](references/change-journal.md)).
