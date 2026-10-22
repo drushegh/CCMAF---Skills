@@ -127,6 +127,8 @@ FIELD   ^- (?<name>[A-Za-z ]+):\s*(?<value>.*)$
         lines indented by 2+ spaces continue the value
         known: Tier, Why, Target, Before, After, Backup, Command, Undo, Verify,
         Status, Confirmed by user
+VALUES  Tier: Low | Medium | High (an app reads Low as low-risk, Medium and High
+        as risky; any other value as unknown). Status: as in the status table above.
 SUMMARY ^#### Summary (?<run>\d{4}-\d{2}-\d{2}-\d{2})
 ```
 
