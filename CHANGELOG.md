@@ -2,6 +2,12 @@
 
 Every commit to `main` is a release; entries are dated rather than versioned. Newest first.
 
+## 2026-11-16 — upstream standards: fetch and cite
+
+- `read-the-damn-docs`: new `references/upstream-standards.md`, a pointer-only registry of maintained standards (Modern Web Guidance, web-features/Baseline and browser-compat-data, OWASP ASVS 5.0 / Cheat Sheets / LLM Top 10 2026 / MASTG, WCAG 2.2 + ARIA APG, Google AIP, Google Cloud Well-Architected via `google/skills`, the Agent Skills spec, AGENTS.md, OpenSSF Scorecard, SLSA, Microsoft REST API Guidelines). For each source it gives the fetch target, citation format, optional pin and licence. Also covers the untrusted-content and `[GAP]` rules. `cloudflare/skills` and `vercel-labs/agent-skills` are reference-only; the Vercel repo has no LICENSE file (checked 2026-11-16). No standard text is copied.
+- `secure-development`: the OWASP Top 10 for LLM Applications moves from the 2025 list to the 2026 list (published 4 August 2026; IDs renumbered). It is now a pointer to `2026/final/` plus an ID-and-title index verified on 2026-11-16. ASVS requirements are fetched by ID from the 5.0.0 JSON and cited as `v5.0.0-<chapter>.<section>.<req>`. Cheat sheets are fetched by URL. `threat-modelling.md` points LLM features at the 2026 Appendix B.
+- `frontend-development`, `web-performance-development`, `accessibility-development`: a short "Upstream guidance (fetch at use)" section each, pointing at Modern Web Guidance (installed plugin or `npx`, version recorded, pinned for unattended runs), Baseline status, and WCAG 2.2 / APG by ID. No guides are vendored.
+
 ## 2026-10-22 — workspace-kit journal contract alignment
 
 - `safe-system-changes`: when the host enforces a per-change prompt (Claude Code `ask` rules or a guard hook), that prompt is the confirmation, and the change card is printed right before the single command. A workspace persona may pre-approve low-risk change kinds and raise any item to a higher tier. `references/change-journal.md` gains the journal's machine-readable rules (no format change).

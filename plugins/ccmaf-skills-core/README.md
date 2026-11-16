@@ -23,7 +23,7 @@ Core is the base pack: every other pack assumes it is installed.
 | [`drawio-development`](skills/drawio-development/SKILL.md) | Native, committable .drawio XML: well-formedness, layout discipline, export, and a render-check loop. | 5 |
 | [`opus-5-calibration`](skills/opus-5-calibration/SKILL.md) | Operate Claude Opus 5 well: set the length dials, drop backfiring double-checks, keep empirical verification. | 4 |
 | [`powershell-development`](skills/powershell-development/SKILL.md) | PowerShell 7+: advanced functions, the pipeline, error handling, Pester, PSScriptAnalyzer and the security stack. | 6 |
-| [`read-the-damn-docs`](skills/read-the-damn-docs/SKILL.md) | Ground claims in version-matched official docs and installed source, not training memory. | 3 |
+| [`read-the-damn-docs`](skills/read-the-damn-docs/SKILL.md) | Ground claims in version-matched official docs and installed source, not training memory. | 4 |
 | [`stay-within-limits`](skills/stay-within-limits/SKILL.md) | Keep long-running or parallel agent work inside usage limits: budget, checkpoint, stop on a soft threshold. | 3 |
 | [`systematic-debugging`](skills/systematic-debugging/SKILL.md) | Reproduce, minimise, bisect, test one falsifiable hypothesis at a time, fix the root cause, add a regression test. | 6 |
 | [`technical-writing`](skills/technical-writing/SKILL.md) | READMEs, ADRs, runbooks, changelogs and design docs on the Diátaxis framework, with every sample verified. | 6 |
