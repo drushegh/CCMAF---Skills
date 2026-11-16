@@ -78,9 +78,10 @@ a `[GAP]` rather than reconstructing it.
   `GenAI-Security-Project/GenAI-LLM-Top10` `2026/final/`, which also holds
   Appendix A (framework mappings, machine-readable copies under `mappings/`),
   Appendix B (LLM application architecture and threat modelling) and the
-  AISVS mapping. Cite as `LLM0x:2026` with the commit SHA you read. The IDs
-  were **renumbered** from 2025 (for example, Improper Output Handling moved
-  from LLM05 to LLM10, and System Prompt Leakage is no longer an entry).
+  AISVS mapping. Cite as `LLM0x:2026` with the commit SHA you read. Most IDs
+  **moved** from 2025: LLM01 and LLM02 held, Improper Output Handling moved
+  from LLM05 to LLM10, and System Prompt Leakage (LLM07:2025) was re-scoped
+  as LLM08:2026 Hidden Context Exposure (per the 2026 preface).
   Never quote a 2025 ID against the 2026 list. Map explicitly when
   comparing. Relevant to AI feature reviews alongside `eu-ai-act.md`.
   Offline index (IDs and titles only, verified 2026-11-16 against
