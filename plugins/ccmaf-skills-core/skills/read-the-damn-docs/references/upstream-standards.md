@@ -25,8 +25,8 @@ relying on a pin, because these sources release often.
    fragment a finding needs, with attribution. Never paste requirement text
    into a repo, skill or template.
 6. **Pin for reproducibility.** Attended work may use the latest release, but
-   it must record the version it resolved. Unattended runs (Claude Code with
-   `CLAUDE_UNATTENDED=1`, or any run with no human present) and
+   it must record the version it resolved. Unattended runs (no human
+   present, for example CCMAF's `CLAUDE_UNATTENDED=1`) and
    "reproducible review" runs pin an exact tag, SHA or version and record
    it. Where an installed plugin always resolves `@latest` (Modern Web
    Guidance does), bypass it and call the pinned CLI directly. Before
@@ -39,9 +39,9 @@ relying on a pin, because these sources release often.
 
 | Source | Mode | Fetch target | Cite as | Pin | Licence |
 |---|---|---|---|---|---|
-| **Modern Web Guidance** (Google Chrome): modern HTML/CSS/JS, a11y, perf and security guides | Install official, or CLI | Claude plugin `modern-web-guidance@googlechrome` (`/plugin marketplace add GoogleChrome/modern-web-guidance`; its skill always runs `@latest`, so it is for attended use only); or `npx -y modern-web-guidance@<ver> search "<2–5 word query>"` then `retrieve <id>` | `modern-web-guidance <ver>: <guide-id>` | npm version (1.0.1 on 2026-11-16) | Guides CC BY 4.0; code Apache-2.0 |
+| **Modern Web Guidance** (Google Chrome): modern HTML/CSS/JS, a11y, perf and security guides | Install official, or CLI | Claude plugin `modern-web-guidance@googlechrome` (`/plugin marketplace add GoogleChrome/modern-web-guidance`; its skill always runs `@latest` and is written to auto-trigger on all HTML/CSS work, so it is for attended use only. The CLI sends usage telemetry, including search query text, to Google; set `DISABLE_TELEMETRY=1` for unattended or private-repo runs); or `npx -y modern-web-guidance@<ver> search "<2–5 word query>"` then `retrieve <id>` | `modern-web-guidance <ver>: <guide-id>` | npm version (1.0.1 on 2026-11-16) | Guides CC BY 4.0; code Apache-2.0 |
 | **web-features / Baseline** (+ **MDN browser-compat-data**) | Fetch and cite | Explorer `https://web-platform-dx.github.io/web-features-explorer/features/<id>/`; data via npm `web-features` / `@mdn/browser-compat-data` | `Baseline <status> (<since>), web-features <ver>: <feature-id>` | npm version (web-features 3.46.0, BCD 8.1.9 on 2026-11-16) | Apache-2.0 / CC0-1.0 |
-| **OWASP ASVS 5.0** | Fetch and cite | `OWASP/ASVS` `5.0/docs_en/OWASP_Application_Security_Verification_Standard_5.0.0_en.json` (also `.flat.json`, `.csv`) | `ASVS v5.0.0-<chapter>.<section>.<req>`, the format the standard itself recommends | tag `v5.0.0_release` | CC BY-SA 4.0 |
+| **OWASP ASVS 5.0** | Fetch and cite | `OWASP/ASVS` `5.0/docs_en/OWASP_Application_Security_Verification_Standard_5.0.0_en.json` (also `.flat.json`, `.csv`) | `ASVS v5.0.0-<chapter>.<section>.<req>` (the standard recommends the bare `v<version>-<id>` form; the `ASVS` prefix only names the source) | tag `v5.0.0_release` | CC BY-SA 4.0 |
 | **OWASP Cheat Sheet Series** | Fetch and cite | `https://cheatsheetseries.owasp.org/cheatsheets/<Name>_Cheat_Sheet.html` (source: `OWASP/CheatSheetSeries` `cheatsheets/`) | Cheat sheet name + URL | commit SHA | CC BY-SA 4.0 |
 | **OWASP Top 10 for LLM Applications 2026** | Fetch and cite | `GenAI-Security-Project/GenAI-LLM-Top10` `2026/final/` (entries, Appendix A mappings + `mappings/`, Appendix B threat modelling, AISVS mapping) | `LLM0x:2026` (IDs renumbered vs 2025, so never cross-quote) | commit SHA | CC BY-SA 4.0 (declared in README; GitHub detects none) |
 | **W3C WCAG 2.2** + **ARIA Authoring Practices (APG)** | Fetch and cite | `https://www.w3.org/TR/WCAG22/`, Understanding `https://www.w3.org/WAI/WCAG22/Understanding/<slug>`, APG `https://www.w3.org/WAI/ARIA/apg/patterns/<pattern>/` | `WCAG 2.2 SC <n.n.n>`; `APG <pattern>` | spec version | W3C Document License / W3C Software and Document License |
