@@ -44,7 +44,7 @@
           "id": "read-the-damn-docs",
           "summary": "Ground claims in version-matched official docs and installed source, not training memory.",
           "path": "plugins/ccmaf-skills-core/skills/read-the-damn-docs",
-          "referenceDocs": 3
+          "referenceDocs": 4
         },
         {
           "id": "stay-within-limits",
